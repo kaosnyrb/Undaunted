@@ -1,0 +1,36 @@
+﻿  GameData.cpp
+  GameExtraData.cpp
+  GameFormComponents.cpp
+  GameObjects.cpp
+  GameReferences.cpp
+  Hooks_Data.cpp
+  Hooks_Handlers.cpp
+  Hooks_ObScript.cpp
+  Hooks_SaveLoad.cpp
+  Hooks_Scaleform.cpp
+  InternalSerialization.cpp
+  InternalTasks.cpp
+  PapyrusActor.cpp
+  PapyrusActorBase.cpp
+  PapyrusActorValueInfo.cpp
+  PapyrusArt.cpp
+  PapyrusDefaultObjectManager.cpp
+  PapyrusFaction.cpp
+  PapyrusGame.cpp
+  PapyrusGameData.cpp
+  Generating Code...
+  Compiling...
+  PapyrusHeadPart.cpp
+  PapyrusKeyword.cpp
+  PapyrusMagicEffect.cpp
+  PapyrusObjectReference.cpp
+  PapyrusQuest.cpp
+  PapyrusRace.cpp
+  PapyrusWeapon.cpp
+  PapyrusWornObject.cpp
+  ScaleformExtendedData.cpp
+  Serialization.cpp
+  Generating Code...
+  skse64.vcxproj -> C:\git\seplugin\x64\Debug\skse64_1_5_97.lib
+  Installing DLL...
+          1 file(s) copied.
