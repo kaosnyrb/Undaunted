@@ -12,22 +12,26 @@ namespace Undaunted {
 	tList<TESObjectREFR> bountyenemies;
 	bool DEBUGMODE = true;
 
-	float MyTest(StaticFunctionTag *base) {
-		if (xmarkerref == NULL)
-		{
-			xmarkerref = GetRefObjectFromWorld(0x06001DFE);
-			_MESSAGE("Got Marker %08X", xmarkerref->formID);
-		}
+	void MoveMarker() {
 		DataHandler* handler = DataHandler::GetSingleton();
 		_MESSAGE("RegionList Count: %08X", handler->regionList->Count());
 
-		tList<UInt32> badregions = GetBadRegions();
+		IntList badregions = GetBadRegions();
 
 		UInt32 regioncount = handler->regionList->Count();
 		for (UInt32 i = 0; i < regioncount; i++)
 		{
+			//Check for badregion
+			bool badRegion = false;
+			for (UInt32 j = 0; j < badregions.length; j++)
+			{
+				if (badregions.data[j] == i)
+				{
+					badRegion = true;
+				}
+			}
 			//Some regions are dodgy
-			if (badregions.Contains(&i))
+			if (!badRegion)
 			{
 				_MESSAGE("processing worldSpace %08X", i);
 				TESRegion* test = (TESRegion*)handler->regionList->GetNthItem(i);
@@ -50,7 +54,9 @@ namespace Undaunted {
 								{
 									worldspace = test->worldSpace;
 									TESObjectREFR* target = GetRandomObjectInCell(cell);
+									_MESSAGE("target is set. Moving marker", i);
 									MoveMarkerToWorldCell(xmarkerref, cell, worldspace, target->pos, NiPoint3(0, 0, 0));
+									return;
 								}
 							}
 						}
@@ -67,9 +73,16 @@ namespace Undaunted {
 				}
 			}
 		}
+	}
+
+	float MyTest(StaticFunctionTag* base) {
+		if (xmarkerref == NULL)
+		{
+			_MESSAGE("NO XMARKER SET");
+		}
+		MoveMarker();
 		_MESSAGE("Finished Regions");
 		IntList group = GetRandomGroup();
-		
 		for (int i = 0; i < group.length; i++)
 		{
 			_MESSAGE("Groupid : %08X ", group.data[i]);
@@ -91,7 +104,7 @@ namespace Undaunted {
 				return false;
 			}
 		}
-		
+
 		return true;
 	}
 
@@ -99,7 +112,12 @@ namespace Undaunted {
 		AddBadRegionToConfig(region);
 		return true;
 	}
-	
+
+	bool SetXMarker(StaticFunctionTag* base, TESObjectREFR* marker) {
+		xmarkerref = marker;
+		return true;
+	}
+
 	bool RegisterFuncs(VMClassRegistry* registry) {
 		_registry = registry;
 		registry->RegisterFunction(
@@ -109,8 +127,11 @@ namespace Undaunted {
 			new NativeFunction0 <StaticFunctionTag, bool>("isBountyComplete", "bountyCompleteScript", Undaunted::isBountyComplete, registry));
 
 		registry->RegisterFunction(
-			new NativeFunction1 <StaticFunctionTag, bool,UInt32>("AddBadRegion", "AddBadRegionScript", Undaunted::AddBadRegion, registry));
+			new NativeFunction1 <StaticFunctionTag, bool, UInt32>("AddBadRegion", "AddBadRegionScript", Undaunted::AddBadRegion, registry));
+
+		registry->RegisterFunction(
+			new NativeFunction1 <StaticFunctionTag, bool, TESObjectREFR*>("SetXMarker", "SetXMarkerScript", Undaunted::SetXMarker, registry));
 
 		return true;
 	}
-} 
+}

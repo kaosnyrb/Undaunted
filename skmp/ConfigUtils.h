@@ -31,7 +31,7 @@ namespace Undaunted
 	};
 #endif
 	void AddBadRegionToConfig(UInt32 region);
-	tList<UInt32> GetBadRegions();
+	IntList GetBadRegions();
 	IntList GetRandomGroup();
 
 

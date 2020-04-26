@@ -3,9 +3,10 @@ Scriptname Undaunted_Test1 extends ObjectReference
 import MyPluginScript
 import bountyCompleteScript
 import AddBadRegionScript
-;import JValue
+import SetXMarkerScript
 
 Quest Property questProperty  Auto  
+objectReference Property markerref Auto
 
 event onActivate(objectReference akActivator)
 	int BadRegionList = JValue.readFromFile("Data/Undaunted/BadRegion.json")
@@ -14,10 +15,8 @@ event onActivate(objectReference akActivator)
 		i -= 1		
 		AddBadRegion(JArray.getInt(BadRegionList,i))
 	endwhile
-;	AddBadRegion(51)
-;	AddBadRegion(54)
-;	AddBadRegion(155)
-;	AddBadRegion(272)
+	
+	SetXMarker(markerref)
 
 	questProperty.SetCurrentStageID(0)
 	MyTest()

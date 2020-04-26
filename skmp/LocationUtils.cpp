@@ -87,6 +87,7 @@ namespace Undaunted {
 		return NULL;
 	}
 
+	int LastRand = 0;
 	TESObjectREFR* GetRandomObjectInCell(TESObjectCELL* cell)
 	{
 		int numberofRefs = papyrusCell::GetNumRefs(cell, 0);
@@ -94,7 +95,11 @@ namespace Undaunted {
 		if (numberofRefs == 0)return NULL;
 		while (true)
 		{
-			TESObjectREFR* ref = papyrusCell::GetNthRef(cell, rand() % numberofRefs, 0);
+			//Random seems to stuck sometimes. Trying to prevent that.
+			int Nth = rand() % numberofRefs;
+			if (Nth == LastRand) Nth = (rand() % numberofRefs) - 1;
+			TESObjectREFR* ref = papyrusCell::GetNthRef(cell, Nth, 0);
+			LastRand = Nth;
 			if (ref != NULL)
 			{
 				return ref;
