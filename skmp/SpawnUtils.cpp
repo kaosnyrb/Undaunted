@@ -1,4 +1,6 @@
 #include "SpawnUtils.h"
+#include "ConfigUtils.h"
+
 namespace Undaunted
 {
 	void SpawnMonsters(VMClassRegistry* registry, int count, UInt32 Type)
@@ -87,6 +89,25 @@ namespace Undaunted
 		_MESSAGE("spawntype");
 		for (int i = 0; i < count; i++)
 		{
+			TESObjectREFR* spawned = PlaceAtMe_Native(registry, 1, Target, spawnForm, 1, false, false);
+			outputlist.Push(spawned);
+		}
+		_MESSAGE("Target");
+		return outputlist;
+	}
+
+	tList<TESObjectREFR> SpawnMonstersAtTarget(VMClassRegistry* registry, IntList Types, TESObjectREFR* Target)
+	{
+		tList<TESObjectREFR> outputlist = tList<TESObjectREFR>();
+		for (UInt32 i = 0; i < Types.length; i++)
+		{
+			TESForm* spawnForm = LookupFormByID(Types.data[i]);
+			if (spawnForm == NULL)
+			{
+				_MESSAGE("Failed to Spawn. Form Invalid");
+				return outputlist;
+			}
+
 			TESObjectREFR* spawned = PlaceAtMe_Native(registry, 1, Target, spawnForm, 1, false, false);
 			outputlist.Push(spawned);
 		}

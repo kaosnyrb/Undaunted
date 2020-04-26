@@ -1,12 +1,12 @@
 #include "MyPlugin.h"
 #include "LocationUtils.h"
 #include "SpawnUtils.h"
+#include "ConfigUtils.h"
 
 namespace Undaunted {
 	VMClassRegistry* _registry;
 	TESWorldSpace* Interiors;
 
-//	TESObjectREFR* SpawnLocref = NULL;
 	TESWorldSpace* worldspace = NULL;
 	TESObjectREFR* xmarkerref = NULL;
 	tList<TESObjectREFR> bountyenemies;
@@ -21,11 +21,13 @@ namespace Undaunted {
 		DataHandler* handler = DataHandler::GetSingleton();
 		_MESSAGE("RegionList Count: %08X", handler->regionList->Count());
 
+		tList<UInt32> badregions = GetBadRegions();
+
 		UInt32 regioncount = handler->regionList->Count();
 		for (UInt32 i = 0; i < regioncount; i++)
 		{
 			//Some regions are dodgy
-			if (i != 0x00000033 && i != 0x00000036 && i != 0x0000009B && i != 0x00000110)
+			if (badregions.Contains(&i))
 			{
 				_MESSAGE("processing worldSpace %08X", i);
 				TESRegion* test = (TESRegion*)handler->regionList->GetNthItem(i);
@@ -66,7 +68,13 @@ namespace Undaunted {
 			}
 		}
 		_MESSAGE("Finished Regions");
-		bountyenemies = SpawnMonstersAtTarget(_registry, 5, 0x00039CFC, xmarkerref);
+		IntList group = GetRandomGroup();
+		
+		for (int i = 0; i < group.length; i++)
+		{
+			_MESSAGE("Groupid : %08X ", group.data[i]);
+		}
+		bountyenemies = SpawnMonstersAtTarget(_registry, group, xmarkerref);
 		_MESSAGE("Enemy Count : %08X ", bountyenemies.Count());
 		//Interiors
 		/*

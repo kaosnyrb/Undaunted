@@ -2,6 +2,7 @@
 #include "skse64_common/skse_version.h"	// What version of SKSE is running?
 #include <shlobj.h>				// CSIDL_MYCODUMENTS
 #include <skmp\MyPlugin.h>
+#include <skmp\ConfigUtils.h>
 
 static PluginHandle					g_pluginHandle = kPluginHandle_Invalid;
 static SKSEPapyrusInterface         * g_papyrus = NULL;
@@ -49,8 +50,6 @@ extern "C"	{
 		g_papyrus = (SKSEPapyrusInterface *)skse->QueryInterface(kInterface_Papyrus);
 
 		//Check if the function registration was a success...
-		//bool btest = g_papyrus->Register(SkaarSpecialInventoryCrafting::RegisterFuncs);
-
 		bool btest = g_papyrus->Register(Undaunted::RegisterFuncs);
 
 		if (btest) {
