@@ -113,4 +113,24 @@ namespace Undaunted {
 		MoveRefrToPosition(object, &nullHandle, cell, worldspace, &finalPos, &rot);
 	}
 
+	//Interiors
+/*
+if (SpawnLocref == NULL)
+{
+	TESObjectCELL* here = (*g_thePlayer)->parentCell;
+	_MESSAGE("Here form id %08X", here->formID);
+	_MESSAGE("Cell list Size %08X", DataHandler::GetSingleton()->cellList.m_size);
+	UInt32 cellcount = DataHandler::GetSingleton()->cellList.m_size;
+	for (int i = 0; i < cellcount; i++)
+	{
+		TESObjectCELL* parentCell = DataHandler::GetSingleton()->cellList.m_data[i];
+		_MESSAGE("Cell form id %08X", parentCell->formID);
+		_MESSAGE("Cell form id %08X", parentCell->formID);
+		int numberofRefs = papyrusCell::GetNumRefs(parentCell, 0);
+		_MESSAGE("Num Ref: %i", numberofRefs);
+		SpawnMonstersInCell(1, 0x06001DFC, parentCell);
+	}
+}
+*/
+
 }

@@ -2,23 +2,16 @@
 namespace Undaunted
 {
 	std::string s_configPath;
+	tList<UInt32> BadRegionList;
+
+	void AddBadRegionToConfig(UInt32 region)
+	{
+		_MESSAGE("Adding %08X to Bad Region List", region);
+		BadRegionList.Push(&region);
+	}
 
 	tList<UInt32> GetBadRegions() {
-		tList<UInt32> list = tList<UInt32>();
-
-		UInt32 s1 = 0x00000033;
-		list.Push(&s1);
-
-		UInt32 s2 = 0x00000036;
-		list.Push(&s2);
-
-		UInt32 s3 = 0x0000009B;
-		list.Push(&s3);
-
-		UInt32 s4 = 0x00000110;
-		list.Push(&s4);
-
-		return list;
+		return BadRegionList;
 	}
 
 

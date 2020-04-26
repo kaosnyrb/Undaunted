@@ -76,26 +76,6 @@ namespace Undaunted {
 		}
 		bountyenemies = SpawnMonstersAtTarget(_registry, group, xmarkerref);
 		_MESSAGE("Enemy Count : %08X ", bountyenemies.Count());
-		//Interiors
-		/*
-		if (SpawnLocref == NULL)
-		{
-			TESObjectCELL* here = (*g_thePlayer)->parentCell;
-			_MESSAGE("Here form id %08X", here->formID);
-			_MESSAGE("Cell list Size %08X", DataHandler::GetSingleton()->cellList.m_size);
-			UInt32 cellcount = DataHandler::GetSingleton()->cellList.m_size;
-			for (int i = 0; i < cellcount; i++)
-			{
-				TESObjectCELL* parentCell = DataHandler::GetSingleton()->cellList.m_data[i];
-				_MESSAGE("Cell form id %08X", parentCell->formID);
-				_MESSAGE("Cell form id %08X", parentCell->formID);
-				int numberofRefs = papyrusCell::GetNumRefs(parentCell, 0);
-				_MESSAGE("Num Ref: %i", numberofRefs);
-				SpawnMonstersInCell(1, 0x06001DFC, parentCell);
-			}
-		}
-		*/
-//		TESQuest* quest = papyrusQuest::GetQuest(base, "1_Undaunted_TestQuest01");
 		return 2;
 	}
 
@@ -115,6 +95,10 @@ namespace Undaunted {
 		return true;
 	}
 
+	bool AddBadRegion(StaticFunctionTag* base, UInt32 region) {
+		AddBadRegionToConfig(region);
+		return true;
+	}
 	
 	bool RegisterFuncs(VMClassRegistry* registry) {
 		_registry = registry;
@@ -123,6 +107,9 @@ namespace Undaunted {
 
 		registry->RegisterFunction(
 			new NativeFunction0 <StaticFunctionTag, bool>("isBountyComplete", "bountyCompleteScript", Undaunted::isBountyComplete, registry));
+
+		registry->RegisterFunction(
+			new NativeFunction1 <StaticFunctionTag, bool,UInt32>("AddBadRegion", "AddBadRegionScript", Undaunted::AddBadRegion, registry));
 
 		return true;
 	}
