@@ -96,14 +96,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="LocationUtils.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MyPlugin.cpp" />
+    <ClCompile Include="SpawnUtils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="exports.def" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="LocationUtils.h" />
     <ClInclude Include="MyPlugin.h" />
+    <ClInclude Include="SpawnUtils.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\skse64\skse64.vcxproj">

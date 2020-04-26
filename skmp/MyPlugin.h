@@ -12,6 +12,14 @@
 #include "skse64/GameReferences.h"
 #include "skse64/PluginAPI.h"
 
+#include "skse64/PapyrusDefaultObjectManager.h"
+#include <skse64\PapyrusCell.h>
+#include <stdlib.h>
+#include <skse64\PapyrusGame.h>
+#include <skse64\PapyrusObjectReference.h>
+#include <skse64\PapyrusObjects.h>
+#include <skse64\PapyrusQuest.h>
+
 namespace Undaunted
 {
 	float MyTest(StaticFunctionTag *base);
