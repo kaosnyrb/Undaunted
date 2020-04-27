@@ -30,12 +30,12 @@ extern "C"	{
 
 			return false;
 		}
-		//else if(skse->runtimeVersion != RUNTIME_VERSION_1_5_39)
-		//{
-		//	_MESSAGE("unsupported runtime version %08X", skse->runtimeVersion);
+		else if(skse->runtimeVersion != RUNTIME_VERSION_1_5_97)
+		{
+			_MESSAGE("unsupported runtime version %08X", skse->runtimeVersion);
 
-//			return false;
-	//	}
+			return false;
+		}
 
 		// ### do not do anything else in this callback
 		// ### only fill out PluginInfo and return true/false

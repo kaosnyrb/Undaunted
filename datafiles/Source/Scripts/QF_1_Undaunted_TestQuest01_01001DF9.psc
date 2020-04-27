@@ -7,21 +7,20 @@ Scriptname QF_1_Undaunted_TestQuest01_01001DF9 Extends Quest Hidden
 ReferenceAlias Property Alias_ActorFred Auto
 ;END ALIAS PROPERTY
 
-;BEGIN FRAGMENT Fragment_4
-Function Fragment_4()
-;BEGIN CODE
-SetObjectiveCompleted(10, false)
-SetObjectiveDisplayed(10, abForce = true)
-SetCurrentStageID(10)
-;END CODE
-EndFunction
-;END FRAGMENT
-
 ;BEGIN FRAGMENT Fragment_0
 Function Fragment_0()
 ;BEGIN CODE
 SetObjectiveCompleted(10, false)
 SetObjectiveDisplayed(10, abForce = true)
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_4
+Function Fragment_4()
+;BEGIN CODE
+SetObjectiveCompleted(10, false)
+SetCurrentStageID(10)
 ;END CODE
 EndFunction
 ;END FRAGMENT

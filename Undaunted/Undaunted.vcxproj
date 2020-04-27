@@ -103,6 +103,8 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MyPlugin.cpp" />
     <ClCompile Include="SpawnUtils.cpp" />
+    <ClCompile Include="UnStringList.cpp" />
+    <ClCompile Include="WorldCellList.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="exports.def" />
@@ -114,6 +116,8 @@
     <ClInclude Include="LocationUtils.h" />
     <ClInclude Include="MyPlugin.h" />
     <ClInclude Include="SpawnUtils.h" />
+    <ClInclude Include="UnStringList.h" />
+    <ClInclude Include="WorldCellList.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\skse64\skse64.vcxproj">

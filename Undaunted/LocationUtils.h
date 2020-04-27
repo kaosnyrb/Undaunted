@@ -20,10 +20,15 @@
 #include <skse64\PapyrusObjects.h>
 #include <skse64\PapyrusQuest.h>
 
+#include "WorldCellList.h"
+
 namespace Undaunted
 {
 	TESObjectREFR* GetRefObjectInCurrentCell(UInt32 formID);
 	TESObjectREFR* GetRefObjectFromWorld(UInt32 formID);
 	TESObjectREFR* GetRandomObjectInCell(TESObjectCELL* cell);
+	void BuildWorldList();
+	WorldCell GetRandomWorldCell();
+	WorldCell GetNamedWorldCell(BSFixedString WorldspaceName);
 	void MoveMarkerToWorldCell(TESObjectREFR* object, TESObjectCELL* cell, TESWorldSpace* worldspace, NiPoint3 pos, NiPoint3 rot);
 }

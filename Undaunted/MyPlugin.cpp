@@ -5,83 +5,23 @@
 
 namespace Undaunted {
 	VMClassRegistry* _registry;
-	TESWorldSpace* Interiors;
+	//TESWorldSpace* Interiors;
 
-	TESWorldSpace* worldspace = NULL;
 	TESObjectREFR* xmarkerref = NULL;
 	tList<TESObjectREFR> bountyenemies;
-	bool DEBUGMODE = true;
+	WorldCell bountyworldcell;
 
-	void MoveMarker() {
-		DataHandler* handler = DataHandler::GetSingleton();
-		_MESSAGE("RegionList Count: %08X", handler->regionList->Count());
-
-		IntList badregions = GetBadRegions();
-
-		UInt32 regioncount = handler->regionList->Count();
-		for (UInt32 i = 0; i < regioncount; i++)
-		{
-			//Check for badregion
-			bool badRegion = false;
-			for (UInt32 j = 0; j < badregions.length; j++)
-			{
-				if (badregions.data[j] == i)
-				{
-					badRegion = true;
-				}
-			}
-			//Some regions are dodgy
-			if (!badRegion)
-			{
-				_MESSAGE("processing worldSpace %08X", i);
-				TESRegion* test = (TESRegion*)handler->regionList->GetNthItem(i);
-				if (test != NULL)
-				{
-					if (test->worldSpace == NULL)
-					{
-						_MESSAGE("worldSpace %08X is null", i);
-					}
-					else
-					{
-						TESObjectCELL* cell = test->worldSpace->unk088;
-						if (cell != NULL)
-						{
-							_MESSAGE("Regioncell form id %08X", cell->formID);
-							if (cell->formID == 0x00000D74)
-							{
-								int numberofRefs = papyrusCell::GetNumRefs(cell, 0);
-								if (numberofRefs > 0)
-								{
-									worldspace = test->worldSpace;
-									TESObjectREFR* target = GetRandomObjectInCell(cell);
-									_MESSAGE("target is set. Moving marker", i);
-									MoveMarkerToWorldCell(xmarkerref, cell, worldspace, target->pos, NiPoint3(0, 0, 0));
-									return;
-								}
-							}
-						}
-						else
-						{
-							_MESSAGE("unk088 is null", i);
-						}
-					}
-
-				}
-				else
-				{
-					_MESSAGE("RegionList %08X is null", i);
-				}
-			}
-		}
-	}
-
-	float MyTest(StaticFunctionTag* base) {
+	float StartBounty(StaticFunctionTag* base, BSFixedString WorldspaceName) {
 		if (xmarkerref == NULL)
 		{
 			_MESSAGE("NO XMARKER SET");
 		}
-		MoveMarker();
-		_MESSAGE("Finished Regions");
+		BuildWorldList();
+		bountyworldcell = GetNamedWorldCell(WorldspaceName);
+//		bountyworldcell = GetRandomWorldCell();
+		_MESSAGE("target is set. Moving marker: WorldSpace: %s Cell: %08X ", bountyworldcell.world->editorId.Get(), bountyworldcell.cell->formID);
+		TESObjectREFR* target = GetRandomObjectInCell(bountyworldcell.cell);
+		MoveMarkerToWorldCell(xmarkerref, bountyworldcell.cell, bountyworldcell.world, target->pos, NiPoint3(0, 0, 0));
 		IntList group = GetRandomGroup();
 		for (int i = 0; i < group.length; i++)
 		{
@@ -101,6 +41,7 @@ namespace Undaunted {
 		{
 			if (!bountyenemies.GetNthItem(i)->IsDead(1))
 			{
+				MoveMarkerToWorldCell(xmarkerref, bountyworldcell.cell, bountyworldcell.world, bountyenemies.GetNthItem(i)->pos, NiPoint3(0, 0, 0));
 				return false;
 			}
 		}
@@ -129,22 +70,22 @@ namespace Undaunted {
 		_registry = registry;
 		//General
 		registry->RegisterFunction(
-			new NativeFunction0 <StaticFunctionTag, float>("MyTest", "MyPluginScript", Undaunted::MyTest, registry));
+			new NativeFunction1 <StaticFunctionTag, float, BSFixedString>("StartBounty", "Undaunted_StartBountyScript", Undaunted::StartBounty, registry));
 		registry->RegisterFunction(
-			new NativeFunction0 <StaticFunctionTag, bool>("isBountyComplete", "bountyCompleteScript", Undaunted::hook_isBountyComplete, registry));
+			new NativeFunction0 <StaticFunctionTag, bool>("isBountyComplete", "Undaunted_bountyCompleteScript", Undaunted::hook_isBountyComplete, registry));
 		registry->RegisterFunction(
-			new NativeFunction1 <StaticFunctionTag, bool, TESObjectREFR*>("SetXMarker", "SetXMarkerScript", Undaunted::hook_SetXMarker, registry));
+			new NativeFunction1 <StaticFunctionTag, bool, TESObjectREFR*>("SetXMarker", "Undaunted_SetXMarkerScript", Undaunted::hook_SetXMarker, registry));
 
 		//Regions
 		registry->RegisterFunction(
-			new NativeFunction1 <StaticFunctionTag, bool, UInt32>("AddBadRegion", "AddBadRegionScript", Undaunted::hook_AddBadRegion, registry));
+			new NativeFunction1 <StaticFunctionTag, bool, UInt32>("AddBadRegion", "Undaunted_AddBadRegionScript", Undaunted::hook_AddBadRegion, registry));
 
 		//Groups
 		registry->RegisterFunction(
-			new NativeFunction0 <StaticFunctionTag, UInt32>("AddGroup", "AddGroupScript", Undaunted::hook_AddGroup, registry));
+			new NativeFunction0 <StaticFunctionTag, UInt32>("AddGroup", "Undaunted_AddGroupScript", Undaunted::hook_AddGroup, registry));
 
 		registry->RegisterFunction(
-			new NativeFunction2 <StaticFunctionTag, void,UInt32,UInt32>("AddMembertoGroup", "AddMembertoGroupScript", Undaunted::hook_AddMembertoGroup, registry));
+			new NativeFunction2 <StaticFunctionTag, void,UInt32,UInt32>("AddMembertoGroup", "Undaunted_AddMembertoGroupScript", Undaunted::hook_AddMembertoGroup, registry));
 
 		return true;
 	}

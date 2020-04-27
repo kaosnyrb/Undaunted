@@ -1,6 +1,13 @@
 #include "LocationUtils.h"
+#include <Undaunted\ConfigUtils.h>
+#include "WorldCellList.h"
 
 namespace Undaunted {
+	WorldCellList worldCellList;
+	bool worldCellListBuilt = false;
+
+
+
 	TESObjectREFR* GetRefObjectInCurrentCell(UInt32 formID)
 	{
 		TESObjectCELL* parentCell = (*g_thePlayer)->parentCell;
@@ -106,6 +113,107 @@ namespace Undaunted {
 			}
 		}
 		return NULL;
+	}
+
+	void BuildWorldList()
+	{
+		if (worldCellListBuilt)
+		{
+			return;
+		}
+		DataHandler* handler = DataHandler::GetSingleton();
+		_MESSAGE("RegionList Count: %08X", handler->regionList->Count());
+
+		IntList badregions = GetBadRegions();
+
+		UInt32 regioncount = handler->regionList->Count();
+		for (UInt32 i = 0; i < regioncount; i++)
+		{
+			//Check for badregion
+			bool badRegion = false;
+			for (UInt32 j = 0; j < badregions.length; j++)
+			{
+				if (badregions.data[j] == i)
+				{
+					badRegion = true;
+				}
+			}
+			//Some regions are dodgy
+			if (!badRegion)
+			{
+				_MESSAGE("processing worldSpace %08X", i);
+				TESRegion* test = (TESRegion*)handler->regionList->GetNthItem(i);
+				if (test != NULL)
+				{
+					if (test->worldSpace == NULL)
+					{
+						_MESSAGE("worldSpace %08X is null", i);
+					}
+					else
+					{
+						TESObjectCELL* cell = test->worldSpace->unk088;
+						if (cell != NULL)
+						{
+							
+							//0x00000D74
+							int numberofRefs = papyrusCell::GetNumRefs(cell, 0);
+							if (numberofRefs > 0)
+							{
+								WorldCell wcell = WorldCell();
+								wcell.cell = cell;
+								wcell.world = test->worldSpace;
+
+								//Check if we know about this cell
+								bool badcell = false;
+								for (int i = 0; i < worldCellList.length && !badcell; i++)
+								{
+									if (worldCellList.data[i].cell->formID == wcell.cell->formID)
+									{
+										badcell = true;
+									}
+								}
+
+								if (!badcell)
+								{
+									worldCellList.AddItem(wcell);
+								}
+							}
+						}
+						else
+						{
+							_MESSAGE("unk088 is null", i);
+						}
+					}
+
+				}
+				else
+				{
+					_MESSAGE("RegionList %08X is null", i);
+				}
+			}
+		}
+		_MESSAGE("worldCellList built. %i Entries", worldCellList.length);
+		worldCellListBuilt = true;
+		for (int i = 0; i < worldCellList.length; i++)
+		{
+			_MESSAGE("WorldName: %s", worldCellList.data[i].world->editorId.Get());
+		}
+	}
+
+	WorldCell GetRandomWorldCell()
+	{
+		int worldcellid = rand() % worldCellList.length;
+		return worldCellList.data[worldcellid];
+	}
+
+	WorldCell GetNamedWorldCell(BSFixedString WorldspaceName)
+	{
+		for (int i = 0; i < worldCellList.length; i++)
+		{
+			
+			if (strcmp(worldCellList.data[i].world->editorId.Get(), WorldspaceName.c_str()) == 0)
+				return worldCellList.data[i];
+		}
 	}
 
 	void MoveMarkerToWorldCell(TESObjectREFR* object, TESObjectCELL* cell, TESWorldSpace* worldspace, NiPoint3 pos, NiPoint3 rot)

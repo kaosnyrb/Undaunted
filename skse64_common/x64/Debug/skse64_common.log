@@ -1,6 +1,1 @@
-﻿  BranchTrampoline.cpp
-  Relocation.cpp
-  SafeWrite.cpp
-  Utilities.cpp
-  Generating Code...
-  skse64_common.vcxproj -> C:\git\Undaunted\x64\Debug\skse64_common.lib
+﻿  skse64_common.vcxproj -> C:\git\Undaunted\x64\Debug\skse64_common.lib

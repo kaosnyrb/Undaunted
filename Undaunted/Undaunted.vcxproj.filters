@@ -1,27 +1,51 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="ConfigUtils.cpp" />
-    <ClCompile Include="LocationUtils.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MyPlugin.cpp" />
-    <ClCompile Include="SpawnUtils.cpp" />
     <ClCompile Include="IntList.cpp">
       <Filter>Collections</Filter>
     </ClCompile>
     <ClCompile Include="ListLibary.cpp">
       <Filter>Collections</Filter>
     </ClCompile>
+    <ClCompile Include="ConfigUtils.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="LocationUtils.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="SpawnUtils.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldCellList.cpp">
+      <Filter>Collections</Filter>
+    </ClCompile>
+    <ClCompile Include="UnStringList.cpp">
+      <Filter>Collections</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ConfigUtils.h" />
-    <ClInclude Include="LocationUtils.h" />
     <ClInclude Include="MyPlugin.h" />
-    <ClInclude Include="SpawnUtils.h" />
     <ClInclude Include="IntList.h">
       <Filter>Collections</Filter>
     </ClInclude>
     <ClInclude Include="ListLibary.h">
+      <Filter>Collections</Filter>
+    </ClInclude>
+    <ClInclude Include="ConfigUtils.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="LocationUtils.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="SpawnUtils.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldCellList.h">
+      <Filter>Collections</Filter>
+    </ClInclude>
+    <ClInclude Include="UnStringList.h">
       <Filter>Collections</Filter>
     </ClInclude>
   </ItemGroup>
@@ -31,6 +55,9 @@
   <ItemGroup>
     <Filter Include="Collections">
       <UniqueIdentifier>{bb75b88d-4984-4506-b683-8f7f7add69a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils">
+      <UniqueIdentifier>{a80de454-0a01-4768-89be-c774625d7248}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

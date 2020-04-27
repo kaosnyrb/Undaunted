@@ -23,12 +23,15 @@
 
 #include "IntList.h"
 #include "ListLibary.h"
+#include "UnStringList.h"
 
 namespace Undaunted
 {
-	//Regions
+	//Regions/Worldspaces
 	void AddBadRegionToConfig(UInt32 region);
 	IntList GetBadRegions();
+	void GetWorldWhitelist(UnString region);
+	UnStringList AddWorldToWhitelist(UnString region);
 
 	//Groups
 	int AddGroup();
