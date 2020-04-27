@@ -15,6 +15,7 @@ namespace Undaunted {
 		if (xmarkerref == NULL)
 		{
 			_MESSAGE("NO XMARKER SET");
+			return 0;
 		}
 		BuildWorldList();
 		bountyworldcell = GetNamedWorldCell(WorldspaceName);
@@ -66,6 +67,38 @@ namespace Undaunted {
 		AddMembertoGroup(groupid,member);
 	}
 
+	UInt32 hook_GetModForm(StaticFunctionTag* base, BSFixedString ModName, UInt32 FormId){
+		DataHandler* dataHandler = DataHandler::GetSingleton();
+		_MESSAGE("Mod Count: %08X", dataHandler->modList.loadedMods.count);
+		for (int i = 0; i < dataHandler->modList.loadedMods.count; i++)
+		{
+			ModInfo* mod;
+			dataHandler->modList.loadedMods.GetNthItem(i,mod);
+			_MESSAGE("Listing Mods: %s ", mod->name);
+		}
+		const ModInfo* modInfo = dataHandler->LookupModByName(ModName.c_str());
+		if (modInfo != NULL)
+		{
+			_MESSAGE("Mod Found: %s ", modInfo->name);
+			_MESSAGE("Mod Index: %08X ", modInfo->modIndex);
+			FormId = (modInfo->modIndex << 24) + FormId;
+			_MESSAGE("Computed FormId: %08X ", FormId);
+
+			//<< 1
+			if (modInfo->IsFormInMod(FormId))
+			{
+				return FormId;
+			}
+			else
+			{
+				_MESSAGE("FormId Not Found");
+				return UInt32();
+			}
+		}
+		_MESSAGE("Mod Not Found");
+		return UInt32();
+	}
+
 	bool RegisterFuncs(VMClassRegistry* registry) {
 		_registry = registry;
 		//General
@@ -86,6 +119,9 @@ namespace Undaunted {
 
 		registry->RegisterFunction(
 			new NativeFunction2 <StaticFunctionTag, void,UInt32,UInt32>("AddMembertoGroup", "Undaunted_AddMembertoGroupScript", Undaunted::hook_AddMembertoGroup, registry));
+
+		registry->RegisterFunction(
+			new NativeFunction2 <StaticFunctionTag, UInt32, BSFixedString, UInt32>("GetModForm", "Undaunted_GetModFormScript", Undaunted::hook_GetModForm, registry));
 
 		return true;
 	}
