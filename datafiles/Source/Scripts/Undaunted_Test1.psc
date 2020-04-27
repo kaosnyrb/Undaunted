@@ -4,6 +4,9 @@ import MyPluginScript
 import bountyCompleteScript
 import AddBadRegionScript
 import SetXMarkerScript
+import AddGroupScript
+import AddMembertoGroupScript
+
 
 Quest Property questProperty  Auto  
 objectReference Property markerref Auto
@@ -18,6 +21,18 @@ event onActivate(objectReference akActivator)
 	
 	SetXMarker(markerref)
 
+	int GroupsList = JValue.readFromFile("Data/Undaunted/Groups.json")
+	i = JValue.count(GroupsList)
+	while i > 0
+		i -= 1		
+		int Groupid = JArray.getObj(GroupsList,i)
+		int group = AddGroup()
+		int j = JArray.count(Groupid)
+		while j > 0
+			j -= 1
+			AddMembertoGroup(group,JArray.getInt(Groupid,j))
+		endwhile
+	endwhile	
 	questProperty.SetCurrentStageID(0)
 	MyTest()
 	Debug.Notification("Bounty State: " + isBountyComplete())
