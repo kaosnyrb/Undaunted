@@ -2,12 +2,12 @@
 
 namespace Undaunted
 {
-	ListLibary* ListLibary::AddItem(IntList item)
+	ListLibary* ListLibary::AddItem(GroupList item)
 	{
 		ListLibary* currentlist = this;
 		ListLibary newlist = ListLibary();
 		newlist.length = currentlist->length + 1;
-		newlist.data = new IntList[newlist.length];
+		newlist.data = new GroupList[newlist.length];
 		for (int i = 0; i < currentlist->length; i++)
 		{
 			newlist.data[i] = currentlist->data[i];

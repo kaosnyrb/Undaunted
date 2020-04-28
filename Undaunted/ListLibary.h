@@ -1,4 +1,5 @@
 #include "IntList.h"
+#include <Undaunted\GroupList.h>
 
 namespace Undaunted
 {
@@ -6,9 +7,9 @@ namespace Undaunted
 #define listlibdef
 	class ListLibary {
 	public:
-		IntList* data;
+		GroupList* data;
 		int length;
-		ListLibary* AddItem(IntList item);
+		ListLibary* AddItem(GroupList item);
 	};
 #endif
 }

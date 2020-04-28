@@ -11,5 +11,6 @@ namespace Undaunted
 		int length;
 		IntList* AddItem(UInt32 item);
 	};
+
 #endif
 }

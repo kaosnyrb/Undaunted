@@ -35,6 +35,6 @@ namespace Undaunted
 
 	//Groups
 	int AddGroup();
-	void AddMembertoGroup(int id, UInt32 member);
-	IntList GetRandomGroup();
+	void AddMembertoGroup(int id, GroupMember member);
+	GroupList GetRandomGroup();
 }

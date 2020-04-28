@@ -24,6 +24,9 @@
     <ClCompile Include="UnStringList.cpp">
       <Filter>Collections</Filter>
     </ClCompile>
+    <ClCompile Include="GroupList.cpp">
+      <Filter>Collections</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyPlugin.h" />
@@ -46,6 +49,9 @@
       <Filter>Collections</Filter>
     </ClInclude>
     <ClInclude Include="UnStringList.h">
+      <Filter>Collections</Filter>
+    </ClInclude>
+    <ClInclude Include="GroupList.h">
       <Filter>Collections</Filter>
     </ClInclude>
   </ItemGroup>

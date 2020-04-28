@@ -97,6 +97,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ConfigUtils.cpp" />
+    <ClCompile Include="GroupList.cpp" />
     <ClCompile Include="IntList.cpp" />
     <ClCompile Include="ListLibary.cpp" />
     <ClCompile Include="LocationUtils.cpp" />
@@ -111,6 +112,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConfigUtils.h" />
+    <ClInclude Include="GroupList.h" />
     <ClInclude Include="IntList.h" />
     <ClInclude Include="ListLibary.h" />
     <ClInclude Include="LocationUtils.h" />

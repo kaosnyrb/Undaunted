@@ -29,17 +29,17 @@ namespace Undaunted
 	int AddGroup()
 	{
 		_MESSAGE("Adding to GroupLibary");
-		GroupLibary.AddItem(IntList());
+		GroupLibary.AddItem(GroupList());
 		return GroupLibary.length - 1;
 	}
 
-	void AddMembertoGroup(int id, UInt32 member)
+	void AddMembertoGroup(int id, GroupMember member)
 	{
-		_MESSAGE("Adding %08X to %i",member, id);
+		_MESSAGE("Adding %08X to %i of BountyType %s",member.FormId, id,member.BountyType.Get());
 		GroupLibary.data[id].AddItem(member);
 	}
 
-	IntList GetRandomGroup()
+	GroupList GetRandomGroup()
 	{
 		int groupid = rand() % GroupLibary.length;
 		_MESSAGE("Random Group: %i",groupid);

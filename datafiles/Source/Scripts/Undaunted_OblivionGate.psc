@@ -1,0 +1,1 @@
+Scriptname Undaunted_OblivionGate extends ObjectReference  
