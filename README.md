@@ -55,3 +55,8 @@ As the mod is using the Region data from memory any mods which add these would a
 * Bounty tracking doesn't persist between sessions. Meaning you can only complete a bounty in the session you started it.
 * Support for Mod created enemies that aren't placed into the default leveled lists.
 * More advanced encounters. This system is able to spawn objects with scripts attached to them. (Oblivion gates...?)
+
+## Credits
+
+* LordKarnak for The Daedra Returns: https://www.nexusmods.com/skyrim/mods/64925
+* Hanaisse for her Oblivion Gate meshes and textures: https://www.nexusmods.com/skyrim/mods/18957/?

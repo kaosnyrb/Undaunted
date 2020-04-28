@@ -1,5 +1,6 @@
 #include "SpawnUtils.h"
 #include "ConfigUtils.h"
+#include <Undaunted\LocationUtils.h>
 
 namespace Undaunted
 {
@@ -97,8 +98,10 @@ namespace Undaunted
 		return outputlist;
 	}
 	*/
-	GroupList SpawnMonstersAtTarget(VMClassRegistry* registry, GroupList Types, TESObjectREFR* Target)
+	GroupList SpawnGroupAtTarget(VMClassRegistry* registry, GroupList Types, TESObjectREFR* Target, TESObjectCELL* cell, TESWorldSpace* worldspace)
 	{
+		TESObjectREFR* spawned = NULL;
+
 		for (UInt32 i = 0; i < Types.length; i++)
 		{
 			TESForm* spawnForm = LookupFormByID(Types.data[i].FormId);
@@ -107,9 +110,28 @@ namespace Undaunted
 				_MESSAGE("Failed to Spawn. Form Invalid");
 				return Types;
 			}
-
-			TESObjectREFR* spawned = PlaceAtMe_Native(registry, 1, Target, spawnForm, 1, false, false);
-			Types.data[i].objectRef = spawned;
+			if (strcmp(Types.data[i].BountyType.Get(), "Enemy") == 0)
+			{
+				spawned = PlaceAtMe_Native(registry, 1, Target, spawnForm, 1, false, false);
+				//Random Offset
+				NiPoint3 offset = NiPoint3(rand() & 100, rand() & 100,0);
+				MoveRefToWorldCell(spawned, cell, worldspace, spawned->pos + offset, NiPoint3(0, 0, 0));
+				Types.data[i].objectRef = spawned;
+			}
+			else
+			{
+				if (spawned != NULL)
+				{
+					//Actors jump to the navmesh. Objects don't. This tries to used the jump to find the ground.
+					TESObjectREFR* decoration = PlaceAtMe_Native(registry, 1, spawned, spawnForm, 1, false, false);
+					Types.data[i].objectRef = decoration;
+				}
+				else
+				{
+					TESObjectREFR* decoration = PlaceAtMe_Native(registry, 1, Target, spawnForm, 1, false, false);
+					Types.data[i].objectRef = decoration;
+				}
+			}
 		}
 		_MESSAGE("Target");
 		return Types;

@@ -52,14 +52,14 @@ namespace Undaunted {
 				NiPoint3 distance = (*g_thePlayer)->pos - xmarkerref->pos;
 				Vector3 distvector = Vector3(distance.x, distance.y, distance.z);
 				_MESSAGE("Distance to marker: %f", distvector.Magnitude());
-				if (distvector.Magnitude() < 3000)
+				if (distvector.Magnitude() < 5000)
 				{
 					GroupList group = GetRandomGroup();
 					for (int i = 0; i < group.length; i++)
 					{
 						_MESSAGE("Groupid : %08X ", group.data[i]);
 					}
-					bountygrouplist = SpawnMonstersAtTarget(_registry, group, xmarkerref);
+					bountygrouplist = SpawnGroupAtTarget(_registry, group, xmarkerref, bountyworldcell.cell, bountyworldcell.world);
 					_MESSAGE("Enemy Count : %08X ", bountygrouplist.length);
 					bountywave = 1;
 				}
@@ -72,18 +72,23 @@ namespace Undaunted {
 		bool alldead = true;
 		for (UInt32 i = 0; i < bountygrouplist.length; i++)
 		{
-			if (!bountygrouplist.data[i].objectRef->IsDead(1) && strcmp(bountygrouplist.data[i].BountyType.Get(), "Enemy") == 0)
+			if (strcmp(bountygrouplist.data[i].BountyType.Get(), "Enemy") == 0)
 			{
-				return false;
+				if (!bountygrouplist.data[i].objectRef->IsDead(1))
+				{
+					MoveRefToWorldCell(xmarkerref, bountyworldcell.cell, bountyworldcell.world, bountygrouplist.data[i].objectRef->pos, NiPoint3(0, 0, 0));
+					return false;
+				}
 			}
 		}
-
+		
 		for (UInt32 i = 0; i < bountygrouplist.length; i++)
 		{
-			if (strcmp(bountygrouplist.data[i].BountyType.Get(), "Decoration") == 0)
+			if (strcmp(bountygrouplist.data[i].BountyType.Get(), "BountyDecoration") == 0)
 			{
 				MoveRefToWorldCell(bountygrouplist.data[i].objectRef, (*g_thePlayer)->parentCell, (*g_thePlayer)->currentWorldSpace,
 					NiPoint3(bountygrouplist.data[i].objectRef->pos.x, bountygrouplist.data[i].objectRef->pos.y, -10000), NiPoint3(0, 0, 0));
+				//bountygrouplist.data[i].objectRef->handleRefObject.Release();
 			}
 		}
 		return true;
