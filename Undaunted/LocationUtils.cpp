@@ -216,7 +216,7 @@ namespace Undaunted {
 		}
 	}
 
-	void MoveMarkerToWorldCell(TESObjectREFR* object, TESObjectCELL* cell, TESWorldSpace* worldspace, NiPoint3 pos, NiPoint3 rot)
+	void MoveRefToWorldCell(TESObjectREFR* object, TESObjectCELL* cell, TESWorldSpace* worldspace, NiPoint3 pos, NiPoint3 rot)
 	{
 		_MESSAGE("Moving %08X to %08X in %08X", object->formID, cell->formID, worldspace->formID);
 		UInt32 nullHandle = *g_invalidRefHandle;

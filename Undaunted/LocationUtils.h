@@ -30,5 +30,5 @@ namespace Undaunted
 	void BuildWorldList();
 	WorldCell GetRandomWorldCell();
 	WorldCell GetNamedWorldCell(BSFixedString WorldspaceName);
-	void MoveMarkerToWorldCell(TESObjectREFR* object, TESObjectCELL* cell, TESWorldSpace* worldspace, NiPoint3 pos, NiPoint3 rot);
+	void MoveRefToWorldCell(TESObjectREFR* object, TESObjectCELL* cell, TESWorldSpace* worldspace, NiPoint3 pos, NiPoint3 rot);
 }

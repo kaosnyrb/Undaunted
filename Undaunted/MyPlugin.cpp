@@ -8,7 +8,7 @@ namespace Undaunted {
 	//TESWorldSpace* Interiors;
 
 	TESObjectREFR* xmarkerref = NULL;
-	tList<TESObjectREFR> bountyenemies;
+	GroupList bountygrouplist;
 	WorldCell bountyworldcell;
 
 	int bountywave = 0;
@@ -19,18 +19,15 @@ namespace Undaunted {
 			_MESSAGE("NO XMARKER SET");
 			return 0;
 		}
-		//Cleanup the last bounty if there's entries
-		for (UInt32 i = 0; i < bountyenemies.Count(); i++)
-		{
-			//bountyenemies.GetNthItem(i)->ReleaseRefs();
-		}
-		bountyenemies.RemoveAll();
+		//Cleanup previous bounties
+		bountywave = 0;
+		bountygrouplist = GroupList();
+
 		BuildWorldList();
 		bountyworldcell = GetNamedWorldCell(WorldspaceName);
 		_MESSAGE("target is set. Moving marker: WorldSpace: %s Cell: %08X ", bountyworldcell.world->editorId.Get(), bountyworldcell.cell->formID);
 		TESObjectREFR* target = GetRandomObjectInCell(bountyworldcell.cell);
-		MoveMarkerToWorldCell(xmarkerref, bountyworldcell.cell, bountyworldcell.world, target->pos, NiPoint3(0, 0, 0));
-		bountywave = 0;
+		MoveRefToWorldCell(xmarkerref, bountyworldcell.cell, bountyworldcell.world, target->pos, NiPoint3(0, 0, 0));
 		//Splitting setting the bounty location and the spawning.
 		/*
 		IntList group = GetRandomGroup();
@@ -62,26 +59,33 @@ namespace Undaunted {
 					{
 						_MESSAGE("Groupid : %08X ", group.data[i]);
 					}
-					bountyenemies = SpawnMonstersAtTarget(_registry, group, xmarkerref);
-					_MESSAGE("Enemy Count : %08X ", bountyenemies.Count());
+					bountygrouplist = SpawnMonstersAtTarget(_registry, group, xmarkerref);
+					_MESSAGE("Enemy Count : %08X ", bountygrouplist.length);
 					bountywave = 1;
 				}
 			}
 		}
 
-		if (bountyenemies.Count() == 0)
+		if (bountygrouplist.length == 0)
 			return false;
 
 		bool alldead = true;
-		for (UInt32 i = 0; i < bountyenemies.Count(); i++)
+		for (UInt32 i = 0; i < bountygrouplist.length; i++)
 		{
-			if (!bountyenemies.GetNthItem(i)->IsDead(1))
+			if (!bountygrouplist.data[i].objectRef->IsDead(1) && strcmp(bountygrouplist.data[i].BountyType.Get(), "Enemy") == 0)
 			{
-				MoveMarkerToWorldCell(xmarkerref, bountyworldcell.cell, bountyworldcell.world, bountyenemies.GetNthItem(i)->pos, NiPoint3(0, 0, 0));
 				return false;
 			}
 		}
 
+		for (UInt32 i = 0; i < bountygrouplist.length; i++)
+		{
+			if (strcmp(bountygrouplist.data[i].BountyType.Get(), "Decoration") == 0)
+			{
+				MoveRefToWorldCell(bountygrouplist.data[i].objectRef, (*g_thePlayer)->parentCell, (*g_thePlayer)->currentWorldSpace,
+					NiPoint3(bountygrouplist.data[i].objectRef->pos.x, bountygrouplist.data[i].objectRef->pos.y, -10000), NiPoint3(0, 0, 0));
+			}
+		}
 		return true;
 	}
 	bool hook_SetXMarker(StaticFunctionTag* base, TESObjectREFR* marker) {

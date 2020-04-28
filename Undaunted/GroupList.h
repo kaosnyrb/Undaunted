@@ -8,6 +8,7 @@ namespace Undaunted
 	struct GroupMember {
 		UInt32 FormId;
 		BSFixedString BountyType;
+		TESObjectREFR* objectRef;
 	};
 
 	class GroupList {

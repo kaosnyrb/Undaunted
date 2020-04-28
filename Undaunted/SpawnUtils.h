@@ -26,5 +26,5 @@ namespace Undaunted
 //	void SpawnMonsters(VMClassRegistry* registry, int count, UInt32 Type);
 //	void SpawnMonstersInCell(VMClassRegistry* registry, int count, UInt32 Type, TESObjectCELL* parentCell);
 //	tList<TESObjectREFR> SpawnMonstersAtTarget(VMClassRegistry* registry, int count, UInt32 Type, TESObjectREFR* Target);
-	tList<TESObjectREFR> SpawnMonstersAtTarget(VMClassRegistry* registry, GroupList Types, TESObjectREFR* Target);
+	GroupList SpawnMonstersAtTarget(VMClassRegistry* registry, GroupList Types, TESObjectREFR* Target);
 }

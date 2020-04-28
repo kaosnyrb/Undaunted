@@ -97,22 +97,21 @@ namespace Undaunted
 		return outputlist;
 	}
 	*/
-	tList<TESObjectREFR> SpawnMonstersAtTarget(VMClassRegistry* registry, GroupList Types, TESObjectREFR* Target)
+	GroupList SpawnMonstersAtTarget(VMClassRegistry* registry, GroupList Types, TESObjectREFR* Target)
 	{
-		tList<TESObjectREFR> outputlist = tList<TESObjectREFR>();
 		for (UInt32 i = 0; i < Types.length; i++)
 		{
 			TESForm* spawnForm = LookupFormByID(Types.data[i].FormId);
 			if (spawnForm == NULL)
 			{
 				_MESSAGE("Failed to Spawn. Form Invalid");
-				return outputlist;
+				return Types;
 			}
 
 			TESObjectREFR* spawned = PlaceAtMe_Native(registry, 1, Target, spawnForm, 1, false, false);
-			outputlist.Push(spawned);
+			Types.data[i].objectRef = spawned;
 		}
 		_MESSAGE("Target");
-		return outputlist;
+		return Types;
 	}
 }
