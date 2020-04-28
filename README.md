@@ -6,6 +6,8 @@
 SkyrimSE Mod for Dynamic Quest/bounties.
 Inspired by the ESO Guild The Undaunted and the Diablo 3 Adventure mode.
 
+https://youtu.be/3igoZVReoZE
+
 ## Requirements
 * SKSE SE build 2.0.17 (runtime 1.5.97)
 * JContainers (Currently bundled with the release)
@@ -21,12 +23,7 @@ Inspired by the ESO Guild The Undaunted and the Diablo 3 Adventure mode.
 
 ## Spawning Groups
 
-* Bandits
-* Vampires
-* Draugr
-* Falmer
-* Dwemer
-* Necromancers
+* Currently Only Simple Oblivion Gate Encounters
 
 ## How it works
 
