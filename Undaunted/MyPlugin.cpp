@@ -81,7 +81,24 @@ namespace Undaunted {
 				}
 			}
 		}
-		
+		//Play After Bounty Effects.
+		for (UInt32 i = 0; i < bountygrouplist.length; i++)
+		{
+			if (strcmp(bountygrouplist.data[i].BountyType.Get(), "EndEffect") == 0)
+			{
+				TESForm* spawnForm = LookupFormByID(bountygrouplist.data[i].FormId);
+				if (spawnForm == NULL)
+				{
+					_MESSAGE("Failed to Spawn. Form Invalid");
+				}
+				else
+				{
+					PlaceAtMe_Native(_registry, 1, xmarkerref, spawnForm, 1, false, false);
+				}
+			}
+		}
+
+		//Clean up the Decorations.
 		for (UInt32 i = 0; i < bountygrouplist.length; i++)
 		{
 			if (strcmp(bountygrouplist.data[i].BountyType.Get(), "BountyDecoration") == 0)
@@ -91,6 +108,8 @@ namespace Undaunted {
 				//bountygrouplist.data[i].objectRef->handleRefObject.Release();
 			}
 		}
+
+		
 		return true;
 	}
 	bool hook_SetXMarker(StaticFunctionTag* base, TESObjectREFR* marker) {
