@@ -5,7 +5,6 @@
 
 namespace Undaunted {
 	VMClassRegistry* _registry;
-	//TESWorldSpace* Interiors;
 
 	TESObjectREFR* xmarkerref = NULL;
 	BGSMessage* bountymessageref = NULL;
@@ -23,11 +22,20 @@ namespace Undaunted {
 			_MESSAGE("NO XMARKER SET");
 			return 0;
 		}
+		if (bountymessageref == NULL)
+		{
+			_MESSAGE("NO BOUNTYMESSAGEREF SET");
+			return 0;
+		}
+		if (!isReady)
+		{
+			_MESSAGE("System not initialised, run InitSystem before starting any bounties");
+			return 0;
+		}
 		//Cleanup previous bounties
 		bountywave = 0;
 		bountygrouplist = GroupList();
 
-		
 		bountyworldcell = GetNamedWorldCell(WorldspaceName);
 		_MESSAGE("target is set. Moving marker: WorldSpace: %s Cell: %08X ", bountyworldcell.world->editorId.Get(), bountyworldcell.cell->formID);
 		TESObjectREFR* target = GetRandomObjectInCell(bountyworldcell.cell);
