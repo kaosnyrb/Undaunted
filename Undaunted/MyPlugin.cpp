@@ -4,6 +4,7 @@
 #include "ConfigUtils.h"
 
 namespace Undaunted {
+
 	VMClassRegistry* _registry;
 
 	TESObjectREFR* xmarkerref = NULL;
@@ -15,6 +16,18 @@ namespace Undaunted {
 	bool isReady = false;
 	
 	int bountywave = 0;
+
+	void ClearBountyData() {
+		bountywave = 0;
+		bountygrouplist = GroupList();
+		
+		//If there's been a reload then the bounty currently breaks. Inform the user.
+		if (isReady)
+		{
+			_MESSAGE("Setting Bounty Message: The Bounty has moved on, return to the Undaunted Camp to start a new Bounty");
+			bountymessageref->fullName.name = "The Bounty has moved on, return to the Undaunted Camp to start a new Bounty";
+		}
+	}
 
 	float StartBounty(StaticFunctionTag* base, BSFixedString WorldspaceName) {
 		if (xmarkerref == NULL)
@@ -74,6 +87,8 @@ namespace Undaunted {
 	}
 
 	bool hook_isBountyComplete(StaticFunctionTag* base) {
+		_MESSAGE("Starting Bounty Check");
+
 		if (bountywave == 0 && bountyworldcell.world != NULL)
 		{
 			//Is the player in the right worldspace?
@@ -104,9 +119,10 @@ namespace Undaunted {
 				return false;
 			}
 		}
-
+		_MESSAGE("bountywave == 0 && bountyworldcell.world passed");
 		if (bountygrouplist.length == 0)
 			return false;
+
 
 		bool alldead = true;
 		for (UInt32 i = 0; i < bountygrouplist.length; i++)
@@ -114,7 +130,7 @@ namespace Undaunted {
 			if (strcmp(bountygrouplist.data[i].BountyType.Get(), "Enemy") == 0)
 			{
 				if (bountygrouplist.data[i].objectRef != NULL)
-				{
+				{					
 					if (!bountygrouplist.data[i].objectRef->IsDead(1))
 					{
 						MoveRefToWorldCell(xmarkerref, bountyworldcell.cell, bountyworldcell.world, bountygrouplist.data[i].objectRef->pos, NiPoint3(0, 0, 0));

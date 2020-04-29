@@ -23,6 +23,6 @@
 namespace Undaunted
 {
 	float MyTest(StaticFunctionTag *base);
-
+	void ClearBountyData();
 	bool RegisterFuncs(VMClassRegistry* registry);
 }

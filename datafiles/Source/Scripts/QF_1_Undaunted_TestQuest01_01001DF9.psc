@@ -11,7 +11,8 @@ ReferenceAlias Property Alias_ActorFred Auto
 Function Fragment_0()
 ;BEGIN CODE
 SetObjectiveCompleted(10, false)
-SetObjectiveDisplayed(10, abForce = true)
+SetObjectiveDisplayed(10, abDisplayed = true, abForce = true)
+SetObjectiveDisplayed(20, abDisplayed = false, abForce = true)
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -21,6 +22,7 @@ Function Fragment_4()
 ;BEGIN CODE
 SetObjectiveCompleted(10, false)
 SetCurrentStageID(10)
+SetObjectiveDisplayed(20, abDisplayed = false, abForce = true)
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -29,6 +31,9 @@ EndFunction
 Function Fragment_5()
 ;BEGIN CODE
 SetObjectiveCompleted(10, true)
+SetObjectiveCompleted(20, false)
+SetObjectiveDisplayed(10, abDisplayed = false, abForce = true)
+SetObjectiveDisplayed(20, abDisplayed = true, abForce = true)
 ;END CODE
 EndFunction
 ;END FRAGMENT

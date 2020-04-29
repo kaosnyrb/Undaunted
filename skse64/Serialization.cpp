@@ -358,7 +358,7 @@ namespace Serialization
 			s_fileHeader.signature =		Header::kSignature;
 			s_fileHeader.formatVersion =	Header::kVersion;
 			s_fileHeader.skseVersion =		PACKED_SKSE_VERSION;
-			s_fileHeader.runtimeVersion =	RUNTIME_VERSION;
+			s_fileHeader.runtimeVersion = RUNTIME_VERSION_1_5_97;
 			s_fileHeader.numPlugins =		0;
 
 			s_currentFile.Skip(sizeof(s_fileHeader));

@@ -8,12 +8,15 @@ String Property WorldspaceName  Auto
 {This will cause the bounties from this pillar to spawn in the named worldspace.It matches the values in the world section of the CK.}
 Message Property QuestTextMessage  Auto  
 
-Event OnInit()
+int numberOfBountiesNeeded = 3
+int numberOfBountiesCurrently = 0
 
+Event OnInit()
+	RegisterForUpdate(5.0)
 EndEvent
 
 
-event onActivate(objectReference akActivator)
+int Function StartEvent()
 	if (!isSystemReady())
 		int BadRegionList = JValue.readFromFile("Data/Undaunted/BadRegion.json")
 		int bri = JValue.count(BadRegionList)
@@ -27,10 +30,12 @@ event onActivate(objectReference akActivator)
 
 		int GroupFiles = JValue.readFromDirectory("Data/Undaunted/Groups/")
 		int filecount = JMap.count(GroupFiles)
+		;Debug.Notification("File Count: " + filecount)
 		String[] FileNames = JMap.allKeysPArray(GroupFiles)
 		while(filecount > 0)
 			filecount -= 1
 			int GroupsList = JValue.readFromFile("Data/Undaunted/Groups/" + FileNames[filecount])
+			;Debug.Notification("Reading File: " + FileNames[filecount])
 			int i = JArray.count(GroupsList)
 			while(i > 0)
 				i -= 1
@@ -58,14 +63,35 @@ event onActivate(objectReference akActivator)
 
 	StartBounty(WorldspaceName)
 	questProperty.SetCurrentStageID(0)
-	RegisterForUpdate(20.0)
+	RegisterForUpdate(5.0)
+endFunction
+
+
+event onActivate(objectReference akActivator)
+	StartEvent()
+	numberOfBountiesCurrently = 0;
 endEvent
 
-Event OnUpdate()	
-	bool complete = isBountyComplete()
-	;Debug.Notification("Bounty State: " + complete)
-	If complete
-		questProperty.SetCurrentStageID(20)
-		UnregisterForUpdate()
+Event OnUpdate()
+	if (!isSystemReady())
+		;If we've got here something has gone wrong. Force a refresh.
+		StartEvent()
+		;UnregisterForUpdate()
+		return
+	EndIf
+	if (isSystemReady())
+		bool complete = isBountyComplete()
+		;Debug.Notification("Bounty State: " + complete)
+		If complete
+			numberOfBountiesCurrently += 1
+			;UnregisterForUpdate()
+			if (numberOfBountiesCurrently < numberOfBountiesNeeded)
+				;questProperty.SetCurrentStageID(20)
+				StartEvent()
+			Else
+				questProperty.SetCurrentStageID(20)
+				UnregisterForUpdate()
+			EndIf
+		EndIf
 	EndIf
 EndEvent

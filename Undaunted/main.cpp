@@ -3,17 +3,21 @@
 #include <shlobj.h>				// CSIDL_MYCODUMENTS
 #include <Undaunted\MyPlugin.h>
 #include <Undaunted\ConfigUtils.h>
+#include <skse64\PluginManager.h>
+#include <skse64\Serialization.cpp>
+#include <Undaunted\MyPlugin.h>
 
 static PluginHandle					g_pluginHandle = kPluginHandle_Invalid;
 static SKSEPapyrusInterface         * g_papyrus = NULL;
-
+SKSESerializationInterface* g_serialization = NULL;
+SKSEMessagingInterface* g_messageInterface = NULL;
 extern "C"	{
 
 	bool SKSEPlugin_Query(const SKSEInterface * skse, PluginInfo * info)	{	// Called by SKSE to learn about this plugin and check that it's safe to load it
 		gLog.OpenRelative(CSIDL_MYDOCUMENTS, "\\My Games\\Skyrim Special Edition\\SKSE\\Undaunted.log");
 		gLog.SetPrintLevel(IDebugLog::kLevel_Error);
 		gLog.SetLogLevel(IDebugLog::kLevel_DebugMessage);
-
+	
 		_MESSAGE("Undaunted");
 
 		// populate info structure
@@ -37,6 +41,8 @@ extern "C"	{
 			return false;
 		}
 
+		g_serialization = (SKSESerializationInterface*)skse->QueryInterface(kInterface_Serialization);
+		g_messageInterface = (SKSEMessagingInterface*)skse->QueryInterface(kInterface_Messaging);
 		// ### do not do anything else in this callback
 		// ### only fill out PluginInfo and return true/false
 
@@ -44,10 +50,33 @@ extern "C"	{
 		return true;
 	}
 
+	void SKSEMessageReceptor(SKSEMessagingInterface::Message* msg)
+	{
+		static bool active = true;
+		if (!active)
+			return;
+
+		if (msg->type == SKSEMessagingInterface::kMessage_PreLoadGame)
+		{
+			//We're loading the game. Clear up any bounty data.
+			_MESSAGE("kMessage_PreLoadGame rechieved, clearing bounty data.");
+			Undaunted::ClearBountyData();
+		}
+
+		//Register to recieve interface from Enchantment Framework
+		//if (msg->type == SKSEMessagingInterface::kMessage_PostLoad)
+
+
+		//kMessage_InputLoaded only sent once, on initial Main Menu load
+		//else if (msg->type == SKSEMessagingInterface::kMessage_InputLoaded)
+
+	}
+
 	bool SKSEPlugin_Load(const SKSEInterface * skse)	{	// Called by SKSE to load this plugin
 		_MESSAGE("Loading Undaunted..");
 
 		g_papyrus = (SKSEPapyrusInterface *)skse->QueryInterface(kInterface_Papyrus);
+		g_messageInterface->RegisterListener(g_pluginHandle, "SKSE", SKSEMessageReceptor);
 
 		//Check if the function registration was a success...
 		bool btest = g_papyrus->Register(Undaunted::RegisterFuncs);
@@ -58,5 +87,7 @@ extern "C"	{
 
 		return true;
 	}
+
+
 
 };

@@ -1,0 +1,25 @@
+[
+    [
+        ["Kill the Falmer Excursion"],
+        ["LCharFalmerBoss","Skyrim.esm",336783,"Enemy"],
+        ["LCharFalmerMelee","Skyrim.esm",124797,"Enemy"],
+        ["LCharFalmerMissile","Skyrim.esm",124798,"Enemy"],
+        ["LCharFalmerShaman","Skyrim.esm",124799,"Enemy"],
+        ["LCharFalmerSpellsword","Skyrim.esm",406057,"Enemy"]
+    ],
+    [
+        ["Kill the Falmer Beastmaster"],
+        ["LCharFalmerBoss","Skyrim.esm",336783,"Enemy"],
+        ["LCharFalmerCompanionFrost","Skyrim.esm",409788,"Enemy"],
+        ["LCharFalmerCompanionFrost","Skyrim.esm",409788,"Enemy"],
+        ["LCharFalmerCompanionFrost","Skyrim.esm",409788,"Enemy"],
+        ["LCharFalmerCompanionFrost","Skyrim.esm",409788,"Enemy"]
+    ],
+    [
+        ["Kill the Falmer Coven"],
+        ["LCharFalmerShaman","Skyrim.esm",124799,"Enemy"],
+        ["LCharFalmerShaman","Skyrim.esm",124799,"Enemy"],
+        ["LCharFalmerShaman","Skyrim.esm",124799,"Enemy"],
+        ["LCharFalmerShaman","Skyrim.esm",124799,"Enemy"]
+    ]
+]

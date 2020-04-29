@@ -1,0 +1,44 @@
+[
+    [
+        ["Kill the Mass of Bones"],
+        ["LCharSkeletonMeleeMixed","Skyrim.esm",185044,"Enemy"],
+        ["LCharSkeletonMeleeMixed","Skyrim.esm",185044,"Enemy"],
+        ["LCharSkeletonMeleeMixed","Skyrim.esm",185044,"Enemy"],
+        ["LCharSkeletonMeleeMixed","Skyrim.esm",185044,"Enemy"],
+        ["LCharSkeletonMeleeMixed","Skyrim.esm",185044,"Enemy"],
+        ["LCharSkeletonMeleeMixed","Skyrim.esm",185044,"Enemy"],
+        ["LCharSkeletonMeleeMixed","Skyrim.esm",185044,"Enemy"],
+        ["LCharSkeletonMeleeMixed","Skyrim.esm",185044,"Enemy"],
+        ["LCharSkeletonMeleeMixed","Skyrim.esm",185044,"Enemy"],
+        ["LCharSkeletonMeleeMixed","Skyrim.esm",185044,"Enemy"],
+        ["LCharSkeletonMeleeMixed","Skyrim.esm",185044,"Enemy"],
+        ["LCharSkeletonMeleeMixed","Skyrim.esm",185044,"Enemy"],
+        ["LCharSkeletonMeleeMixed","Skyrim.esm",185044,"Enemy"],
+        ["LCharSkeletonMeleeMixed","Skyrim.esm",185044,"Enemy"],
+        ["LCharSkeletonMeleeMixed","Skyrim.esm",185044,"Enemy"],
+        ["wispDeathExplosion","Skyrim.esm",987529,"SpawnEffect"]
+    ],
+    [
+        ["Kill the Wandering Wispmother"],
+        ["EncWispMother","Skyrim.esm",146109,"Enemy"],
+        ["EncWisp","Skyrim.esm",181191,"Enemy"],
+        ["EncWisp","Skyrim.esm",181191,"Enemy"],
+        ["EncWisp","Skyrim.esm",181191,"Enemy"],
+        ["wispDeathExplosion","Skyrim.esm",987529,"SpawnEffect"]
+    ],
+    [
+        ["Kill the Werewolf Pack"],
+        ["LCharWerewolfBoss","Skyrim.esm",661889,"Enemy"],
+        ["LCharWerewolf","Skyrim.esm",124817,"Enemy"],
+        ["LCharWerewolf","Skyrim.esm",124817,"Enemy"],
+        ["LCharWerewolf","Skyrim.esm",124817,"Enemy"]
+    ],
+    [
+        ["Kill the Nesting Ice Wraiths"],
+        ["EncIceWraith","Skyrim.esm",146099,"Enemy"],
+        ["EncIceWraith","Skyrim.esm",146099,"Enemy"],
+        ["EncIceWraith","Skyrim.esm",146099,"Enemy"],
+        ["EncIceWraith","Skyrim.esm",146099,"Enemy"],
+        ["EncIceWraith","Skyrim.esm",146099,"Enemy"]
+    ]
+]
