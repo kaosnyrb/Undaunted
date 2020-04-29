@@ -86,6 +86,14 @@ namespace Undaunted {
 					_MESSAGE("Enemy Count : %08X ", bountygrouplist.length);
 					bountywave = 1;
 				}
+				else
+				{
+					return false;
+				}
+			}
+			else
+			{
+				return false;
 			}
 		}
 
@@ -97,10 +105,13 @@ namespace Undaunted {
 		{
 			if (strcmp(bountygrouplist.data[i].BountyType.Get(), "Enemy") == 0)
 			{
-				if (!bountygrouplist.data[i].objectRef->IsDead(1))
+				if (bountygrouplist.data[i].objectRef != NULL)
 				{
-					MoveRefToWorldCell(xmarkerref, bountyworldcell.cell, bountyworldcell.world, bountygrouplist.data[i].objectRef->pos, NiPoint3(0, 0, 0));
-					return false;
+					if (!bountygrouplist.data[i].objectRef->IsDead(1))
+					{
+						MoveRefToWorldCell(xmarkerref, bountyworldcell.cell, bountyworldcell.world, bountygrouplist.data[i].objectRef->pos, NiPoint3(0, 0, 0));
+						return false;
+					}
 				}
 			}
 		}
