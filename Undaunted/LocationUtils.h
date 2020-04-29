@@ -25,7 +25,7 @@
 namespace Undaunted
 {
 	TESObjectREFR* GetRefObjectInCurrentCell(UInt32 formID);
-	TESObjectREFR* GetRefObjectFromWorld(UInt32 formID);
+	//TESObjectREFR* GetRefObjectFromWorld(UInt32 formID);
 	TESObjectREFR* GetRandomObjectInCell(TESObjectCELL* cell);
 	void BuildWorldList();
 	WorldCell GetRandomWorldCell();

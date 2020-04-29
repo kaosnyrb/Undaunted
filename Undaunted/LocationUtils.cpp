@@ -32,6 +32,7 @@ namespace Undaunted {
 	}
 
 	//Use Sparingly.
+	/*
 	TESObjectREFR* GetRefObjectFromWorld(UInt32 formID)
 	{
 		DataHandler* handler = DataHandler::GetSingleton();
@@ -92,7 +93,7 @@ namespace Undaunted {
 			}
 		}
 		return NULL;
-	}
+	}*/
 
 	int LastRand = 0;
 	TESObjectREFR* GetRandomObjectInCell(TESObjectCELL* cell)
@@ -181,7 +182,7 @@ namespace Undaunted {
 						}
 						else
 						{
-							_MESSAGE("unk088 is null", i);
+							_MESSAGE("unk088 is null for worldspace %08x", i);
 						}
 					}
 
@@ -210,15 +211,17 @@ namespace Undaunted {
 	{
 		for (int i = 0; i < worldCellList.length; i++)
 		{
-			
 			if (strcmp(worldCellList.data[i].world->editorId.Get(), WorldspaceName.c_str()) == 0)
 				return worldCellList.data[i];
 		}
+
+		_MESSAGE("Named World Cell not found: %s", WorldspaceName.Get());
+		return WorldCell();
 	}
 
 	void MoveRefToWorldCell(TESObjectREFR* object, TESObjectCELL* cell, TESWorldSpace* worldspace, NiPoint3 pos, NiPoint3 rot)
 	{
-		_MESSAGE("Moving %08X to %08X in %08X", object->formID, cell->formID, worldspace->formID);
+		_MESSAGE("Moving %08X to %08X in %s", object->formID, cell->formID, worldspace->editorId.Get());
 		UInt32 nullHandle = *g_invalidRefHandle;
 		NiPoint3 finalPos(pos);
 		//finalPos += object->pos;

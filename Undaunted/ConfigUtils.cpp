@@ -28,7 +28,7 @@ namespace Undaunted
 	//Groups
 	int AddGroup(const char* questText)
 	{
-		_MESSAGE("Adding to GroupLibary");
+		_MESSAGE("Adding bounty to GroupLibary: %s", questText);
 		GroupList newGroup = GroupList();
 		newGroup.questText = questText;
 		GroupLibary.AddItem(newGroup);
