@@ -26,10 +26,12 @@ namespace Undaunted
 	}
 
 	//Groups
-	int AddGroup()
+	int AddGroup(const char* questText)
 	{
 		_MESSAGE("Adding to GroupLibary");
-		GroupLibary.AddItem(GroupList());
+		GroupList newGroup = GroupList();
+		newGroup.questText = questText;
+		GroupLibary.AddItem(newGroup);
 		return GroupLibary.length - 1;
 	}
 

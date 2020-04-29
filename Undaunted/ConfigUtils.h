@@ -34,7 +34,7 @@ namespace Undaunted
 	UnStringList AddWorldToWhitelist(UnString region);
 
 	//Groups
-	int AddGroup();
+	int AddGroup(const char* questText);
 	void AddMembertoGroup(int id, GroupMember member);
 	GroupList GetRandomGroup();
 }

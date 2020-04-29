@@ -8,8 +8,11 @@ namespace Undaunted {
 	//TESWorldSpace* Interiors;
 
 	TESObjectREFR* xmarkerref = NULL;
+	BGSMessage* bountymessageref = NULL;
+
 	GroupList bountygrouplist;
 	WorldCell bountyworldcell;
+
 
 	int bountywave = 0;
 
@@ -28,16 +31,11 @@ namespace Undaunted {
 		_MESSAGE("target is set. Moving marker: WorldSpace: %s Cell: %08X ", bountyworldcell.world->editorId.Get(), bountyworldcell.cell->formID);
 		TESObjectREFR* target = GetRandomObjectInCell(bountyworldcell.cell);
 		MoveRefToWorldCell(xmarkerref, bountyworldcell.cell, bountyworldcell.world, target->pos, NiPoint3(0, 0, 0));
-		//Splitting setting the bounty location and the spawning.
-		/*
-		IntList group = GetRandomGroup();
-		for (int i = 0; i < group.length; i++)
-		{
-			_MESSAGE("Groupid : %08X ", group.data[i]);
-		}
-		bountyenemies = SpawnMonstersAtTarget(_registry, group, xmarkerref);
-		_MESSAGE("Enemy Count : %08X ", bountyenemies.Count());
-		*/
+
+		bountygrouplist = GetRandomGroup();
+		_MESSAGE("Setting Bounty Message: %s",bountygrouplist.questText);
+		bountymessageref->fullName.name = bountygrouplist.questText;
+
 		return 2;
 	}
 
@@ -53,13 +51,12 @@ namespace Undaunted {
 				Vector3 distvector = Vector3(distance.x, distance.y, distance.z);
 				_MESSAGE("Distance to marker: %f", distvector.Magnitude());
 				if (distvector.Magnitude() < 5000)
-				{
-					GroupList group = GetRandomGroup();
-					for (int i = 0; i < group.length; i++)
+				{					
+					for (int i = 0; i < bountygrouplist.length; i++)
 					{
-						_MESSAGE("Groupid : %08X ", group.data[i]);
+						_MESSAGE("Groupid : %08X ", bountygrouplist.data[i]);
 					}
-					bountygrouplist = SpawnGroupAtTarget(_registry, group, xmarkerref, bountyworldcell.cell, bountyworldcell.world);
+					bountygrouplist = SpawnGroupAtTarget(_registry, bountygrouplist, xmarkerref, bountyworldcell.cell, bountyworldcell.world);
 					_MESSAGE("Enemy Count : %08X ", bountygrouplist.length);
 					bountywave = 1;
 				}
@@ -105,7 +102,7 @@ namespace Undaunted {
 			{
 				MoveRefToWorldCell(bountygrouplist.data[i].objectRef, (*g_thePlayer)->parentCell, (*g_thePlayer)->currentWorldSpace,
 					NiPoint3(bountygrouplist.data[i].objectRef->pos.x, bountygrouplist.data[i].objectRef->pos.y, -10000), NiPoint3(0, 0, 0));
-				//bountygrouplist.data[i].objectRef->handleRefObject.Release();
+				//bountygrouplist.data[i].objectRef->DecRef();
 			}
 		}
 
@@ -117,13 +114,18 @@ namespace Undaunted {
 		return true;
 	}
 
+	bool hook_SetBountyMessageRef(StaticFunctionTag* base, BGSMessage* ref) {
+		bountymessageref = ref;
+		return true;
+	}
+
 	bool hook_AddBadRegion(StaticFunctionTag* base, UInt32 region) {
 		AddBadRegionToConfig(region);
 		return true;
 	}
 
-	UInt32 hook_AddGroup(StaticFunctionTag* base){
-		return AddGroup();
+	UInt32 hook_AddGroup(StaticFunctionTag* base, BSFixedString questText){
+		return AddGroup(questText.Get());
 	}
 
 	void hook_AddMembertoGroup(StaticFunctionTag* base, UInt32 groupid, UInt32 member, BSFixedString BountyType) {
@@ -175,13 +177,16 @@ namespace Undaunted {
 		registry->RegisterFunction(
 			new NativeFunction1 <StaticFunctionTag, bool, TESObjectREFR*>("SetXMarker", "Undaunted_SetXMarkerScript", Undaunted::hook_SetXMarker, registry));
 
+		registry->RegisterFunction(
+			new NativeFunction1 <StaticFunctionTag, bool, BGSMessage*>("SetBountyMessageRef", "Undaunted_SetBountyMessageRefScript", Undaunted::hook_SetBountyMessageRef, registry));
+
 		//Regions
 		registry->RegisterFunction(
 			new NativeFunction1 <StaticFunctionTag, bool, UInt32>("AddBadRegion", "Undaunted_AddBadRegionScript", Undaunted::hook_AddBadRegion, registry));
 
 		//Groups
 		registry->RegisterFunction(
-			new NativeFunction0 <StaticFunctionTag, UInt32>("AddGroup", "Undaunted_AddGroupScript", Undaunted::hook_AddGroup, registry));
+			new NativeFunction1 <StaticFunctionTag, UInt32, BSFixedString>("AddGroup", "Undaunted_AddGroupScript", Undaunted::hook_AddGroup, registry));
 
 		registry->RegisterFunction(
 			new NativeFunction3 <StaticFunctionTag, void,UInt32,UInt32, BSFixedString>("AddMembertoGroup", "Undaunted_AddMembertoGroupScript", Undaunted::hook_AddMembertoGroup, registry));

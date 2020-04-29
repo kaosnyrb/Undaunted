@@ -13,6 +13,7 @@ namespace Undaunted
 
 	class GroupList {
 	public:
+		const char* questText;
 		GroupMember* data;
 		int length;
 		GroupList* AddItem(GroupMember item);

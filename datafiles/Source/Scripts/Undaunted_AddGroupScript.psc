@@ -1,3 +1,3 @@
 scriptName Undaunted_AddGroupScript   
 
-int Function AddGroup() global native
+int Function AddGroup(String questtext) global native

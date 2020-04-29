@@ -7,11 +7,13 @@ import Undaunted_SetXMarkerScript
 import Undaunted_AddGroupScript
 import Undaunted_AddMembertoGroupScript
 import Undaunted_GetModFormScript
+import Undaunted_SetBountyMessageRefScript
 
 Quest Property questProperty  Auto  
 objectReference Property markerref Auto
 String Property WorldspaceName  Auto  
 {This will cause the bounties from this pillar to spawn in the named worldspace.It matches the values in the world section of the CK.}
+Message Property QuestTextMessage  Auto  
 
 Event OnInit()
 
@@ -27,60 +29,45 @@ event onActivate(objectReference akActivator)
 	endwhile
 	
 	SetXMarker(markerref)
-
-	int GroupsList = JValue.readFromFile("Data/Undaunted/Groups.json")
-
-	int i = JArray.count(GroupsList)
-    while(i > 0)
-        i -= 1
-		int group = AddGroup()
-		int data = JArray.getObj(GroupsList, i)
-		int j = JArray.count(data)
-		while(j > 0)
-			j -= 1
-			int obj = JArray.getObj(data, j)
-			string sourcemod = JArray.getStr(obj,1)
-			int formid = JArray.getInt(obj,2)
-			string bountyType = JArray.getStr(obj,3)
-			int modform = GetModForm(sourcemod, formid)
-			AddMembertoGroup(group,modform,bountyType)
+	SetBountyMessageRef(QuestTextMessage)
+	
+	int GroupFiles = JValue.readFromDirectory("Data/Undaunted/Groups/")
+	int filecount = JMap.count(GroupFiles)
+	String[] FileNames = JMap.allKeysPArray(GroupFiles)
+	while(filecount > 0)
+		filecount -= 1
+		int GroupsList = JValue.readFromFile("Data/Undaunted/Groups/" + FileNames[filecount])
+		Debug.Notification(FileNames[filecount]);
+		int i = JArray.count(GroupsList)
+		while(i > 0)
+			i -= 1
+			int data = JArray.getObj(GroupsList, i)
+			;Get the header row
+			int obj = JArray.getObj(data, 0)
+			string questtext = JArray.getStr(obj,0)		
+			int group = AddGroup(questtext)
+			int jcount = JArray.count(data)
+			int j = 1
+			while(j < jcount)
+;				j -= 1
+				obj = JArray.getObj(data, j)
+				string sourcemod = JArray.getStr(obj,1)
+				int formid = JArray.getInt(obj,2)
+				string bountyType = JArray.getStr(obj,3)
+				int modform = GetModForm(sourcemod, formid)
+				AddMembertoGroup(group,modform,bountyType)
+				j += 1
+			endWhile
 		endWhile
 	endWhile
 	
-;	while i > 0
-;		i -= 1		
-;		int Groupid = JArray.getObj(GroupsList,i)
-;		int group = AddGroup()
-;		int j = JArray.count(Groupid)
-;		while j > 0
-;			j -= 1
-;			int object = JArray.getObj(Groupid,j)
-;			string sourcemod = JMap.getStr(object,"SourceMod");
-;			int formid = JMap.getInt(object,FormId)
-;			int modform = GetModForm(sourcemod, formid)
-;			AddMembertoGroup(group,modform)
-;		endwhile
-;	endwhile	
-
-	;int GroupsList = JValue.readFromFile("Data/Undaunted/Groups.json")
-	;i = JValue.count(GroupsList)
-	;while i > 0
-	;	i -= 1		
-;		int Groupid = JArray.getObj(GroupsList,i)
-;		int group = AddGroup()
-;		int j = JArray.count(Groupid)
-;		while j > 0
-;			j -= 1
-;			AddMembertoGroup(group,JArray.getInt(Groupid,j))
-;		endwhile
-;	endwhile	
-	questProperty.SetCurrentStageID(0)
+	
 	StartBounty(WorldspaceName)
-	;Debug.Notification("Bounty State: " + isBountyComplete())
+	questProperty.SetCurrentStageID(0)
 	RegisterForUpdate(20.0)
 endEvent
 
-Event OnUpdate() ; This event occurs every five seconds		
+Event OnUpdate()	
 	bool complete = isBountyComplete()
 	;Debug.Notification("Bounty State: " + complete)
 	If complete
