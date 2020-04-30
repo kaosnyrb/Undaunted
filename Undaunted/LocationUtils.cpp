@@ -144,7 +144,7 @@ namespace Undaunted {
 			//Some regions are dodgy
 			if (!badRegion)
 			{
-				_MESSAGE("processing worldSpace %08X", i);
+				//_MESSAGE("processing worldSpace %08X", i);
 				TESRegion* test = (TESRegion*)handler->regionList->GetNthItem(i);
 				if (test != NULL)
 				{

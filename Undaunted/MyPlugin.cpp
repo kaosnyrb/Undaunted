@@ -164,7 +164,7 @@ namespace Undaunted {
 			if (strcmp(bountygrouplist.data[i].BountyType.Get(), "BountyDecoration") == 0)
 			{
 				MoveRefToWorldCell(bountygrouplist.data[i].objectRef, (*g_thePlayer)->parentCell, (*g_thePlayer)->currentWorldSpace,
-					NiPoint3(bountygrouplist.data[i].objectRef->pos.x, bountygrouplist.data[i].objectRef->pos.y, -10000), NiPoint3(0, 0, 0));
+					NiPoint3(bountygrouplist.data[i].objectRef->pos.x, bountygrouplist.data[i].objectRef->pos.y, -20000), NiPoint3(0, 0, 0));
 				//bountygrouplist.data[i].objectRef->DecRef();
 			}
 		}
@@ -203,10 +203,10 @@ namespace Undaunted {
 		const ModInfo* modInfo = dataHandler->LookupModByName(ModName.c_str());
 		if (modInfo != NULL)
 		{
-			_MESSAGE("Mod Found: %s ", modInfo->name);
-			_MESSAGE("Mod Index: %08X ", modInfo->modIndex);
+			//_MESSAGE("Mod Found: %s ", modInfo->name);
+			//_MESSAGE("Mod Index: %08X ", modInfo->modIndex);
 			FormId = (modInfo->modIndex << 24) + FormId;
-			_MESSAGE("Computed FormId: %08X ", FormId);
+			//_MESSAGE("Computed FormId: %08X ", FormId);
 			if (modInfo->IsFormInMod(FormId))
 			{
 				return FormId;

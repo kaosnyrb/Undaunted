@@ -103,6 +103,7 @@ namespace Undaunted
 	{
 		TESObjectREFR* spawned = NULL;
 		srand(time(NULL));
+		NiPoint3 startingpoint = Target->pos;
 		for (UInt32 i = 0; i < Types.length; i++)
 		{
 			TESForm* spawnForm = LookupFormByID(Types.data[i].FormId);
@@ -113,10 +114,10 @@ namespace Undaunted
 			}
 			if (strcmp(Types.data[i].BountyType.Get(), "Enemy") == 0)
 			{
-				spawned = PlaceAtMe_Native(registry, 1, Target, spawnForm, 1, false, false);
 				//Random Offset
-				NiPoint3 offset = NiPoint3(rand() & 1000, rand() & 1000,0);
-				MoveRefToWorldCell(spawned, cell, worldspace, spawned->pos + offset, NiPoint3(0, 0, 0));
+				NiPoint3 offset = NiPoint3(rand() & 1000, rand() & 1000, 0);
+				MoveRefToWorldCell(Target, cell, worldspace, startingpoint + offset, NiPoint3(0, 0, 0));
+				spawned = PlaceAtMe_Native(registry, 1, Target, spawnForm, 1, false, false);
 				Types.data[i].objectRef = spawned;
 			}
 			else
