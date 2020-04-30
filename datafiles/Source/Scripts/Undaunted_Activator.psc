@@ -7,8 +7,9 @@ objectReference Property markerref Auto
 String Property WorldspaceName  Auto  
 {This will cause the bounties from this pillar to spawn in the named worldspace.It matches the values in the world section of the CK.}
 Message Property QuestTextMessage  Auto  
+GlobalVariable Property QuestStage  auto
 
-int numberOfBountiesNeeded = 3
+int numberOfBountiesNeeded = 1
 int numberOfBountiesCurrently = 0
 
 Event OnInit()
@@ -62,17 +63,25 @@ int Function StartEvent()
 	EndIf
 
 	StartBounty(WorldspaceName)
-	questProperty.SetCurrentStageID(0)
+	questProperty.SetCurrentStageID(10)
+	QuestStage.SetValue(10)
 	RegisterForUpdate(5.0)
 endFunction
 
 
 event onActivate(objectReference akActivator)
-	StartEvent()
-	numberOfBountiesCurrently = 0;
+	if (QuestStage.GetValue() != 20)
+		StartEvent()
+		numberOfBountiesCurrently = 0;
+	EndIf
 endEvent
 
 Event OnUpdate()
+	if (QuestStage.GetValue() != 10)
+		UnregisterForUpdate()
+		return
+	EndIf
+	Debug.Notification("questProperty Stage: " + QuestStage.GetValue())
 	if (!isSystemReady())
 		;If we've got here something has gone wrong. Force a refresh.
 		StartEvent()
@@ -90,6 +99,7 @@ Event OnUpdate()
 				StartEvent()
 			Else
 				questProperty.SetCurrentStageID(20)
+				QuestStage.SetValue(20)
 				UnregisterForUpdate()
 			EndIf
 		EndIf

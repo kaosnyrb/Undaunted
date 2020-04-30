@@ -58,6 +58,7 @@ namespace Undaunted {
 		_MESSAGE("Setting Bounty Message: %s",bountygrouplist.questText);
 		bountymessageref->fullName.name = bountygrouplist.questText;
 
+		
 		return 2;
 	}
 
@@ -88,7 +89,6 @@ namespace Undaunted {
 
 	bool hook_isBountyComplete(StaticFunctionTag* base) {
 		_MESSAGE("Starting Bounty Check");
-
 		if (bountywave == 0 && bountyworldcell.world != NULL)
 		{
 			//Is the player in the right worldspace?
@@ -219,6 +219,12 @@ namespace Undaunted {
 		return UInt32();
 	}
 
+	void hook_SpawnRandomReward(StaticFunctionTag* base, TESObjectREFR* taget)
+	{
+		TESForm* spawnForm = LookupFormByID(hook_GetModForm(base, "Skyrim.esm", 778644));
+		PlaceAtMe_Native(_registry, 1, taget, spawnForm, 1, false, false);
+	}
+
 	bool RegisterFuncs(VMClassRegistry* registry) {
 		_registry = registry;
 		//General
@@ -250,6 +256,11 @@ namespace Undaunted {
 
 		registry->RegisterFunction(
 			new NativeFunction2 <StaticFunctionTag, UInt32, BSFixedString, UInt32>("GetModForm", "Undaunted_SystemScript", Undaunted::hook_GetModForm, registry));
+
+		//Rewards
+		registry->RegisterFunction(
+			new NativeFunction1 <StaticFunctionTag, void, TESObjectREFR*>("SpawnRandomReward", "Undaunted_SystemScript", Undaunted::hook_SpawnRandomReward, registry));
+
 
 		return true;
 	}
