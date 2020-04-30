@@ -1,4 +1,5 @@
 #include "ConfigUtils.h"
+#include <time.h>
 namespace Undaunted
 {
 	std::string s_configPath;
@@ -43,6 +44,7 @@ namespace Undaunted
 
 	GroupList GetRandomGroup()
 	{
+		srand(time(NULL));
 		int groupid = rand() % GroupLibary.length;
 		_MESSAGE("Random Group: %i",groupid);
 		_MESSAGE("Random Member Count: %i", GroupLibary.data[groupid].length);

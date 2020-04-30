@@ -103,6 +103,7 @@
     <ClCompile Include="LocationUtils.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MyPlugin.cpp" />
+    <ClCompile Include="RewardUtils.cpp" />
     <ClCompile Include="SpawnUtils.cpp" />
     <ClCompile Include="UnStringList.cpp" />
     <ClCompile Include="WorldCellList.cpp" />
@@ -117,6 +118,7 @@
     <ClInclude Include="ListLibary.h" />
     <ClInclude Include="LocationUtils.h" />
     <ClInclude Include="MyPlugin.h" />
+    <ClInclude Include="RewardUtils.h" />
     <ClInclude Include="SpawnUtils.h" />
     <ClInclude Include="UnStringList.h" />
     <ClInclude Include="WorldCellList.h" />

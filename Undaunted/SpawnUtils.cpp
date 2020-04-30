@@ -1,6 +1,7 @@
 #include "SpawnUtils.h"
 #include "ConfigUtils.h"
 #include <Undaunted\LocationUtils.h>
+#include <time.h>
 
 namespace Undaunted
 {
@@ -101,7 +102,7 @@ namespace Undaunted
 	GroupList SpawnGroupAtTarget(VMClassRegistry* registry, GroupList Types, TESObjectREFR* Target, TESObjectCELL* cell, TESWorldSpace* worldspace)
 	{
 		TESObjectREFR* spawned = NULL;
-
+		srand(time(NULL));
 		for (UInt32 i = 0; i < Types.length; i++)
 		{
 			TESForm* spawnForm = LookupFormByID(Types.data[i].FormId);
@@ -114,7 +115,7 @@ namespace Undaunted
 			{
 				spawned = PlaceAtMe_Native(registry, 1, Target, spawnForm, 1, false, false);
 				//Random Offset
-				NiPoint3 offset = NiPoint3(rand() & 100, rand() & 100,0);
+				NiPoint3 offset = NiPoint3(rand() & 1000, rand() & 1000,0);
 				MoveRefToWorldCell(spawned, cell, worldspace, spawned->pos + offset, NiPoint3(0, 0, 0));
 				Types.data[i].objectRef = spawned;
 			}

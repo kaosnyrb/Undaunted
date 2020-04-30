@@ -2,7 +2,9 @@
 #include "LocationUtils.h"
 #include "SpawnUtils.h"
 #include "ConfigUtils.h"
-
+#include <skse64/PapyrusGameData.h>
+#include <time.h>
+#include <Undaunted\RewardUtils.h>
 namespace Undaunted {
 
 	VMClassRegistry* _registry;
@@ -221,7 +223,7 @@ namespace Undaunted {
 
 	void hook_SpawnRandomReward(StaticFunctionTag* base, TESObjectREFR* taget)
 	{
-		TESForm* spawnForm = LookupFormByID(hook_GetModForm(base, "Skyrim.esm", 778644));
+		TESForm* spawnForm = LookupFormByID(GetReward());
 		PlaceAtMe_Native(_registry, 1, taget, spawnForm, 1, false, false);
 	}
 

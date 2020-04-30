@@ -1,6 +1,7 @@
 #include "LocationUtils.h"
 #include <Undaunted\ConfigUtils.h>
 #include "WorldCellList.h"
+#include <time.h>
 
 namespace Undaunted {
 	WorldCellList worldCellList;
@@ -100,6 +101,7 @@ namespace Undaunted {
 	{
 		int numberofRefs = papyrusCell::GetNumRefs(cell, 0);
 		_MESSAGE("GetRandomObjectInCell Num Ref: %i", numberofRefs);
+		srand(time(NULL));
 		if (numberofRefs == 0)return NULL;
 		while (true)
 		{
@@ -203,6 +205,7 @@ namespace Undaunted {
 
 	WorldCell GetRandomWorldCell()
 	{
+		srand(time(NULL));
 		int worldcellid = rand() % worldCellList.length;
 		return worldCellList.data[worldcellid];
 	}
