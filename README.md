@@ -17,13 +17,20 @@ https://youtu.be/3igoZVReoZE
 1. Visit the Undaunted Camp northwest of Windhelm.
 2. Use the Pillar to start a bounty.
 3. A Quest will start called Undaunted.
-3. Somewhere in the Skyrim Overworld a group of enemies will appear with a quest marker pointing to them
-4. Go and kill the enemies. It doesn't matter who gets the killing blow, just that they die.
-5. Return to the Undaunted camp to pickup another bounty and return to step 3.
+3. Somewhere in the Skyrim Overworld a quest marker will appear pointing to where the bounty starts
+4. Go to the marker, once you are in range the event will begin. (It doesn't matter who gets the killing blow on enemies, just that they die.)
+5. Return to the Undaunted camp to claim your reward from the reward plinth
+6. Pickup another bounty and return to step 3.
 
 ## Spawning Groups
 
-* Currently Only Simple Oblivion Gate Encounters
+* Simple Oblivion Gate
+* 5 different groups of bandits
+* 2 vampire encounters
+* 4 Draugr encounters
+* 3 Falmer encounters
+* 1 Forsworn encounter
+* 4 Undead encounters 
 
 ## How it works
 
@@ -45,15 +52,19 @@ As the mod is using the Region data from memory any mods which add these would a
 * Json Configuration for Enemy groups. Currently using default levelled lists but any mod that edits them should work with Undaunted.
 * Quest tracking for dynamically placed enemies.
 * Very mod compatible, currently only adds 2 items to the world.
+* Support for Mod created enemies that aren't placed into the default leveled lists via a Mod name + base form lookup.
+* Currently supports 4 Spawn types: Enemy, BountyDecoration, SpawnEffect, EndEffect
 
 ## Known issues/WIP
 
-* Rewards other than the thrill of killing
+* Rewards in an early state
 * Bounty tracking doesn't persist between sessions. Meaning you can only complete a bounty in the session you started it.
-* Support for Mod created enemies that aren't placed into the default leveled lists.
-* More advanced encounters. This system is able to spawn objects with scripts attached to them. (Oblivion gates...?)
+* More advanced encounters. This system is able to spawn objects with scripts attached to them.
 
 ## Credits
 
-* LordKarnak for The Daedra Returns: https://www.nexusmods.com/skyrim/mods/64925
+* LordKarnak for The Daedra Returns gate effects: https://www.nexusmods.com/skyrim/mods/64925
 * Hanaisse for her Oblivion Gate meshes and textures: https://www.nexusmods.com/skyrim/mods/18957/?
+* egocarib for SKSE sample code: https://github.com/egocarib/EnchantingAwakened
+* xanderdunn for SKSE sample code: https://github.com/xanderdunn/skaar
+* Sky-WAN for SKSE sample code: https://github.com/Sky-WAN
