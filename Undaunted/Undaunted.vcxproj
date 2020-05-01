@@ -99,6 +99,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BountyManager.cpp" />
     <ClCompile Include="ConfigUtils.cpp" />
     <ClCompile Include="GroupList.cpp" />
     <ClCompile Include="IntList.cpp" />
@@ -115,6 +116,7 @@
     <None Include="exports.def" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BountyManager.h" />
     <ClInclude Include="ConfigUtils.h" />
     <ClInclude Include="GroupList.h" />
     <ClInclude Include="IntList.h" />

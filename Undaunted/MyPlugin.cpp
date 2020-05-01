@@ -1,73 +1,18 @@
 #include "MyPlugin.h"
-#include "LocationUtils.h"
-#include "SpawnUtils.h"
-#include "ConfigUtils.h"
 #include <skse64/PapyrusGameData.h>
-#include <time.h>
 #include <Undaunted\RewardUtils.h>
+
 namespace Undaunted {
-
-	VMClassRegistry* _registry;
-
-	TESObjectREFR* xmarkerref = NULL;
-	BGSMessage* bountymessageref = NULL;
-
-	GroupList bountygrouplist;
-	WorldCell bountyworldcell;
-
-	bool isReady = false;
 	
-	int bountywave = 0;
-
-	void ClearBountyData() {
-		bountywave = 0;
-		bountygrouplist = GroupList();
-		
-		//If there's been a reload then the bounty currently breaks. Inform the user.
-		if (isReady)
-		{
-			_MESSAGE("Setting Bounty Message: The Bounty has moved on, return to the Undaunted Camp to start a new Bounty");
-			bountymessageref->fullName.name = "The Bounty has moved on, return to the Undaunted Camp to start a new Bounty";
-		}
-	}
-
-	float StartBounty(StaticFunctionTag* base, BSFixedString WorldspaceName) {
-		if (xmarkerref == NULL)
-		{
-			_MESSAGE("NO XMARKER SET");
-			return 0;
-		}
-		if (bountymessageref == NULL)
-		{
-			_MESSAGE("NO BOUNTYMESSAGEREF SET");
-			return 0;
-		}
-		if (!isReady)
-		{
-			_MESSAGE("System not initialised, run InitSystem before starting any bounties");
-			return 0;
-		}
-		//Cleanup previous bounties
-		bountywave = 0;
-		bountygrouplist = GroupList();
-
-		bountyworldcell = GetNamedWorldCell(WorldspaceName);
-		_MESSAGE("target is set. Moving marker: WorldSpace: %s Cell: %08X ", bountyworldcell.world->editorId.Get(), bountyworldcell.cell->formID);
-		TESObjectREFR* target = GetRandomObjectInCell(bountyworldcell.cell);
-		MoveRefToWorldCell(xmarkerref, bountyworldcell.cell, bountyworldcell.world, target->pos, NiPoint3(0, 0, 0));
-
-		bountygrouplist = GetRandomGroup();
-		_MESSAGE("Setting Bounty Message: %s",bountygrouplist.questText);
-		bountymessageref->fullName.name = bountygrouplist.questText;
-
-		
+	float hook_StartBounty(StaticFunctionTag* base) {		
+		BountyManager::getInstance()->StartBounty();
 		return 2;
 	}
 
 	// Fill out the WorldList
 	bool hook_InitSystem(StaticFunctionTag* base)
 	{
-		if (!isReady)
+		if (!BountyManager::getInstance()->isReady)
 		{
 			DataHandler* dataHandler = DataHandler::GetSingleton();
 			_MESSAGE("Mod Count: %08X", dataHandler->modList.loadedMods.count);
@@ -79,106 +24,27 @@ namespace Undaunted {
 			}
 
 			BuildWorldList();
-			isReady = true;
+			BountyManager::getInstance()->isReady = true;
 		}
-		return isReady;
+		return BountyManager::getInstance()->isReady;
 	}
 
 	bool hook_isSystemReady(StaticFunctionTag* base)
 	{
-		return isReady;
+		return BountyManager::getInstance()->isReady;
 	}
 
 	bool hook_isBountyComplete(StaticFunctionTag* base) {
 		_MESSAGE("Starting Bounty Check");
-		if (bountywave == 0 && bountyworldcell.world != NULL)
-		{
-			//Is the player in the right worldspace?
-			if (_stricmp((*g_thePlayer)->currentWorldSpace->editorId.Get(), bountyworldcell.world->editorId.Get()) == 0)
-			{
-				_MESSAGE("Player in Worldspace");
-				//Check the distance to the XMarker
-				NiPoint3 distance = (*g_thePlayer)->pos - xmarkerref->pos;
-				Vector3 distvector = Vector3(distance.x, distance.y, distance.z);
-				_MESSAGE("Distance to marker: %f", distvector.Magnitude());
-				if (distvector.Magnitude() < 5000)
-				{					
-					for (int i = 0; i < bountygrouplist.length; i++)
-					{
-						_MESSAGE("Groupid : %08X ", bountygrouplist.data[i]);
-					}
-					bountygrouplist = SpawnGroupAtTarget(_registry, bountygrouplist, xmarkerref, bountyworldcell.cell, bountyworldcell.world);
-					_MESSAGE("Enemy Count : %08X ", bountygrouplist.length);
-					bountywave = 1;
-				}
-				else
-				{
-					return false;
-				}
-			}
-			else
-			{
-				return false;
-			}
-		}
-
-		if (bountygrouplist.length == 0)
-			return false;
-
-
-		bool alldead = true;
-		for (UInt32 i = 0; i < bountygrouplist.length; i++)
-		{
-			if (strcmp(bountygrouplist.data[i].BountyType.Get(), "Enemy") == 0)
-			{
-				if (bountygrouplist.data[i].objectRef != NULL)
-				{					
-					if (!bountygrouplist.data[i].objectRef->IsDead(1))
-					{
-						MoveRefToWorldCell(xmarkerref, bountyworldcell.cell, bountyworldcell.world, bountygrouplist.data[i].objectRef->pos, NiPoint3(0, 0, 0));
-						return false;
-					}
-				}
-			}
-		}
-		//Play After Bounty Effects.
-		for (UInt32 i = 0; i < bountygrouplist.length; i++)
-		{
-			if (strcmp(bountygrouplist.data[i].BountyType.Get(), "EndEffect") == 0)
-			{
-				TESForm* spawnForm = LookupFormByID(bountygrouplist.data[i].FormId);
-				if (spawnForm == NULL)
-				{
-					_MESSAGE("Failed to Spawn. Form Invalid");
-				}
-				else
-				{
-					PlaceAtMe_Native(_registry, 1, xmarkerref, spawnForm, 1, false, false);
-				}
-			}
-		}
-
-		//Clean up the Decorations.
-		for (UInt32 i = 0; i < bountygrouplist.length; i++)
-		{
-			if (strcmp(bountygrouplist.data[i].BountyType.Get(), "BountyDecoration") == 0)
-			{
-				MoveRefToWorldCell(bountygrouplist.data[i].objectRef, (*g_thePlayer)->parentCell, (*g_thePlayer)->currentWorldSpace,
-					NiPoint3(bountygrouplist.data[i].objectRef->pos.x, bountygrouplist.data[i].objectRef->pos.y, -20000), NiPoint3(0, 0, 0));
-				//bountygrouplist.data[i].objectRef->DecRef();
-			}
-		}
-
-		
-		return true;
+		return BountyManager::getInstance()->BountyUpdate();
 	}
 	bool hook_SetXMarker(StaticFunctionTag* base, TESObjectREFR* marker) {
-		xmarkerref = marker;
+		BountyManager::getInstance()->xmarkerref = marker;
 		return true;
 	}
 
 	bool hook_SetBountyMessageRef(StaticFunctionTag* base, BGSMessage* ref) {
-		bountymessageref = ref;
+		BountyManager::getInstance()->bountymessageref = ref;
 		return true;
 	}
 
@@ -203,35 +69,33 @@ namespace Undaunted {
 		const ModInfo* modInfo = dataHandler->LookupModByName(ModName.c_str());
 		if (modInfo != NULL)
 		{
-			//_MESSAGE("Mod Found: %s ", modInfo->name);
-			//_MESSAGE("Mod Index: %08X ", modInfo->modIndex);
 			FormId = (modInfo->modIndex << 24) + FormId;
-			//_MESSAGE("Computed FormId: %08X ", FormId);
 			if (modInfo->IsFormInMod(FormId))
 			{
 				return FormId;
 			}
 			else
 			{
-				_MESSAGE("FormId Not Found");
+				_MESSAGE("FormId  %08X Not Found in %s", FormId, ModName.Get());
 				return UInt32();
 			}
 		}
-		_MESSAGE("Mod Not Found");
+		_MESSAGE("Mod Not Found: %s", ModName.Get());
 		return UInt32();
 	}
 
 	void hook_SpawnRandomReward(StaticFunctionTag* base, TESObjectREFR* taget, UInt32 playerlevel)
 	{
 		TESForm* spawnForm = LookupFormByID(GetReward(playerlevel));
-		PlaceAtMe_Native(_registry, 1, taget, spawnForm, 1, false, false);
+		PlaceAtMe_Native(BountyManager::getInstance()->_registry, 1, taget, spawnForm, 1, false, false);
 	}
 
 	bool RegisterFuncs(VMClassRegistry* registry) {
-		_registry = registry;
+
+		BountyManager::getInstance()->_registry = registry;
 		//General
 		registry->RegisterFunction(
-			new NativeFunction1 <StaticFunctionTag, float, BSFixedString>("StartBounty", "Undaunted_SystemScript", Undaunted::StartBounty, registry));
+			new NativeFunction0 <StaticFunctionTag, float>("StartBounty", "Undaunted_SystemScript", Undaunted::hook_StartBounty, registry));
 		registry->RegisterFunction(
 			new NativeFunction0 <StaticFunctionTag, bool>("isBountyComplete", "Undaunted_SystemScript", Undaunted::hook_isBountyComplete, registry));
 		registry->RegisterFunction(

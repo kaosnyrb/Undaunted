@@ -19,10 +19,9 @@
 #include <skse64\PapyrusObjectReference.h>
 #include <skse64\PapyrusObjects.h>
 #include <skse64\PapyrusQuest.h>
+#include "BountyManager.h"
 
 namespace Undaunted
 {
-	float MyTest(StaticFunctionTag *base);
-	void ClearBountyData();
 	bool RegisterFuncs(VMClassRegistry* registry);
 }

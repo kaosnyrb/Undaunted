@@ -2,10 +2,10 @@
 #include "skse64_common/skse_version.h"	// What version of SKSE is running?
 #include <shlobj.h>				// CSIDL_MYCODUMENTS
 #include <Undaunted\MyPlugin.h>
+#include <Undaunted\BountyManager.h>
 #include <Undaunted\ConfigUtils.h>
 #include <skse64\PluginManager.h>
 #include <skse64\Serialization.cpp>
-#include <Undaunted\MyPlugin.h>
 
 static PluginHandle					g_pluginHandle = kPluginHandle_Invalid;
 static SKSEPapyrusInterface         * g_papyrus = NULL;
@@ -60,7 +60,7 @@ extern "C"	{
 		{
 			//We're loading the game. Clear up any bounty data.
 			_MESSAGE("kMessage_PreLoadGame rechieved, clearing bounty data.");
-			Undaunted::ClearBountyData();
+			Undaunted::BountyManager::getInstance()->ClearBountyData();
 		}
 
 		//Register to recieve interface from Enchantment Framework

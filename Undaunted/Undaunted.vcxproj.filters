@@ -30,6 +30,7 @@
     <ClCompile Include="RewardUtils.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
+    <ClCompile Include="BountyManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyPlugin.h" />
@@ -60,6 +61,7 @@
     <ClInclude Include="RewardUtils.h">
       <Filter>Utils</Filter>
     </ClInclude>
+    <ClInclude Include="BountyManager.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="exports.def" />

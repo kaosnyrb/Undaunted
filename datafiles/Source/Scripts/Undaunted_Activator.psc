@@ -4,7 +4,6 @@ import Undaunted_SystemScript
 
 Quest Property questProperty  Auto  
 objectReference Property markerref Auto
-String Property WorldspaceName  Auto  
 {This will cause the bounties from this pillar to spawn in the named worldspace.It matches the values in the world section of the CK.}
 Message Property QuestTextMessage  Auto  
 GlobalVariable Property QuestStage  auto
@@ -63,7 +62,7 @@ int Function StartEvent()
 		InitSystem()
 	EndIf
 
-	StartBounty(WorldspaceName)
+	StartBounty()
 	questProperty.SetCurrentStageID(10)
 	QuestStage.SetValue(10)
 	RegisterForUpdate(5.0)
