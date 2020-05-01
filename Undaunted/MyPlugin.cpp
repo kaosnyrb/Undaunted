@@ -121,7 +121,7 @@ namespace Undaunted {
 				return false;
 			}
 		}
-		_MESSAGE("bountywave == 0 && bountyworldcell.world passed");
+
 		if (bountygrouplist.length == 0)
 			return false;
 
@@ -221,9 +221,9 @@ namespace Undaunted {
 		return UInt32();
 	}
 
-	void hook_SpawnRandomReward(StaticFunctionTag* base, TESObjectREFR* taget)
+	void hook_SpawnRandomReward(StaticFunctionTag* base, TESObjectREFR* taget, UInt32 playerlevel)
 	{
-		TESForm* spawnForm = LookupFormByID(GetReward());
+		TESForm* spawnForm = LookupFormByID(GetReward(playerlevel));
 		PlaceAtMe_Native(_registry, 1, taget, spawnForm, 1, false, false);
 	}
 
@@ -261,7 +261,7 @@ namespace Undaunted {
 
 		//Rewards
 		registry->RegisterFunction(
-			new NativeFunction1 <StaticFunctionTag, void, TESObjectREFR*>("SpawnRandomReward", "Undaunted_SystemScript", Undaunted::hook_SpawnRandomReward, registry));
+			new NativeFunction2 <StaticFunctionTag, void, TESObjectREFR*, UInt32>("SpawnRandomReward", "Undaunted_SystemScript", Undaunted::hook_SpawnRandomReward, registry));
 
 
 		return true;
