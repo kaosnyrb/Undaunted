@@ -47,7 +47,7 @@ namespace Undaunted
 				}
 			}
 		}
-		if (strcmp(type, "PhysicsScripted") == 0)
+		if (strcmp(type, "PhysicsScripted") == 0 || strcmp(type, "Scripted") == 0)
 		{
 			if (isComplete)
 			{

@@ -21,7 +21,7 @@ namespace Undaunted
 			if (strcmp(Types.data[i].BountyType.Get(), "Enemy") == 0)
 			{
 				//Random Offset
-				NiPoint3 offset = NiPoint3(rand() & 1000, rand() & 1000, 2000);
+				NiPoint3 offset = NiPoint3(rand() & 1000, rand() & 1000, 0);
 				MoveRefToWorldCell(Target, cell, worldspace, startingpoint + offset, NiPoint3(0, 0, 0));
 				spawned = PlaceAtMe_Native(registry, 1, Target, spawnForm, 1, false, false);
 				Types.data[i].objectRef = spawned;

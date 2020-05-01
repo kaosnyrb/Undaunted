@@ -33,11 +33,30 @@
         ["LCharBanditMissileKhajiitM","Dawnguard.esm",35832,"Enemy"]
     ],
     [
+        ["Recover the Crates of Firebrand Wine"],
+        ["LCharBanditMeleeAny","Skyrim.esm",253645,"Enemy"],
+        ["1_Undaunted_firebrandwinecrate","Undaunted.esp",80942,"PhysicsScripted"],
+        ["LCharBanditMeleeAny","Skyrim.esm",253645,"Enemy"],
+        ["1_Undaunted_firebrandwinecrate","Undaunted.esp",80942,"PhysicsScripted"],
+        ["LCharBanditMeleeAny","Skyrim.esm",253645,"Enemy"],
+        ["LCharBanditMeleeAny","Skyrim.esm",253645,"Enemy"],
+        ["LCharBanditMeleeAny","Skyrim.esm",253645,"Enemy"]
+    ],
+    [
         ["Kill the Rogue Winterhold Dropouts"],
         ["LCharBanditWizard","Skyrim.esm",124785,"Enemy"],
         ["LCharBanditWizard","Skyrim.esm",124785,"Enemy"],
         ["LCharBanditWizard","Skyrim.esm",124785,"Enemy"],
         ["LCharBanditWizard","Skyrim.esm",124785,"Enemy"],
         ["LCharBanditWizard","Skyrim.esm",124785,"Enemy"]
+    ],
+    [
+        ["Destroy the Blockade"],
+        ["LCharBanditMeleeAny","Skyrim.esm",253645,"Enemy"],
+        ["1_Undaunted_DestructObjectiveBarricade","Undaunted.esp",80945,"Scripted"],
+        ["LCharBanditMeleeAny","Skyrim.esm",253645,"Enemy"],
+        ["LCharBanditMissile","Skyrim.esm",124784,"Enemy"],
+        ["LCharBanditMissile","Skyrim.esm",124784,"Enemy"],
+        ["1_Undaunted_DestructObjectiveBarricade","Undaunted.esp",80945,"Scripted"]
     ]
 ]
