@@ -25,7 +25,7 @@ namespace Undaunted {
 		int bountywave = 0;
 
 		bool BountyUpdate();
-		float StartBounty();
+		float StartBounty(bool nearby);
 		void ClearBountyData();
 
 

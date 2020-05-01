@@ -18,6 +18,6 @@ bool Function SetBountyMessageRef(Message messageref) global native
 
 bool Function SetXMarker(objectReference markerref) global native
 
-float Function StartBounty() global native
+float Function StartBounty(bool nearby) global native
 
 Function SpawnRandomReward(objectReference markerref,int playerlevel) global native

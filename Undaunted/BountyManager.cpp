@@ -97,7 +97,7 @@ namespace Undaunted {
 		}
 	}
 
-	float BountyManager::StartBounty()
+	float BountyManager::StartBounty(bool nearby)
 	{
 		if (xmarkerref == NULL)
 		{
@@ -115,9 +115,17 @@ namespace Undaunted {
 			return 0;
 		}
 		//Cleanup previous bounties
-		bountywave = 0;
-		bountygrouplist = GroupList();
-		bountyworldcell = GetNamedWorldCell((*g_thePlayer)->currentWorldSpace->editorId.Get());
+		ClearBountyData();
+		_MESSAGE("nearby: " + nearby);
+		if (!nearby )
+		{	
+			bountyworldcell = GetNamedWorldCell((*g_thePlayer)->currentWorldSpace->editorId.Get());
+		}
+		else
+		{
+			bountyworldcell.cell = (*g_thePlayer)->parentCell;
+			bountyworldcell.world = (*g_thePlayer)->currentWorldSpace;
+		}
 		_MESSAGE("target is set. Moving marker: WorldSpace: %s Cell: %08X ", bountyworldcell.world->editorId.Get(), bountyworldcell.cell->formID);
 		TESObjectREFR* target = GetRandomObjectInCell(bountyworldcell.cell);
 		MoveRefToWorldCell(xmarkerref, bountyworldcell.cell, bountyworldcell.world, target->pos, NiPoint3(0, 0, 0));

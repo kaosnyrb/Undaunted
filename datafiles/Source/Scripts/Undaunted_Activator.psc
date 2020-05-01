@@ -8,7 +8,7 @@ objectReference Property markerref Auto
 Message Property QuestTextMessage  Auto  
 GlobalVariable Property QuestStage  auto
 
-int numberOfBountiesNeeded = 1
+int numberOfBountiesNeeded = 2
 int numberOfBountiesCurrently = 0
 
 Event OnInit()
@@ -16,7 +16,7 @@ Event OnInit()
 EndEvent
 
 
-int Function StartEvent()
+int Function StartEvent(bool nearby)
 	if (!isSystemReady())
 		Debug.Notification("Undaunted initialising...")
 		int BadRegionList = JValue.readFromFile("Data/Undaunted/BadRegion.json")
@@ -62,7 +62,7 @@ int Function StartEvent()
 		InitSystem()
 	EndIf
 
-	StartBounty()
+	StartBounty(nearby)
 	questProperty.SetCurrentStageID(10)
 	QuestStage.SetValue(10)
 	RegisterForUpdate(5.0)
@@ -71,7 +71,7 @@ endFunction
 
 event onActivate(objectReference akActivator)
 	if (QuestStage.GetValue() != 20)
-		StartEvent()
+		StartEvent(false)
 		numberOfBountiesCurrently = 0;
 	EndIf
 endEvent
@@ -84,7 +84,7 @@ Event OnUpdate()
 	;Debug.Notification("questProperty Stage: " + QuestStage.GetValue())
 	if (!isSystemReady())
 		;If we've got here something has gone wrong. Force a refresh.
-		StartEvent()
+		StartEvent(true)
 		;UnregisterForUpdate()
 		return
 	EndIf
@@ -96,7 +96,7 @@ Event OnUpdate()
 			;UnregisterForUpdate()
 			if (numberOfBountiesCurrently < numberOfBountiesNeeded)
 				;questProperty.SetCurrentStageID(20)
-				StartEvent()
+				StartEvent(true)
 			Else
 				questProperty.SetCurrentStageID(20)
 				QuestStage.SetValue(20)

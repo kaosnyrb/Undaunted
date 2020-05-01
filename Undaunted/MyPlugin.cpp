@@ -4,8 +4,8 @@
 
 namespace Undaunted {
 	
-	float hook_StartBounty(StaticFunctionTag* base) {		
-		BountyManager::getInstance()->StartBounty();
+	float hook_StartBounty(StaticFunctionTag* base, bool nearby) {
+		BountyManager::getInstance()->StartBounty(nearby);
 		return 2;
 	}
 
@@ -95,7 +95,7 @@ namespace Undaunted {
 		BountyManager::getInstance()->_registry = registry;
 		//General
 		registry->RegisterFunction(
-			new NativeFunction0 <StaticFunctionTag, float>("StartBounty", "Undaunted_SystemScript", Undaunted::hook_StartBounty, registry));
+			new NativeFunction1 <StaticFunctionTag, float,bool>("StartBounty", "Undaunted_SystemScript", Undaunted::hook_StartBounty, registry));
 		registry->RegisterFunction(
 			new NativeFunction0 <StaticFunctionTag, bool>("isBountyComplete", "Undaunted_SystemScript", Undaunted::hook_isBountyComplete, registry));
 		registry->RegisterFunction(
