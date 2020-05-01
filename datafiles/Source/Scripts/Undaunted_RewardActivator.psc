@@ -7,9 +7,9 @@ Quest Property questProperty  Auto
 GlobalVariable Property QuestStage  auto
 
 event onActivate(objectReference akActivator)
-    Debug.Notification("questProperty Stage: " + questProperty.GetCurrentStageID())
+    ;Debug.Notification("questProperty Stage: " + questProperty.GetCurrentStageID())
     if (QuestStage.GetValue() == 20)
-        SpawnRandomReward(RewardMarker)
+        SpawnRandomReward(RewardMarker,Game.GetPlayer().GetLevel())
         questProperty.SetCurrentStageID(30)
         QuestStage.SetValue(30)
     endif

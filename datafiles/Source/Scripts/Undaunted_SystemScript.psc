@@ -20,4 +20,4 @@ bool Function SetXMarker(objectReference markerref) global native
 
 float Function StartBounty(String WorldspaceName) global native
 
-Function SpawnRandomReward(objectReference markerref) global native
+Function SpawnRandomReward(objectReference markerref,int playerlevel) global native

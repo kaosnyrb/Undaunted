@@ -19,6 +19,7 @@ EndEvent
 
 int Function StartEvent()
 	if (!isSystemReady())
+		Debug.Notification("Undaunted initialising...")
 		int BadRegionList = JValue.readFromFile("Data/Undaunted/BadRegion.json")
 		int bri = JValue.count(BadRegionList)
 		while bri > 0
@@ -81,7 +82,7 @@ Event OnUpdate()
 		UnregisterForUpdate()
 		return
 	EndIf
-	Debug.Notification("questProperty Stage: " + QuestStage.GetValue())
+	;Debug.Notification("questProperty Stage: " + QuestStage.GetValue())
 	if (!isSystemReady())
 		;If we've got here something has gone wrong. Force a refresh.
 		StartEvent()

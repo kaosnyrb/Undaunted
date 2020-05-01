@@ -26,10 +26,6 @@ namespace Undaunted
 		bool found = false;
 		while (!found)
 		{
-			ModInfo* mod;
-			dataHandler->modList.loadedMods.GetNthItem(rand() % dataHandler->modList.loadedMods.count, mod);
-			_MESSAGE("Loading Reward from: %s ", mod->name);
-			const ModInfo* modInfo = dataHandler->LookupModByName(mod->name);
 			int type = rand() % 2;
 			TESObjectWEAP* weapon = NULL;
 			TESObjectARMO* armour = NULL;
@@ -37,11 +33,6 @@ namespace Undaunted
 			switch (type)
 			{
 			case 0:
-				if (dataHandler->weapons.count == 0)
-				{
-					_MESSAGE("No weapons found in: %s ", mod->name);
-					break;
-				}
 				dataHandler->weapons.GetNthItem(rand() % dataHandler->weapons.count, weapon);
 				if (!weapon->IsPlayable()) continue;
 				if (!weapon->Has3D()) continue;
@@ -50,11 +41,6 @@ namespace Undaunted
 				if (!IsWeaponLevelOk(weapon, playerlevel)) continue;
 				return weapon->formID;
 			case 1:
-				if (dataHandler->armors.count == 0)
-				{
-					_MESSAGE("No armors found in: %s ", mod->name);
-					break;
-				}		
 				dataHandler->armors.GetNthItem(rand() % dataHandler->armors.count, armour);
 				if(exclude.find(armour) != exclude.end())
 				if (armour->IsPlayable()) continue;
