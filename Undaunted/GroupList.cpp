@@ -28,6 +28,7 @@ namespace Undaunted
 			if ( id == this->data[i].objectRef->formID)
 			{
 				this->data[i].isComplete = true;
+				_MESSAGE("SetGroupMemberComplete: %08X ", id);
 				return;
 			}
 		}
@@ -35,7 +36,6 @@ namespace Undaunted
 
 	int GroupMember::IsComplete()
 	{
-		_MESSAGE("IsComplete");
 		const char* type = this->BountyType.Get();
 		if (strcmp(type, "Enemy") == 0)
 		{
@@ -47,7 +47,7 @@ namespace Undaunted
 				}
 			}
 		}
-		if (strcmp(type, "Scripted") == 0)
+		if (strcmp(type, "PhysicsScripted") == 0)
 		{
 			if (isComplete)
 			{

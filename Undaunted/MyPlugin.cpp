@@ -90,6 +90,12 @@ namespace Undaunted {
 		PlaceAtMe_Native(BountyManager::getInstance()->_registry, 1, taget, spawnForm, 1, false, false);
 	}
 
+	void hook_SetGroupMemberComplete(StaticFunctionTag* base, TESObjectREFR* taget)
+	{
+		BountyManager::getInstance()->bountygrouplist.SetGroupMemberComplete(taget->formID);
+	}
+
+
 	bool RegisterFuncs(VMClassRegistry* registry) {
 
 		BountyManager::getInstance()->_registry = registry;
@@ -122,6 +128,9 @@ namespace Undaunted {
 
 		registry->RegisterFunction(
 			new NativeFunction2 <StaticFunctionTag, UInt32, BSFixedString, UInt32>("GetModForm", "Undaunted_SystemScript", Undaunted::hook_GetModForm, registry));
+
+		registry->RegisterFunction(
+			new NativeFunction1 <StaticFunctionTag, void, TESObjectREFR*>("SetGroupMemberComplete", "Undaunted_SystemScript", Undaunted::hook_SetGroupMemberComplete, registry));
 
 		//Rewards
 		registry->RegisterFunction(

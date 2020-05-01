@@ -106,6 +106,11 @@ namespace Undaunted {
 	}
 
 	void BountyManager::ClearBountyData() {
+		for (int i = 0; i < bountygrouplist.length; i++)
+		{
+			//Clear all completed flags
+			bountygrouplist.data[i].isComplete = false;
+		}
 		bountywave = 0;
 		bountygrouplist = GroupList();
 
