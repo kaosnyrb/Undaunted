@@ -30,10 +30,6 @@ namespace Undaunted {
 				_MESSAGE("Distance to marker: %f", distvector.Magnitude());
 				if (distvector.Magnitude() < 5000)
 				{
-					for (int i = 0; i < bountygrouplist.length; i++)
-					{
-						_MESSAGE("Groupid : %08X ", bountygrouplist.data[i]);
-					}
 					bountygrouplist = SpawnGroupAtTarget(_registry, bountygrouplist, xmarkerref, bountyworldcell.cell, bountyworldcell.world);
 					_MESSAGE("Enemy Count : %08X ", bountygrouplist.length);
 					bountywave = 1;
@@ -52,49 +48,21 @@ namespace Undaunted {
 		if (bountygrouplist.length == 0)
 			return false;
 
-
-		bool alldead = true;
 		for (UInt32 i = 0; i < bountygrouplist.length; i++)
 		{
-			if (strcmp(bountygrouplist.data[i].BountyType.Get(), "Enemy") == 0)
+			if (bountygrouplist.data[i].IsComplete() != 1)
 			{
-				if (bountygrouplist.data[i].objectRef != NULL)
-				{
-					if (!bountygrouplist.data[i].objectRef->IsDead(1))
-					{
-						MoveRefToWorldCell(xmarkerref, bountyworldcell.cell, bountyworldcell.world, bountygrouplist.data[i].objectRef->pos, NiPoint3(0, 0, 0));
-						return false;
-					}
-				}
+				MoveRefToWorldCell(xmarkerref, bountyworldcell.cell, bountyworldcell.world, bountygrouplist.data[i].objectRef->pos, NiPoint3(0, 0, 0));
+				return false;
 			}
+					
 		}
-		//Play After Bounty Effects.
+		_MESSAGE("Starting PostBounty");
 		for (UInt32 i = 0; i < bountygrouplist.length; i++)
 		{
-			if (strcmp(bountygrouplist.data[i].BountyType.Get(), "EndEffect") == 0)
-			{
-				TESForm* spawnForm = LookupFormByID(bountygrouplist.data[i].FormId);
-				if (spawnForm == NULL)
-				{
-					_MESSAGE("Failed to Spawn. Form Invalid");
-				}
-				else
-				{
-					PlaceAtMe_Native(_registry, 1, xmarkerref, spawnForm, 1, false, false);
-				}
-			}
+			bountygrouplist.data[i].PostBounty();
 		}
-
-		//Clean up the Decorations.
-		for (UInt32 i = 0; i < bountygrouplist.length; i++)
-		{
-			if (strcmp(bountygrouplist.data[i].BountyType.Get(), "BountyDecoration") == 0)
-			{
-				MoveRefToWorldCell(bountygrouplist.data[i].objectRef, (*g_thePlayer)->parentCell, (*g_thePlayer)->currentWorldSpace,
-					NiPoint3(bountygrouplist.data[i].objectRef->pos.x, bountygrouplist.data[i].objectRef->pos.y, -20000), NiPoint3(0, 0, 0));
-				//bountygrouplist.data[i].objectRef->DecRef();
-			}
-		}
+		return true;
 	}
 
 	float BountyManager::StartBounty(bool nearby)
@@ -133,6 +101,8 @@ namespace Undaunted {
 		bountygrouplist = GetRandomGroup();
 		_MESSAGE("Setting Bounty Message: %s", bountygrouplist.questText);
 		bountymessageref->fullName.name = bountygrouplist.questText;
+
+		return 0;
 	}
 
 	void BountyManager::ClearBountyData() {

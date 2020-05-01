@@ -5,10 +5,15 @@ namespace Undaunted
 {
 #ifndef GroupListdef
 #define GroupListdef
-	struct GroupMember {
+	class GroupMember {
+	public:
 		UInt32 FormId;
 		BSFixedString BountyType;
 		TESObjectREFR* objectRef;
+		int IsComplete();
+		bool isComplete = false;
+		void PreBounty();
+		void PostBounty();
 	};
 
 	class GroupList {
@@ -17,6 +22,7 @@ namespace Undaunted
 		GroupMember* data;
 		int length;
 		GroupList* AddItem(GroupMember item);
+		void SetGroupMemberComplete(UInt32 id);
 	};
 
 #endif

@@ -120,22 +120,23 @@ namespace Undaunted
 				spawned = PlaceAtMe_Native(registry, 1, Target, spawnForm, 1, false, false);
 				Types.data[i].objectRef = spawned;
 			}
-			else
+			else if (strcmp(Types.data[i].BountyType.Get(), "BountyDecoration") == 0 || strcmp(Types.data[i].BountyType.Get(), "SpawnEffect"))
 			{
 				if (spawned != NULL)
 				{
 					//Actors jump to the navmesh. Objects don't. This tries to used the jump to find the ground.
 					TESObjectREFR* decoration = PlaceAtMe_Native(registry, 1, spawned, spawnForm, 1, false, false);
 					Types.data[i].objectRef = decoration;
+					Types.data[i].PreBounty();
 				}
 				else
 				{
 					TESObjectREFR* decoration = PlaceAtMe_Native(registry, 1, Target, spawnForm, 1, false, false);
 					Types.data[i].objectRef = decoration;
+					Types.data[i].PreBounty();
 				}
 			}
 		}
-		_MESSAGE("Target");
 		return Types;
 	}
 }
