@@ -43,7 +43,7 @@ Next it selects a random persistant reference and moves an XMarker to that locat
 
 Finally any of the enemies created are stored in memory in the plugin and checked every 20 seconds to see if they are dead. If they are the objective is marked as completed.
 
-As the mod is using the Region data from memory any mods which add these would also be accessable from this mod. Currently there is a property on the Pillar Activator which says which worldspace to spawn the bounty in.
+As the mod is using the Region data from memory any mods which add these would also be accessable from this mod. Currently the code checks what worldspace you are in when you start a bounty and spawns it there.
 
 ## What the mod can do
 
