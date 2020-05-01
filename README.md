@@ -51,7 +51,7 @@ As the mod is using the Region data from memory any mods which add these would a
 * Code for placing in Interior cells also exists, but currently isn't used to stop bandit raids of Belethor's General Goods.
 * Json Configuration for Enemy groups. Currently using default levelled lists but any mod that edits them should work with Undaunted.
 * Quest tracking for dynamically placed enemies with dynamic objective text.
-* Very mod compatible, currently only adds 2 items to the world.
+* Very mod compatible, currently only adds 4 items to the world. (2 markers, 2 activators)
 * Support for Mod created enemies that aren't placed into the default leveled lists via a Mod name + base form lookup.
 * Currently supports 4 Spawn types: Enemy, BountyDecoration, SpawnEffect, EndEffect
 * Rewards bounties with a random piece of Armour or Weapon from any loaded mod. Checks gameplay values against current level to balance this so level 10 players will get up to level 10 gear etc
