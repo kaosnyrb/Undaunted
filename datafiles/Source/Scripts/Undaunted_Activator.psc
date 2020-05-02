@@ -7,6 +7,7 @@ objectReference Property markerref Auto
 {This will cause the bounties from this pillar to spawn in the named worldspace.It matches the values in the world section of the CK.}
 Message Property QuestTextMessage  Auto  
 GlobalVariable Property QuestStage  auto
+Spell Property startBountySpell Auto
 
 int numberOfBountiesNeeded = 2
 int numberOfBountiesCurrently = 0
@@ -69,8 +70,15 @@ int Function StartEvent(bool nearby)
 	RegisterForUpdate(5.0)
 endFunction
 
+int Function ClearBountyStatus()
+	numberOfBountiesCurrently = 0;
+endFunction
 
 event onActivate(objectReference akActivator)
+	if (Game.GetPlayer().AddSpell(startBountySpell))
+		Debug.Trace("Sheep spell added to the player")
+	  endIf
+
 	if (QuestStage.GetValue() != 20)
 		StartEvent(false)
 		numberOfBountiesCurrently = 0;
