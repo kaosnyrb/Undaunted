@@ -49,11 +49,12 @@ As the mod is using the Region data from memory any mods which add these would a
 
 * Dynamically place forms in any Cell in any Worldspace. Skyrim's main world has roughly 18,000 different places this mod can spawn.
 * Code for placing in Interior cells also exists, but currently isn't used to stop bandit raids of Belethor's General Goods.
-* Json Configuration for Enemy groups. Currently using default levelled lists but any mod that edits them should work with Undaunted.
+* Json Configuration for bounty groups. References via mod name and base formid meaning any mod is supported.
 * Quest tracking for dynamically placed enemies with dynamic objective text.
 * Very mod compatible, currently only adds 4 items to the world. (2 markers, 2 activators)
 * Support for Mod created enemies that aren't placed into the default leveled lists via a Mod name + base form lookup.
-* Currently supports 4 Spawn types: Enemy, BountyDecoration, SpawnEffect, EndEffect
+* Currently supports 6 Spawn types: Enemy, BountyDecoration, SpawnEffect, EndEffect,PhysicsScripted,Scripted
+* Script based objectives allowing custom objectives.
 * Rewards bounties with a random piece of Armour or Weapon from any loaded mod. Checks gameplay values against current level to balance this so level 10 players will get up to level 10 gear etc
 
 ## Known issues/WIP
