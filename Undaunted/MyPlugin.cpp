@@ -57,10 +57,11 @@ namespace Undaunted {
 		return AddGroup(questText.Get());
 	}
 
-	void hook_AddMembertoGroup(StaticFunctionTag* base, UInt32 groupid, UInt32 member, BSFixedString BountyType) {
+	void hook_AddMembertoGroup(StaticFunctionTag* base, UInt32 groupid, UInt32 member, BSFixedString BountyType, BSFixedString ModelFilepath) {
 		GroupMember newMember = GroupMember();
 		newMember.FormId = member;
 		newMember.BountyType = BountyType;
+		newMember.ModelFilepath = ModelFilepath;
 		AddMembertoGroup(groupid, newMember);
 	}
 
@@ -124,7 +125,7 @@ namespace Undaunted {
 			new NativeFunction1 <StaticFunctionTag, UInt32, BSFixedString>("AddGroup", "Undaunted_SystemScript", Undaunted::hook_AddGroup, registry));
 
 		registry->RegisterFunction(
-			new NativeFunction3 <StaticFunctionTag, void,UInt32,UInt32, BSFixedString>("AddMembertoGroup", "Undaunted_SystemScript", Undaunted::hook_AddMembertoGroup, registry));
+			new NativeFunction4 <StaticFunctionTag, void,UInt32,UInt32, BSFixedString, BSFixedString>("AddMembertoGroup", "Undaunted_SystemScript", Undaunted::hook_AddMembertoGroup, registry));
 
 		registry->RegisterFunction(
 			new NativeFunction2 <StaticFunctionTag, UInt32, BSFixedString, UInt32>("GetModForm", "Undaunted_SystemScript", Undaunted::hook_GetModForm, registry));

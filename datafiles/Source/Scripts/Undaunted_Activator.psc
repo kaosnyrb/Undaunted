@@ -52,8 +52,9 @@ int Function StartEvent(bool nearby)
 					string sourcemod = JArray.getStr(obj,1)
 					int formid = JArray.getInt(obj,2)
 					string bountyType = JArray.getStr(obj,3)
+					string ModelFilepath = JArray.getStr(obj,4)
 					int modform = GetModForm(sourcemod, formid)
-					AddMembertoGroup(group,modform,bountyType)
+					AddMembertoGroup(group,modform,bountyType,ModelFilepath)
 					j += 1
 				endWhile
 			endWhile

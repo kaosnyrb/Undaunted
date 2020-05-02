@@ -10,6 +10,9 @@ namespace Undaunted
 		UInt32 FormId;
 		BSFixedString BountyType;
 		TESObjectREFR* objectRef;
+
+		BSFixedString ModelFilepath;
+
 		int IsComplete();
 		bool isComplete = false;
 		void PreBounty();

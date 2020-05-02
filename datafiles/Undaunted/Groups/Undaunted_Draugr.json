@@ -38,11 +38,11 @@
         ["Attune to the Summoning Crystals"],
         ["LCharDraugrBoss","Skyrim.esm",271488,"Enemy"],
         ["LCharDraugrMeleeAllFemale","Skyrim.esm",784312,"Enemy"],
-        ["1_Undaunted_DLC01IdealMasterCrystal","Undaunted.esp",80944,"Scripted"],
+        ["1_Undaunted_DestructObjectiveMagic_01","Undaunted.esp",80944,"Scripted","dlc01/clutter/dlc01idealmastercrystal.nif"],
         ["LCharDraugrMeleeAllFemale","Skyrim.esm",784312,"Enemy"],
-        ["1_Undaunted_DLC01IdealMasterCrystal","Undaunted.esp",80944,"Scripted"],
+        ["1_Undaunted_DestructObjectiveMagic_01","Undaunted.esp",80944,"Scripted","dlc01/clutter/dlc01idealmastercrystal.nif"],
         ["LCharDraugrMeleeAllFemale","Skyrim.esm",784312,"Enemy"],
-        ["1_Undaunted_DLC01IdealMasterCrystal","Undaunted.esp",80944,"Scripted"],
+        ["1_Undaunted_DestructObjectiveMagic_01","Undaunted.esp",80944,"Scripted","dlc01/clutter/dlc01idealmastercrystal.nif"],
         ["LCharDraugrWarlock","Skyrim.esm",124843,"Enemy"],
         ["LCharDraugrWarlock","Skyrim.esm",124843,"Enemy"],
         ["NordBattleCryAreaEffect01","Skyrim.esm",1092425,"SpawnEffect"]
@@ -50,10 +50,10 @@
     [
         ["Destroy the Draugr Phylacteries"],
         ["LCharDraugrBoss","Skyrim.esm",271488,"Enemy"],
-        ["1_Undaunted_DestructObjectiveUrn","Undaunted.esp",80946,"Scripted"],
+        ["1_Undaunted_DestructObjectiveMagic_01","Undaunted.esp",80946,"Scripted","Clutter/Ruins/RuinsLargeUrnNoStand01.nif"],
         ["LCharDraugrMeleeAllFemale","Skyrim.esm",784312,"Enemy"],
         ["LCharDraugrMeleeAllMale","Skyrim.esm",350549,"Enemy"],
         ["LCharDraugrMeleeAllFemale","Skyrim.esm",784312,"Enemy"],
-        ["1_Undaunted_DestructObjectiveUrn","Undaunted.esp",80946,"Scripted"]
+        ["1_Undaunted_DestructObjectiveMagic_01","Undaunted.esp",80946,"Scripted","Clutter/Ruins/RuinsLargeUrnNoStand01.nif"]
     ]
 ]

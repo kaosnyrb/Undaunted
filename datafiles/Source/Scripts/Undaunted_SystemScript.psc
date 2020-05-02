@@ -8,7 +8,7 @@ bool Function AddBadRegion(int regionid) global native
 
 int Function AddGroup(String questtext) global native
 
-Function AddMembertoGroup(int groupid, int memberformid, string bountyType) global native
+Function AddMembertoGroup(int groupid, int memberformid, string bountyType, string modelFilepath) global native
 
 bool Function isBountyComplete() global native
 

@@ -18,6 +18,15 @@ namespace Undaunted
 				_MESSAGE("Failed to Spawn. Form Invalid");
 				return Types;
 			}
+			if (!strcmp(Types.data[i].ModelFilepath.Get(), "") == 0)
+			{
+				TESModel* pWorldModel = DYNAMIC_CAST(spawnForm, TESForm, TESModel);
+				if (pWorldModel)
+				{
+					_MESSAGE("GetModelName: %s", pWorldModel->GetModelName());
+					pWorldModel->SetModelName(Types.data[i].ModelFilepath.Get());
+				}
+			}
 			if (strcmp(Types.data[i].BountyType.Get(), "Enemy") == 0)
 			{
 				//Random Offset
@@ -27,11 +36,13 @@ namespace Undaunted
 				Types.data[i].objectRef = spawned;
 			}
 			else if (strcmp(Types.data[i].BountyType.Get(), "BountyDecoration") == 0 || 
-				strcmp(Types.data[i].BountyType.Get(), "SpawnEffect") ||
-				strcmp(Types.data[i].BountyType.Get(), "Scripted"))
+				strcmp(Types.data[i].BountyType.Get(), "SpawnEffect") == 0 ||
+				strcmp(Types.data[i].BountyType.Get(), "Scripted") == 0)
 			{
 				if (spawned != NULL)
 				{
+					//If a model file path is set then change the form model.
+
 					//Actors jump to the navmesh. Objects don't. This tries to used the jump to find the ground.
 					TESObjectREFR* decoration = PlaceAtMe_Native(registry, 1, spawned, spawnForm, 1, false, false);
 					Types.data[i].objectRef = decoration;
@@ -44,7 +55,7 @@ namespace Undaunted
 					Types.data[i].PreBounty();
 				}
 			}
-			else if (strcmp(Types.data[i].BountyType.Get(), "PhysicsScripted"))
+			else if (strcmp(Types.data[i].BountyType.Get(), "PhysicsScripted") == 0)
 			{
 				//We don't want these falling through the floor, so we put them in the air.
 				TESObjectREFR* PhysicsScripted = PlaceAtMe_Native(registry, 1, spawned, spawnForm, 1, false, false);
