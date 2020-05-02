@@ -2,6 +2,7 @@
 #include <skse64\NiTypes.h>
 #include <Undaunted\SpawnUtils.h>
 #include <Undaunted\LocationUtils.h>
+#include <time.h>
 
 namespace Undaunted {
 	BountyManager* BountyManager::instance = 0;
@@ -28,7 +29,7 @@ namespace Undaunted {
 				NiPoint3 distance = (*g_thePlayer)->pos - xmarkerref->pos;
 				Vector3 distvector = Vector3(distance.x, distance.y, distance.z);
 				_MESSAGE("Distance to marker: %f", distvector.Magnitude());
-				if (distvector.Magnitude() < 5000)
+				if (distvector.Magnitude() < 6000)
 				{
 					bountygrouplist = SpawnGroupAtTarget(_registry, bountygrouplist, xmarkerref, bountyworldcell.cell, bountyworldcell.world);
 					_MESSAGE("Enemy Count : %08X ", bountygrouplist.length);
@@ -67,6 +68,7 @@ namespace Undaunted {
 
 	float BountyManager::StartBounty(bool nearby)
 	{
+		srand(time(NULL));
 		if (xmarkerref == NULL)
 		{
 			_MESSAGE("NO XMARKER SET");
@@ -84,18 +86,40 @@ namespace Undaunted {
 		}
 		//Cleanup previous bounties
 		ClearBountyData();
-		_MESSAGE("nearby: " + nearby);
+
+		TESObjectREFR* target = NULL;
 		if (!nearby )
 		{	
 			bountyworldcell = GetNamedWorldCell((*g_thePlayer)->currentWorldSpace->editorId.Get());
+			target = GetRandomObjectInCell(bountyworldcell.cell);
 		}
 		else
 		{
-			bountyworldcell.cell = (*g_thePlayer)->parentCell;
-			bountyworldcell.world = (*g_thePlayer)->currentWorldSpace;
+			int loopcounts = 0;
+			bool foundtarget = false;
+			while (!foundtarget)
+			{
+				bountyworldcell = GetNamedWorldCell((*g_thePlayer)->currentWorldSpace->editorId.Get());
+				target = GetRandomObjectInCell(bountyworldcell.cell);
+				NiPoint3 distance = (*g_thePlayer)->pos - target->pos;
+				Vector3 distvector = Vector3(distance.x, distance.y, distance.z);
+				_MESSAGE("Distance to Bounty: %f", distvector.Magnitude());
+				if (distvector.Magnitude() > 5000 && distvector.Magnitude() < 20000)
+				{
+					foundtarget = true;
+				}
+				loopcounts++;
+				if (loopcounts > 150)
+				{
+					//Can't find anything. Give up and use this cell.
+					bountyworldcell.cell = (*g_thePlayer)->parentCell;
+					bountyworldcell.world = (*g_thePlayer)->currentWorldSpace;
+					target = GetRandomObjectInCell(bountyworldcell.cell);
+					foundtarget = true;
+				}
+			}
 		}
 		_MESSAGE("target is set. Moving marker: WorldSpace: %s Cell: %08X ", bountyworldcell.world->editorId.Get(), bountyworldcell.cell->formID);
-		TESObjectREFR* target = GetRandomObjectInCell(bountyworldcell.cell);
 		MoveRefToWorldCell(xmarkerref, bountyworldcell.cell, bountyworldcell.world, target->pos, NiPoint3(0, 0, 0));
 
 		bountygrouplist = GetRandomGroup();
