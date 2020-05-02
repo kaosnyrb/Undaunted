@@ -9,6 +9,8 @@ Message Property QuestTextMessage  Auto
 GlobalVariable Property QuestStage  auto
 Spell Property startBountySpell Auto
 
+Key Property keyform Auto
+
 int numberOfBountiesNeeded = 2
 int numberOfBountiesCurrently = 0
 
@@ -107,6 +109,7 @@ Event OnUpdate()
 				;questProperty.SetCurrentStageID(20)
 				StartEvent(true)
 			Else
+				Game.GetPlayer().AddItem(keyform, 1, false)
 				questProperty.SetCurrentStageID(20)
 				QuestStage.SetValue(20)
 				UnregisterForUpdate()
