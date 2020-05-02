@@ -22,16 +22,28 @@ EndEvent
 int Function StartEvent(bool nearby)
 	if (!isSystemReady())
 		Debug.Notification("Undaunted initialising...")
+		;Load the bad regions
 		int BadRegionList = JValue.readFromFile("Data/Undaunted/BadRegion.json")
 		int bri = JValue.count(BadRegionList)
 		while bri > 0
 		bri -= 1		
 			AddBadRegion(JArray.getInt(BadRegionList,bri))
 		endwhile
-		
+		;Pass the refs the plugin will edit
 		SetXMarker(markerref)
 		SetBountyMessageRef(QuestTextMessage)
-
+		;Load the Settings file
+		int SettingsList = JValue.readFromFile("Data/Undaunted/Settings.json")
+		int setcount = JArray.count(SettingsList)
+		int setiter = 0
+		while(setiter < setcount)
+			int settingdata = JArray.getObj(SettingsList, setiter)
+			string settingkey = JArray.getStr(settingdata,0)
+			string settingvalue = JArray.getStr(settingdata,1)
+			SetConfigValue(settingkey,settingvalue)
+			setiter+=1
+		endwhile
+		;Load the Groups
 		int GroupFiles = JValue.readFromDirectory("Data/Undaunted/Groups/")
 		int filecount = JMap.count(GroupFiles)
 		;Debug.Notification("File Count: " + filecount)
@@ -62,10 +74,9 @@ int Function StartEvent(bool nearby)
 				endWhile
 			endWhile
 		endWhile
-
+		numberOfBountiesNeeded = GetConfigValueInt("NumberOfBountiesPerChain")
 		InitSystem()
 	EndIf
-
 	StartBounty(nearby)
 	questProperty.SetCurrentStageID(10)
 	QuestStage.SetValue(10)
@@ -77,14 +88,9 @@ int Function ClearBountyStatus()
 endFunction
 
 event onActivate(objectReference akActivator)
-	if (Game.GetPlayer().AddSpell(startBountySpell))
-		Debug.Trace("Sheep spell added to the player")
-	  endIf
-
-	if (QuestStage.GetValue() != 20)
-		StartEvent(false)
-		numberOfBountiesCurrently = 0;
-	EndIf
+	Game.GetPlayer().AddSpell(startBountySpell)
+	ClearBountyStatus()
+	StartEvent(false)
 endEvent
 
 Event OnUpdate()

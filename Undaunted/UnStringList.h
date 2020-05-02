@@ -8,7 +8,8 @@ namespace Undaunted
 #define UnStringListdef
 	class UnString {
 	public:
-		const char* data;
+		const char* key;
+		const char* value;
 	};
 
 	class UnStringList {

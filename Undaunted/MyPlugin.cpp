@@ -96,6 +96,15 @@ namespace Undaunted {
 		BountyManager::getInstance()->bountygrouplist.SetGroupMemberComplete(taget->formID);
 	}
 
+	void hook_SetConfigValue(StaticFunctionTag* base, BSFixedString key, BSFixedString value)
+	{
+		SetConfigValue(key.Get(), value.Get());
+	}
+
+	UInt32 hook_GetConfigValueInt(StaticFunctionTag* base, BSFixedString key)
+	{
+		return GetConfigValueInt(key.Get());
+	}
 
 	bool RegisterFuncs(VMClassRegistry* registry) {
 
@@ -115,6 +124,14 @@ namespace Undaunted {
 
 		registry->RegisterFunction(
 			new NativeFunction0 <StaticFunctionTag, bool>("InitSystem", "Undaunted_SystemScript", Undaunted::hook_InitSystem, registry));
+
+		//Config
+
+		registry->RegisterFunction(
+			new NativeFunction2 <StaticFunctionTag, void, BSFixedString, BSFixedString>("SetConfigValue", "Undaunted_SystemScript", Undaunted::hook_SetConfigValue, registry));
+		
+		registry->RegisterFunction(
+			new NativeFunction1 <StaticFunctionTag, UInt32, BSFixedString>("GetConfigValueInt", "Undaunted_SystemScript", Undaunted::hook_GetConfigValueInt, registry));
 
 		//Regions
 		registry->RegisterFunction(

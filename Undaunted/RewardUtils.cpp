@@ -1,6 +1,7 @@
 #include "RewardUtils.h"
 #include <time.h>
 #include <set>
+#include <Undaunted\ConfigUtils.h>
 
 namespace Undaunted
 {
@@ -62,15 +63,15 @@ namespace Undaunted
 	{
 		UInt16 attackDamage = weapon->damage.attackDamage * 100;
 		UInt32 Moneyvalue = weapon->value.value;
-		int targetMaxLevel = 40;
-		float levelcoeffient = playerlevel;
-		float minDamage = 400;
-		float maxDamage = 2800;
+		int targetMaxLevel = GetConfigValueInt("RewardTargetMaxLevel");
+		float levelcoeffient = playerlevel + GetConfigValueInt("RewardPlayerLevelBoost");
+		float minDamage = GetConfigValueInt("RewardWeaponMinDamage");
+		float maxDamage = GetConfigValueInt("RewardWeaponMaxDamage");
 		float partcoeffient = (maxDamage - minDamage) / targetMaxLevel;
 		_MESSAGE("levelcoeffient: %f , partcoeffient: %f", levelcoeffient, partcoeffient);
 
-		int minValueForPart = 1;
-		int maxValueForPart = 2563;
+		int minValueForPart = GetConfigValueInt("RewardWeaponMinValue");
+		int maxValueForPart = GetConfigValueInt("RewardWeaponMaxValue");
 		float valuecoeffient = (maxValueForPart - minValueForPart) / targetMaxLevel;
 		//_MESSAGE("levelcoeffient: %f , partcoeffient: %f", levelcoeffient, partcoeffient);
 		for (int i = 0; i < weapon->keyword.numKeywords; i++)
@@ -99,7 +100,7 @@ namespace Undaunted
 		UInt32 Moneyvalue = armour->value.value;
 		UInt32 mask = armour->bipedObject.data.parts;
 		UInt32 weightClass = armour->bipedObject.data.weightClass;
-		int targetMaxLevel = 40;
+		int targetMaxLevel = GetConfigValueInt("RewardTargetMaxLevel");
 		float levelcoeffient = playerlevel;
 //		_MESSAGE("Level %08X, weightClass: %08X, Value: %i, mask: %08X,  Moneyvalue: %08X", playerlevel, weightClass, Armourvalue, mask, Moneyvalue);
 		int minArmourForPart = 0;

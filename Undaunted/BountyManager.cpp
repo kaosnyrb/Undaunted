@@ -29,7 +29,8 @@ namespace Undaunted {
 				NiPoint3 distance = (*g_thePlayer)->pos - xmarkerref->pos;
 				Vector3 distvector = Vector3(distance.x, distance.y, distance.z);
 				_MESSAGE("Distance to marker: %f", distvector.Magnitude());
-				if (distvector.Magnitude() < 6000)
+				
+				if (distvector.Magnitude() < GetConfigValueInt("BountyStartDistance"))
 				{
 					bountygrouplist = SpawnGroupAtTarget(_registry, bountygrouplist, xmarkerref, bountyworldcell.cell, bountyworldcell.world);
 					_MESSAGE("Enemy Count : %08X ", bountygrouplist.length);
@@ -96,6 +97,10 @@ namespace Undaunted {
 		else
 		{
 			int loopcounts = 0;
+			int BountyMinSpawnDistance = GetConfigValueInt("BountyMinSpawnDistance");
+			int BountyMaxSpawnDistance = GetConfigValueInt("BountyMaxSpawnDistance");
+			int BountySearchAttempts = GetConfigValueInt("BountySearchAttempts");
+
 			bool foundtarget = false;
 			while (!foundtarget)
 			{
@@ -104,12 +109,12 @@ namespace Undaunted {
 				NiPoint3 distance = (*g_thePlayer)->pos - target->pos;
 				Vector3 distvector = Vector3(distance.x, distance.y, distance.z);
 				_MESSAGE("Distance to Bounty: %f", distvector.Magnitude());
-				if (distvector.Magnitude() > 5000 && distvector.Magnitude() < 20000)
+				if (distvector.Magnitude() > BountyMinSpawnDistance && distvector.Magnitude() < BountyMaxSpawnDistance)
 				{
 					foundtarget = true;
 				}
 				loopcounts++;
-				if (loopcounts > 150)
+				if (loopcounts > BountySearchAttempts)
 				{
 					//Can't find anything. Give up and use this cell.
 					bountyworldcell.cell = (*g_thePlayer)->parentCell;
