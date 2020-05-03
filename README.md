@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./docs/logo.jpg" alt="Size Limit CLI" width="720">
+  <img src="./docs/banner.jpg" alt="Size Limit CLI" width="720">
 </p>
 
 # Undaunted
