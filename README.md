@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./docs/banner.jpg" alt="Size Limit CLI" width="720">
+  <img src="./docs/logo.jpg" alt="Size Limit CLI" width="720">
 </p>
 
 # Undaunted
@@ -15,22 +15,24 @@ https://youtu.be/3igoZVReoZE
 ## How to play
 
 1. Visit the Undaunted Camp northwest of Windhelm.
-2. Use the Pillar to start a bounty.
-3. A Quest will start called Undaunted.
-3. Somewhere in the Skyrim Overworld a quest marker will appear pointing to where the bounty starts
-4. Go to the marker, once you are in range the event will begin. (It doesn't matter who gets the killing blow on enemies, just that they die.)
-5. Return to the Undaunted camp to claim your reward from the reward plinth
-6. Pickup another bounty and return to step 3.
+2. Use the Pillar to get the Start Undaunted Bounty.
+3. Anywhere you want use the Start Undaunted Bounty power
+4. A Quest will start called Undaunted.
+5. Somewhere nearby a quest marker will appear pointing to where the bounty starts
+6. Go to the marker, once you are in range the event will begin.
+7. Complete the event and another event will appear nearby.
+8. Complete 3 events to be rewarded an Undaunted Key.
+9. Start another event chain or return to the Undaunted Camp and trade your Keys for scaled weapons and armour from any loaded mod.
 
 ## Spawning Groups
 
 * Simple Oblivion Gate
-* 5 different groups of bandits
-* 2 vampire encounters
-* 4 Draugr encounters
+* 8 different bandit encounters 
+* 3 vampire encounters
+* 6 Draugr encounters
 * 3 Falmer encounters
 * 1 Forsworn encounter
-* 4 Undead encounters 
+* 3 Undead encounters 
 
 ## How it works
 
@@ -51,10 +53,10 @@ As the mod is using the Region data from memory any mods which add these would a
 * Code for placing in Interior cells also exists, but currently isn't used to stop bandit raids of Belethor's General Goods.
 * Json Configuration for bounty groups. References via mod name and base formid meaning any mod is supported.
 * Quest tracking for dynamically placed enemies with dynamic objective text.
+* Script based objectives allowing custom objectives.
 * Very mod compatible, currently only adds 4 items to the world. (2 markers, 2 activators)
 * Support for Mod created enemies that aren't placed into the default leveled lists via a Mod name + base form lookup.
-* Currently supports 6 Spawn types: Enemy, BountyDecoration, SpawnEffect, EndEffect,PhysicsScripted,Scripted
-* Script based objectives allowing custom objectives.
+* Currently supports 7 Spawn types: Enemy, BountyDecoration, SpawnEffect, EndEffect,PhysicsScripted,Scripted and Ally
 * Rewards bounties with a random piece of Armour or Weapon from any loaded mod. Checks gameplay values against current level to balance this so level 10 players will get up to level 10 gear etc
 
 ## Known issues/WIP
