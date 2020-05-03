@@ -53,7 +53,9 @@ namespace Undaunted
 				dataHandler->weapons.GetNthItem(rand() % dataHandler->weapons.count, weapon);
 				if (!weapon->IsPlayable()) continue;
 				if (!weapon->Has3D()) continue;
+				if (weapon->value.value == 0) continue;
 				if (weapon->templateForm) continue;
+				if (!IsWeaponLevelOk(weapon, playerlevel)) continue;
 				return weapon->formID;
 			}
 		}
@@ -75,8 +77,8 @@ namespace Undaunted
 		float valuecoeffient = (maxValueForPart - minValueForPart) / targetMaxLevel;
 		//_MESSAGE("levelcoeffient: %f , partcoeffient: %f", levelcoeffient, partcoeffient);
 		for (int i = 0; i < weapon->keyword.numKeywords; i++)
-		{
-			if (_stricmp(weapon->keyword.keywords[i]->keyword.data, "DaedricArtifact") == 0)return false;
+		{			
+			if (_stricmp(weapon->keyword.keywords[i]->keyword.data, "DaedricArtifact") == 0 && GetConfigValueInt("RewardAllowDaedricArtifacts") == 1)return false;
 			if (_stricmp(weapon->keyword.keywords[i]->keyword.data, "WeapTypeStaff") == 0)return false;//Staffs have low attack damage, but we don't want to spawn them to early.
 		}
 			
@@ -112,28 +114,28 @@ namespace Undaunted
 		{
 			if ((mask & armour->bipedObject.kPart_Body) != 0)
 			{
-				minArmourForPart = 2000;//Hide
-				maxArmourForPart = 4100;//Dragonscale 
+				minArmourForPart = GetConfigValueInt("Reward_Armour_Light_Chest_Value_Min");//Hide
+				maxArmourForPart = GetConfigValueInt("Reward_Armour_Light_Chest_Value_Max");;//Dragonscale 
 			}
 			if ((mask & armour->bipedObject.kPart_Feet) != 0)
 			{
-				minArmourForPart = 500;
-				maxArmourForPart = 1200;
+				minArmourForPart = GetConfigValueInt("Reward_Armour_Light_Boot_Value_Min");
+				maxArmourForPart = GetConfigValueInt("Reward_Armour_Light_Boot_Value_Max");
 			}
 			if ((mask & armour->bipedObject.kPart_Hands) != 0)
 			{
-				minArmourForPart = 500;
-				maxArmourForPart = 1200;
+				minArmourForPart = GetConfigValueInt("Reward_Armour_Light_Hand_Value_Min");
+				maxArmourForPart = GetConfigValueInt("Reward_Armour_Light_Hand_Value_Max");
 			}
 			if ((mask & armour->bipedObject.kPart_Head) != 0)
 			{
-				minArmourForPart = 1000;
-				maxArmourForPart = 1700;
+				minArmourForPart = GetConfigValueInt("Reward_Armour_Light_Head_Value_Min");
+				maxArmourForPart = GetConfigValueInt("Reward_Armour_Light_Head_Value_Max");
 			}
 			if ((mask & armour->bipedObject.kPart_Shield) != 0)
 			{
-				minArmourForPart = 1500;
-				maxArmourForPart = 2900;
+				minArmourForPart = GetConfigValueInt("Reward_Armour_Light_Shield_Value_Min");
+				maxArmourForPart = GetConfigValueInt("Reward_Armour_Light_Shield_Value_Max");
 			}
 			float partcoeffient = (maxArmourForPart - minArmourForPart) / targetMaxLevel;
 //			_MESSAGE("levelcoeffient: %f , partcoeffient: %f", levelcoeffient, partcoeffient);
@@ -147,28 +149,28 @@ namespace Undaunted
 		{
 			if ((mask & armour->bipedObject.kPart_Body) != 0)
 			{
-				minArmourForPart = 2500;//Iron
-				maxArmourForPart = 4900;//Daedric 
+				minArmourForPart = GetConfigValueInt("Reward_Armour_Heavy_Chest_Value_Min");//Iron
+				maxArmourForPart = GetConfigValueInt("Reward_Armour_Heavy_Chest_Value_Max");//Daedric 
 			}
 			if ((mask & armour->bipedObject.kPart_Feet) != 0)
 			{
-				minArmourForPart = 1000;
-				maxArmourForPart = 1800;
+				minArmourForPart = GetConfigValueInt("Reward_Armour_Heavy_Boot_Value_Min");
+				maxArmourForPart = GetConfigValueInt("Reward_Armour_Heavy_Boot_Value_Max");
 			}
 			if ((mask & armour->bipedObject.kPart_Hands) != 0)
 			{
-				minArmourForPart = 1000;
-				maxArmourForPart = 1800;
+				minArmourForPart = GetConfigValueInt("Reward_Armour_Heavy_Hand_Value_Min");
+				maxArmourForPart = GetConfigValueInt("Reward_Armour_Heavy_Hand_Value_Max");
 			}
 			if ((mask & armour->bipedObject.kPart_Head) != 0)
 			{
-				minArmourForPart = 1500;
-				maxArmourForPart = 2300;
+				minArmourForPart = GetConfigValueInt("Reward_Armour_Heavy_Head_Value_Min");
+				maxArmourForPart = GetConfigValueInt("Reward_Armour_Heavy_Head_Value_Max");
 			}
 			if ((mask & armour->bipedObject.kPart_Shield) != 0)
 			{
-				minArmourForPart = 2000;
-				maxArmourForPart = 3600;
+				minArmourForPart = GetConfigValueInt("Reward_Armour_Heavy_Shield_Value_Min");
+				maxArmourForPart = GetConfigValueInt("Reward_Armour_Heavy_Shield_Value_Max");
 			}
 			float partcoeffient = (maxArmourForPart - minArmourForPart) / targetMaxLevel;
 //			_MESSAGE("levelcoeffient: %f , partcoeffient: %f", levelcoeffient, partcoeffient);
@@ -180,37 +182,37 @@ namespace Undaunted
 		//Clothes
 		int minValueForPart = 1;
 		int maxValueForPart = 2563;
-		if (weightClass == 00000002)
+		if (weightClass == 00000002 && GetConfigValueInt("RewardAllowClothes") == 1 )
 		{
 			if ((mask & armour->bipedObject.kPart_Body) != 0)
 			{
-				minValueForPart = 1;
-				maxValueForPart = 2563;
+				minValueForPart = GetConfigValueInt("Reward_Armour_Clothes_Chest_Value_Min");
+				maxValueForPart = GetConfigValueInt("Reward_Armour_Clothes_Chest_Value_Max");
 			}
 			if ((mask & armour->bipedObject.kPart_Feet) != 0)
 			{
-				minValueForPart = 1;
-				maxValueForPart = 250; 
+				minValueForPart = GetConfigValueInt("Reward_Armour_Clothes_Boot_Value_Min");
+				maxValueForPart = GetConfigValueInt("Reward_Armour_Clothes_Boot_Value_Max");
 			}
 			if ((mask & armour->bipedObject.kPart_Hands) != 0)
 			{
-				minValueForPart = 1;
-				maxValueForPart = 170;
+				minValueForPart = GetConfigValueInt("Reward_Armour_Clothes_Hand_Value_Min");
+				maxValueForPart = GetConfigValueInt("Reward_Armour_Clothes_Hand_Value_Max");
 			}
 			if ((mask & armour->bipedObject.kPart_Head) != 0)
 			{
-				minValueForPart = 50;
-				maxValueForPart = 505;
+				minValueForPart = GetConfigValueInt("Reward_Armour_Clothes_Head_Value_Min");
+				maxValueForPart = GetConfigValueInt("Reward_Armour_Clothes_Head_Value_Max");
 			}
 			if ((mask & armour->bipedObject.kPart_Ring) != 0)
 			{
-				minValueForPart = 5;
-				maxValueForPart = 3500;
+				minValueForPart = GetConfigValueInt("Reward_Armour_Clothes_Ring_Value_Min");
+				maxValueForPart = GetConfigValueInt("Reward_Armour_Clothes_Ring_Value_Max");
 			}
 			if ((mask & armour->bipedObject.kPart_Circlet) != 0)
 			{
-				minValueForPart = 50;
-				maxValueForPart = 500;
+				minValueForPart = GetConfigValueInt("Reward_Armour_Clothes_Circlet_Value_Min");
+				maxValueForPart = GetConfigValueInt("Reward_Armour_Clothes_Circlet_Value_Max");
 			}
 			float partcoeffient = (maxValueForPart - minValueForPart) / targetMaxLevel;
 //			_MESSAGE("levelcoeffient: %f , partcoeffient: %f", levelcoeffient, partcoeffient);

@@ -1,0 +1,54 @@
+[
+    ["NumberOfBountiesPerChain","3", "How many bounties are spawned before a key is rewarded"],
+    ["BountyStartDistance","6000", "The maximum distance between the player and the bounty before it starts"],
+    ["BountyMinSpawnDistance","6000","The minimum distance at which a bounty will be allowed to be place at"],
+    ["BountyMaxSpawnDistance","20000", "The maximum distance at which a bounty will be allowed to be place at"],
+    ["BountySearchAttempts","150","How many items it will search for a spawn point in the set distance before giving up"],
+
+    ["RewardTargetMaxLevel","40", "The target endgame level, at which deadric gear will be rewarded"],
+    ["RewardPlayerLevelBoost","2", "Increases the level of the player in the calculations to give better rewards"],
+
+    ["RewardWeaponMinDamage","400", "The lowest damage weapon (for player level 1) multipled by 100"],
+    ["RewardWeaponMaxDamage","2800", "The highest damage weapon (for player at max level) multipled by 100"],
+    ["RewardWeaponMinValue","1", "The lowest gold value (for player level 1)"],
+    ["RewardWeaponMaxValue","2563","The highest gold value (for player at max level)"],
+
+    ["RewardAllowClothes","0","Whether to spawn clothing in the reward pool"],
+    ["RewardAllowDaedricArtifacts","0","Whether to spawn Daedric Artifacts in the reward pool"],
+
+    ["Reward_Armour_Light_Chest_Value_Min","2000","Chest Armour Min (hide)"],
+    ["Reward_Armour_Light_Chest_Value_Max","4100","Chest Armour Min (Dragonscale)"],
+    ["Reward_Armour_Light_Boot_Value_Min","500","Boot Armour Min (hide)"],
+    ["Reward_Armour_Light_Boot_Value_Max","1200","Boot Armour Min (Dragonscale)"],
+    ["Reward_Armour_Light_Hand_Value_Min","500","Hand Armour Min (hide)"],
+    ["Reward_Armour_Light_Hand_Value_Max","1200","Hand Armour Min (Dragonscale)"],
+    ["Reward_Armour_Light_Head_Value_Min","1000","Head Armour Min (hide)"],
+    ["Reward_Armour_Light_Head_Value_Max","1700","Head Armour Min (Dragonscale)"],
+    ["Reward_Armour_Light_Shield_Value_Min","1500","Shield Armour Min (hide)"],
+    ["Reward_Armour_Light_Shield_Value_Max","2900","Shield Armour Min (Dragonscale)"],
+
+    ["Reward_Armour_Heavy_Chest_Value_Min","2500","Chest Armour Min (iron)"],
+    ["Reward_Armour_Heavy_Chest_Value_Max","4900","Chest Armour Min (deadric)"],
+    ["Reward_Armour_Heavy_Boot_Value_Min","1000","Boot Armour Min (iron)"],
+    ["Reward_Armour_Heavy_Boot_Value_Max","1800","Boot Armour Min (deadric)"],
+    ["Reward_Armour_Heavy_Hand_Value_Min","1000","Hand Armour Min (iron)"],
+    ["Reward_Armour_Heavy_Hand_Value_Max","1800","Hand Armour Min (deadric)"],
+    ["Reward_Armour_Heavy_Head_Value_Min","1500","Head Armour Min (iron)"],
+    ["Reward_Armour_Heavy_Head_Value_Max","2300","Head Armour Min (deadric)"],
+    ["Reward_Armour_Heavy_Shield_Value_Min","2000","Shield Armour Min (hiironde)"],
+    ["Reward_Armour_Heavy_Shield_Value_Max","3600","Shield Armour Min (deadric)"],
+
+    ["Reward_Armour_Clothes_Chest_Value_Min","1","Chest Value Min"],
+    ["Reward_Armour_Clothes_Chest_Value_Max","2563","Chest Value Min "],
+    ["Reward_Armour_Clothes_Boot_Value_Min","1","Boot Value Min"],
+    ["Reward_Armour_Clothes_Boot_Value_Max","250","Boot Value Min"],
+    ["Reward_Armour_Clothes_Hand_Value_Min","1","Hand Value Min"],
+    ["Reward_Armour_Clothes_Hand_Value_Max","170","Hand Value Min"],
+    ["Reward_Armour_Clothes_Head_Value_Min","50","Head Value Min"],
+    ["Reward_Armour_Clothes_Head_Value_Max","505","Head Value Min"],
+    ["Reward_Armour_Clothes_Ring_Value_Min","5","Ring Value Min"],
+    ["Reward_Armour_Clothes_Ring_Value_Max","3500","Ring Value Min"],
+    ["Reward_Armour_Clothes_Circlet_Value_Min","50","Circlet Value Min"],
+    ["Reward_Armour_Clothes_Circlet_Value_Max","500","RingCirclet Value Min"]
+
+]

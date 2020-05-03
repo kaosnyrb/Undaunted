@@ -85,10 +85,10 @@ namespace Undaunted {
 		return UInt32();
 	}
 
-	void hook_SpawnRandomReward(StaticFunctionTag* base, TESObjectREFR* taget, UInt32 playerlevel)
+	void hook_SpawnRandomReward(StaticFunctionTag* base, TESObjectREFR* target, UInt32 playerlevel)
 	{
 		TESForm* spawnForm = LookupFormByID(GetReward(playerlevel));
-		PlaceAtMe_Native(BountyManager::getInstance()->_registry, 1, taget, spawnForm, 1, false, false);
+		PlaceAtMe_Native(BountyManager::getInstance()->_registry, 1, target, spawnForm, 1, false, false);
 	}
 
 	void hook_SetGroupMemberComplete(StaticFunctionTag* base, TESObjectREFR* taget)
@@ -99,6 +99,19 @@ namespace Undaunted {
 	void hook_SetConfigValue(StaticFunctionTag* base, BSFixedString key, BSFixedString value)
 	{
 		SetConfigValue(key.Get(), value.Get());
+	}
+
+	bool hook_IsGroupMemberUsed(StaticFunctionTag* base, TESObjectREFR* target)
+	{
+		//Is this reference in the current bounty? If it isn't we can get rid of it.
+		for (int i = 0; i < BountyManager::getInstance()->bountygrouplist.length; i++)
+		{
+			if (BountyManager::getInstance()->bountygrouplist.data[i].objectRef->formID == target->formID)
+			{
+				return true;
+			}
+		}
+		return false;
 	}
 
 	UInt32 hook_GetConfigValueInt(StaticFunctionTag* base, BSFixedString key)
@@ -149,6 +162,9 @@ namespace Undaunted {
 
 		registry->RegisterFunction(
 			new NativeFunction1 <StaticFunctionTag, void, TESObjectREFR*>("SetGroupMemberComplete", "Undaunted_SystemScript", Undaunted::hook_SetGroupMemberComplete, registry));
+
+		registry->RegisterFunction(
+			new NativeFunction1 <StaticFunctionTag, bool, TESObjectREFR*>("IsGroupMemberUsed", "Undaunted_SystemScript", Undaunted::hook_IsGroupMemberUsed, registry));
 
 		//Rewards
 		registry->RegisterFunction(
