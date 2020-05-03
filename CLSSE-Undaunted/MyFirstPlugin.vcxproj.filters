@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="exports.def" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{57c9eac9-3a96-4dbf-8d19-cdddafb51688}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{aee06ac9-1bc5-42ef-858c-7657bb1ee832}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RewardUtils.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\LocationUtils.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MyPlugin.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BountyManager.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SpawnUtils.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GroupList.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ConfigUtils.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ListLibary.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\IntList.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\UnStringList.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\WorldCellList.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\version.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MyPlugin.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\BountyManager.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\RewardUtils.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\LocationUtils.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\WorldCellList.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UnStringList.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ListLibary.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GroupList.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SpawnUtils.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\IntList.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ConfigUtils.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="SKSELink.h">
+      <Filter>src</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="version.rc" />
+  </ItemGroup>
+</Project>

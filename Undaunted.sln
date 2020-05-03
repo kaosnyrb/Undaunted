@@ -17,6 +17,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "skse64", "skse64\skse64.vcx
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Undaunted", "Undaunted\Undaunted.vcxproj", "{F0CF443B-B64A-489E-A826-6924FECB0F4E}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MyFirstPlugin", "CLSSE-Undaunted\MyFirstPlugin.vcxproj", "{9F44D62A-8A45-4FD3-8142-22A229A8A2F4}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CommonLibSSE", "CommonLibSSE\CommonLibSSE.vcxproj", "{C1AF9204-EE2D-421B-B11E-1D70D8ACC11F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -63,6 +67,18 @@ Global
 		{F0CF443B-B64A-489E-A826-6924FECB0F4E}.Debug|x86.ActiveCfg = Debug|x64
 		{F0CF443B-B64A-489E-A826-6924FECB0F4E}.Release|x64.ActiveCfg = Debug|x64
 		{F0CF443B-B64A-489E-A826-6924FECB0F4E}.Release|x86.ActiveCfg = Release|x64
+		{9F44D62A-8A45-4FD3-8142-22A229A8A2F4}.Debug|x64.ActiveCfg = Debug|x64
+		{9F44D62A-8A45-4FD3-8142-22A229A8A2F4}.Debug|x64.Build.0 = Debug|x64
+		{9F44D62A-8A45-4FD3-8142-22A229A8A2F4}.Debug|x86.ActiveCfg = Debug|x64
+		{9F44D62A-8A45-4FD3-8142-22A229A8A2F4}.Release|x64.ActiveCfg = Release|x64
+		{9F44D62A-8A45-4FD3-8142-22A229A8A2F4}.Release|x64.Build.0 = Release|x64
+		{9F44D62A-8A45-4FD3-8142-22A229A8A2F4}.Release|x86.ActiveCfg = Release|x64
+		{C1AF9204-EE2D-421B-B11E-1D70D8ACC11F}.Debug|x64.ActiveCfg = Debug|x64
+		{C1AF9204-EE2D-421B-B11E-1D70D8ACC11F}.Debug|x64.Build.0 = Debug|x64
+		{C1AF9204-EE2D-421B-B11E-1D70D8ACC11F}.Debug|x86.ActiveCfg = Debug|x64
+		{C1AF9204-EE2D-421B-B11E-1D70D8ACC11F}.Release|x64.ActiveCfg = Release|x64
+		{C1AF9204-EE2D-421B-B11E-1D70D8ACC11F}.Release|x64.Build.0 = Release|x64
+		{C1AF9204-EE2D-421B-B11E-1D70D8ACC11F}.Release|x86.ActiveCfg = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
