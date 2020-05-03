@@ -94,200 +94,63 @@ namespace papyrusGame
 	UInt32 GetModCount(StaticFunctionTag*)
 	{
 		DataHandler* pDataHandler = DataHandler::GetSingleton();
-		return pDataHandler->modList.loadedMods.count;
+		return pDataHandler->modList.loadedModCount;
 	}
-
-	static const int LIGHT_MOD_OFFSET = 0x100;
 
 	UInt32 GetModByName(StaticFunctionTag*, BSFixedString name)
 	{
 		DataHandler* pDataHandler = DataHandler::GetSingleton();
-		const ModInfo * modInfo = pDataHandler->LookupModByName(name.data);
-		if (!modInfo || !modInfo->IsActive())
-			return 0xFF;
-
-		if (modInfo->IsLight())
-			return modInfo->lightIndex + LIGHT_MOD_OFFSET;
-
-		return modInfo->modIndex;
+		return pDataHandler->GetModIndex(name.data);
 	}
 
 	BSFixedString GetModName(StaticFunctionTag*, UInt32 index)
 	{
 		DataHandler* pDataHandler = DataHandler::GetSingleton();
-		ModInfo* modInfo = nullptr;
-		if (index > 0xFF) {
-			UInt32 adjusted = index - LIGHT_MOD_OFFSET;
-			if (adjusted >= pDataHandler->modList.loadedCCMods.count)
-				return "";
-			pDataHandler->modList.loadedCCMods.GetNthItem(adjusted, modInfo);
-			
-		} else {
-			if (index >= pDataHandler->modList.loadedMods.count)
-				return "";
-			pDataHandler->modList.loadedMods.GetNthItem(index, modInfo);
-		}
-
-		return (modInfo) ? modInfo->name : "";
+		if(index > 255 && index < pDataHandler->modList.loadedModCount)
+			return NULL;
+		
+		ModInfo* modInfo = pDataHandler->modList.loadedMods[index];
+		return (modInfo) ? modInfo->name : NULL;
 	}
 
 	BSFixedString GetModAuthor(StaticFunctionTag*, UInt32 index)
 	{
 		DataHandler* pDataHandler = DataHandler::GetSingleton();
-		ModInfo* modInfo = nullptr;
-		if (index > 0xFF) {
-			UInt32 adjusted = index - LIGHT_MOD_OFFSET;
-			if (adjusted >= pDataHandler->modList.loadedCCMods.count)
-				return "";
-			pDataHandler->modList.loadedCCMods.GetNthItem(adjusted, modInfo);
+		if (index > 255 && index < pDataHandler->modList.loadedModCount)
+			return NULL;
 
-		}
-		else {
-			if (index >= pDataHandler->modList.loadedMods.count)
-				return "";
-			pDataHandler->modList.loadedMods.GetNthItem(index, modInfo);
-		}
-
-		return (modInfo) ? modInfo->author.Get() : "";
+		ModInfo* modInfo = pDataHandler->modList.loadedMods[index];
+		return (modInfo) ? modInfo->author.Get() : NULL;
 	}
 
 	BSFixedString GetModDescription(StaticFunctionTag*, UInt32 index)
 	{
 		DataHandler* pDataHandler = DataHandler::GetSingleton();
-		ModInfo* modInfo = nullptr;
-		if (index > 0xFF) {
-			UInt32 adjusted = index - LIGHT_MOD_OFFSET;
-			if (adjusted >= pDataHandler->modList.loadedCCMods.count)
-				return "";
-			pDataHandler->modList.loadedCCMods.GetNthItem(adjusted, modInfo);
+		if (index > 255 && index < pDataHandler->modList.loadedModCount)
+			return NULL;
 
-		}
-		else {
-			if (index >= pDataHandler->modList.loadedMods.count)
-				return "";
-			pDataHandler->modList.loadedMods.GetNthItem(index, modInfo);
-		}
-		return (modInfo) ? modInfo->description.Get() : "";
+		ModInfo* modInfo = pDataHandler->modList.loadedMods[index];
+		return (modInfo) ? modInfo->description.Get() : NULL;
 	}
 
 	UInt32 GetModDependencyCount(StaticFunctionTag*, UInt32 index)
 	{
 		DataHandler* pDataHandler = DataHandler::GetSingleton();
-		ModInfo* modInfo = nullptr;
-		if (index > 0xFF) {
-			UInt32 adjusted = index - LIGHT_MOD_OFFSET;
-			if (adjusted >= pDataHandler->modList.loadedCCMods.count)
-				return 0;
-			pDataHandler->modList.loadedCCMods.GetNthItem(adjusted, modInfo);
+		if (index > 255 && index < pDataHandler->modList.loadedModCount)
+			return NULL;
 
-		}
-		else {
-			if (index >= pDataHandler->modList.loadedMods.count)
-				return 0;
-			pDataHandler->modList.loadedMods.GetNthItem(index, modInfo);
-		}
+		ModInfo* modInfo = pDataHandler->modList.loadedMods[index];
 		return (modInfo) ? modInfo->numRefMods : 0;
 	}
 
 	UInt32 GetNthModDependency(StaticFunctionTag*, UInt32 index, UInt32 dep_index)
 	{
 		DataHandler* pDataHandler = DataHandler::GetSingleton();
-		ModInfo* modInfo = nullptr;
-		if (index > 0xFF) {
-			UInt32 adjusted = index - LIGHT_MOD_OFFSET;
-			if (adjusted >= pDataHandler->modList.loadedCCMods.count)
-				return 0;
-			pDataHandler->modList.loadedCCMods.GetNthItem(adjusted, modInfo);
+		if (index > 255 && index < pDataHandler->modList.loadedModCount)
+			return NULL;
 
-		}
-		else {
-			if (index >= pDataHandler->modList.loadedMods.count)
-				return 0;
-			pDataHandler->modList.loadedMods.GetNthItem(index, modInfo);
-		}
+		ModInfo* modInfo = pDataHandler->modList.loadedMods[index];
 		return (modInfo && dep_index < modInfo->numRefMods) ? modInfo->refModInfo[dep_index]->modIndex : 0;
-	}
-
-	UInt32 GetLightModCount(StaticFunctionTag*)
-	{
-		DataHandler* pDataHandler = DataHandler::GetSingleton();
-		return pDataHandler->modList.loadedCCMods.count;
-	}
-
-	UInt32 GetLightModByName(StaticFunctionTag*, BSFixedString name)
-	{
-		DataHandler* pDataHandler = DataHandler::GetSingleton();
-		const ModInfo * modInfo = pDataHandler->LookupModByName(name.data);
-		if (!modInfo || !modInfo->IsActive() || !modInfo->IsLight())
-			return 0xFFFF;
-
-		return modInfo->lightIndex;
-	}
-
-	BSFixedString GetLightModName(StaticFunctionTag*, UInt32 index)
-	{
-		DataHandler* pDataHandler = DataHandler::GetSingleton();
-		if (index >= pDataHandler->modList.loadedCCMods.count)
-			return "";
-
-		ModInfo* modInfo = nullptr;
-		pDataHandler->modList.loadedCCMods.GetNthItem(index, modInfo);
-		return (modInfo) ? modInfo->name : NULL;
-	}
-
-	BSFixedString GetLightModAuthor(StaticFunctionTag*, UInt32 index)
-	{
-		DataHandler* pDataHandler = DataHandler::GetSingleton();
-		if (index >= pDataHandler->modList.loadedCCMods.count)
-			return "";
-
-		ModInfo* modInfo = NULL;
-		pDataHandler->modList.loadedCCMods.GetNthItem(index, modInfo);
-		return (modInfo) ? modInfo->author.Get() : NULL;
-	}
-
-	BSFixedString GetLightModDescription(StaticFunctionTag*, UInt32 index)
-	{
-		DataHandler* pDataHandler = DataHandler::GetSingleton();
-		if (index >= pDataHandler->modList.loadedCCMods.count)
-			return "";
-
-		ModInfo* modInfo = NULL;
-		pDataHandler->modList.loadedCCMods.GetNthItem(index, modInfo);
-		return (modInfo) ? modInfo->description.Get() : NULL;
-	}
-
-	UInt32 GetLightModDependencyCount(StaticFunctionTag*, UInt32 index)
-	{
-		DataHandler* pDataHandler = DataHandler::GetSingleton();
-		if (index >= pDataHandler->modList.loadedCCMods.count)
-			return 0;
-
-		ModInfo* modInfo = NULL;
-		pDataHandler->modList.loadedCCMods.GetNthItem(index, modInfo);
-		return (modInfo) ? modInfo->numRefMods : 0;
-	}
-
-	UInt32 GetNthLightModDependency(StaticFunctionTag*, UInt32 index, UInt32 dep_index)
-	{
-		DataHandler* pDataHandler = DataHandler::GetSingleton();
-		if (index >= pDataHandler->modList.loadedCCMods.count)
-			return 0;
-
-		ModInfo* modInfo = NULL;
-		pDataHandler->modList.loadedCCMods.GetNthItem(index, modInfo);
-		return (modInfo && dep_index < modInfo->numRefMods) ? modInfo->refModInfo[dep_index]->modIndex : 0;
-	}
-
-	bool IsPluginInstalled(StaticFunctionTag*, BSFixedString name)
-	{
-		DataHandler* pDataHandler = DataHandler::GetSingleton();
-
-		const ModInfo * modInfo = pDataHandler->LookupModByName(name.data);
-		if (modInfo)
-			return modInfo->IsActive();
-
-		return false;
 	}
 
 	void SetGameSettingFloat(StaticFunctionTag * base, BSFixedString name, float value)
@@ -488,7 +351,7 @@ namespace papyrusGame
 		// Compute skintone
 		if(tintMask->tintType == TintMask::kMaskType_SkinTone) {
 			NiColorA colorResult;
-			CALL_MEMBER_FN(actorBase, SetSkinFromTint)(&colorResult, tintMask, true);
+			CALL_MEMBER_FN(actorBase, SetSkinFromTint)(&colorResult, tintMask, 1, 0);
 		}
 	}
 
@@ -743,9 +606,9 @@ namespace papyrusGame
 	TESObjectREFR * GetCurrentConsoleRef(StaticFunctionTag * base)
 	{
 		UInt32 handle = (*g_consoleHandle);
-		NiPointer<TESObjectREFR> refr;
+		TESObjectREFR * refr = NULL;
 		if(handle != 0 && handle != (*g_invalidRefHandle)) {
-			LookupREFRByHandle(handle, refr);
+			LookupREFRByHandle(&handle, &refr);
 			return refr;
 		}
 
@@ -801,30 +664,8 @@ void papyrusGame::RegisterFuncs(VMClassRegistry* registry)
 	registry->RegisterFunction(
 		new NativeFunction1 <StaticFunctionTag, UInt32, UInt32>("GetModDependencyCount", "Game", papyrusGame::GetModDependencyCount, registry));
 
-	// Light Mods
 	registry->RegisterFunction(
-		new NativeFunction0 <StaticFunctionTag, UInt32>("GetLightModCount", "Game", papyrusGame::GetLightModCount, registry));
-
-	registry->RegisterFunction(
-		new NativeFunction1 <StaticFunctionTag, UInt32, BSFixedString>("GetLightModByName", "Game", papyrusGame::GetLightModByName, registry));
-
-	registry->RegisterFunction(
-		new NativeFunction1 <StaticFunctionTag, BSFixedString, UInt32>("GetLightModName", "Game", papyrusGame::GetLightModName, registry));
-
-	registry->RegisterFunction(
-		new NativeFunction1 <StaticFunctionTag, BSFixedString, UInt32>("GetLightModAuthor", "Game", papyrusGame::GetLightModAuthor, registry));
-
-	registry->RegisterFunction(
-		new NativeFunction1 <StaticFunctionTag, BSFixedString, UInt32>("GetLightModDescription", "Game", papyrusGame::GetLightModDescription, registry));
-
-	registry->RegisterFunction(
-		new NativeFunction1 <StaticFunctionTag, UInt32, UInt32>("GetLightModDependencyCount", "Game", papyrusGame::GetLightModDependencyCount, registry));
-
-	registry->RegisterFunction(
-		new NativeFunction1 <StaticFunctionTag, bool, BSFixedString>("IsPluginInstalled", "Game", papyrusGame::IsPluginInstalled, registry));
-
-	registry->RegisterFunction(
-		new NativeFunction2 <StaticFunctionTag, UInt32, UInt32, UInt32>("GetNthLightModDependency", "Game", papyrusGame::GetNthLightModDependency, registry));
+		new NativeFunction2 <StaticFunctionTag, UInt32, UInt32, UInt32>("GetNthModDependency", "Game", papyrusGame::GetNthModDependency, registry));
 
 	registry->RegisterFunction(
 		new NativeFunction2 <StaticFunctionTag, void, BSFixedString, float>("SetGameSettingFloat", "Game", papyrusGame::SetGameSettingFloat, registry));
@@ -933,7 +774,7 @@ void papyrusGame::RegisterFuncs(VMClassRegistry* registry)
 	registry->SetFunctionFlags("Game", "GetModAuthor", VMClassRegistry::kFunctionFlag_NoWait);
 	registry->SetFunctionFlags("Game", "GetModDescription", VMClassRegistry::kFunctionFlag_NoWait);
 	registry->SetFunctionFlags("Game", "GetModDependencyCount", VMClassRegistry::kFunctionFlag_NoWait);
-	//registry->SetFunctionFlags("Game", "GetNthModDependency", VMClassRegistry::kFunctionFlag_NoWait);
+	registry->SetFunctionFlags("Game", "GetNthModDependency", VMClassRegistry::kFunctionFlag_NoWait);
 
 	// GameSettings
 	registry->SetFunctionFlags("Game", "SetGameSettingFloat", VMClassRegistry::kFunctionFlag_NoWait);
@@ -970,6 +811,7 @@ void papyrusGame::RegisterFuncs(VMClassRegistry* registry)
 
 	registry->SetFunctionFlags("Game", "GetDialogueTarget", VMClassRegistry::kFunctionFlag_NoWait);
 
+	// These calls were commented in SKSE32, leaving them like that
 	//registry->SetFunctionFlags("Game", "UpdateTintMaskColors", VMClassRegistry::kFunctionFlag_NoWait);
 	//registry->SetFunctionFlags("Game", "UpdateHairColor", VMClassRegistry::kFunctionFlag_NoWait);
 }

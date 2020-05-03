@@ -67,10 +67,10 @@ public:
 	void GetEquipItemData(EquipData& stateOut, SInt32 itemId, SInt32 baseCount) const;
 
 	MEMBER_FN_PREFIX(InventoryEntryData);
-	DEFINE_MEMBER_FN(GenerateName, const char *, 0x001D73C0);
-	DEFINE_MEMBER_FN(GetValue, SInt32, 0x001D66E0);
-	DEFINE_MEMBER_FN(IsOwnedBy, bool, 0x001D7510, TESForm * actor, bool unk1);
-	DEFINE_MEMBER_FN(GetSoulLevel, UInt32, 0x001D6860);
+	DEFINE_MEMBER_FN(GenerateName, const char *, 0x001E7F60);
+	DEFINE_MEMBER_FN(GetValue, SInt32, 0x001E7280);
+	DEFINE_MEMBER_FN(IsOwnedBy, bool, 0x001E80B0, TESForm * actor, bool unk1);
+	DEFINE_MEMBER_FN(GetSoulLevel, UInt32, 0x001E7400);
 };
 
 typedef tList<InventoryEntryData> EntryDataList;
@@ -98,8 +98,8 @@ public:
 		void GetEquipItemData(InventoryEntryData::EquipData& stateOut, TESForm * item, SInt32 itemId) const;
 
 		MEMBER_FN_PREFIX(Data);
-		DEFINE_MEMBER_FN(SetUniqueID, void, 0x001ECC60, BaseExtraList* itemList, TESForm * oldForm, TESForm * newForm);
-		DEFINE_MEMBER_FN(TransferItemUID, void, 0x001ECE20, BaseExtraList * extraList, TESForm * oldForm, TESForm * newForm, UInt32 unk1);
+		DEFINE_MEMBER_FN(SetUniqueID, void, 0x001FD7D0, BaseExtraList* itemList, TESForm * oldForm, TESForm * newForm);
+		DEFINE_MEMBER_FN(TransferItemUID, void, 0x001FD990, BaseExtraList * extraList, TESForm * oldForm, TESForm * newForm, UInt32 unk1);
 	};
 
 	Data * data;
@@ -164,7 +164,7 @@ public:
 	UInt32	handle;		// 10
 	UInt32	pad;		// 14
 
-	NiPointer<TESObjectREFR> GetReference();
+	TESObjectREFR * GetReference();
 	static ExtraReferenceHandle* Create();
 };
 
@@ -290,7 +290,7 @@ public:
 	UInt8	pad11[3];	// 11
 	UInt32	handle;		// 14 handle?
 
-	NiPointer<TESObjectREFR> GetReference();
+	TESObjectREFR * GetReference();
 };
  //	ExtraEnableStateChildren
  //	ExtraItemDropper
@@ -552,8 +552,8 @@ public:
 	static ExtraTextDisplayData* Create();
 
 	MEMBER_FN_PREFIX(ExtraTextDisplayData);
-	DEFINE_MEMBER_FN(SetName_Internal, void, 0x0013C870, const char * name);
-	DEFINE_MEMBER_FN(GenerateName_Internal, const char*, 0x0013C740, TESForm * form, float extraHealthValue);
+	DEFINE_MEMBER_FN(SetName_Internal, void, 0x0014D260, const char * name);
+	DEFINE_MEMBER_FN(GenerateName_Internal, const char*, 0x0014D130, TESForm * form, float extraHealthValue);
 };
  //	ExtraAlphaCutoff
 
@@ -593,7 +593,7 @@ public:
 	UInt32	pad;	// 14
 
 	static ExtraForcedTarget* Create();
-	NiPointer<TESObjectREFR> GetReference();
+	TESObjectREFR * GetReference();
 };
 STATIC_ASSERT(sizeof(ExtraForcedTarget) == 0x18);
 
@@ -638,19 +638,3 @@ class ExtraFlags : public BSExtraData
  //	ExtraRaceData
  //	ExtraGIDBuffer
  //	ExtraMissingRefIDs
-
-
-extern const RelocPtr<uintptr_t> s_ExtraHealthVtbl;
-extern const RelocPtr<uintptr_t> s_ExtraChargeVtbl;
-extern const RelocPtr<uintptr_t> s_ExtraCountVtbl;
-extern const RelocPtr<uintptr_t> s_ExtraTextDisplayVtbl;
-extern const RelocPtr<uintptr_t> s_ExtraSoulVtbl;
-extern const RelocPtr<uintptr_t> s_ExtraOwnershipVtbl;
-extern const RelocPtr<uintptr_t> s_ExtraAliasInstanceArrayVtbl;
-extern const RelocPtr<uintptr_t> s_ExtraCannotWearVtbl;
-extern const RelocPtr<uintptr_t> s_ExtraHotkeyVtbl;
-extern const RelocPtr<uintptr_t> s_ExtraForcedTargetVtbl;
-extern const RelocPtr<uintptr_t> s_ExtraReferenceHandleVtbl;
-extern const RelocPtr<uintptr_t> s_ExtraEnchantmentVtbl;
-extern const RelocPtr<uintptr_t> s_ExtraRankVtbl;
-extern const RelocPtr<uintptr_t> s_ExtraUniqueIdVtbl;

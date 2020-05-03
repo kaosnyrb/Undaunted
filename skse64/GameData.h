@@ -33,12 +33,10 @@ class BSFile;
 class BSFaceGenModelMap;
 class BSFaceGenModel;
 class NiTexture;
-class Setting;
 
 class NiAVObject;
 class NiColorA;
 
-extern RelocAddr <UInt32*> g_gameTime;
 
 struct FormRecordData
 {
@@ -69,11 +67,6 @@ struct ModInfo		// referred to by game as TESFile
 		UInt32		unk10;				// 10
 		UInt16		unk14;				// 14 always initialized to 0F on SaveForm. 
 		UInt16		unk16;
-	};
-
-	enum FileFlags
-	{
-		kFileFlags_Light = (1 << 9)
 	};
 
 	UInt32								unk000;				// 000
@@ -112,8 +105,8 @@ struct ModInfo		// referred to by game as TESFile
 	float								unk42C;				// 42C init'd to 0.94
 	UInt32								unk430;				// 430
 	UInt32								flags;				// 434 init'd to 0x00000800. 4000 and 40000 do stuff
-	UInt32								fileFlags;			// 438
-	UInt32								unk43C;				// 43C
+	UInt8								unk438;				// 438
+	UInt8								pad439[7];			// 439
 	void*								unk440;				// 440
 	void*								unk448;				// 448
 	void*								unk450;				// 450
@@ -125,9 +118,7 @@ struct ModInfo		// referred to by game as TESFile
 	UInt32								unk470;				// 470
 	UInt32								unk474;				// 474
 	UInt8								modIndex;			// 478 init to 0xFF
-	UInt8								pad479;				// 479
-	UInt16								lightIndex;			// 47A
-	UInt8								pad47C[4];
+	UInt8								pad47C[7];
 	BSString							author;				// 480
 	BSString							description;		// 490
 	void								* dataBuf;			// 4A0 
@@ -138,30 +129,7 @@ struct ModInfo		// referred to by game as TESFile
 	UInt32								pad4BC;				// 4BC
 	void								* unk4C0;			// 4C0
 
-	// Checks if a particular formID is part of the mod
-	bool IsFormInMod(UInt32 formID) const
-	{
-		if (!IsLight() && (formID >> 24) == modIndex)
-			return true;
-		if (IsLight() && (formID >> 24) == 0xFE && ((formID & 0x00FFF000) >> 12) == lightIndex)
-			return true;
-		return false;
-	}
-
-	// Returns either a modIndex or a modIndex|lightIndex pair
-	UInt32 GetPartialIndex() const
-	{
-		return !IsLight() ? modIndex : (0xFE000 | lightIndex);
-	}
-
-	// Converts the lower bits of a FormID to a full FormID depending on plugin type
-	UInt32 GetFormID(UInt32 formLower) const
-	{
-		return !IsLight() ? UInt32(modIndex) << 24 | (formLower & 0xFFFFFF) : 0xFE000000 | (UInt32(lightIndex) << 12) | (formLower & 0xFFF);
-	}
-
-	bool IsActive() const { return modIndex != 0xFF; }
-	bool IsLight() const { return (fileFlags & kFileFlags_Light) == kFileFlags_Light; }
+	bool IsLoaded() const { return true; }
 };
 
 STATIC_ASSERT(offsetof(ModInfo, formInfo) == 0x284);
@@ -172,16 +140,17 @@ STATIC_ASSERT(offsetof(ModInfo, numRefMods) == 0x460);
 STATIC_ASSERT(offsetof(ModInfo, author) == 0x480);
 STATIC_ASSERT(sizeof(ModInfo) == 0x4C8);
 
-// 40 - updated in 1.5.3
+// 810
 struct ModList
 {
-	tList<ModInfo>		modInfoList;		// 00 - DataHandler D60
-	tArray<ModInfo *>	loadedMods;			// 10 - DataHandler D70
-	tArray<ModInfo *>	loadedCCMods;		// 28 - DataHandler D88 - just assuming this is for CC
+	tList<ModInfo>		modInfoList;		// 00	- DataHandler D60
+	UInt32				loadedModCount;		// 10	- DataHandler D70
+	UInt32				pad14;				// 14	- DataHandler D74
+	ModInfo*			loadedMods[0xFF];	// 18	- Datahandler D78
 };
-STATIC_ASSERT(sizeof(ModList) == 0x40);
+STATIC_ASSERT(sizeof(ModList) == 0x810);
 
-// DC0
+// 1590
 class DataHandler
 {
 public:
@@ -327,8 +296,8 @@ public:
 	UnkFormArray						arrVOLI;	// Form Type 137
 
 	TESRegionList						* regionList;	// D00
-	NiTArray<TESObjectCELL*>			cellList;		// D08
-//	UInt64								cellList[0x3];	// D08														
+//	NiTArray<TESObjectCELL*>			cellList;		// D08
+	UInt64								cellList[0x3];	// D08														
 //	NiTArray<BGSAddonNode*>				addonNodes;		// D20
 	UInt64								addonNodes[0x3]; // D20
 
@@ -338,36 +307,43 @@ public:
 	UInt64								unkD58;			// D58
 	ModList								modList;		// D60
 
-	UInt8								unkDA0;		// DA0
-	UInt8								unkDA1;		// DA1
-	UInt8								unkDA2;		// DA2
-	UInt8								unkDA3;		// DA3
-	UInt8								unkDA4;		// DA4
-	UInt8								unkDA5;		// DA5
-	UInt8								unkDA6;		// DA6
-	UInt8								unkDA7;		// DA7
-	UInt8								unkDA8;		// DA8
-	UInt8								unkDA9;		// DA9
-	UInt8								unkDAA;		// DAA
-	UInt8								padDAB[5];	// DAB
+	UInt8								unk1570;		// 1570
+	UInt8								unk1571;		// 1571
+	UInt8								unk1572;		// 1572
+	UInt8								unk1573;		// 1573
+	UInt8								unk1574;		// 1574
+	UInt8								unk1575;		// 1575
+	UInt8								unk1576;		// 1576 - init'd to 1
+	UInt8								unk1577;		// 1577
+	UInt8								unk1578;		// 1578
+	UInt8								unk1579;		// 1579
+	UInt8								unk157A;		// 157A
+	UInt8								pad157B[5];		// 157B
 
-	void								* regionDataManager;	// DB0 - TESRegionDataManager*, allocated in ctor
-	UInt64								unkDB8;		// DB8
+	void								* regionDataManager;	// 1580 - TESRegionDataManager*, allocated in ctor
+	UInt64								unk1588;		// 1588
 
 	const ModInfo* LookupModByName(const char* modName);
+	UInt8 GetModIndex(const char* modName);
+
+	const ModInfo* LookupLoadedModByName(const char* modName);
+	UInt8 GetLoadedModIndex(const char* modName);
+
+	const ModInfo* LookupLoadedLightModByName(const char* modName);
+	UInt8 GetLoadedLightModIndex(const char* modName);
 
 	static DataHandler * GetSingleton();
 
 	UInt32 LoadScripts_Hook();
 
 	MEMBER_FN_PREFIX(DataHandler);
-	DEFINE_MEMBER_FN(LoadScripts, UInt32, 0x001713D0);
+	DEFINE_MEMBER_FN(LoadScripts, UInt32, 0x00181B80);
 };
 
 STATIC_ASSERT(offsetof(DataHandler, regionList) == 0xD00);
 STATIC_ASSERT(offsetof(DataHandler, addonNodes) == 0xD20);
 STATIC_ASSERT(offsetof(DataHandler, modList) == 0xD60);
-STATIC_ASSERT(sizeof(DataHandler) == 0xDC0);
+STATIC_ASSERT(sizeof(DataHandler) == 0x1590);
 
 extern RelocPtr <DataHandler*> g_dataHandler;
 extern RelocPtr <bool> g_isGameDataReady;
@@ -412,8 +388,8 @@ public:
 	static EquipManager *   GetSingleton(void);
 
 	MEMBER_FN_PREFIX(EquipManager);
-	DEFINE_MEMBER_FN(EquipItem, void, 0x00637A80, Actor * actor, TESForm * item, BaseExtraList * extraData, SInt32 count, BGSEquipSlot * equipSlot, bool withEquipSound, bool preventUnequip, bool showMsg, void * unk);
-	DEFINE_MEMBER_FN(UnequipItem, bool, 0x00638190, Actor * actor, TESForm * item, BaseExtraList * extraData, SInt32 count, BGSEquipSlot * equipSlot, bool unkFlag1, bool preventEquip, bool unkFlag2, bool unkFlag3, void * unk);
+	DEFINE_MEMBER_FN(EquipItem, void, 0x00640A90, Actor * actor, TESForm * item, BaseExtraList * extraData, SInt32 count, BGSEquipSlot * equipSlot, bool withEquipSound, bool preventUnequip, bool showMsg, void * unk);
+	DEFINE_MEMBER_FN(UnequipItem, bool, 0x006411A0, Actor * actor, TESForm * item, BaseExtraList * extraData, SInt32 count, BGSEquipSlot * equipSlot, bool unkFlag1, bool preventEquip, bool unkFlag2, bool unkFlag3, void * unk);
 };
 
 
@@ -493,8 +469,8 @@ public:
 	{
 	public:
 		MEMBER_FN_PREFIX(MorphDatabase);
-		DEFINE_MEMBER_FN(GetFaceGenModelMapEntry, bool, 0x003D4F90, const char * meshPath, BSFaceGenModelMap ** entry);
-		DEFINE_MEMBER_FN(SetFaceGenModelMapEntry, void, 0x003D4D80, const char * meshPath, BSFaceGenModel * model);
+		DEFINE_MEMBER_FN(GetFaceGenModelMapEntry, bool, 0x003E4900, const char * meshPath, BSFaceGenModelMap ** entry);
+		DEFINE_MEMBER_FN(SetFaceGenModelMapEntry, void, 0x003E46F0, const char * meshPath, BSFaceGenModel * model);
 
 		UInt64	unk00;	// 00
 		UInt32	unk08;	// 08
@@ -529,8 +505,9 @@ public:
 	UInt8			pad61[7];					// 61
 
 	MEMBER_FN_PREFIX(FaceGen);
-	DEFINE_MEMBER_FN(RegenerateHead, void, 0x003D2A60, BSFaceGenNiNode * headNode, BGSHeadPart * head, TESNPC * npc);
-	DEFINE_MEMBER_FN(ApplyMorph, void, 0x003D2380, BSFaceGenNiNode * faceGenNode, BGSHeadPart * headPart, BSFixedString * morphName, float relative);
+	// C52C6ED9DF399194B498A8A095057B7939BA3932+95
+	DEFINE_MEMBER_FN(RegenerateHead, void, 0x003E23D0, BSFaceGenNiNode * headNode, BGSHeadPart * head, TESNPC * npc);
+	DEFINE_MEMBER_FN(ApplyMorph, void, 0x003E1CE0, BSFaceGenNiNode * faceGenNode, BGSHeadPart * headPart, BSFixedString * morphName, float relative);
 };
 STATIC_ASSERT(offsetof(FaceGen, isReset) == 0x58);
 
@@ -676,12 +653,12 @@ public:
 	}
 
 	MEMBER_FN_PREFIX(PersistentFormManager);
-	DEFINE_MEMBER_FN(CreateOffensiveEnchantment, EnchantmentItem *, 0x0059F0F0, tArray<MagicItem::EffectItem> * effectArray);
-	DEFINE_MEMBER_FN(CreateDefensiveEnchantment, EnchantmentItem *, 0x0059F190, tArray<MagicItem::EffectItem> * effectArray);
-	DEFINE_MEMBER_FN(CreatePoison, void, 0x0059F2E0, tArray<MagicItem::EffectItem> * effectArray, AlchemyItem ** poison);
-	DEFINE_MEMBER_FN(CreatePotion, void, 0x0059F230, AlchemyItem ** potion, tArray<MagicItem::EffectItem> * effectArray);
+	DEFINE_MEMBER_FN(CreateOffensiveEnchantment, EnchantmentItem *, 0x005A67B0, tArray<MagicItem::EffectItem> * effectArray);
+	DEFINE_MEMBER_FN(CreateDefensiveEnchantment, EnchantmentItem *, 0x005A6850, tArray<MagicItem::EffectItem> * effectArray);
+	DEFINE_MEMBER_FN(CreatePoison, void, 0x005A69A0, tArray<MagicItem::EffectItem> * effectArray, AlchemyItem ** poison);
+	DEFINE_MEMBER_FN(CreatePotion, void, 0x005A68F0, AlchemyItem ** potion, tArray<MagicItem::EffectItem> * effectArray);
 	//DEFINE_MEMBER_FN(AddPersistentForm, void, 0x0068A0F0, TESForm *);
-	DEFINE_MEMBER_FN(ScheduleForDeletion, void, 0x0059F6E0, TESForm *);
+	DEFINE_MEMBER_FN(ScheduleForDeletion, void, 0x005A6DA0, TESForm *);
 };
 STATIC_ASSERT(sizeof(PersistentFormManager) == 0xD0);
 
@@ -692,7 +669,7 @@ public:
 	virtual ~MenuTopicManager();
 	virtual void Unk_01(void);
 
-	NiPointer<TESObjectREFR> GetDialogueTarget();
+	TESObjectREFR * GetDialogueTarget();
 
 	static MenuTopicManager * GetSingleton(void);
 
@@ -866,14 +843,14 @@ public:
 	
 	private:
 	// SE: Save_Internal signature changed! Normal save: unk1=2, unk2=0
-	DEFINE_MEMBER_FN(Save_Internal, bool, 0x00586DE0, int unk1, UInt32 unk2, const char * name);
-	DEFINE_MEMBER_FN(Load_Internal, bool, 0x00587350, const char * name, int unk1, UInt32 unk2, UInt32 unk3);
+	DEFINE_MEMBER_FN(Save_Internal, bool, 0x0058E310, int unk1, UInt32 unk2, const char * name);
+	DEFINE_MEMBER_FN(Load_Internal, bool, 0x0058E920, const char * name, int unk1, UInt32 unk2, UInt32 unk3);
 
-	DEFINE_MEMBER_FN(SaveGame_HookTarget, void, 0x0057CCC0, UInt64 *unk0);
-	DEFINE_MEMBER_FN(LoadGame_HookTarget, bool, 0x0057D1A0, UInt64 *unk0, UInt32 unk1, UInt32 unk2, void *unk3);
+	DEFINE_MEMBER_FN(SaveGame_HookTarget, void, 0x00584420, UInt64 *unk0);
+	DEFINE_MEMBER_FN(LoadGame_HookTarget, bool, 0x00584910, UInt64 *unk0, UInt32 unk1, UInt32 unk2, void *unk3);
 
-	DEFINE_MEMBER_FN(ProcessEvents_Internal, void, 0x00589A60);
-	DEFINE_MEMBER_FN(DeleteSavegame, void, 0x00586D70, const char * saveName, UInt32 unk1);
+	DEFINE_MEMBER_FN(ProcessEvents_Internal, void, 0x005910D0);
+	DEFINE_MEMBER_FN(DeleteSavegame, void, 0x0058E2A0, const char * saveName, UInt32 unk1);
 };
 STATIC_ASSERT(offsetof(BGSSaveLoadManager, thread) == 0x2B0);
 STATIC_ASSERT(offsetof(BGSSaveLoadManager::Thread, hThread) == 0x30);
@@ -903,6 +880,15 @@ public:
 };
 STATIC_ASSERT(sizeof(DefaultObjectList::DefaultObject) == 0x18);
 
+class FacePresetData
+{
+public:
+	virtual ~FacePresetData();
+
+	UInt32 unk08;	// Always 10?
+	const char * gameSettingName;
+};
+
 class FacePresetList
 {
 public:
@@ -919,12 +905,10 @@ public:
 	struct Preset
 	{
 		const char * presetName;
-		Setting * gameSetting;
+		FacePresetData * data;
 	};
 
 	Preset presets[kNumPresets];
-
-	static FacePresetList *	GetSingleton(void);
 };
 
 class FaceMorphList

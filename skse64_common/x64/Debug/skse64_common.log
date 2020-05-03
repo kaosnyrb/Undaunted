@@ -1,6 +1,2 @@
-﻿  BranchTrampoline.cpp
-  Relocation.cpp
-  SafeWrite.cpp
-  Utilities.cpp
-  Generating Code...
-  skse64_common.vcxproj -> C:\git\Undaunted\x64\Debug\skse64_common.lib
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\Microsoft.Common.CurrentVersion.targets(1850,5): warning : The referenced project '..\..\common\common_vc14.vcxproj' does not exist.
+  skse64_common.vcxproj -> C:\git\UndauntedVR\x64\Debug\skse64_common.lib

@@ -17,14 +17,14 @@ static void PrintProcessInfo();
 
 int main(int argc, char ** argv)
 {
-	gLog.OpenRelative(CSIDL_MYDOCUMENTS, "\\My Games\\Skyrim Special Edition\\SKSE\\skse64_loader.log");
+	gLog.OpenRelative(CSIDL_MYDOCUMENTS, "\\My Games\\Skyrim VR\\SKSE\\sksevr_loader.log");
 	gLog.SetPrintLevel(IDebugLog::kLevel_FatalError);
 	gLog.SetLogLevel(IDebugLog::kLevel_DebugMessage);
 
 	FILETIME	now;
 	GetSystemTimeAsFileTime(&now);
 
-	_MESSAGE("skse64 loader %08X %08X%08X %s",
+	_MESSAGE("sksevr loader %08X %08X%08X %s",
 		PACKED_SKSE_VERSION, now.dwHighDateTime, now.dwLowDateTime, GetOSInfoStr().c_str());
 
 	if(!g_options.Read(argc, argv))
@@ -53,7 +53,7 @@ int main(int argc, char ** argv)
 
 	// get process/dll names
 	bool		dllHasFullPath = false;
-	const char	* baseDllName = g_options.m_launchCS ? "skse64_editor" : "skse64";
+	const char	* baseDllName = g_options.m_launchCS ? "sksevr_editor" : "sksevr";
 	bool		usedCustomRuntimeName = false;
 
 	std::string	procName;
@@ -72,7 +72,7 @@ int main(int argc, char ** argv)
 		}
 		else
 		{
-			procName = "SkyrimSE.exe";
+			procName = "SkyrimVR.exe";
 
 			// simple check to see if someone kludge-patched the EXE
 			// don't kludge the EXE, use the .ini file RIGHT ABOVE HERE
@@ -91,7 +91,7 @@ int main(int argc, char ** argv)
 			std::string appName = GetRuntimeName();
 			if(!_stricmp(appName.c_str(), procName.c_str()))
 			{
-				PrintLoaderError("You have renamed skse64_loader and have not specified the name of the runtime.");
+				PrintLoaderError("You have renamed sksevr_loader and have not specified the name of the runtime.");
 
 				return 1;
 			}
@@ -117,7 +117,7 @@ int main(int argc, char ** argv)
 			if(usedCustomRuntimeName)
 			{
 				// hurr durr
-				PrintLoaderError("Couldn't find %s. You have customized the runtime name via SKSE64's .ini file, and that file does not exist. This can usually be fixed by removing the RuntimeName line from the .ini file.)", procName.c_str());
+				PrintLoaderError("Couldn't find %s. You have customized the runtime name via SKSEVR's .ini file, and that file does not exist. This can usually be fixed by removing the RuntimeName line from the .ini file.)", procName.c_str());
 			}
 			else
 			{
@@ -149,7 +149,7 @@ int main(int argc, char ** argv)
 		if(usedCustomRuntimeName)
 		{
 			// hurr durr
-			PrintLoaderError("You have customized the runtime name via SKSE64's .ini file. Version errors can usually be fixed by removing the RuntimeName line from the .ini file.");
+			PrintLoaderError("You have customized the runtime name via SKSEVR's .ini file. Version errors can usually be fixed by removing the RuntimeName line from the .ini file.");
 		}
 
 		return 1;
@@ -177,7 +177,7 @@ int main(int argc, char ** argv)
 
 		if(!tempFile.Open(dllPath.c_str()))
 		{
-			PrintLoaderError("Couldn't find SKSE64 DLL (%s). Please make sure you have installed SKSE64 correctly and are running it from your Skyrim SE folder.", dllPath.c_str());
+			PrintLoaderError("Couldn't find SKSEVR DLL (%s). Please make sure you have installed SKSEVR correctly and are running it from your Skyrim VR folder.", dllPath.c_str());
 			return 1;
 		}
 	}
@@ -200,7 +200,7 @@ int main(int argc, char ** argv)
 		}
 
 		// same for standard and nogore
-		const char * kAppID = (g_options.m_launchCS == false ? "489830" : "???");
+		const char * kAppID = (g_options.m_launchCS == false ? "611670" : "???");
 
 		// set this no matter what to work around launch issues
 		SetEnvironmentVariable("SteamGameId", kAppID);
@@ -230,7 +230,7 @@ int main(int argc, char ** argv)
 	{
 		if(GetLastError() == 740)
 		{
-			PrintLoaderError("Launching %s failed (%d). Please try running skse64_loader as an administrator.", procPath.c_str(), GetLastError());
+			PrintLoaderError("Launching %s failed (%d). Please try running sksevr_loader as an administrator.", procPath.c_str(), GetLastError());
 		}
 		else
 		{
@@ -267,7 +267,7 @@ int main(int argc, char ** argv)
 	{
 	case kProcType_Steam:
 		{
-			std::string	steamHookDllPath = runtimeDir + "\\skse64_steam_loader.dll";
+			std::string	steamHookDllPath = runtimeDir + "\\sksevr_steam_loader.dll";
 
 			injectionSucceeded = InjectDLLThread(&procInfo, steamHookDllPath.c_str(), true, g_options.m_noTimeout);
 		}
@@ -303,9 +303,9 @@ int main(int argc, char ** argv)
 
 		if(!ResumeThread(procInfo.hThread))
 		{
-			_WARNING("WARNING: something has started the runtime outside of skse64_loader's control.");
-			_WARNING("SKSE64 will probably not function correctly.");
-			_WARNING("Try running skse64_loader as an administrator, or check for conflicts with a virus scanner.");
+			_WARNING("WARNING: something has started the runtime outside of sksevr_loader's control.");
+			_WARNING("SKSEVR will probably not function correctly.");
+			_WARNING("Try running sksevr_loader as an administrator, or check for conflicts with a virus scanner.");
 		}
 
 		if(g_options.m_moduleInfo)

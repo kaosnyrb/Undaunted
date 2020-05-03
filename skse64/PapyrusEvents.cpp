@@ -297,11 +297,6 @@ EventResult CameraEventHandler::ReceiveEvent(SKSECameraEvent * evn, EventDispatc
 	return kEvent_Continue;
 }
 
-SKSECrosshairRefEvent::SKSECrosshairRefEvent(NiPointer<TESObjectREFR> & a_crosshairRef) : crosshairRef(a_crosshairRef)
-{
-
-}
-
 EventResult CrosshairRefEventHandler::ReceiveEvent(SKSECrosshairRefEvent * evn, EventDispatcher<SKSECrosshairRefEvent> * dispatcher)
 {
 	g_crosshairRefEventRegs.ForEach(

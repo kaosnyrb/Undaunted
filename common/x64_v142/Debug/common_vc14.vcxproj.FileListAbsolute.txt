@@ -2,3 +2,5 @@ C:\git\seplugin\x64_v142\Debug\common_vc14.pdb
 C:\git\seplugin\common\x64_v142\Debug\common_vc14.pdb
 C:\git\Undaunted\x64_v142\Debug\common_vc14.pdb
 C:\git\Undaunted\common\x64_v142\Debug\common_vc14.pdb
+C:\git\UndauntedVR\x64_v142\Debug\common_vc14.pdb
+C:\git\UndauntedVR\common\x64_v142\Debug\common_vc14.pdb

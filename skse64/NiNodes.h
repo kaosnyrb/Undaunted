@@ -7,7 +7,7 @@
 
 class BSFaceGenAnimationData;
 
-// 128
+// B8
 class NiNode : public NiAVObject
 {
 public:
@@ -21,25 +21,27 @@ public:
 	virtual void	Unk_3A(void);
 	virtual void	UpdateUpwardPass(void);
 
-	NiTArray <NiAVObject *>	m_children;	// 110
+	NiTArray <NiAVObject *>	m_children;	// A8
 
 	static NiNode * Create(UInt32 arrBufLen = 0);
 
-	DEFINE_MEMBER_FN_1(ctor, NiNode*, 0x00C57A60, UInt16 arrBufLen);
+	MEMBER_FN_PREFIX(NiNode);
+	DEFINE_MEMBER_FN(ctor, NiNode*, 0x00000000, UInt32 arrBufLen);
 };
-STATIC_ASSERT(sizeof(NiNode) == 0x128);
+//STATIC_ASSERT(sizeof(NiNode) == 0xB8);
 
-// 158
+// E4
 class BSFadeNode : public NiNode
 {
 public:
-	UInt32	unkB8[(0x158 - 0x128) >> 2];
+	UInt32	unkB8[(0xE4 - 0xB8) >> 2];
 
 	static BSFadeNode * Create();
 
-	DEFINE_MEMBER_FN_0(ctor, BSFadeNode *, 0x0128F900);
+	MEMBER_FN_PREFIX(BSFadeNode);
+	DEFINE_MEMBER_FN(ctor, BSFadeNode *, 0x00000000);
 };
-STATIC_ASSERT(sizeof(BSFadeNode) == 0x158);
+//STATIC_ASSERT(sizeof(BSFadeNode) == 0xE4);
 
 // EC
 class BSFaceGenNiNode : public NiNode
@@ -67,7 +69,7 @@ public:
 	};
 
 	MEMBER_FN_PREFIX(BSFaceGenNiNode);
-	DEFINE_MEMBER_FN(AdjustHeadMorph, void, 0x003D90E0, UInt32 unk04, UInt32 unk08, float delta);
+	DEFINE_MEMBER_FN(AdjustHeadMorph, void, 0x003E8A50, UInt32 unk04, UInt32 unk08, float delta);
 };
 
 //STATIC_ASSERT(sizeof(BSFaceGenNiNode) == 0xEC);

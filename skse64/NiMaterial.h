@@ -78,8 +78,8 @@ public:
 	float	falloffStartOpacity;		// 38
 	float	falloffStopOpacity;			// 3C
 	NiColorA	emissiveColor;			// 40
-	NiTexturePtr unk50;			// 50
-	NiTexturePtr unk54;			// 54
+	NiSourceTexture	* unk50;			// 50
+	NiSourceTexture	* unk54;			// 54
 	float	softFalloffDepth;			// 58
 	float	emissiveMultiple;			// 5C
 	BSFixedString	sourceTexture;		// 60
@@ -98,12 +98,12 @@ public:
 	float	unk3C;				// 3C
 	float	unk40;				// 40
 	float	unk44;				// 44
-	NiTexturePtr texture1;		// 48
+	NiTexture * texture1;		// 48
 	SInt32	unk50;				// 50
 	UInt32	unk54;				// 54
-	NiTexturePtr texture2;		// 58
-	NiTexturePtr texture3;		// 60
-	NiTexturePtr texture4;		// 68
+	NiTexture * texture2;		// 58
+	NiTexture * texture3;		// 60
+	NiTexture * texture4;		// 68
 	UInt32	unk70;				// 70
 	UInt32	unk74;				// 74
 	BSTextureSetPtr	textureSet;	// 78
@@ -118,33 +118,9 @@ public:
 	void SetTextureSet(BSTextureSet * textureSet);
 
 	MEMBER_FN_PREFIX(BSLightingShaderMaterial);
-	DEFINE_MEMBER_FN(CopyFrom, void, 0x012CEF40, BSLightingShaderMaterial * other);
-	DEFINE_MEMBER_FN(dtor_base, void, 0x012CEDE0);
+	DEFINE_MEMBER_FN(CopyFrom, void, 0x0130DE50, BSLightingShaderMaterial * other);
 };
 STATIC_ASSERT(sizeof(BSLightingShaderMaterial) == 0xA0);
-
-class BSLightingShaderMaterialEye : public BSLightingShaderMaterial
-{
-public:
-	virtual ~BSLightingShaderMaterialEye();
-
-	NiTexturePtr unkA0;	// A0 inited to 0
-	NiTexturePtr unkA8;	// A8 inited to 0
-
-	DEFINE_MEMBER_FN(dtor, void, 0x012D0450);
-};
-
-class BSLightingShaderMaterialEnvmap : public BSLightingShaderMaterial
-{
-public:
-	virtual ~BSLightingShaderMaterialEnvmap();
-
-	NiTexturePtr unkA0;	// A0 inited to 0
-	NiTexturePtr unkA8;	// A8 inited to 0
-
-	// A3E31C7F999C7F658388C63EFE1489AE31F17A6B+389
-	DEFINE_MEMBER_FN(dtor, void, 0x012D01F0);
-};
 
 class BSLightingShaderMaterialFacegen : public BSLightingShaderMaterial
 {
@@ -154,55 +130,6 @@ public:
 	NiTexturePtr renderedTexture;	// A0 inited to 0
 	NiTexturePtr unkA8;				// A8 inited to 0
 	NiTexturePtr unkB0;				// B0 inited to 0
-
-	// uses ??_7BSLightingShaderMaterialFacegen@@6B@ at +17
-	DEFINE_MEMBER_FN(dtor, void, 0x012D1FB0);
-};
-
-class BSLightingShaderMaterialGlowmap : public BSLightingShaderMaterial
-{
-public:
-	virtual ~BSLightingShaderMaterialGlowmap();
-
-	NiTexturePtr glowMap;	// A0
-
-	// uses ??_7BSLightingShaderMaterialGlowmap@@6B@ at +17
-	DEFINE_MEMBER_FN(dtor, void, 0x012D1050);
-};
-
-class BSLightingShaderMaterialParallax : public BSLightingShaderMaterial
-{
-public:
-	virtual ~BSLightingShaderMaterialParallax();
-
-	NiTexturePtr unkA0;	// A0
-
-	// uses ??_7BSLightingShaderMaterialParallax@@6B@ at +17
-	DEFINE_MEMBER_FN(dtor, void, 0x012D14F0);
-};
-
-class BSLightingShaderMaterialMultiLayerParallax : public BSLightingShaderMaterial
-{
-public:
-	virtual ~BSLightingShaderMaterialMultiLayerParallax();
-
-	NiTexturePtr unkA0;	// A0
-	NiTexturePtr unkA8;	// A0
-	NiTexturePtr unkB0;	// A0
-
-	// uses ??_7BSLightingShaderMaterialMultiLayerParallax@@6B@ at +17
-	DEFINE_MEMBER_FN(dtor, void, 0x012D3B40);
-};
-
-class BSLightingShaderMaterialParallaxOcc : public BSLightingShaderMaterial
-{
-public:
-	virtual ~BSLightingShaderMaterialParallaxOcc();
-
-	NiTexturePtr unkA0;	// A0
-
-	// uses ??_7BSLightingShaderMaterialParallaxOcc@@6B@ at +17
-	DEFINE_MEMBER_FN(dtor, void, 0x012D1990);
 };
 
 class BSLightingShaderMaterialFacegenTint : public BSLightingShaderMaterial
@@ -221,11 +148,5 @@ public:
 	NiColor	tintColor;	// A0
 };
 
-// Beware that using this will cause leaks when using SetMaterial
 typedef BSShaderMaterialBase * (* _CreateShaderMaterial)(UInt32 shaderType);
 extern RelocAddr<_CreateShaderMaterial> CreateShaderMaterial;
-
-// This is actually vtable+8 but it has no dependency on the 'this' ptr
-typedef BSLightingShaderMaterialFacegenTint * (*_CreateFacegenTintMaterial)();
-extern RelocAddr<_CreateFacegenTintMaterial> CreateFacegenTintMaterial;
-

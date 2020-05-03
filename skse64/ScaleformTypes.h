@@ -113,7 +113,7 @@ public:
 	void	Destroy(void);
 
 	MEMBER_FN_PREFIX(GString);
-	DEFINE_MEMBER_FN(ctor, GString *, 0x00ED3A50, const char * string);
+	DEFINE_MEMBER_FN(ctor, GString *, 0x00F2DA40, const char * string);
 	
 };
 
@@ -144,6 +144,9 @@ public:
 	T * values;			// 00
 	UInt64	size;		// 08
 	UInt64	capacity;	// 10
+	// ### todo
+	MEMBER_FN_PREFIX(GArray);
+	DEFINE_MEMBER_FN(AddArgument, void, 0x00000000, T * value); // This function got inlined
 };
 
 class GViewport

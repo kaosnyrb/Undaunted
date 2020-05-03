@@ -1,6 +1,6 @@
 #include "GameMenus.h"
 
-RelocAddr <_CreateUIMessageData> CreateUIMessageData(0x00325F00);
+RelocAddr <_CreateUIMessageData> CreateUIMessageData(0x00335740);
 
 IMenu::IMenu() :
 	view(NULL),
@@ -9,6 +9,19 @@ IMenu::IMenu() :
 	unk14(0x12),
 	unk18(NULL)
 {
+}
+
+UInt32 IMenu::ProcessUnkData1(UnkData1* data)
+{
+	if (data->unk04 == 6)
+	{
+		if (view && data->data)
+		{
+			view->HandleEvent(data->data->unk08);
+			return 0;
+		}
+	}
+	return 2;
 }
 
 void IMenu::Render(void)
@@ -68,29 +81,15 @@ RaceMenuSlider::RaceMenuSlider(UInt32 _filterFlag, const char * _sliderName, con
 	pad135[2] = 0;
 }
 
-NiPointer<TESObjectREFR> EnemyHealth::GetTarget() const
+TESObjectREFR * EnemyHealth::GetTarget() const
 {
-	NiPointer<TESObjectREFR> refr;
+	TESObjectREFR * refr = NULL;
 	UInt32 refHandle = (*g_thePlayer)->targetHandle;
-	LookupREFRByHandle(refHandle, refr);
+	LookupREFRByHandle(&refHandle, &refr);
 	if(!refr) {
 		refHandle = handle;
-		LookupREFRByHandle(refHandle, refr);
+		LookupREFRByHandle(&refHandle, &refr);
 	}
 
 	return refr;
-}
-
-Notification::Notification(const Notification& other)
-{
-	CALL_MEMBER_FN(&text, Set)(other.text.Get(), 0);
-	CALL_MEMBER_FN(&status, Set)(other.status.Get(), 0);
-
-	CALL_MEMBER_FN(&sound, Set)(other.sound.c_str());
-	objectives.CopyFrom(&other.objectives);
-
-	type = other.type;
-	quest = other.quest;
-	word = other.word;
-	time = other.time;
 }

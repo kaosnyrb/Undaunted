@@ -11,8 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{7028B79C-06E3-4D9A-B38C-1DC3680B1BDB}</ProjectGuid>
-    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{639411C0-FC23-4819-A0C5-429A4E5D8A51}</ProjectGuid>
     <RootNamespace>skse64</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <SccProjectName>
@@ -51,60 +50,47 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <LinkIncremental>true</LinkIncremental>
-    <TargetName>$(ProjectName)_1_5_97</TargetName>
+    <TargetName>sksevr_1_4_15</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <LinkIncremental>false</LinkIncremental>
-    <TargetName>$(ProjectName)_1_5_97</TargetName>
+    <TargetName>sksevr_1_4_15</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>_DEBUG;_WINDOWS;_USRDLL;SKSE64_EXPORTS;RUNTIME_VERSION=0x01050610;RUNTIME;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>false</SDLCheck>
       <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <ForcedIncludeFiles>common/IPrefix.h</ForcedIncludeFiles>
+      <PreprocessorDefinitions>_DEBUG;_WINDOWS;_USRDLL;SKSE64_EXPORTS;RUNTIME_VERSION=0x010400F1;RUNTIME;IS_VR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <ForcedIncludeFiles>common/IPrefix.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(TargetPath)" "$(Skyrim64Path)\$(TargetFileName)" /Y</Command>
-    </PostBuildEvent>
-    <PostBuildEvent>
-      <Message>Installing DLL...</Message>
+      <Command>copy "$(TargetPath)" "$(SkyrimVRPath)\$(TargetFileName)" /Y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>NDEBUG;_WINDOWS;_USRDLL;SKSE64_EXPORTS;RUNTIME;RUNTIME_VERSION=0x01050610;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>false</SDLCheck>
       <AdditionalIncludeDirectories>$(SolutionDir);$(SolutionDir)\..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <ForcedIncludeFiles>common/IPrefix.h</ForcedIncludeFiles>
+      <PreprocessorDefinitions>NDEBUG;_WINDOWS;_USRDLL;SKSE64_EXPORTS;RUNTIME;RUNTIME_VERSION=0x010400F1;IS_VR;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <ForcedIncludeFiles>common/IPrefix.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
-      <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(TargetPath)" "$(Skyrim64Path)\$(TargetFileName)" /Y</Command>
-    </PostBuildEvent>
-    <PostBuildEvent>
-      <Message>Installing DLL...</Message>
+      <Command>copy "$(TargetPath)" "$(SkyrimVRPath)\$(TargetFileName)" /Y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -123,6 +109,7 @@
     <ClCompile Include="GameInput.cpp" />
     <ClCompile Include="GameMenus.cpp" />
     <ClCompile Include="GameObjects.cpp" />
+    <ClCompile Include="GamePathing.cpp" />
     <ClCompile Include="GameReferences.cpp" />
     <ClCompile Include="GameResources.cpp" />
     <ClCompile Include="GameRTTI.cpp" />
@@ -141,6 +128,7 @@
     <ClCompile Include="Hooks_Event.cpp" />
     <ClCompile Include="Hooks_Gameplay.cpp" />
     <ClCompile Include="Hooks_Handlers.cpp" />
+    <ClCompile Include="Hooks_Memory.cpp" />
     <ClCompile Include="Hooks_NetImmerse.cpp" />
     <ClCompile Include="Hooks_ObScript.cpp" />
     <ClCompile Include="Hooks_Papyrus.cpp" />
@@ -152,9 +140,11 @@
     <ClCompile Include="InternalSerialization.cpp" />
     <ClCompile Include="InternalTasks.cpp" />
     <ClCompile Include="NiAdditionalGeometryData.cpp" />
+    <ClCompile Include="NiAllocator.cpp" />
     <ClCompile Include="NiControllers.cpp" />
     <ClCompile Include="NiExtraData.cpp" />
     <ClCompile Include="NiGeometry.cpp" />
+    <ClCompile Include="NiInterpolators.cpp" />
     <ClCompile Include="NiLight.cpp" />
     <ClCompile Include="NiMaterial.cpp" />
     <ClCompile Include="NiNodes.cpp" />
@@ -197,6 +187,7 @@
     <ClCompile Include="PapyrusHeadPart.cpp" />
     <ClCompile Include="PapyrusIngredient.cpp" />
     <ClCompile Include="PapyrusInput.cpp" />
+    <ClCompile Include="PapyrusInterfaces.cpp" />
     <ClCompile Include="PapyrusKeyword.cpp" />
     <ClCompile Include="PapyrusLeveledActor.cpp" />
     <ClCompile Include="PapyrusLeveledItem.cpp" />
@@ -244,16 +235,7 @@
     <ClCompile Include="ScaleformVM.cpp" />
     <ClCompile Include="Serialization.cpp" />
     <ClCompile Include="skse64.cpp" />
-    <ClCompile Include="PapyrusInterfaces.cpp" />
     <ClCompile Include="Translation.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\common\common_vc14.vcxproj">
-      <Project>{472e19ab-def0-42df-819b-18722e8dc822}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\skse64_common\skse64_common.vcxproj">
-      <Project>{5fd1c08d-db80-480c-a1c6-f0920005cd13}</Project>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BSModelDB.h" />
@@ -271,12 +253,13 @@
     <ClInclude Include="GameInput.h" />
     <ClInclude Include="GameMenus.h" />
     <ClInclude Include="GameObjects.h" />
+    <ClInclude Include="GamePathing.h" />
     <ClInclude Include="GameReferences.h" />
     <ClInclude Include="GameResources.h" />
     <ClInclude Include="GameRTTI.h" />
     <ClInclude Include="GameSettings.h" />
     <ClInclude Include="GameStreams.h" />
-    <ClInclude Include="GameThreads.h" />
+    <ClInclude Include="gamethreads.h" />
     <ClInclude Include="GameTypes.h" />
     <ClInclude Include="GameUtilities.h" />
     <ClInclude Include="GlobalLocks.h" />
@@ -289,6 +272,7 @@
     <ClInclude Include="Hooks_Event.h" />
     <ClInclude Include="Hooks_Gameplay.h" />
     <ClInclude Include="Hooks_Handlers.h" />
+    <ClInclude Include="Hooks_Memory.h" />
     <ClInclude Include="Hooks_NetImmerse.h" />
     <ClInclude Include="Hooks_ObScript.h" />
     <ClInclude Include="Hooks_Papyrus.h" />
@@ -300,9 +284,11 @@
     <ClInclude Include="InternalSerialization.h" />
     <ClInclude Include="InternalTasks.h" />
     <ClInclude Include="NiAdditionalGeometryData.h" />
+    <ClInclude Include="NiAllocator.h" />
     <ClInclude Include="NiControllers.h" />
     <ClInclude Include="NiExtraData.h" />
     <ClInclude Include="NiGeometry.h" />
+    <ClInclude Include="NiInterpolators.h" />
     <ClInclude Include="NiLight.h" />
     <ClInclude Include="NiMaterial.h" />
     <ClInclude Include="NiNodes.h" />
@@ -400,6 +386,14 @@
     <None Include="GameRTTI.inl" />
     <None Include="PapyrusNativeFunctionDef.inl" />
     <None Include="PapyrusNativeFunctionDef_Base.inl" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\common\common_vc14.vcxproj">
+      <Project>{472e19ab-def0-42df-819b-18722e8dc822}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\skse64_common\skse64_common.vcxproj">
+      <Project>{5fd1c08d-db80-480c-a1c6-f0920005cd13}</Project>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\skse64_common\skse_version.rc" />

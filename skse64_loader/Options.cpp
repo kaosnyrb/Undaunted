@@ -210,7 +210,7 @@ void Options::PrintUsage(void)
 {
 	gLog.SetPrintLevel(IDebugLog::kLevel_VerboseMessage);
 
-	_MESSAGE("usage: skse64_loader [options]");
+	_MESSAGE("usage: sksevr_loader [options]");
 	_MESSAGE("");
 	_MESSAGE("options:");
 	_MESSAGE("  -h, -help - print this options list");

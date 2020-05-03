@@ -10,9 +10,9 @@
 
 static UInt32 g_forceContainerCategorization = 0;
 
-// 30A34F24A97F91365E1A3F66BF53263DEDF4B0AD+FA
-RelocPtr<UInt32 *> g_containerMode(0x02F4C328);
-RelocAddr<uintptr_t> kHook_ContainerMode_Base(0x0085F0C0);
+// 59347F2939D95BA10F7C25036702DA321C7D56F1+FA
+RelocPtr<UInt32 *> g_containerMode(0x03011720);
+RelocAddr<uintptr_t> kHook_ContainerMode_Base(0x0088A2C0);
 uintptr_t kHook_ContainerMode_Categories = kHook_ContainerMode_Base + 0x6E;
 uintptr_t kHook_ContainerMode_NoCategories = kHook_ContainerMode_Base + 0x82;
 
@@ -22,30 +22,37 @@ void Hooks_Gameplay_EnableForceContainerCategorization(bool enable)
 }
 
 UInt32 g_invalidateKeywordCache = 0;
-RelocAddr<uintptr_t> kHook_BGSKeyword_Base(0x00333B30);
+RelocAddr<uintptr_t> kHook_BGSKeyword_Base(0x003433F0);
 uintptr_t kHook_BGSKeyword_Create_Return = kHook_BGSKeyword_Base + 6;
 
 // 4C1457C3040DCD34A7E7B2326F1EA2023930C56B+71
-RelocAddr <char *> g_gameVersion(0x01544EA0);
-RelocAddr <uintptr_t> kHook_ShowVersion_Offset(0x008EEE10 + 0x78);
+RelocAddr <char *> g_gameVersion(0x015BC158);
+RelocAddr <uintptr_t> kHook_ShowVersion_Offset(0x00923D50 + 0x78);
 static char		kHook_ShowVersion_FormatString[] =
-"%s.%d (SKSE64 " __PREPRO_TOKEN_STR__(SKSE_VERSION_INTEGER) "."
+"%s.%d (SKSEVR " __PREPRO_TOKEN_STR__(SKSE_VERSION_INTEGER) "."
 __PREPRO_TOKEN_STR__(SKSE_VERSION_INTEGER_MINOR) "."
 __PREPRO_TOKEN_STR__(SKSE_VERSION_INTEGER_BETA) " rel "
 __PREPRO_TOKEN_STR__(SKSE_VERSION_RELEASEIDX) ")";
 
-RelocAddr<uintptr_t> kHook_Crosshair_LookupREFRByHandle_Enter(0x006B0570 + 0x90);
+RelocAddr<uintptr_t> kHook_Crosshair_LookupREFRByHandle_Enter(0x006D3770 + 0x112);
 
-NiPointer<TESObjectREFR>	g_curCrosshairRef;
+TESObjectREFR*	g_curCrosshairRef = NULL;
 
-bool __cdecl Hook_Crosshair_LookupREFRByHandle(UInt32 & refHandle, NiPointer<TESObjectREFR> & refrOut)
+bool __cdecl Hook_Crosshair_LookupREFRByHandle(UInt32 * refHandle, TESObjectREFR ** refrOut)
 {
 	bool result = LookupREFRByHandle(refHandle, refrOut);
 
-	g_curCrosshairRef = refrOut;
+	if (refrOut)
+	{
+		g_curCrosshairRef = *refrOut;
 
-	SKSECrosshairRefEvent evn(refrOut);
-	g_crosshairRefEventDispatcher.SendEvent(&evn);
+		SKSECrosshairRefEvent evn(*refrOut);
+		g_crosshairRefEventDispatcher.SendEvent(&evn);
+	}
+	else
+	{
+		g_curCrosshairRef = NULL;
+	}
 
 	return result;
 }
@@ -57,7 +64,7 @@ TESObjectREFR* Hooks_Gameplay_GetCrosshairRef()
 
 static UInt8 s_disableMapMenuMouseWheel = 1;
 
-RelocAddr<uintptr_t> kHook_MapMenuMouseWheel_Enter(0x008DCEA0 + 0x18B);
+RelocAddr<uintptr_t> kHook_MapMenuMouseWheel_Enter(0x00910440 + 0x340);
 
 void Hooks_Gameplay_EnableMapMenuMouseWheel(bool enable)
 {
@@ -179,8 +186,9 @@ void Hooks_Gameplay_Commit(void)
 				mov(al, ptr[rax]);
 
 				// Original code
-				add(rsp, 0x30);
-				pop(rdi);
+				pop(r15);
+				pop(r14);
+				pop(rbp);
 				ret();
 			}
 		};

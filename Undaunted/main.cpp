@@ -11,7 +11,7 @@ SKSEMessagingInterface* g_messageInterface = NULL;
 extern "C"	{
 
 	bool SKSEPlugin_Query(const SKSEInterface * skse, PluginInfo * info)	{	// Called by SKSE to learn about this plugin and check that it's safe to load it
-		gLog.OpenRelative(CSIDL_MYDOCUMENTS, "\\My Games\\Skyrim Special Edition\\SKSE\\Undaunted.log");
+		gLog.OpenRelative(CSIDL_MYDOCUMENTS, "\\My Games\\Skyrim VR\\SKSE\\Undaunted.log");
 		gLog.SetPrintLevel(IDebugLog::kLevel_Error);
 		gLog.SetLogLevel(IDebugLog::kLevel_DebugMessage);
 	
@@ -31,12 +31,13 @@ extern "C"	{
 
 			return false;
 		}
-		else if(skse->runtimeVersion != RUNTIME_VERSION_1_5_97)
+		/*
+		else if(skse->runtimeVersion != RUNTIME_VERSION_1_4_15)
 		{
 			_MESSAGE("unsupported runtime version %08X", skse->runtimeVersion);
 
 			return false;
-		}
+		}*/
 
 		g_serialization = (SKSESerializationInterface*)skse->QueryInterface(kInterface_Serialization);
 		g_messageInterface = (SKSEMessagingInterface*)skse->QueryInterface(kInterface_Messaging);

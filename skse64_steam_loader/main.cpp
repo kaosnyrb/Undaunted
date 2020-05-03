@@ -27,14 +27,14 @@ BOOL WINAPI DllMain(HANDLE procHandle, DWORD reason, LPVOID reserved)
 
 static void OnAttach(void)
 {
-	gLog.OpenRelative(CSIDL_MYDOCUMENTS, "\\My Games\\Skyrim Special Edition\\SKSE\\skse64_steam_loader.log");
+	gLog.OpenRelative(CSIDL_MYDOCUMENTS, "\\My Games\\Skyrim VR\\SKSE\\sksevr_steam_loader.log");
 	gLog.SetPrintLevel(IDebugLog::kLevel_Error);
 	gLog.SetLogLevel(IDebugLog::kLevel_DebugMessage);
 
 	FILETIME	now;
 	GetSystemTimeAsFileTime(&now);
 
-	_MESSAGE("skse64 loader %08X (steam) %08X%08X %s", PACKED_SKSE_VERSION, now.dwHighDateTime, now.dwLowDateTime, GetOSInfoStr().c_str());
+	_MESSAGE("sksevr loader %08X (steam) %08X%08X %s", PACKED_SKSE_VERSION, now.dwHighDateTime, now.dwLowDateTime, GetOSInfoStr().c_str());
 	_MESSAGE("loader base addr = %016I64X", g_dllHandle);
 	_MESSAGE("exe base addr = %016I64X", GetModuleHandle(NULL));
 
@@ -98,7 +98,7 @@ static void HookMain(void * retAddr)
 		return;
 	}
 
-	const char	* dllPrefix = (isEditor == false) ? "\\skse64_" : "\\skse64_editor_";
+	const char	* dllPrefix = (isEditor == false) ? "\\sksevr_" : "\\sksevr_editor_";
 
 	g_dllPath = GetRuntimeDirectory() + dllPrefix + dllSuffix + ".dll";
 	_MESSAGE("dll = %s", g_dllPath.c_str());

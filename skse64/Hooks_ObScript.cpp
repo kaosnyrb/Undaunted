@@ -27,7 +27,7 @@ void Hooks_ObScript_Init()
 	}
 }
 
-bool GetSKSEVersion_Execute(const ObScriptParam * paramInfo, ScriptData * scriptData, TESObjectREFR * thisObj, TESObjectREFR* containingObj, Script* scriptObj, ScriptLocals* locals, double& result, UInt32& opcodeOffsetPtr)
+bool GetSKSEVersion_Execute(void * paramInfo, void * scriptData, TESObjectREFR * thisObj, void * containingObj, void * scriptObj, void * locals, double * result, void * opcodeOffsetPtr)
 {
 	_MESSAGE("GetSKSEVersion_Execute");
 

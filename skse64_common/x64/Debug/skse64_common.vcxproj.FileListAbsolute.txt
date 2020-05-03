@@ -2,3 +2,5 @@ C:\git\seplugin\x64\Debug\skse64_common.pdb
 C:\git\seplugin\skse64_common\x64\Debug\skse64_common.pdb
 C:\git\Undaunted\x64\Debug\skse64_common.pdb
 C:\git\Undaunted\skse64_common\x64\Debug\skse64_common.pdb
+C:\git\UndauntedVR\x64\Debug\skse64_common.pdb
+C:\git\UndauntedVR\skse64_common\x64\Debug\skse64_common.pdb

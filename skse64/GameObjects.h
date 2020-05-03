@@ -336,7 +336,7 @@ public:
 	static BSShaderTextureSet * Create();
 
 	MEMBER_FN_PREFIX(BSShaderTextureSet);
-	DEFINE_MEMBER_FN(ctor, BSShaderTextureSet *, 0x012C9320);
+	DEFINE_MEMBER_FN(ctor, BSShaderTextureSet *, 0x01307710);
 };
 
 STATIC_ASSERT(sizeof(BSShaderTextureSet) == 0x58);
@@ -457,8 +457,8 @@ public:
 	UInt64				unk88;	// 88
 
 	MEMBER_FN_PREFIX(MagicItem);
-	DEFINE_MEMBER_FN(GetCostliestEffectItem, EffectItem *, 0x00101CC0, int arg1, bool arg2);
-	DEFINE_MEMBER_FN(GetEffectiveMagickaCost, float, 0x00101A30, Character* caster);
+	DEFINE_MEMBER_FN(GetCostliestEffectItem, EffectItem *, 0x00112270, int arg1, bool arg2);
+	DEFINE_MEMBER_FN(GetEffectiveMagickaCost, float, 0x00111FE0, Character* caster);
 };
 
 STATIC_ASSERT(sizeof(MagicItem) == 0x90);
@@ -651,29 +651,28 @@ public:
 	enum { kTypeID = kFormType_Ammo };
 
 	// parents
-	TESFullName					fullName;		// 030
-	TESModelTextureSwap			texSwap;		// 040
-	TESIcon						icon;			// 078
-	BGSMessageIcon				messageIcon;	// 088
-	TESValueForm				value;			// 0A0
-	TESWeightForm				weight;			// 0B0
-	BGSDestructibleObjectForm	destructible;	// 0C0
-	BGSPickupPutdownSounds		sounds;			// 0D0
-	TESDescription				description;	// 0E8
-	BGSKeywordForm				keyword;		// 0F8
+	TESFullName			fullName;		// 030
+	TESModelTextureSwap	texSwap;		// 040
+	TESIcon				icon;			// 078
+	BGSMessageIcon		messageIcon;	// 088
+	TESValueForm		value;			// 0A0
+	BGSDestructibleObjectForm	destructible;	// 0B0
+	BGSPickupPutdownSounds		sounds;			// 0C0
+	TESDescription		description;	// 0D8
+	BGSKeywordForm		keyword;		// 0E8
 
 	// members
 
 	// 10
 	struct AmmoSettings
 	{
-		BGSProjectile	* projectile;	// 0
-		UInt32			flags;			// 8
-		float			damage;			// C
+		BGSProjectile	* projectile; // 0
+		UInt32			flags;	// 8
+		float			damage; // C
 	};
 
 	enum {
-		kIgnoreNormalResist	= (1 << 0),
+		kIgnoreNormalResist = (1 << 0),
 		kNotPlayable		= (1 << 1),
 		kNotBolt			= (1 << 2)
 	};
@@ -681,10 +680,11 @@ public:
 	bool isBolt() { return (settings.flags & kNotBolt) != kNotBolt; }
 	bool isPlayable() { return (settings.flags & kNotPlayable) != kNotPlayable; }
 
-	AmmoSettings	settings;	// 110
-	BSFixedString	unk120;		// 120
+	UInt64				unk100;		// 100
+	UInt64				unk108;		// 108
+	AmmoSettings		settings;	// 110
+	StringCache::Ref	unk98;		// 120
 };
-STATIC_ASSERT(sizeof(TESAmmo) == 0x128);
 
 // 30 
 class TESBoundAnimObject : public TESBoundObject
@@ -754,50 +754,50 @@ public:
 
 	UInt8		pad1B4[0x1BA - 0x1B4];	// 1B4
 
-	UInt16		unk1BA;				// 1BA
-	UInt32		pad1BC;				// 1BC
-	TESClass*	npcClass;			// 1C0
+	UInt16		unk1BA;			// 1BA
+	UInt32		pad1BC;			// 1BC
+	TESClass*	npcClass;		// 1C0
 
-	HeadData	* headData;			// 1C8
-	UInt64		unk1D0;				// 1D0
-	TESCombatStyle*	combatStyle;	// 1D8
-	UInt32		unk1E0;				// 1E0
-	UInt32		pad1E4;				// 1E4
-	TESRace		* overlayRace;		// 1E8
-	TESNPC		* nextTemplate;		// 1F0
-	float		height;				// 1F8 - init'd to 1
-	float		weight;				// 1FC - init'd to 50
+	HeadData	* headData;		// 1C8
+	UInt64		unk1D0;			// 1D0
+	TESCombatStyle*	combatStyle;// 1D8
+	UInt32		unk1E0;			// 1E0
+	UInt32		pad1E4;			// 1E4
+	TESRace		* overlayRace;	// 1E8
+	TESNPC		* nextTemplate;	// 1F0
+	float		height;			// 1F8 - init'd to 1
+	float		weight;			// 1FC - init'd to 50
 
-	UInt64		unk200;				// 200
+	UInt64		unk200;			// 200
 	
-	BSFixedString	shortName;		// 208
-	TESObjectARMO*	skinFar;		// 210
-	BGSOutfit*		defaultOutfit;	// 218
-	BGSOutfit*		sleepOutfit;	// 220
-	UInt64			unk228;			// 228
-	TESFaction*		faction;		// 230
-	BGSHeadPart		** headparts;	// 238
-	UInt8			numHeadParts;	// 240
-	UInt8			unk241;			// 241 - init'd to 1
-	UInt8			unk242;			// 242 - New in SE?
-	UInt8			unk243;			// 243
-	UInt8			unk244;			// 244 - New in SE?
-	UInt8			unk245;			// 245 - init'd to 1
+	StringCache::Ref	shortName;	// 208
+	TESObjectARMO*		skinFar;	// 210
+	BGSOutfit*	defaultOutfit;		// 218
+	BGSOutfit*	sleepOutfit;		// 220
+	UInt64		unk228;			// 228
+	TESFaction*	faction;		// 230
+	BGSHeadPart ** headparts;	// 238
+	UInt8		numHeadParts;	// 240
+	UInt8		unk241;			// 241 - init'd to 1
+	UInt8		unk242;			// 242 - New in SE?
+	UInt8		unk243;			// 243
+	UInt8		unk244;			// 244 - New in SE?
+	UInt8		unk245;			// 245 - init'd to 1
 	struct Color { // 797979 Transparent
 		UInt8   red, green, blue; // 246 - 248 - Skin Color
 	} color;
-	UInt8			pad249[7];		// 249
-	UInt64			unk250;			// 250 // Relationships?
+	UInt8		pad249[7];		// 249
+	UInt64		unk250;			// 250 // Relationships?
 
-	FaceMorphs		* faceMorph;	// 258
-	UInt64			unk260;			// 260
+	FaceMorphs	* faceMorph;	// 258
+	UInt64		unk260;			// 260
 
 	MEMBER_FN_PREFIX(TESNPC);
-	DEFINE_MEMBER_FN(GetSex, char, 0x003512A0);
-	DEFINE_MEMBER_FN(HasOverlays, bool, 0x00368A20);
+	DEFINE_MEMBER_FN(GetSex, char, 0x00360B60);
+	DEFINE_MEMBER_FN(HasOverlays, bool, 0x00378380);
 
 	// Swaps a headPart of the same type as target with target
-	DEFINE_MEMBER_FN(ChangeHeadPart, void, 0x00365BF0, BGSHeadPart * target);
+	DEFINE_MEMBER_FN(ChangeHeadPart, void, 0x00375550, BGSHeadPart * target);
 
 	struct MorphAction {
 		BSFaceGenNiNode * faceNode;
@@ -806,11 +806,16 @@ public:
 		float	value;
 	};
 	
+	// Applies a morph to all parts of a head
+	// SE: TODO. This function may have been inlined in 0x3CF020 (1.4), we need a replacement.
+	DEFINE_MEMBER_FN(ApplyMorph, void, 0x00000000, MorphAction * morphAction); // 1403D23D0 <-- moved
+
 	// Updates the neck seam when weight changed
-	DEFINE_MEMBER_FN(UpdateNeck, void, 0x003606D0, BSFaceGenNiNode * faceNode);
+	DEFINE_MEMBER_FN(UpdateNeck, void, 0x0036FFD0, BSFaceGenNiNode * faceNode);
 
 	// Computes RGB SkinTone from RGBA TintMask
-	DEFINE_MEMBER_FN(SetSkinFromTint, void, 0x00360480, NiColorA * result, TintMask * tintMask, bool fromTint);
+	// C74DE866EA2CBFADF8A164FC95A889A9DBA09091+C7
+	DEFINE_MEMBER_FN(SetSkinFromTint, void, 0x0036FD80, NiColorA * result, TintMask * tintMask, UInt32 compute, UInt32 unk1);
 
 	void SetFaceTexture(BGSTextureSet * textureSet);
 	void SetHairColor(BGSColorForm * hairColor);

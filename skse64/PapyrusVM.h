@@ -78,10 +78,10 @@ public:
 	void	Release(void);
 
 	MEMBER_FN_PREFIX(VMClassInfo);
-	DEFINE_MEMBER_FN(Destroy, void, 0x01237240);
-	DEFINE_MEMBER_FN(GetVariable, SInt32, 0x012385B0, BSFixedString * name);
+	DEFINE_MEMBER_FN(Destroy, void, 0x0126F6F0);
+	DEFINE_MEMBER_FN(GetVariable, SInt32, 0x01270A60, BSFixedString * name);
 	// 1673D04F90861710999A3DC0514282C538D25FCA+187
-	DEFINE_MEMBER_FN(GetFunction, IFunction*, 0x0123C760, const char * fnName);
+	DEFINE_MEMBER_FN(GetFunction, IFunction*, 0x01274C10, const char * fnName);
 };
 
 // This type is not fully decoded or correctly sized, just enough to use the functor
@@ -200,6 +200,7 @@ public:
 
 // 4B04
 // this does more than hold on to class registrations, but for now that's all we care about
+// ??_7VirtualMachine@Internal@BSScript@@6B@
 class VMClassRegistry
 {
 public:
@@ -250,6 +251,8 @@ public:
 	virtual void	SetFunctionFlagsEx(const char * className, UInt32 unk0, const char * fnName, UInt32 flags);
 	virtual void	SetFunctionFlags(const char * className, const char * fnName, UInt32 flags);
 	virtual void	VisitScripts(UInt64 handle, IForEachScriptObjectFunctor * functor);
+	virtual void	New_1C(void);	// added in VR 1.4.15
+	virtual void	New_1D(void);	// added in VR 1.4.15
 	virtual bool	Unk_1C(UInt64 handle, const char * className, VMIdentifier ** identifier);
 	virtual void	Unk_1D(void);
 	virtual void	Unk_1E(void);
@@ -278,27 +281,29 @@ public:
 	virtual void	Unk_35(void);
 
 //	void		** _vtbl;		// 0000
-	UInt64		unk0008;		// 0008 - refcount?
-	void		** vtbl0008;	// 0010
-	void		** vtbl000C;	// 0018
-	void		** vtbl0010;	// 0020
+	UInt64		unk0004;		// 0004 - refcount?
+	void		** vtbl0008;	// 0008
+	void		** vtbl000C;	// 000C
+	void		** vtbl0010;	// 0010
 
-	UInt64		unk9310[(0x9310 - 0x20) >> 3];	// 9310
+	// everything after this is wrong
 
-	SimpleLock	stackLock;		// 9318
-	StackTableT	allStacks;		// 9320
-	StackTableT	waitingStacks;	// 9350
+	UInt32		unk0014[(0x006C - 0x0014) >> 2];	// 0014
+	VMUnlinkedClassList	unlinkedClassList;			// 006C
+	UInt32		unk00B4[(0x49B8 - 0x00B4) >> 2];	// 00B4
 
-	// More...
+	SimpleLock	stackLock;		// 49B8
+	UInt32		unk49C0;		// 49C0
+	StackTableT	allStacks;		// 49C4
+	UInt32		unk49E0;		// 49E0
+	StackTableT	waitingStacks;	// 49E4
+	UInt32		unk4A00[(0x4B04 - 0x4A00) >> 2];	// 4A00
 
 	VMStackInfo* GetStackInfo(UInt32 stackId);
 
 	void LogError(const char* message, UInt32 stackId)   { PrintToDebugLog(message, stackId, kLogLevel_Error); }
 	void LogWarning(const char* message, UInt32 stackId) { PrintToDebugLog(message, stackId, kLogLevel_Warning); }
 };
-STATIC_ASSERT(offsetof(VMClassRegistry, stackLock) == 0x9318);
-STATIC_ASSERT(offsetof(VMClassRegistry, allStacks) == 0x9320);
-STATIC_ASSERT(offsetof(VMClassRegistry, waitingStacks) == 0x9350);
 
 class IStackCallbackSaveInterface
 {
@@ -392,15 +397,15 @@ public:
 
 	// Used by Hooks_Papyrus
 	// 7B34FD8669F3B7848943EE6F26F783A154F6A336+31
-	DEFINE_MEMBER_FN(UnregisterFromSleep_Internal, void, 0x009247E0, UInt64 handle);
-	DEFINE_MEMBER_FN(RevertGlobalData_Internal, bool, 0x0092DAE0);
+	DEFINE_MEMBER_FN(UnregisterFromSleep_Internal, void, 0x0095F230, UInt64 handle);
+	DEFINE_MEMBER_FN(RevertGlobalData_Internal, bool, 0x00968130);
 	// E79F47684196468F785E6950402DBDAA5A668FAA+110
-	DEFINE_MEMBER_FN(SaveRegSleepEventHandles_Internal, bool, 0x0092EB50, void * handleReaderWriter, void * saveStorageWrapper);
+	DEFINE_MEMBER_FN(SaveRegSleepEventHandles_Internal, bool, 0x009691A0, void * handleReaderWriter, void * saveStorageWrapper);
 	// ECCDB3740458A9BB07FA958498C66F04CE14F94C+1E6
-	DEFINE_MEMBER_FN(LoadRegSleepEventHandles_Internal, bool, 0x0092FD80, void * handleReaderWriter, void * loadStorageWrapper);
+	DEFINE_MEMBER_FN(LoadRegSleepEventHandles_Internal, bool, 0x0096A3D0, void * handleReaderWriter, void * loadStorageWrapper);
 
 	// 00011FEFBFDA69F253C84165B45736A4F0AF02B8+204
-	DEFINE_MEMBER_FN(QueueDelayFunctor_Internal, bool, 0x009252C0, void** pFunctor);
+	DEFINE_MEMBER_FN(QueueDelayFunctor_Internal, bool, 0x0095FD10, void** pFunctor);
 
 	bool QueueDelayFunctor(void** pFunctor)
 	{
@@ -438,7 +443,7 @@ public:
 		VMValue	* Get(UInt32 idx)	{ return (idx < m_size) ? &m_data[idx] : NULL; }
 
 		MEMBER_FN_PREFIX(Output);
-		DEFINE_MEMBER_FN(Resize, bool, 0x00920360, UInt32 len);
+		DEFINE_MEMBER_FN(Resize, bool, 0x0095AA60, UInt32 len);
 	};
 
 	virtual bool	Copy(Output * dst) = 0;

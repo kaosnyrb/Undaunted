@@ -1,4 +1,5 @@
 #pragma once
 
-UInt32 ResolveModIndex(UInt32 modIndex);
+UInt8 ResolveModIndex(UInt8 modIndexIn);
+UInt16 ResolveLightModIndex(UInt16 modIndexIn);
 void Init_CoreSerialization_Callbacks();

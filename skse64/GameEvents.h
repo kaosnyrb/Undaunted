@@ -2,19 +2,6 @@
 
 #include "skse64_common/Utilities.h"
 #include "GameTypes.h"
-#include "GameForms.h"
-
-class TESObjectREFR;
-class Actor;
-class TESObjectBOOK;
-class TESFullName;
-class TESQuest;
-class TESObjectWEAP;
-class TESWordOfPower;
-class Character;
-class TESShout;
-class TESFaction;
-class BGSLocation;
 
 template <typename T> class BSTEventSink;
 
@@ -40,11 +27,11 @@ class EventDispatcher
 	// Note: in SE there are multiple identical copies of all these functions 
 	MEMBER_FN_PREFIX(EventDispatcher);
 	// 66B1C7AC473D5EA48E4FD620BBFE0A06392C5885+66
-	DEFINE_MEMBER_FN(AddEventSink_Internal, void, 0x0056B600, SinkT * eventSink);
+	DEFINE_MEMBER_FN(AddEventSink_Internal, void, 0x00571C00, SinkT * eventSink);
 	// ??_7BGSProcedureShoutExecState@@6B@ dtor | +43
-	DEFINE_MEMBER_FN(RemoveEventSink_Internal, void, 0x00423B70, SinkT * eventSink);
+	DEFINE_MEMBER_FN(RemoveEventSink_Internal, void, 0x004336C0, SinkT * eventSink);
 	// D6BA7CEC95B2C2B9C593A9AEE7F0ADFFB2C10E11+456
-	DEFINE_MEMBER_FN(SendEvent_Internal, void, 0x00177DC0, EventArgT * evn);
+	DEFINE_MEMBER_FN(SendEvent_Internal, void, 0x00187CD0, EventArgT * evn);
 
 public:
 
@@ -61,8 +48,8 @@ template <typename T>
 class BSTEventSink
 {
 public:
-	virtual ~BSTEventSink() { };
-	virtual	EventResult	ReceiveEvent(T * evn, EventDispatcher<T> * dispatcher) { return kEvent_Continue; }; // pure
+	virtual ~BSTEventSink();
+	virtual	EventResult	ReceiveEvent(T * evn, EventDispatcher<T> * dispatcher); // pure
 //	void	** _vtbl;	// 00
 };
 
@@ -97,6 +84,10 @@ struct MenuOpenCloseEvent
 	char			pad[7];
 };
 
+struct TESFurnitureEvent
+{
+};
+
 // Todo
 struct MenuModeChangeEvent
 {
@@ -128,8 +119,7 @@ struct TESHarvestEvent
 {
 	struct ItemHarvested
 	{
-		TESForm*	 object;
-		TESForm*	 player;
+		// Unknown
 	};
 };
 
@@ -146,64 +136,51 @@ struct SkillIncrease
 {
 	struct Event
 	{
-		TESForm*		character;
-		UInt32		avId;
+		// Unknown
 	};
 };
-
 struct WordLearned
 {
 	struct Event
 	{
-		bool	 first;
+		// Unknown
 	};
 };
-
 struct WordUnlocked
 {
 	struct Event
 	{
-		bool	 third;
+		// Unknown
 	};
 };
-
 struct Inventory
 {
 	struct Event
 	{
-		TESForm*	 character;
+		// Unknown
 	};
 };
-
 struct Bounty
 {
 	struct Event
 	{
-		TESFaction*	faction;
-		UInt32		before;
-		UInt32		after;
+		// Unknown
 	};
 };
-
 struct QuestStatus
 {
 	struct Event
 	{
-		TESQuest*	quest;
-		UInt32		status;
+		// Unknown
 	};
 };
-
 struct ObjectiveState
 {
 	struct Event
 	{
-		TESQuest::Objective* objective;
-		UInt32	oldState;
-		UInt32	newState;
+		// Unknown
 	};
 };
-
 struct Trespass
 {
 	struct Event
@@ -211,7 +188,6 @@ struct Trespass
 		// Unknown
 	};
 };
-
 struct FinePaid
 {
 	struct Event
@@ -219,7 +195,6 @@ struct FinePaid
 		// Unknown
 	};
 };
-
 struct HoursPassed
 {
 	struct Event
@@ -227,7 +202,6 @@ struct HoursPassed
 		// Unknown
 	};
 };
-
 struct DaysPassed
 {
 	struct Event
@@ -235,18 +209,13 @@ struct DaysPassed
 		// Unknown
 	};
 };
-
 struct DaysJailed
 {
 	struct Event
 	{
-		UInt32	days;
-		BGSLocation*	 location;
-		TESFaction*	 faction;
-		UInt32	bounty;
+		// Unknown
 	};
 };
-
 struct CriticalHitEvent
 {
 	struct Event
@@ -254,7 +223,6 @@ struct CriticalHitEvent
 		// Unknown
 	};
 };
-
 struct DisarmedEvent
 {
 	struct Event
@@ -262,7 +230,6 @@ struct DisarmedEvent
 		// Unknown
 	};
 };
-
 struct ItemsPickpocketed
 {
 	struct Event
@@ -270,7 +237,6 @@ struct ItemsPickpocketed
 		// Unknown
 	};
 };
-
 struct ItemSteal
 {
 	struct Event
@@ -278,7 +244,6 @@ struct ItemSteal
 		// Unknown
 	};
 };
-
 struct ItemCrafted
 {
 	struct Event
@@ -286,16 +251,13 @@ struct ItemCrafted
 		// Unknown
 	};
 };
-
 struct LocationDiscovery
 {
 	struct Event
 	{
-		TESFullName	* name;
-		const char	* world;
+		// Unknown
 	};
 };
-
 struct Jailing
 {
 	struct Event
@@ -303,7 +265,6 @@ struct Jailing
 		// Unknown
 	};
 };
-
 struct ChestsLooted
 {
 	struct Event
@@ -311,7 +272,6 @@ struct ChestsLooted
 		// Unknown
 	};
 };
-
 struct TimesTrained
 {
 	struct Event
@@ -319,7 +279,6 @@ struct TimesTrained
 		// Unknown
 	};
 };
-
 struct TimesBartered
 {
 	struct Event
@@ -327,7 +286,6 @@ struct TimesBartered
 		// Unknown
 	};
 };
-
 struct ContractedDisease
 {
 	struct Event
@@ -335,7 +293,6 @@ struct ContractedDisease
 		// Unknown
 	};
 };
-
 struct SpellsLearned
 {
 	struct Event
@@ -343,15 +300,13 @@ struct SpellsLearned
 		// Unknown
 	};
 };
-
 struct DragonSoulGained
 {
 	struct Event
 	{
-		float	souls;
+		// Unknown
 	};
 };
-
 struct SoulGemsUsed
 {
 	struct Event
@@ -359,16 +314,13 @@ struct SoulGemsUsed
 		// Unknown
 	};
 };
-
 struct SoulsTrapped
 {
 	struct Event
 	{
-		TESObjectREFR*	player;
-		TESObjectREFR*	target;
+		// Unknown
 	};
 };
-
 struct PoisonedWeapon
 {
 	struct Event
@@ -376,15 +328,13 @@ struct PoisonedWeapon
 		// Unknown
 	};
 };
-
 struct ShoutAttack
 {
 	struct Event
 	{
-		TESShout*	shout;
+		// Unknown
 	};
 };
-
 struct JailEscape
 {
 	struct Event
@@ -392,7 +342,6 @@ struct JailEscape
 		// Unknown
 	};
 };
-
 struct GrandTheftHorse
 {
 	struct Event
@@ -400,26 +349,20 @@ struct GrandTheftHorse
 		// Unknown
 	};
 };
-
 struct AssaultCrime
 {
 	struct Event
 	{
-		UInt8	pad;
-		TESObjectREFR*	target;
+		// Unknown
 	};
 };
-
 struct MurderCrime
 {
 	struct Event
 	{
-		UInt8	pad;
-		TESObjectREFR*	source;
-		TESObjectREFR*	target;
+		// Unknown
 	};
 };
-
 struct LocksPicked
 {
 	struct Event
@@ -427,7 +370,13 @@ struct LocksPicked
 		// Unknown
 	};
 };
-
+struct LocationCleared
+{
+	struct Event
+	{
+		// Unknown
+	};
+};
 struct ShoutMastered
 {
 	struct Event
@@ -515,122 +464,116 @@ struct BGSFootstepEvent
 	UInt32	actorHandle;
 };
 
-struct TESFurnitureEvent
+template <>
+class BSTEventSink <TESCombatEvent>
 {
-	TESObjectREFR*	character;
-	TESObjectREFR*	furniture;
-	UInt32			state;
+public:
+	virtual ~BSTEventSink() {}; // todo?
+	virtual	EventResult ReceiveEvent(TESCombatEvent * evn, EventDispatcher<TESCombatEvent> * dispatcher) = 0;
 };
 
-struct TESLoadGameEvent
+template <>
+class BSTEventSink <TESDeathEvent>
 {
-	// empty
+public:
+	virtual ~BSTEventSink() {}; // todo?
+	virtual	EventResult ReceiveEvent(TESDeathEvent * evn, EventDispatcher<TESDeathEvent> * dispatcher) = 0;
 };
 
-struct TESLockChangedEvent
+template <>
+class BSTEventSink <TESSleepStartEvent>
 {
-	TESObjectREFR*	lock;
-	TESObjectREFR*	unlocker;
+public:
+	virtual ~BSTEventSink() {}	// todo?
+	virtual	EventResult ReceiveEvent(TESSleepStartEvent * evn, EventDispatcher<TESSleepStartEvent> * dispatcher) = 0;
 };
 
-struct TESQuestInitEvent
+template <>
+class BSTEventSink <MenuOpenCloseEvent>
 {
-	UInt32	formId;
+public:
+	virtual ~BSTEventSink() {}	// todo?
+	virtual	EventResult ReceiveEvent(MenuOpenCloseEvent * evn, EventDispatcher<MenuOpenCloseEvent> * dispatcher) = 0;
 };
 
-struct TESQuestStartStopEvent
+template <>
+class BSTEventSink <TESQuestStageEvent>
 {
-	UInt32	formId;
+public:
+	virtual ~BSTEventSink() {}	// todo?
+	virtual	EventResult ReceiveEvent(TESQuestStageEvent * evn, EventDispatcher<TESQuestStageEvent> * dispatcher) = 0;
 };
 
-struct TESTrackedStatsEvent
+template <>
+class BSTEventSink <LevelIncrease::Event>
 {
-	BSFixedString	statName;
-	UInt32			newValue;
+public:
+	virtual ~BSTEventSink() {}	// todo?
+	virtual	EventResult ReceiveEvent(LevelIncrease::Event * evn, EventDispatcher<LevelIncrease::Event> * dispatcher) = 0;
 };
 
-struct TESWaitStartEvent
+template <>
+class BSTEventSink <TESHarvestEvent::ItemHarvested>
 {
-	float current;
-	float desired;
+public:
+	virtual ~BSTEventSink() {}	// todo?
+	virtual	EventResult ReceiveEvent(TESHarvestEvent::ItemHarvested * evn, EventDispatcher<TESHarvestEvent::ItemHarvested> * dispatcher) = 0;
 };
 
-struct TESWaitStopEvent
+template <>
+class BSTEventSink <TESHitEvent>
 {
-	//empty?
+public:
+	virtual ~BSTEventSink() {}	// todo?
+	virtual	EventResult ReceiveEvent(TESHitEvent * evn, EventDispatcher<TESHitEvent> * dispatcher) = 0;
 };
 
-struct TESSwitchRaceCompleteEvent
+template <>
+class BSTEventSink <TESUniqueIDChangeEvent>
 {
-	Actor* actor;
+public:
+	virtual ~BSTEventSink() {}	// todo?
+	virtual	EventResult ReceiveEvent(TESUniqueIDChangeEvent * evn, EventDispatcher<TESUniqueIDChangeEvent> * dispatcher) = 0;
 };
 
-struct LocationCleared
+template <>
+class BSTEventSink <TESContainerChangedEvent>
 {
-	struct Event
-	{
-		//empty?
-	};
+public:
+	virtual ~BSTEventSink() {}	// todo?
+	virtual	EventResult ReceiveEvent(TESContainerChangedEvent * evn, EventDispatcher<TESContainerChangedEvent> * dispatcher) = 0;
 };
 
-struct BookRead
+template <>
+class BSTEventSink <TESObjectLoadedEvent>
 {
-	struct Event
-	{
-		TESObjectBOOK* book;
-	};
+public:
+	virtual ~BSTEventSink() {}	// todo?
+	virtual	EventResult ReceiveEvent(TESObjectLoadedEvent * evn, EventDispatcher<TESObjectLoadedEvent> * dispatcher) = 0;
 };
 
-struct HourPassed
+template <>
+class BSTEventSink <TESInitScriptEvent>
 {
-	struct Event
-	{
-		UInt32 sleep;
-	};
+public:
+	virtual ~BSTEventSink() {}	// todo?
+	virtual	EventResult ReceiveEvent(TESInitScriptEvent * evn, EventDispatcher<TESInitScriptEvent> * dispatcher) = 0;
 };
 
-struct ActorKill
+template <>
+class BSTEventSink <TESCellAttachDetachEvent>
 {
-	struct Event
-	{
-		TESObjectREFR*	killer;
-		TESObjectREFR*	victim;
-	};
+public:
+	virtual ~BSTEventSink() {}	// todo?
+	virtual	EventResult ReceiveEvent(TESCellAttachDetachEvent * evn, EventDispatcher<TESCellAttachDetachEvent> * dispatcher) = 0;
 };
 
-struct CriticalHit
+template <>
+class BSTEventSink <TESMoveAttachDetachEvent>
 {
-	struct Event
-	{
-		TESForm*		character;
-		TESObjectWEAP*	weapon;
-	};
-};
-
-struct Disarmed
-{
-	struct Event
-	{
-		TESObjectREFR*	source;
-		TESObjectREFR*	target;
-	};
-};
-
-struct WeaponAttack
-{
-	struct Event
-	{
-		TESObjectWEAP*	weapon;
-		Character*		wielder; //unk
-	};
-};
-
-struct DefaultObjectsReadyEvent
-{
-	struct Event
-	{
-		//g_defaultObjectManager ?
-	};
+public:
+	virtual ~BSTEventSink() {}	// todo?
+	virtual	EventResult ReceiveEvent(TESMoveAttachDetachEvent * evn, EventDispatcher<TESMoveAttachDetachEvent> * dispatcher) = 0;
 };
 
 class EventDispatcherList

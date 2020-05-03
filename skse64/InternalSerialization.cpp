@@ -1,9 +1,6 @@
 #include <map>
 #include <algorithm>
 #include <string>
-#include <functional>
-#include <unordered_map>
-
 #include "common/IFileStream.h"
 #include "skse64/PluginAPI.h"
 #include "skse64/InternalSerialization.h"
@@ -15,7 +12,8 @@
 
 // Internal
 
-static std::unordered_map<UInt32, UInt32> s_savedModIndexMap;
+static UInt8	s_savefileIndexMap[0xFF];
+static UInt8	s_numSavefileMods = 0;
 
 void LoadModList(SKSESerializationInterface * intfc)
 {
@@ -26,136 +24,48 @@ void LoadModList(SKSESerializationInterface * intfc)
 	char name[0x104] = { 0 };
 	UInt16 nameLen = 0;
 
-	UInt8 numSavedMods = 0;
-	intfc->ReadRecordData(&numSavedMods, sizeof(numSavedMods));
-	for (UInt32 i = 0; i < numSavedMods; i++)
+	intfc->ReadRecordData(&s_numSavefileMods, sizeof(s_numSavefileMods));
+	for (UInt32 i = 0; i < s_numSavefileMods; i++)
 	{
 		intfc->ReadRecordData(&nameLen, sizeof(nameLen));
 		intfc->ReadRecordData(&name, nameLen);
 		name[nameLen] = 0;
 
-		const ModInfo * modInfo = dhand->LookupModByName(name);
-		if (modInfo) {
-			UInt32 newIndex = modInfo->GetPartialIndex();
-			s_savedModIndexMap[i] = newIndex;
-			_MESSAGE("\t(%d -> %d)\t%s", i, newIndex, &name);
-		}
-		else {
-			s_savedModIndexMap[i] = 0xFF;
-		}
+		UInt8 newIndex = dhand->GetLoadedModIndex(name);
+		s_savefileIndexMap[i] = newIndex;
+		_MESSAGE("\t(%d -> %d)\t%s", i, newIndex, &name);
 	}
 }
 
-void SavePluginsList(SKSESerializationInterface * intfc)
+void SaveModList(SKSESerializationInterface * intfc)
 {
 	DataHandler * dhand = DataHandler::GetSingleton();
+	UInt8 modCount = dhand->modList.loadedModCount;
 
-	struct IsActiveFunctor
-	{
-		bool Accept(ModInfo * modInfo)
-		{
-			return modInfo && modInfo->IsActive();
-		}
-	};
-	struct LoadedModVisitor
-	{
-		LoadedModVisitor(std::function<bool(ModInfo*)> func) : modInfoVisitor(func) { }
-		bool Accept(ModInfo * modInfo)
-		{
-			return modInfoVisitor(modInfo);
-		}
-		std::function<bool(ModInfo*)> modInfoVisitor;
-	};
-
-	UInt16 modCount = dhand->modList.modInfoList.CountIf(IsActiveFunctor());
-
-	intfc->OpenRecord('PLGN', 0);
+	intfc->OpenRecord('MODS', 0);
 	intfc->WriteRecordData(&modCount, sizeof(modCount));
 
-	_MESSAGE("Saving plugin list:");
+	_MESSAGE("Saving mod list:");
 
-
-	dhand->modList.modInfoList.Visit(LoadedModVisitor([&](ModInfo* modInfo)
-	{
-		if (modInfo && modInfo->IsActive())
-		{
-			intfc->WriteRecordData(&modInfo->modIndex, sizeof(modInfo->modIndex));
-			if (modInfo->modIndex == 0xFE) {
-				intfc->WriteRecordData(&modInfo->lightIndex, sizeof(modInfo->lightIndex));
-			}
-
-			UInt16 nameLen = strlen(modInfo->name);
-			intfc->WriteRecordData(&nameLen, sizeof(nameLen));
-			intfc->WriteRecordData(modInfo->name, nameLen);
-			if (modInfo->modIndex != 0xFE)
-			{
-				_MESSAGE("\t[%d]\t%s", modInfo->modIndex, &modInfo->name);
-			}
-			else
-			{
-				_MESSAGE("\t[FE:%d]\t%s", modInfo->lightIndex, &modInfo->name);
-			}
-		}
-		return true; // Continue
-	}));
-}
-
-void LoadPluginList(SKSESerializationInterface * intfc)
-{
-	DataHandler * dhand = DataHandler::GetSingleton();
-
-	_MESSAGE("Loading plugin list:");
-
-	char name[0x104] = { 0 };
-	UInt16 nameLen = 0;
-
-	UInt16 modCount = 0;
-	intfc->ReadRecordData(&modCount, sizeof(modCount));
 	for (UInt32 i = 0; i < modCount; i++)
 	{
-		UInt8 modIndex = 0xFF;
-		UInt16 lightModIndex = 0xFFFF;
-		intfc->ReadRecordData(&modIndex, sizeof(modIndex));
-		if (modIndex == 0xFE) {
-			intfc->ReadRecordData(&lightModIndex, sizeof(lightModIndex));
-		}
-
-		intfc->ReadRecordData(&nameLen, sizeof(nameLen));
-		intfc->ReadRecordData(&name, nameLen);
-		name[nameLen] = 0;
-
-		UInt32 newIndex = 0xFF;
-		UInt32 oldIndex = modIndex == 0xFE ? (0xFE000 | lightModIndex) : modIndex;
-
-		const ModInfo * modInfo = dhand->LookupModByName(name);
-		if (modInfo) {
-			newIndex = modInfo->GetPartialIndex();
-		}
-
-		s_savedModIndexMap[oldIndex] = newIndex;
-
-		_MESSAGE("\t(%d -> %d)\t%s", oldIndex, newIndex, name);
+		ModInfo * modInfo = dhand->modList.loadedMods[i];
+		UInt16 nameLen = strlen(modInfo->name);
+		intfc->WriteRecordData(&nameLen, sizeof(nameLen));
+		intfc->WriteRecordData(modInfo->name, nameLen);
+		_MESSAGE("\t(%d)\t%s", i, &modInfo->name);
 	}
 }
 
-UInt32 ResolveModIndex(UInt32 modIndex)
+UInt8 ResolveModIndex(UInt8 modIndex)
 {
-	auto it = s_savedModIndexMap.find(modIndex);
-	if (it != s_savedModIndexMap.end())
-	{
-		return it->second;
-	}
-
-	return 0xFF;
+	return (modIndex < s_numSavefileMods) ? s_savefileIndexMap[modIndex] : 0xFF;
 }
 
-enum LightModVersion
-{
-	kVersion1 = 1,
-	kVersion2 = 2
-};
+static UInt8	s_saveLightfileIndexMap[0xFFF];
+static UInt8	s_numSaveLightfileMods = 0;
 
-void LoadLightModList(SKSESerializationInterface * intfc, UInt32 version)
+void LoadLightModList(SKSESerializationInterface * intfc)
 {
 	_MESSAGE("Loading light mod list:");
 
@@ -164,43 +74,37 @@ void LoadLightModList(SKSESerializationInterface * intfc, UInt32 version)
 	char name[0x104] = { 0 };
 	UInt16 nameLen = 0;
 
-	UInt16 numSavedMods = 0;
-	if (version == kVersion1)
-	{
-		intfc->ReadRecordData(&numSavedMods, sizeof(UInt8));
-	}
-	else if (version == kVersion2)
-	{
-		intfc->ReadRecordData(&numSavedMods, sizeof(UInt16));
-	}
-	
-	for (UInt32 i = 0; i < numSavedMods; i++)
+	intfc->ReadRecordData(&s_numSaveLightfileMods, sizeof(s_numSaveLightfileMods));
+	for (UInt32 i = 0; i < s_numSaveLightfileMods; i++)
 	{
 		intfc->ReadRecordData(&nameLen, sizeof(nameLen));
 		intfc->ReadRecordData(&name, nameLen);
 		name[nameLen] = 0;
 
-		UInt32 lightIndex = 0xFE000 | i;
-
-		const ModInfo * modInfo = dhand->LookupModByName(name);
-		if (modInfo) {
-			
-			UInt32 newIndex = modInfo->GetPartialIndex();
-			s_savedModIndexMap[lightIndex] = newIndex;
-			_MESSAGE("\t(%d -> %d)\t%s", lightIndex, newIndex, &name);
-		}
-		else {
-			s_savedModIndexMap[lightIndex] = 0xFF;
-		}
-		_MESSAGE("\t(%d -> %d)\t%s", lightIndex, s_savedModIndexMap[lightIndex], &name);
+		UInt8 newIndex = dhand->GetLoadedLightModIndex(name);
+		s_saveLightfileIndexMap[i] = newIndex;
+		_MESSAGE("\t(%d -> %d)\t%s", i, newIndex, &name);
 	}
+}
+
+void SaveLightModList(SKSESerializationInterface * intfc)
+{
+	DataHandler * dhand = DataHandler::GetSingleton();
+	UInt8 modCount = 0;
+
+	intfc->OpenRecord('LMOD', 0);
+	intfc->WriteRecordData(&modCount, sizeof(modCount));
+}
+
+UInt16 ResolveLightModIndex(UInt16 modIndex)
+{
+	return (modIndex < s_numSaveLightfileMods) ? s_saveLightfileIndexMap[modIndex] : 0xFFFF;
 }
 
 //// Callbacks
 
 void Core_RevertCallback(SKSESerializationInterface * intfc)
 {
-	s_savedModIndexMap.clear();
 	g_menuOpenCloseRegs.Clear();
 	g_inputKeyEventRegs.Clear();
 	g_inputControlEventRegs.Clear();
@@ -219,7 +123,8 @@ void Core_SaveCallback(SKSESerializationInterface * intfc)
 {
 	using Serialization::SaveClassHelper;
 
-	SavePluginsList(intfc);
+	SaveModList(intfc);
+	SaveLightModList(intfc);
 
 	_MESSAGE("Saving menu open/close event registrations...");
 	g_menuOpenCloseRegs.Save(intfc, 'MENR', 1);
@@ -260,24 +165,14 @@ void Core_LoadCallback(SKSESerializationInterface * intfc)
 	{
 		switch (type)
 		{
-		// Plugins list
-		case 'PLGN':
-			LoadPluginList(intfc);
-			break;
-
-		// Mod list - Deprecated
+		// Mod list
 		case 'MODS':
 			LoadModList(intfc);
 			break;
 
-		// Legacy Light Mod list - This only supported 255 entries
+		// Light Mod list
 		case 'LMOD':
-			LoadLightModList(intfc, kVersion1);
-			break;
-
-		// Light Mod list - Deprecated
-		case 'LIMD':
-			LoadLightModList(intfc, kVersion2);
+			LoadLightModList(intfc);
 			break;
 
 		// Menu open/close events

@@ -223,9 +223,21 @@ bool IdentifyEXE(const char * procName, bool isEditor, std::string * dllSuffix, 
 		return false;
 	}
 
+	if (productName == "SKSEVR")
+	{
+		_MESSAGE("found an SKSEVR component");
+		return false;
+	}
+
 	if(productName == "The Elder Scrolls V: Skyrim Special Edition Launcher")
 	{
 		PrintLoaderError("You have instructed skse64_loader to run the vanilla launcher, which cannot work. Most likely you have renamed files incorrectly.");
+		return false;
+	}
+
+	if (productName != "TESV: Skyrim VR")
+	{
+		PrintLoaderError("Trying to launch something other than Skyrim VR?");
 		return false;
 	}
 
@@ -247,7 +259,7 @@ bool IdentifyEXE(const char * procName, bool isEditor, std::string * dllSuffix, 
 
 	bool result = false;
 
-	const UInt64 kCurVersion = 0x0001000500610000;	// 1.5.97.0
+	const UInt64 kCurVersion = 0x00010004000F0000;	// 1.4.15.0
 
 	// convert version resource to internal version format
 	UInt32 versionInternal = MAKE_EXE_VERSION(version >> 48, version >> 32, version >> 16);
@@ -257,28 +269,28 @@ bool IdentifyEXE(const char * procName, bool isEditor, std::string * dllSuffix, 
 #if SKSE_TARGETING_BETA_VERSION
 		if(versionInternal == CURRENT_RELEASE_RUNTIME)
 			PrintLoaderError(
-				"You are using the version of SKSE64 intended for the Steam beta branch (%d.%d.%d).\n"
+				"You are using the version of SKSEVR intended for the Steam beta branch (%d.%d.%d).\n"
 				"Download and install the non-beta branch version (%s) from http://skse.silverlock.org/.",
 				SKSE_VERSION_INTEGER, SKSE_VERSION_INTEGER_MINOR, SKSE_VERSION_INTEGER_BETA, CURRENT_RELEASE_SKSE_STR);
 		else
 			PrintLoaderError(
-				"You are using Skyrim version %d.%d.%d, which is out of date and incompatible with this version of SKSE64. Update to the latest beta version.",
+				"You are using Skyrim VR version %d.%d.%d, which is out of date and incompatible with this version of SKSEVR. Update to the latest beta version.",
 				GET_EXE_VERSION_MAJOR(versionInternal), GET_EXE_VERSION_MINOR(versionInternal), GET_EXE_VERSION_BUILD(versionInternal));
 #else
 		PrintLoaderError(
-			"You are using Skyrim version %d.%d.%d, which is out of date and incompatible with this version of SKSE64. Update to the latest version.",
+			"You are using Skyrim VR version %d.%d.%d, which is out of date and incompatible with this version of SKSEVR. Update to the latest version.",
 			GET_EXE_VERSION_MAJOR(versionInternal), GET_EXE_VERSION_MINOR(versionInternal), GET_EXE_VERSION_BUILD(versionInternal));
 #endif
 	}
 	else if(version > kCurVersion)
 	{
 		PrintLoaderError(
-			"You are using a newer version of Skyrim than this version of SKSE64 supports.\n"
+			"You are using a newer version of Skyrim than this version of SKSEVR supports.\n"
 			"If this version just came out, please be patient while we update our code.\n"
 			"In the meantime, please check http://skse.silverlock.org for updates.\n"
 			"Do not email about this!\n"
 			"Runtime: %d.%d.%d\n"
-			"SKSE64: %d.%d.%d",
+			"SKSEVR: %d.%d.%d",
 			GET_EXE_VERSION_MAJOR(versionInternal), GET_EXE_VERSION_MINOR(versionInternal), GET_EXE_VERSION_BUILD(versionInternal),
 			SKSE_VERSION_INTEGER, SKSE_VERSION_INTEGER_MINOR, SKSE_VERSION_INTEGER_BETA);
 	}
@@ -305,7 +317,7 @@ bool IdentifyEXE(const char * procName, bool isEditor, std::string * dllSuffix, 
 		{
 		case kProcType_Steam:
 		case kProcType_Normal:
-			*dllSuffix = "1_5_97";
+			*dllSuffix = "1_4_15";
 
 			result = true;
 

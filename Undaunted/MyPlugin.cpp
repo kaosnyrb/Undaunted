@@ -13,12 +13,10 @@ namespace Undaunted {
 		if (!BountyManager::getInstance()->isReady)
 		{
 			DataHandler* dataHandler = DataHandler::GetSingleton();
-			_MESSAGE("Mod Count: %08X", dataHandler->modList.loadedMods.count);
-			for (int i = 0; i < dataHandler->modList.loadedMods.count; i++)
+			_MESSAGE("Mod Count: %08X", dataHandler->modList.loadedModCount);
+			for (int i = 0; i < dataHandler->modList.loadedModCount; i++)
 			{
-				ModInfo* mod;
-				dataHandler->modList.loadedMods.GetNthItem(i, mod);
-				_MESSAGE("Listing Mods: %s ", mod->name);
+				_MESSAGE("Listing Mods: %s ", dataHandler->modList.loadedMods[i]->name);
 			}
 
 			BuildWorldList();
@@ -68,16 +66,7 @@ namespace Undaunted {
 		const ModInfo* modInfo = dataHandler->LookupModByName(ModName.c_str());
 		if (modInfo != NULL)
 		{
-			FormId = (modInfo->modIndex << 24) + FormId;
-			if (modInfo->IsFormInMod(FormId))
-			{
-				return FormId;
-			}
-			else
-			{
-				_MESSAGE("FormId  %08X Not Found in %s", FormId, ModName.Get());
-				return UInt32();
-			}
+			return (modInfo->modIndex << 24) + FormId;
 		}
 		_MESSAGE("Mod Not Found: %s", ModName.Get());
 		return UInt32();

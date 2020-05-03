@@ -139,7 +139,7 @@ namespace Undaunted {
 			//Some regions are dodgy
 			if (!badRegion)
 			{
-				//_MESSAGE("processing worldSpace %08X", i);
+				_MESSAGE("processing worldSpace %08X", i);
 				TESRegion* test = (TESRegion*)handler->regionList->GetNthItem(i);
 				if (test != NULL)
 				{
@@ -207,6 +207,7 @@ namespace Undaunted {
 
 	WorldCell GetNamedWorldCell(BSFixedString WorldspaceName)
 	{
+		_MESSAGE("GetNamedWorldCell: %s", WorldspaceName.Get());
 		for (int i = 0; i < worldCellList.length; i++)
 		{
 			if (strcmp(worldCellList.data[i].world->editorId.Get(), WorldspaceName.c_str()) == 0)

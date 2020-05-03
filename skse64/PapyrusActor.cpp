@@ -583,12 +583,12 @@ namespace papyrusActor
 		if(!middleProcess)
 			return NULL;
 
-		NiPointer<TESObjectREFR> refr;
+		TESObjectREFR * refr = NULL;
 		UInt32 furnitureHandle = middleProcess->furnitureHandle;
 		if(furnitureHandle == (*g_invalidRefHandle) || furnitureHandle == 0)
 			return NULL;
 
-		LookupREFRByHandle(furnitureHandle, refr);
+		LookupREFRByHandle(&furnitureHandle, &refr);
 		return refr;
 	}
 

@@ -1,14 +1,12 @@
 #pragma once
 
 #include "skse64/NiObjects.h"
-#include "skse64/GameAPI.h"
-#include "skse64_common/Utilities.h"
 #include "skse64/GameTypes.h"
 
 class BSResourceStream;
 
-struct ID3D11Texture2D;
-struct ID3D11ShaderResourceView;
+struct ID3D11Texture2D1;
+struct ID3D11ShaderResourceView1;
 
 // 44
 class NiPixelFormat
@@ -122,22 +120,9 @@ public:
 	class RendererData
 	{
 	public:
-		RendererData(UInt32 w, UInt32 h) 
-			: texture(nullptr)
-			, unk08(0)
-			, resourceView(nullptr)
-			, width(w)
-			, height(h)
-			, unk1C(1)
-			, unk1D(0x1C)
-			, unk1E(0)
-			, unk20(1)
-			, unk24(0x00130012)
-		{}
-
-		ID3D11Texture2D				* texture;		// 00
+		ID3D11Texture2D1			* texture;		// 00
 		UInt64						unk08;			// 08
-		ID3D11ShaderResourceView	* resourceView;	// 10
+		ID3D11ShaderResourceView1	* resourceView;	// 10
 		UInt16						width;			// 18
 		UInt16						height;			// 1A
 		UInt8						unk1C;			// 1C
@@ -145,8 +130,6 @@ public:
 		UInt16						unk1E;			// 1E
 		UInt32						unk20;			// 20
 		UInt32						unk24;			// 24
-
-		DEFINE_STATIC_HEAP(Heap_Allocate, Heap_Free);
 	};
 	
 	UInt32				unk10;			// 10 - 6
@@ -170,9 +153,9 @@ public:
 
 	MEMBER_FN_PREFIX(NiRenderedTexture);
 	DEFINE_MEMBER_FN(ctor, void, 0x00000000);
-	DEFINE_MEMBER_FN(UpdateVirtualImage, void, 0x00ECDF50, NiRenderedTexture * newTexture);
-	DEFINE_MEMBER_FN(AddVirtualImage, UInt8, 0x00ECE010, BSFixedString linkageName);
-	DEFINE_MEMBER_FN(ReleaseVirtualImage, void, 0x00ECDEE0);
+	DEFINE_MEMBER_FN(UpdateVirtualImage, void, 0x00F2AC40, NiRenderedTexture * newTexture);
+	DEFINE_MEMBER_FN(AddVirtualImage, UInt8, 0x00F2AD00, BSFixedString linkageName);
+	DEFINE_MEMBER_FN(ReleaseVirtualImage, void, 0x00F2ABD0);
 };
 
 // 58
@@ -199,6 +182,3 @@ public:
 
 typedef NiTexture * (*_CreateSourceTexture)(const BSFixedString & name);
 extern RelocAddr<_CreateSourceTexture> CreateSourceTexture;
-
-typedef void (*_LoadTexture)(const char * path, UInt8 unk1, NiPointer<NiTexture> & texture, bool unk2);
-extern RelocAddr<_LoadTexture> LoadTexture;

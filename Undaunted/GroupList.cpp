@@ -36,11 +36,14 @@ namespace Undaunted
 
 	int GroupMember::IsComplete()
 	{
+		_MESSAGE("IsComplete Start");
 		const char* type = this->BountyType.Get();
+		_MESSAGE("BountyType %s", type);
 		if (strcmp(type, "Enemy") == 0)
 		{
 			if (this->objectRef != NULL)
 			{
+				return 1;
 				if (this->objectRef->IsDead(1))
 				{
 					return 1;

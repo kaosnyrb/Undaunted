@@ -9,7 +9,7 @@ BSString::~BSString()
 	}
 }
 
-const char * BSString::Get(void) const
+const char * BSString::Get(void)
 {
 	return m_data ? m_data : "";
 }
@@ -77,8 +77,6 @@ void SimpleLock::Release(void)
 		}
 	}
 }
-
-/*** using runtime internal implementation rather than our reimplementation so it can be hooked by other plugins
 
 void BSReadWriteLock::LockForRead()
 {
@@ -215,7 +213,7 @@ void BSReadWriteLock::Unlock()
 	{
 		InterlockedDecrement(&lockValue);
 	}
-}*/
+}
 
 void UpdateRegistrationHolder::Order(UInt32 index)
 {
