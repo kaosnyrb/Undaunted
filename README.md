@@ -15,10 +15,10 @@ https://youtu.be/3igoZVReoZE
 ## How to play
 
 1. Visit the Undaunted Camp northwest of Windhelm.
-2. Use the Pillar to get the Start Undaunted Bounty.
-3. Anywhere you want use the Start Undaunted Bounty power
+2. Use the Pillar to get the Start Undaunted Bounty power.
+3. Anywhere you want use the Start Undaunted Bounty power.
 4. A Quest will start called Undaunted.
-5. Somewhere nearby a quest marker will appear pointing to where the bounty starts
+5. Somewhere nearby a quest marker will appear pointing to where the bounty starts.
 6. Go to the marker, once you are in range the event will begin.
 7. Complete the event and another event will appear nearby.
 8. Complete 3 events to be rewarded an Undaunted Key.
