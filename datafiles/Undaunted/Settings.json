@@ -4,7 +4,9 @@
     ["BountyMinSpawnDistance","6000","The minimum distance at which a bounty will be allowed to be place at"],
     ["BountyMaxSpawnDistance","20000", "The maximum distance at which a bounty will be allowed to be place at"],
     ["BountySearchAttempts","150","How many items it will search for a spawn point in the set distance before giving up"],
+    ["BountyUpdateRate","5","How often in seconds that the Bounty checks the state. Low values use up more cpu."],
 
+    ["RewardsPerKey","3", "The number of items that you get per key"],
     ["RewardTargetMaxLevel","40", "The target endgame level, at which deadric gear will be rewarded"],
     ["RewardPlayerLevelBoost","2", "Increases the level of the player in the calculations to give better rewards"],
 

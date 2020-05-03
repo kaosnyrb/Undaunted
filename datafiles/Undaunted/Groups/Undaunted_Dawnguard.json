@@ -12,5 +12,17 @@
         ["LCharVampireCompanion","Skyrim.esm",124789,"Enemy"],
         ["LCharVampireCompanion","Skyrim.esm",124789,"Enemy"],
         ["LCharVampireCompanion","Skyrim.esm",124789,"Enemy"]
+    ],
+    [
+        ["Help the Dawnguard"],
+        ["DLC1LCharVampireFSultry","Dawnguard.esm",53403,"Enemy"],
+        ["DLC1EncHunterTemplate","Dawnguard.esm",13167,"Ally"],
+        ["DLC1LCharVampireFSultry","Dawnguard.esm",53403,"Enemy"],
+        ["LCharVampire","Skyrim.esm",211315,"Enemy"],
+        ["DLC1EncHunterTemplate","Dawnguard.esm",13167,"Ally"],
+        ["DLC1LCharVampireFSultry","Dawnguard.esm",53403,"Enemy"],
+        ["DLC1EncHunterTemplateMissile","Dawnguard.esm",13169,"Ally"],
+        ["DLC1LCharVampireFSultry","Dawnguard.esm",53403,"Enemy"],
+        ["DLC1EncHunterTemplateMissile","Dawnguard.esm",13169,"Ally"]
     ]
 ]

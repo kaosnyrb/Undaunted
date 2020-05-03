@@ -13,21 +13,26 @@ EndEvent
 
 State Active
 event onActivate(objectReference akActivator)
-    if (Game.GetPlayer().GetItemCount(keyform) > 0 )
-        
-        Game.GetPlayer().removeItem(keyform, 1)
-        SpawnRandomReward(RewardMarker,Game.GetPlayer().GetLevel())
-        goToState("DoNothing")
-        Utility.Wait(1.0)
-        goToState("Active")
-;        questProperty.SetCurrentStageID(30)
-;        QuestStage.SetValue(30)
+    if (isSystemReady())
+        if (Game.GetPlayer().GetItemCount(keyform) > 0 )
+            Game.GetPlayer().removeItem(keyform, 1)
+            goToState("DoNothing")
+            int rewards = GetConfigValueInt("RewardsPerKey");
+            while rewards > 0
+                SpawnRandomReward(RewardMarker,Game.GetPlayer().GetLevel())
+                Utility.Wait(1.1)
+                rewards -= 1
+            endwhile
+            goToState("Active")
+        else
+            Debug.Notification("No Undaunted Keys Remaining")
+        endif
     else
-        Debug.Notification("No Undaunted Keys Remaining")
+        Debug.Notification("Undaunted not loaded. Start a bounty.")
     endif
 endEvent
 endState
 
-State DoNothing			;Dummy state, don't do anything if animating
+State DoNothing
 
 EndState

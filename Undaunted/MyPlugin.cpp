@@ -114,6 +114,22 @@ namespace Undaunted {
 		return false;
 	}
 
+	VMResultArray<TESObjectREFR*> hook_GetBountyObjectRefs(StaticFunctionTag* base, BSFixedString bountyType)
+	{
+		VMResultArray<TESObjectREFR*> allies = VMResultArray<TESObjectREFR*>();
+		for (int i = 0; i < BountyManager::getInstance()->bountygrouplist.length; i++)
+		{
+			if (strcmp(BountyManager::getInstance()->bountygrouplist.data[i].BountyType.Get(), bountyType.Get()) == 0)
+			{
+				if (BountyManager::getInstance()->bountygrouplist.data[i].objectRef != NULL)
+				{
+					allies.push_back(BountyManager::getInstance()->bountygrouplist.data[i].objectRef);
+				}
+			}
+		}
+		return allies;
+	}
+
 	UInt32 hook_GetConfigValueInt(StaticFunctionTag* base, BSFixedString key)
 	{
 		return GetConfigValueInt(key.Get());
@@ -165,6 +181,10 @@ namespace Undaunted {
 
 		registry->RegisterFunction(
 			new NativeFunction1 <StaticFunctionTag, bool, TESObjectREFR*>("IsGroupMemberUsed", "Undaunted_SystemScript", Undaunted::hook_IsGroupMemberUsed, registry));
+
+		registry->RegisterFunction(
+			new NativeFunction1<StaticFunctionTag, VMResultArray<TESObjectREFR*>, BSFixedString>("GetBountyObjectRefs", "Undaunted_SystemScript", Undaunted::hook_GetBountyObjectRefs, registry));
+
 
 		//Rewards
 		registry->RegisterFunction(

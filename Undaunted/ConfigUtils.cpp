@@ -49,7 +49,7 @@ namespace Undaunted
 		setting.key = key;
 		setting.value = value;
 		SettingsList.AddItem(setting);
-		_MESSAGE("%s : %s", key, value);
+		//_MESSAGE("%s : %s", key, value);
 	}
 
 	UInt32 GetConfigValueInt(const char* key)
@@ -58,7 +58,7 @@ namespace Undaunted
 		{
 			if (strcmp(SettingsList.data[i].key, key) == 0)
 			{
-				_MESSAGE("Found Key %s : %s", key, SettingsList.data[i].value);
+				//_MESSAGE("Found Key %s : %s", key, SettingsList.data[i].value);
 				return atoi(SettingsList.data[i].value);
 			}
 		}

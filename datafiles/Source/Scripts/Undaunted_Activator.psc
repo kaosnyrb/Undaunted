@@ -15,6 +15,7 @@ int numberOfBountiesNeeded = 2
 int numberOfBountiesCurrently = 0
 
 Event OnInit()
+	;config values probably not loaded yet.
 	RegisterForUpdate(5.0)
 EndEvent
 
@@ -80,7 +81,7 @@ int Function StartEvent(bool nearby)
 	StartBounty(nearby)
 	questProperty.SetCurrentStageID(10)
 	QuestStage.SetValue(10)
-	RegisterForUpdate(5.0)
+	RegisterForUpdate(GetConfigValueInt("BountyUpdateRate"))
 endFunction
 
 int Function ClearBountyStatus()
@@ -92,6 +93,23 @@ event onActivate(objectReference akActivator)
 	ClearBountyStatus()
 	StartEvent(false)
 endEvent
+
+Function CleanUpBounty()
+	ObjectReference[] allies = GetBountyObjectRefs("Ally")		
+	int allylength = allies.Length
+	while(allylength > 0)
+		allylength -= 1
+		allies[allylength].Disable(true)
+		allies[allylength].Delete()
+	endwhile
+	ObjectReference[] decorations = GetBountyObjectRefs("BountyDecoration")		
+	int decorationslength = decorations.Length
+	while(decorationslength > 0)
+	decorationslength -= 1
+		decorations[decorationslength].Disable(true)
+		decorations[decorationslength].Delete()
+	endwhile
+endFunction
 
 Event OnUpdate()
 	if (QuestStage.GetValue() != 10)
@@ -111,6 +129,7 @@ Event OnUpdate()
 		If complete
 			numberOfBountiesCurrently += 1
 			;UnregisterForUpdate()
+			CleanUpBounty()
 			if (numberOfBountiesCurrently < numberOfBountiesNeeded)
 				;questProperty.SetCurrentStageID(20)
 				StartEvent(true)

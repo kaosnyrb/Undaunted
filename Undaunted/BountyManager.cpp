@@ -139,6 +139,7 @@ namespace Undaunted {
 		{
 			//Clear all completed flags
 			bountygrouplist.data[i].isComplete = false;
+			bountygrouplist.data[i].objectRef = NULL;
 		}
 		bountywave = 0;
 		bountygrouplist = GroupList();

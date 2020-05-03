@@ -16,6 +16,8 @@ Function AddMembertoGroup(int groupid, int memberformid, string bountyType, stri
 
 bool Function isBountyComplete() global native
 
+bool Function IsGroupMemberUsed(objectReference member) global native
+
 int Function GetModForm(String ModName, int FormId) global native
 
 bool Function SetBountyMessageRef(Message messageref) global native
@@ -28,3 +30,4 @@ Function SpawnRandomReward(objectReference markerref,int playerlevel) global nat
 
 Function SetGroupMemberComplete(objectReference objref) global native
 
+ObjectReference[] Function GetBountyObjectRefs(string bountyType) global native

@@ -27,7 +27,7 @@ namespace Undaunted
 					pWorldModel->SetModelName(Types.data[i].ModelFilepath.Get());
 				}
 			}
-			if (strcmp(Types.data[i].BountyType.Get(), "Enemy") == 0)
+			if (strcmp(Types.data[i].BountyType.Get(), "Enemy") == 0 || strcmp(Types.data[i].BountyType.Get(), "Ally") == 0)
 			{
 				//Random Offset
 				NiPoint3 offset = NiPoint3(rand() & 1000, rand() & 1000, 0);
