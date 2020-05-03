@@ -1,6 +1,4 @@
 #include "RewardUtils.h"
-#include <time.h>
-#include <set>
 #include <Undaunted\ConfigUtils.h>
 
 namespace Undaunted

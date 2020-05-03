@@ -1,7 +1,6 @@
 #include "LocationUtils.h"
 #include <Undaunted\ConfigUtils.h>
 #include "WorldCellList.h"
-#include <time.h>
 
 namespace Undaunted {
 	WorldCellList worldCellList;

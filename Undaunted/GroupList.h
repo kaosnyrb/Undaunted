@@ -1,6 +1,5 @@
-#include "skse64/GameData.h"
-#include "skse64/GameReferences.h"
-#include "skse64/PluginAPI.h"
+#include "SKSELink.h"
+
 namespace Undaunted
 {
 #ifndef GroupListdef

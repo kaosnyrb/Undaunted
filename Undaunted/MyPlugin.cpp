@@ -1,6 +1,4 @@
 #include "MyPlugin.h"
-#include <skse64/PapyrusGameData.h>
-#include <Undaunted\RewardUtils.h>
 
 namespace Undaunted {
 	

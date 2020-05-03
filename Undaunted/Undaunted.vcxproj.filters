@@ -62,6 +62,7 @@
       <Filter>Utils</Filter>
     </ClInclude>
     <ClInclude Include="BountyManager.h" />
+    <ClInclude Include="SKSELink.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="exports.def" />

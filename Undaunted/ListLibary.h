@@ -1,5 +1,4 @@
-#include "IntList.h"
-#include <Undaunted\GroupList.h>
+#include "GroupList.h"
 
 namespace Undaunted
 {

@@ -1,16 +1,13 @@
-#include "skse64/PluginAPI.h"		// super
-#include "skse64_common/skse_version.h"	// What version of SKSE is running?
-#include <shlobj.h>				// CSIDL_MYCODUMENTS
 #include <Undaunted\MyPlugin.h>
 #include <Undaunted\BountyManager.h>
 #include <Undaunted\ConfigUtils.h>
-#include <skse64\PluginManager.h>
-#include <skse64\Serialization.cpp>
+#include <Undaunted\SKSELink.h>
 
 static PluginHandle					g_pluginHandle = kPluginHandle_Invalid;
 static SKSEPapyrusInterface         * g_papyrus = NULL;
 SKSESerializationInterface* g_serialization = NULL;
 SKSEMessagingInterface* g_messageInterface = NULL;
+
 extern "C"	{
 
 	bool SKSEPlugin_Query(const SKSEInterface * skse, PluginInfo * info)	{	// Called by SKSE to learn about this plugin and check that it's safe to load it
@@ -87,7 +84,4 @@ extern "C"	{
 
 		return true;
 	}
-
-
-
 };

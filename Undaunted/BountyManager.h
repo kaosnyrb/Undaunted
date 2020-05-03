@@ -1,8 +1,3 @@
-#include <skse64\GameTypes.h>
-#include <skse64\NiTypes.h>
-#include <skse64/PapyrusGameData.h>
-#include <skse64/PapyrusGameData.h>
-#include <skse64/GameReferences.h>
 #include "LocationUtils.h"
 #include "SpawnUtils.h"
 #include "ConfigUtils.h"

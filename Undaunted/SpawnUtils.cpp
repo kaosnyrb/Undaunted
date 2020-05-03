@@ -1,7 +1,6 @@
 #include "SpawnUtils.h"
 #include "ConfigUtils.h"
-#include <Undaunted\LocationUtils.h>
-#include <time.h>
+#include "LocationUtils.h"
 
 namespace Undaunted
 {

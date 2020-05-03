@@ -1,8 +1,4 @@
 #include "BountyManager.h"
-#include <skse64\NiTypes.h>
-#include <Undaunted\SpawnUtils.h>
-#include <Undaunted\LocationUtils.h>
-#include <time.h>
 
 namespace Undaunted {
 	BountyManager* BountyManager::instance = 0;
