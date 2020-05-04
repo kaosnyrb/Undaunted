@@ -89,7 +89,7 @@ int Function ClearBountyStatus()
 endFunction
 
 event onActivate(objectReference akActivator)
-	Game.GetPlayer().AddSpell(startBountySpell)
+	;Game.GetPlayer().AddSpell(startBountySpell)
 	;ClearBountyStatus()
 	;StartEvent(false)
 endEvent
