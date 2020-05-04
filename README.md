@@ -6,6 +6,10 @@
 SkyrimSE Mod for Dynamic Quest/bounties.
 Inspired by the ESO Guild The Undaunted and the Diablo 3 Adventure mode.
 
+v0.4 Gameplay Demo
+https://www.youtube.com/watch?v=Kl8bDEZH1Ms
+
+v0.2 Oblivion Gate Demo
 https://youtu.be/3igoZVReoZE
 
 ## Requirements
