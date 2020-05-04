@@ -1,8 +1,7 @@
 <p align="center">
-  <img src="./docs/logo.jpg" alt="Size Limit CLI" width="720">
+  <img src="./docs/titlelarge.png" alt="Size Limit CLI" width="720">
 </p>
 
-# Undaunted
 SkyrimSE Mod for Dynamic Quest/bounties.
 Inspired by the ESO Guild The Undaunted and the Diablo 3 Adventure mode.
 
