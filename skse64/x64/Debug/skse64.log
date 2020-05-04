@@ -1,5 +1,4 @@
 ﻿  BSModelDB.cpp
-  Colors.cpp
   CustomMenu.cpp
   GameAPI.cpp
   GameBSExtraData.cpp
@@ -13,18 +12,16 @@
   GameInput.cpp
   GameMenus.cpp
   GameObjects.cpp
+  GameRTTI.cpp
   GameReferences.cpp
   GameResources.cpp
-  GameRTTI.cpp
   GameSettings.cpp
   GameStreams.cpp
+  GameThreads.cpp
   Generating Code...
   Compiling...
-  GameThreads.cpp
   GameTypes.cpp
   GameUtilities.cpp
-  GlobalLocks.cpp
-  HashUtil.cpp
   Hooks_Camera.cpp
   Hooks_Data.cpp
   Hooks_Debug.cpp
@@ -40,12 +37,11 @@
   Hooks_Scaleform.cpp
   Hooks_Threads.cpp
   Hooks_UI.cpp
-  Generating Code...
-  Compiling...
-  InputMap.cpp
   InternalSerialization.cpp
   InternalTasks.cpp
   NiAdditionalGeometryData.cpp
+  Generating Code...
+  Compiling...
   NiControllers.cpp
   NiExtraData.cpp
   NiGeometry.cpp
@@ -54,20 +50,20 @@
   NiNodes.cpp
   NiObjects.cpp
   NiProperties.cpp
-  NiRenderer.cpp
   NiRTTI.cpp
+  NiRenderer.cpp
   NiSerialization.cpp
   NiTextures.cpp
   NiTypes.cpp
   ObScript.cpp
   PapyrusActiveMagicEffect.cpp
   PapyrusActor.cpp
-  Generating Code...
-  Compiling...
   PapyrusActorBase.cpp
   PapyrusActorValueInfo.cpp
   PapyrusAlias.cpp
   PapyrusAmmo.cpp
+  Generating Code...
+  Compiling...
   PapyrusArgs.cpp
   PapyrusArmor.cpp
   PapyrusArmorAddon.cpp
@@ -84,17 +80,18 @@
   PapyrusEnchantment.cpp
   PapyrusEquipSlot.cpp
   PapyrusEvents.cpp
-  Generating Code...
-  Compiling...
   PapyrusFaction.cpp
   PapyrusFlora.cpp
   PapyrusForm.cpp
   PapyrusFormList.cpp
+  Generating Code...
+  Compiling...
   PapyrusGame.cpp
   PapyrusGameData.cpp
   PapyrusHeadPart.cpp
   PapyrusIngredient.cpp
   PapyrusInput.cpp
+  PapyrusInterfaces.cpp
   PapyrusKeyword.cpp
   PapyrusLeveledActor.cpp
   PapyrusLeveledItem.cpp
@@ -106,17 +103,17 @@
   PapyrusNativeFunctions.cpp
   PapyrusNetImmerse.cpp
   PapyrusObjectReference.cpp
-  Generating Code...
-  Compiling...
   PapyrusObjects.cpp
   PapyrusPerk.cpp
   PapyrusPotion.cpp
+  Generating Code...
+  Compiling...
   PapyrusQuest.cpp
   PapyrusRace.cpp
   PapyrusReferenceAlias.cpp
+  PapyrusSKSE.cpp
   PapyrusScroll.cpp
   PapyrusShout.cpp
-  PapyrusSKSE.cpp
   PapyrusSound.cpp
   PapyrusSoundDescriptor.cpp
   PapyrusSpawnerTask.cpp
@@ -127,12 +124,12 @@
   PapyrusUI.cpp
   PapyrusUICallback.cpp
   PapyrusUtility.cpp
-  PapyrusValue.cpp
-  Generating Code...
-  Compiling...
   PapyrusVM.cpp
+  PapyrusValue.cpp
   PapyrusWeapon.cpp
   PapyrusWeather.cpp
+  Generating Code...
+  Compiling...
   PapyrusWornObject.cpp
   PluginManager.cpp
   ScaleformAPI.cpp
@@ -142,12 +139,11 @@
   ScaleformMovie.cpp
   ScaleformState.cpp
   ScaleformTypes.cpp
-  ScaleformValue.cpp
   ScaleformVM.cpp
+  ScaleformValue.cpp
   Serialization.cpp
-  skse64.cpp
-  PapyrusInterfaces.cpp
   Translation.cpp
+  skse64.cpp
   Generating Code...
   skse64.vcxproj -> C:\git\Undaunted\x64\Debug\skse64_1_5_97.lib
   Installing DLL...
