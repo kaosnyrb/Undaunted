@@ -124,6 +124,14 @@ Event OnUpdate()
 		return
 	EndIf
 	if (isSystemReady())
+		ObjectReference[] enemies = GetBountyObjectRefs("Enemy")		
+		int enemieslength = enemies.Length
+		while(enemieslength > 0)
+			enemieslength -= 1
+			if (enemies[enemieslength] as Actor).IsDead()
+				SetGroupMemberComplete(enemies[enemieslength])
+			endif
+		endwhile
 		bool complete = isBountyComplete()
 		;Debug.Notification("Bounty State: " + complete)
 		If complete
