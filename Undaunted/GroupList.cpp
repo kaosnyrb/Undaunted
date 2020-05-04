@@ -37,17 +37,7 @@ namespace Undaunted
 	int GroupMember::IsComplete()
 	{
 		const char* type = this->BountyType.Get();
-		if (strcmp(type, "Enemy") == 0)
-		{
-			if (this->objectRef != NULL)
-			{
-				if (this->objectRef->IsDead(1))
-				{
-					return 1;
-				}
-			}
-		}
-		if (strcmp(type, "PhysicsScripted") == 0 || strcmp(type, "Scripted") == 0)
+		if (strcmp(type, "PhysicsScripted") == 0 || strcmp(type, "Scripted") == 0 || strcmp(type, "Enemy") == 0)
 		{
 			if (isComplete)
 			{
