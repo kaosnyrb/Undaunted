@@ -1,6 +1,6 @@
 [
     [
-        ["Kill the Forsworn Warband"],
+        ["Kill the Forsworn Warband","Skyrim.esm",0,0],
         ["LCharForswornBossShaman","Skyrim.esm",279293,"Enemy"],
         ["LCharForswornMelee1H","Skyrim.esm",124818,"Enemy"],
         ["LCharForswornMissile","Skyrim.esm",124820,"Enemy"],

@@ -7,6 +7,7 @@ objectReference Property markerref Auto
 {This will cause the bounties from this pillar to spawn in the named worldspace.It matches the values in the world section of the CK.}
 Message Property QuestTextMessage  Auto  
 GlobalVariable Property QuestStage  auto
+GlobalVariable Property TotalBounties  auto
 Spell Property startBountySpell Auto
 
 Key Property keyform Auto
@@ -60,19 +61,24 @@ int Function StartEvent(bool nearby)
 				;Get the header row
 				int obj = JArray.getObj(data, 0)
 				string questtext = JArray.getStr(obj,0)		
-				int group = AddGroup(questtext)
-				int jcount = JArray.count(data)
-				int j = 1
-				while(j < jcount)
-					obj = JArray.getObj(data, j)
-					string sourcemod = JArray.getStr(obj,1)
-					int formid = JArray.getInt(obj,2)
-					string bountyType = JArray.getStr(obj,3)
-					string ModelFilepath = JArray.getStr(obj,4)
-					int modform = GetModForm(sourcemod, formid)
-					AddMembertoGroup(group,modform,bountyType,ModelFilepath)
-					j += 1
-				endWhile
+				string modreq = JArray.getStr(obj,1)
+				int minlevel = JArray.getInt(obj,2)
+				int maxlevel = JArray.getInt(obj,3)
+				int group = AddGroup(questtext,modreq,minlevel,maxlevel,Game.GetPlayer().GetLevel())
+				if group > 0
+					int jcount = JArray.count(data)
+					int j = 1
+					while(j < jcount)
+						obj = JArray.getObj(data, j)
+						string sourcemod = JArray.getStr(obj,1)
+						int formid = JArray.getInt(obj,2)
+						string bountyType = JArray.getStr(obj,3)
+						string ModelFilepath = JArray.getStr(obj,4)
+						int modform = GetModForm(sourcemod, formid)
+						AddMembertoGroup(group,modform,bountyType,ModelFilepath)
+						j += 1
+					endWhile
+				endif
 			endWhile
 		endWhile
 		numberOfBountiesNeeded = GetConfigValueInt("NumberOfBountiesPerChain")
@@ -136,6 +142,7 @@ Event OnUpdate()
 		;Debug.Notification("Bounty State: " + complete)
 		If complete
 			numberOfBountiesCurrently += 1
+			TotalBounties.SetValueInt(TotalBounties.GetValueInt() + 1)
 			;UnregisterForUpdate()
 			CleanUpBounty()
 			if (numberOfBountiesCurrently < numberOfBountiesNeeded)

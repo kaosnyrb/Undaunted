@@ -1,20 +1,20 @@
 [
     [
-        ["Kill the group of Vampires"],
+        ["Kill the group of Vampires","Skyrim.esm",0,0],
         ["DLC1LCharVampireFSultry","Dawnguard.esm",53403,"Enemy"],
         ["DLC1LCharVampireFSultry","Dawnguard.esm",53403,"Enemy"],
         ["LCharVampire","Skyrim.esm",211315,"Enemy"],
         ["LCharVampireBossDLC1MaleVampireDarkElf","Dawnguard.esm",25402,"Enemy"]
     ],
     [
-        ["Kill the Vampire Lord and his minions"],
+        ["Kill the Vampire Lord and his minions","Skyrim.esm",0,0],
         ["LCharVampireBoss","Skyrim.esm",211369,"Enemy"],
         ["LCharVampireCompanion","Skyrim.esm",124789,"Enemy"],
         ["LCharVampireCompanion","Skyrim.esm",124789,"Enemy"],
         ["LCharVampireCompanion","Skyrim.esm",124789,"Enemy"]
     ],
     [
-        ["Help the Dawnguard"],
+        ["Help the Dawnguard","Skyrim.esm",0,0],
         ["DLC1LCharVampireFSultry","Dawnguard.esm",53403,"Enemy"],
         ["DLC1EncHunterTemplate","Dawnguard.esm",13167,"Ally"],
         ["DLC1LCharVampireFSultry","Dawnguard.esm",53403,"Enemy"],

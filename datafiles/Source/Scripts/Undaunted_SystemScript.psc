@@ -10,7 +10,7 @@ bool Function InitSystem() global native
 
 bool Function AddBadRegion(int regionid) global native
 
-int Function AddGroup(String questtext) global native
+int Function AddGroup(String questtext,String modRequirement, int minLevel, int maxLevel, int playerLevel) global native
 
 Function AddMembertoGroup(int groupid, int memberformid, string bountyType, string modelFilepath) global native
 

@@ -30,7 +30,7 @@ namespace Undaunted
 
 	void AddMembertoGroup(int id, GroupMember member)
 	{
-		_MESSAGE("Adding %08X to %i of BountyType %s",member.FormId, id,member.BountyType.Get());
+		//_MESSAGE("Adding %08X to %i of BountyType %s",member.FormId, id,member.BountyType.Get());
 		GroupLibary.data[id].AddItem(member);
 	}
 

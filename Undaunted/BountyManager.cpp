@@ -143,8 +143,8 @@ namespace Undaunted {
 		//If there's been a reload then the bounty currently breaks. Inform the user.
 		if (isReady)
 		{
-			_MESSAGE("Setting Bounty Message: The Bounty has moved on, return to the Undaunted Camp to start a new Bounty");
-			bountymessageref->fullName.name = "The Bounty has moved on, return to the Undaunted Camp to start a new Bounty";
+			_MESSAGE("Setting Bounty Message: The Bounty has moved on, start a new Bounty");
+			bountymessageref->fullName.name = "The Bounty has moved on, start a new Bounty";
 		}
 	}
 

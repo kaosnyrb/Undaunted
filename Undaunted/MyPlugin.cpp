@@ -51,7 +51,37 @@ namespace Undaunted {
 		return true;
 	}
 
-	UInt32 hook_AddGroup(StaticFunctionTag* base, BSFixedString questText){
+	UInt32 hook_AddGroup(StaticFunctionTag* base, BSFixedString questText, BSFixedString modRequirement, UInt32 minLevel, UInt32 maxLevel, UInt32 playerLevel){
+		//Player is too low level for this bounty
+		if (playerLevel + GetConfigValueInt("BountyLevelCache") < minLevel && minLevel != 0)
+		{
+			_MESSAGE("%s: Player level too low", questText.Get());
+			return -1;
+		}
+		//Player is too high level for this bounty
+		if (playerLevel > maxLevel && maxLevel != 0)
+		{
+			_MESSAGE("%s: Player level too high", questText.Get());
+			return -1;
+		}
+		//Mod required is not loaded
+		bool foundmod = false;
+		DataHandler* dataHandler = DataHandler::GetSingleton();
+		for (int i = 0; i < dataHandler->modList.loadedMods.count; i++)
+		{
+			ModInfo* mod;
+			dataHandler->modList.loadedMods.GetNthItem(i, mod);
+			if (strcmp(mod->name, modRequirement.Get()) == 0)
+			{
+				foundmod = true;
+				break;
+			}
+		}
+		if (!foundmod)
+		{
+			_MESSAGE("%s: Mod %s is not loaded", questText.Get(), modRequirement.Get());
+			return -1;
+		}
 		return AddGroup(questText.Get());
 	}
 
@@ -166,7 +196,7 @@ namespace Undaunted {
 
 		//Groups
 		registry->RegisterFunction(
-			new NativeFunction1 <StaticFunctionTag, UInt32, BSFixedString>("AddGroup", "Undaunted_SystemScript", Undaunted::hook_AddGroup, registry));
+			new NativeFunction5 <StaticFunctionTag, UInt32, BSFixedString, BSFixedString, UInt32, UInt32, UInt32>("AddGroup", "Undaunted_SystemScript", Undaunted::hook_AddGroup, registry));
 
 		registry->RegisterFunction(
 			new NativeFunction4 <StaticFunctionTag, void,UInt32,UInt32, BSFixedString, BSFixedString>("AddMembertoGroup", "Undaunted_SystemScript", Undaunted::hook_AddMembertoGroup, registry));

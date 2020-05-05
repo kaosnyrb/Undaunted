@@ -1,6 +1,6 @@
 [
     [
-        ["Kill the Mass of Bones"],
+        ["Kill the Mass of Bones","Skyrim.esm",0,0],
         ["LCharSkeletonMeleeMixed","Skyrim.esm",185044,"Enemy"],
         ["LCharSkeletonMeleeMixed","Skyrim.esm",185044,"Enemy"],
         ["LCharSkeletonMeleeMixed","Skyrim.esm",185044,"Enemy"],
@@ -14,14 +14,14 @@
         ["wispDeathExplosion","Skyrim.esm",987529,"SpawnEffect"]
     ],
     [
-        ["Kill the Werewolf Pack"],
+        ["Kill the Werewolf Pack","Skyrim.esm",15,0],
         ["LCharWerewolfBoss","Skyrim.esm",661889,"Enemy"],
         ["LCharWerewolf","Skyrim.esm",124817,"Enemy"],
         ["LCharWerewolf","Skyrim.esm",124817,"Enemy"],
         ["LCharWerewolf","Skyrim.esm",124817,"Enemy"]
     ],
     [
-        ["Kill the Nesting Ice Wraiths"],
+        ["Kill the Nesting Ice Wraiths","Skyrim.esm",0,0],
         ["EncIceWraith","Skyrim.esm",146099,"Enemy"],
         ["EncIceWraith","Skyrim.esm",146099,"Enemy"],
         ["EncIceWraith","Skyrim.esm",146099,"Enemy"],

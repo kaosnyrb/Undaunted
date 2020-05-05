@@ -1,6 +1,6 @@
 [
     [
-        ["Close the Oblivion Gate"],
+        ["Close the Oblivion Gate","Skyrim.esm",0,0],
         ["Monster","Skyrim.esm",146086,"Enemy"],
         ["Monster","Skyrim.esm",146086,"Enemy"],
         ["Monster","Skyrim.esm",146086,"Enemy"],

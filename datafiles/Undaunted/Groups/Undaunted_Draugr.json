@@ -1,6 +1,6 @@
 [
     [
-        ["Kill the Risen Draugr"],
+        ["Kill the Risen Draugr","Skyrim.esm",0,0],
         ["LCharDraugrBoss","Skyrim.esm",271488,"Enemy"],
         ["LCharDraugrMeleeAllFemale","Skyrim.esm",784312,"Enemy"],
         ["LCharDraugrMeleeAllMale","Skyrim.esm",350549,"Enemy"],
@@ -9,13 +9,13 @@
         ["NordBattleCryAreaEffect01","Skyrim.esm",1092425,"SpawnEffect"]
     ],
     [
-        ["Kill the Hulking Draugr"],
+        ["Kill the Hulking Draugr","Skyrim.esm",15,0],
         ["DLC2SubCharDraugrHulkingMeleeM","Dragonborn.esm",221510,"Enemy"],
         ["DLC2SubCharDraugrHulkingMeleeM","Dragonborn.esm",221510,"Enemy"],
         ["NordBattleCryAreaEffect01","Skyrim.esm",1092425,"SpawnEffect"]
     ],
     [
-        ["Kill the Risen Draugr Hunters"],
+        ["Kill the Risen Draugr Hunters","Skyrim.esm",0,0],
         ["LCharDraugrMissileFemale","Skyrim.esm",244928,"Enemy"],
         ["LCharDraugrMissileMale","Skyrim.esm",682052,"Enemy"],
         ["LCharDraugrMissileFemale","Skyrim.esm",244928,"Enemy"],
@@ -25,7 +25,7 @@
         ["NordBattleCryAreaEffect01","Skyrim.esm",1092425,"SpawnEffect"]
     ],
     [
-        ["Kill the Risen Draugr Warlocks"],
+        ["Kill the Risen Draugr Warlocks","Skyrim.esm",0,0],
         ["LCharDraugrWarlock","Skyrim.esm",124843,"Enemy"],
         ["LCharDraugrWarlock","Skyrim.esm",124843,"Enemy"],
         ["LCharDraugrWarlock","Skyrim.esm",124843,"Enemy"],
@@ -35,7 +35,7 @@
         ["NordBattleCryAreaEffect01","Skyrim.esm",1092425,"SpawnEffect"]
     ],
     [
-        ["Attune to the Summoning Crystals"],
+        ["Attune to the Summoning Crystals","Skyrim.esm",0,0],
         ["LCharDraugrBoss","Skyrim.esm",271488,"Enemy"],
         ["LCharDraugrMeleeAllFemale","Skyrim.esm",784312,"Enemy"],
         ["1_Undaunted_DestructObjectiveMagic_01","Undaunted.esp",80944,"Scripted","dlc01/clutter/dlc01idealmastercrystal.nif"],
@@ -48,7 +48,7 @@
         ["NordBattleCryAreaEffect01","Skyrim.esm",1092425,"SpawnEffect"]
     ],
     [
-        ["Destroy the Draugr Phylacteries"],
+        ["Destroy the Draugr Phylacteries","Skyrim.esm",0,0],
         ["LCharDraugrBoss","Skyrim.esm",271488,"Enemy"],
         ["1_Undaunted_DestructObjectiveMagic_01","Undaunted.esp",80946,"Scripted","Clutter/Ruins/RuinsLargeUrnNoStand01.nif"],
         ["LCharDraugrMeleeAllFemale","Skyrim.esm",784312,"Enemy"],
