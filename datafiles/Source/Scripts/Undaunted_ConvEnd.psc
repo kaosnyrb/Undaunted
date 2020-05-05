@@ -7,6 +7,7 @@ Function Fragment_3(ObjectReference akSpeakerRef)
 Actor akSpeaker = akSpeakerRef as Actor
 ;BEGIN CODE
 Game.GetPlayer().AddSpell(givespell)
+dialougestage.SetValue(10)
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -14,3 +15,5 @@ EndFunction
 ;END FRAGMENT CODE - Do not edit anything between this and the begin comment
 
 SPELL Property givespell  Auto  
+
+GlobalVariable Property dialougestage  auto
