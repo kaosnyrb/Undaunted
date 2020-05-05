@@ -7,10 +7,8 @@ GlobalVariable Property QuestStage  auto
 
 Event OnEffectStart(Actor Target, Actor Caster)
     Undaunted_Activator act = undauntedactivator as Undaunted_Activator
-    if (QuestStage.GetValue() != 10)
-        if GetConfigValueInt("AllowChainReseting") == 0
-            act.ClearBountyStatus()
-            act.StartEvent(true)
-        endif
+    if ( QuestStage.GetValue() != 10 || GetConfigValueInt("AllowChainReseting") == 1)
+        act.ClearBountyStatus()
+        act.StartEvent(true)
     endif
 EndEvent

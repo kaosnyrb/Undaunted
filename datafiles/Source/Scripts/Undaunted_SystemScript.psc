@@ -31,3 +31,7 @@ Function SpawnRandomReward(objectReference markerref,int playerlevel) global nat
 Function SetGroupMemberComplete(objectReference objref) global native
 
 ObjectReference[] Function GetBountyObjectRefs(string bountyType) global native
+
+Function SpawnBossRoom() global native
+
+Function SetBountyComplete() global native

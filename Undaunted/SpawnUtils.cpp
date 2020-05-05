@@ -4,6 +4,26 @@
 
 namespace Undaunted
 {
+	TESObjectREFR* SpawnMonsterInCell(VMClassRegistry* registry,UInt32 Type, TESObjectCELL* parentCell)
+	{
+		int numberofRefs = papyrusCell::GetNumRefs(parentCell, 0);
+		TESForm* spawnForm = LookupFormByID(Type);
+		if (spawnForm == NULL)
+		{
+			_MESSAGE("Failed to Spawn. Form Invalid");
+			return NULL;
+		}
+		_MESSAGE("Num Ref: %i", numberofRefs);
+		for (int i = 0; i < numberofRefs; i++)
+		{
+			TESObjectREFR* ref = papyrusCell::GetNthRef(parentCell, i, 0);
+			if (ref != NULL)
+			{
+				return PlaceAtMe_Native(registry, 1, ref, spawnForm, 1, false, false);					
+			}
+		}
+	}
+
 	GroupList SpawnGroupAtTarget(VMClassRegistry* registry, GroupList Types, TESObjectREFR* Target, TESObjectCELL* cell, TESWorldSpace* worldspace)
 	{
 		TESObjectREFR* spawned = NULL;
@@ -17,6 +37,7 @@ namespace Undaunted
 				_MESSAGE("Failed to Spawn. Form Invalid");
 				return Types;
 			}
+			//If a model file path is set then change the form model.
 			if (!strcmp(Types.data[i].ModelFilepath.Get(), "") == 0)
 			{
 				TESModel* pWorldModel = DYNAMIC_CAST(spawnForm, TESForm, TESModel);
@@ -33,15 +54,15 @@ namespace Undaunted
 				MoveRefToWorldCell(Target, cell, worldspace, startingpoint + offset, NiPoint3(0, 0, 0));
 				spawned = PlaceAtMe_Native(registry, 1, Target, spawnForm, 1, false, false);
 				Types.data[i].objectRef = spawned;
+				Types.data[i].isComplete = false;
 			}
 			else if (strcmp(Types.data[i].BountyType.Get(), "BountyDecoration") == 0 || 
 				strcmp(Types.data[i].BountyType.Get(), "SpawnEffect") == 0 ||
-				strcmp(Types.data[i].BountyType.Get(), "Scripted") == 0)
+				strcmp(Types.data[i].BountyType.Get(), "Scripted") == 0 ||
+				strcmp(Types.data[i].BountyType.Get(), "ScriptedDoor") == 0)
 			{
 				if (spawned != NULL)
 				{
-					//If a model file path is set then change the form model.
-
 					//Actors jump to the navmesh. Objects don't. This tries to used the jump to find the ground.
 					TESObjectREFR* decoration = PlaceAtMe_Native(registry, 1, spawned, spawnForm, 1, false, false);
 					Types.data[i].objectRef = decoration;

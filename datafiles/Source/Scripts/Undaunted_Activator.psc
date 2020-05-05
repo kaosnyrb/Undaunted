@@ -17,7 +17,7 @@ int numberOfBountiesCurrently = 0
 
 Event OnInit()
 	;config values probably not loaded yet.
-	RegisterForUpdate(5.0)
+	;RegisterForUpdate(5.0)
 EndEvent
 
 
@@ -65,7 +65,7 @@ int Function StartEvent(bool nearby)
 				int minlevel = JArray.getInt(obj,2)
 				int maxlevel = JArray.getInt(obj,3)
 				int group = AddGroup(questtext,modreq,minlevel,maxlevel,Game.GetPlayer().GetLevel())
-				if group > 0
+				if group >= 0
 					int jcount = JArray.count(data)
 					int j = 1
 					while(j < jcount)
@@ -87,7 +87,7 @@ int Function StartEvent(bool nearby)
 	StartBounty(nearby)
 	questProperty.SetCurrentStageID(10)
 	QuestStage.SetValue(10)
-	RegisterForUpdate(GetConfigValueInt("BountyUpdateRate"))
+	RegisterForSingleUpdate(GetConfigValueInt("BountyUpdateRate"))
 endFunction
 
 int Function ClearBountyStatus()
@@ -115,14 +115,28 @@ Function CleanUpBounty()
 		decorations[decorationslength].Disable(true)
 		decorations[decorationslength].Delete()
 	endwhile
+	ObjectReference[] ScriptedDoors = GetBountyObjectRefs("ScriptedDoor")		
+	int ScriptedDoorslength = ScriptedDoors.Length
+	while(ScriptedDoorslength > 0)
+		ScriptedDoorslength -= 1
+		ScriptedDoors[ScriptedDoorslength].Disable(true)
+		ScriptedDoors[ScriptedDoorslength].Delete()
+	endwhile	
+	ObjectReference[] BossroomEnemy = GetBountyObjectRefs("BossroomEnemy")		
+	int BossroomEnemylength = BossroomEnemy.Length
+	while(BossroomEnemylength > 0)
+		BossroomEnemylength -= 1
+		BossroomEnemy[BossroomEnemylength].Disable(true)
+		BossroomEnemy[BossroomEnemylength].Delete()
+	endwhile
 endFunction
 
 Event OnUpdate()
-	if (QuestStage.GetValue() != 10)
-		UnregisterForUpdate()
-		return
-	EndIf
-	;Debug.Notification("questProperty Stage: " + QuestStage.GetValue())
+	;if (QuestStage.GetValue() != 10)
+	;	UnregisterForUpdate()
+	;	return
+	;EndIf
+	Debug.Notification("questProperty Stage: " + QuestStage.GetValue())
 	if (!isSystemReady())
 		;If we've got here something has gone wrong. Force a refresh.
 		StartEvent(true)
@@ -130,6 +144,7 @@ Event OnUpdate()
 		return
 	EndIf
 	if (isSystemReady())
+		;Enemy check
 		ObjectReference[] enemies = GetBountyObjectRefs("Enemy")		
 		int enemieslength = enemies.Length
 		while(enemieslength > 0)
@@ -138,22 +153,35 @@ Event OnUpdate()
 				SetGroupMemberComplete(enemies[enemieslength])
 			endif
 		endwhile
+		;Bossroom enemy check
+		ObjectReference[] BossroomEnemy = GetBountyObjectRefs("BossroomEnemy")		
+		int BossroomEnemylength = BossroomEnemy.Length
+		while(BossroomEnemylength > 0)
+		BossroomEnemylength -= 1
+			if (BossroomEnemy[BossroomEnemylength] as Actor).IsDead()
+				SetGroupMemberComplete(BossroomEnemy[BossroomEnemylength])
+			endif
+		endwhile
 		bool complete = isBountyComplete()
 		;Debug.Notification("Bounty State: " + complete)
-		If complete
-			numberOfBountiesCurrently += 1
-			TotalBounties.SetValueInt(TotalBounties.GetValueInt() + 1)
-			;UnregisterForUpdate()
-			CleanUpBounty()
-			if (numberOfBountiesCurrently < numberOfBountiesNeeded)
-				;questProperty.SetCurrentStageID(20)
-				StartEvent(true)
+		if (QuestStage.GetValue() == 10)
+			If complete
+				numberOfBountiesCurrently += 1
+				TotalBounties.SetValueInt(TotalBounties.GetValueInt() + 1)
+				;UnregisterForUpdate()
+				CleanUpBounty()
+				if (numberOfBountiesCurrently < numberOfBountiesNeeded)
+					;questProperty.SetCurrentStageID(20)
+					StartEvent(true)
+				Else
+					Game.GetPlayer().AddItem(keyform, 1, false)
+					questProperty.SetCurrentStageID(20)
+					QuestStage.SetValue(20)
+					;UnregisterForUpdate()
+				EndIf
 			Else
-				Game.GetPlayer().AddItem(keyform, 1, false)
-				questProperty.SetCurrentStageID(20)
-				QuestStage.SetValue(20)
-				UnregisterForUpdate()
-			EndIf
+				RegisterForSingleUpdate(GetConfigValueInt("BountyUpdateRate"))
+			endif
 		EndIf
 	EndIf
 EndEvent

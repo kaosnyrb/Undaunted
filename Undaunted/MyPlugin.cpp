@@ -142,6 +142,24 @@ namespace Undaunted {
 		return false;
 	}
 
+	void hook_SpawnBossroom(StaticFunctionTag* base)
+	{
+		BountyManager::getInstance()->SpawnBossRoomEnemies();
+	}
+
+	void hook_SetBountyComplete(StaticFunctionTag* base)
+	{
+		_MESSAGE("Starting hook_SetBountyComplete");
+		for (int i = 0; i < BountyManager::getInstance()->bountygrouplist.length; i++)
+		{
+			const char* type = BountyManager::getInstance()->bountygrouplist.data[i].BountyType.Get();
+			if (strcmp(type, "ScriptedDoor") == 0)
+			{
+				BountyManager::getInstance()->bountygrouplist.data[i].isComplete = true;
+			}
+		}
+	}
+
 	VMResultArray<TESObjectREFR*> hook_GetBountyObjectRefs(StaticFunctionTag* base, BSFixedString bountyType)
 	{
 		VMResultArray<TESObjectREFR*> allies = VMResultArray<TESObjectREFR*>();
@@ -213,6 +231,11 @@ namespace Undaunted {
 		registry->RegisterFunction(
 			new NativeFunction1<StaticFunctionTag, VMResultArray<TESObjectREFR*>, BSFixedString>("GetBountyObjectRefs", "Undaunted_SystemScript", Undaunted::hook_GetBountyObjectRefs, registry));
 
+		registry->RegisterFunction(
+			new NativeFunction0<StaticFunctionTag, void>("SpawnBossRoom", "Undaunted_SystemScript", Undaunted::hook_SpawnBossroom, registry));
+
+		registry->RegisterFunction(
+			new NativeFunction0<StaticFunctionTag, void>("SetBountyComplete", "Undaunted_SystemScript", Undaunted::hook_SetBountyComplete, registry));
 
 		//Rewards
 		registry->RegisterFunction(

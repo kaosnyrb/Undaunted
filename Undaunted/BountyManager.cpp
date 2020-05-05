@@ -46,15 +46,26 @@ namespace Undaunted {
 		if (bountygrouplist.length == 0)
 			return false;
 
+//		bool NoncompleteObj = false;
+		int NonComplete = 0;
 		for (UInt32 i = 0; i < bountygrouplist.length; i++)
 		{
+			_MESSAGE("Type, Member, complete: %s, %08X , %i", bountygrouplist.data[i].BountyType.Get(), bountygrouplist.data[i].FormId, bountygrouplist.data[i].IsComplete());
 			if (bountygrouplist.data[i].IsComplete() != 1)
 			{
-				MoveRefToWorldCell(xmarkerref, bountyworldcell.cell, bountyworldcell.world, bountygrouplist.data[i].objectRef->pos, NiPoint3(0, 0, 0));
-				return false;
+				NonComplete++;
+				if (bountygrouplist.data[i].objectRef != NULL)
+				{
+					MoveRefToWorldCell(xmarkerref, bountyworldcell.cell, bountyworldcell.world, bountygrouplist.data[i].objectRef->pos, NiPoint3(0, 0, 0));
+				}
 			}
-					
 		}
+		if(NonComplete > 0)
+			return false;
+
+//		if (NoncompleteObj)
+	//		return false;
+
 		_MESSAGE("Starting PostBounty");
 		for (UInt32 i = 0; i < bountygrouplist.length; i++)
 		{
@@ -124,6 +135,7 @@ namespace Undaunted {
 		MoveRefToWorldCell(xmarkerref, bountyworldcell.cell, bountyworldcell.world, target->pos, NiPoint3(0, 0, 0));
 
 		bountygrouplist = GetRandomGroup();
+		//ClearBountyData();
 		_MESSAGE("Setting Bounty Message: %s", bountygrouplist.questText);
 		bountymessageref->fullName.name = bountygrouplist.questText;
 
@@ -146,6 +158,21 @@ namespace Undaunted {
 			_MESSAGE("Setting Bounty Message: The Bounty has moved on, start a new Bounty");
 			bountymessageref->fullName.name = "The Bounty has moved on, start a new Bounty";
 		}
+	}
+
+	void BountyManager::SpawnBossRoomEnemies()
+	{
+		_MESSAGE("SpawnBossRoomEnemies");
+		TESObjectCELL* here = (*g_thePlayer)->parentCell;
+		for (UInt32 i = 0; i < bountygrouplist.length; i++)
+		{
+			if (strcmp(bountygrouplist.data[i].BountyType.Get(), "BossroomEnemy") == 0)
+			{
+				bountygrouplist.data[i].isComplete = false;
+				bountygrouplist.data[i].objectRef = SpawnMonsterInCell(_registry,bountygrouplist.data[i].FormId, here);
+			}
+		}
+
 	}
 
 }
