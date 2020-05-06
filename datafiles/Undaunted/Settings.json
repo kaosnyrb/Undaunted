@@ -1,6 +1,6 @@
 [
     ["NumberOfBountiesPerChain","3", "How many bounties are spawned before a key is rewarded"],
-    ["AllowChainReseting","0", "Can you restart a bounty chain?"],
+    ["AllowChainReseting","1", "Can you restart a bounty chain? You lose progress in the current chain"],
 
     ["BountyLevelCache","2", "How many levels either side of the min max should we load? Based on a single play session"],
 
@@ -8,7 +8,10 @@
     ["BountyMinSpawnDistance","6000","The minimum distance at which a bounty will be allowed to be place at"],
     ["BountyMaxSpawnDistance","20000", "The maximum distance at which a bounty will be allowed to be place at"],
     ["BountySearchAttempts","150","How many items it will search for a spawn point in the set distance before giving up"],
-    ["BountyUpdateRate","1","How often in seconds that the Bounty checks the state. Low values use up more cpu."],
+    ["BountyUpdateRate","3","How often in seconds that the Bounty checks the state. Low values use up more cpu."],
+
+    ["BountyEnemyExteriorSpawnRadius","1000","The radius around the bounty at which enemies will spawn outside"],
+    ["BountyEnemyInteriorSpawnRadius","300","The radius around the bossroom marker at which enemies will spawn. Careful here as this doesn't check for walls."],    
 
     ["RewardsPerKey","3", "The number of items that you get per key"],
     ["RewardTargetMaxLevel","40", "The target endgame level, at which deadric gear will be rewarded"],

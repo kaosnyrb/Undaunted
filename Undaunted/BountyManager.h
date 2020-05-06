@@ -22,7 +22,7 @@ namespace Undaunted {
 		bool BountyUpdate();
 		float StartBounty(bool nearby);
 		void ClearBountyData();
-		void SpawnBossRoomEnemies();
+		void SpawnBossRoomEnemies(TESObjectREFR* target);
 
 	};
 #endif

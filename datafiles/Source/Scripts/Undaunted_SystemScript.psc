@@ -32,6 +32,6 @@ Function SetGroupMemberComplete(objectReference objref) global native
 
 ObjectReference[] Function GetBountyObjectRefs(string bountyType) global native
 
-Function SpawnBossRoom() global native
+Function SpawnBossRoom(objectReference target) global native
 
 Function SetBountyComplete() global native

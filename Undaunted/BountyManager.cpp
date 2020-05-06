@@ -160,16 +160,15 @@ namespace Undaunted {
 		}
 	}
 
-	void BountyManager::SpawnBossRoomEnemies()
+	void BountyManager::SpawnBossRoomEnemies(TESObjectREFR* target)
 	{
 		_MESSAGE("SpawnBossRoomEnemies");
-		TESObjectCELL* here = (*g_thePlayer)->parentCell;
 		for (UInt32 i = 0; i < bountygrouplist.length; i++)
 		{
 			if (strcmp(bountygrouplist.data[i].BountyType.Get(), "BossroomEnemy") == 0)
 			{
 				bountygrouplist.data[i].isComplete = false;
-				bountygrouplist.data[i].objectRef = SpawnMonsterInCell(_registry,bountygrouplist.data[i].FormId, here);
+				bountygrouplist.data[i].objectRef = SpawnMonsterInCell(_registry,bountygrouplist.data[i].FormId, target, (*g_thePlayer)->parentCell, (*g_thePlayer)->currentWorldSpace);
 			}
 		}
 

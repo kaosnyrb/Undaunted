@@ -142,9 +142,9 @@ namespace Undaunted {
 		return false;
 	}
 
-	void hook_SpawnBossroom(StaticFunctionTag* base)
+	void hook_SpawnBossroom(StaticFunctionTag* base, TESObjectREFR* target)
 	{
-		BountyManager::getInstance()->SpawnBossRoomEnemies();
+		BountyManager::getInstance()->SpawnBossRoomEnemies(target);
 	}
 
 	void hook_SetBountyComplete(StaticFunctionTag* base)
@@ -232,7 +232,7 @@ namespace Undaunted {
 			new NativeFunction1<StaticFunctionTag, VMResultArray<TESObjectREFR*>, BSFixedString>("GetBountyObjectRefs", "Undaunted_SystemScript", Undaunted::hook_GetBountyObjectRefs, registry));
 
 		registry->RegisterFunction(
-			new NativeFunction0<StaticFunctionTag, void>("SpawnBossRoom", "Undaunted_SystemScript", Undaunted::hook_SpawnBossroom, registry));
+			new NativeFunction1<StaticFunctionTag, void, TESObjectREFR*>("SpawnBossRoom", "Undaunted_SystemScript", Undaunted::hook_SpawnBossroom, registry));
 
 		registry->RegisterFunction(
 			new NativeFunction0<StaticFunctionTag, void>("SetBountyComplete", "Undaunted_SystemScript", Undaunted::hook_SetBountyComplete, registry));

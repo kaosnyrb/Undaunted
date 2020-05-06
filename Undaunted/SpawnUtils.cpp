@@ -4,24 +4,21 @@
 
 namespace Undaunted
 {
-	TESObjectREFR* SpawnMonsterInCell(VMClassRegistry* registry,UInt32 Type, TESObjectCELL* parentCell)
+	TESObjectREFR* SpawnMonsterInCell(VMClassRegistry* registry,UInt32 Type, TESObjectREFR* ref, TESObjectCELL* cell, TESWorldSpace* worldspace)
 	{
-		int numberofRefs = papyrusCell::GetNumRefs(parentCell, 0);
+		NiPoint3 startingpoint = ref->pos;
 		TESForm* spawnForm = LookupFormByID(Type);
 		if (spawnForm == NULL)
 		{
 			_MESSAGE("Failed to Spawn. Form Invalid");
 			return NULL;
 		}
-		_MESSAGE("Num Ref: %i", numberofRefs);
-		for (int i = 0; i < numberofRefs; i++)
-		{
-			TESObjectREFR* ref = papyrusCell::GetNthRef(parentCell, i, 0);
-			if (ref != NULL)
-			{
-				return PlaceAtMe_Native(registry, 1, ref, spawnForm, 1, false, false);					
-			}
-		}
+		int spawnradius = GetConfigValueInt("BountyEnemyInteriorSpawnRadius");
+		NiPoint3 offset = NiPoint3(rand() & spawnradius, rand() & spawnradius, 0);
+		MoveRefToWorldCell(ref, cell, worldspace, ref->pos + offset, NiPoint3(0, 0, 0));
+		TESObjectREFR* spawned = PlaceAtMe_Native(registry, 1, ref, spawnForm, 1, false, false);
+		MoveRefToWorldCell(ref, cell, worldspace, startingpoint, NiPoint3(0, 0, 0));
+		return spawned;
 	}
 
 	GroupList SpawnGroupAtTarget(VMClassRegistry* registry, GroupList Types, TESObjectREFR* Target, TESObjectCELL* cell, TESWorldSpace* worldspace)
@@ -29,6 +26,7 @@ namespace Undaunted
 		TESObjectREFR* spawned = NULL;
 		srand(time(NULL));
 		NiPoint3 startingpoint = Target->pos;
+		int spawnradius = GetConfigValueInt("BountyEnemyExteriorSpawnRadius");
 		for (UInt32 i = 0; i < Types.length; i++)
 		{
 			TESForm* spawnForm = LookupFormByID(Types.data[i].FormId);
@@ -50,7 +48,7 @@ namespace Undaunted
 			if (strcmp(Types.data[i].BountyType.Get(), "Enemy") == 0 || strcmp(Types.data[i].BountyType.Get(), "Ally") == 0)
 			{
 				//Random Offset
-				NiPoint3 offset = NiPoint3(rand() & 1000, rand() & 1000, 0);
+				NiPoint3 offset = NiPoint3(rand() & spawnradius, rand() & spawnradius, 0);
 				MoveRefToWorldCell(Target, cell, worldspace, startingpoint + offset, NiPoint3(0, 0, 0));
 				spawned = PlaceAtMe_Native(registry, 1, Target, spawnForm, 1, false, false);
 				Types.data[i].objectRef = spawned;
