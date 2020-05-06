@@ -1,13 +1,14 @@
 ;BEGIN FRAGMENT CODE - Do not edit anything between this and the end comment
-;NEXT FRAGMENT INDEX 4
+;NEXT FRAGMENT INDEX 5
 Scriptname Undaunted_ConvEnd Extends TopicInfo Hidden
 
-;BEGIN FRAGMENT Fragment_3
-Function Fragment_3(ObjectReference akSpeakerRef)
+;BEGIN FRAGMENT Fragment_4
+Function Fragment_4(ObjectReference akSpeakerRef)
 Actor akSpeaker = akSpeakerRef as Actor
 ;BEGIN CODE
 Game.GetPlayer().AddSpell(givespell)
 dialougestage.SetValue(10)
+undauntedQuest.SetCurrentStageID(0)
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -17,3 +18,5 @@ EndFunction
 SPELL Property givespell  Auto  
 
 GlobalVariable Property dialougestage  auto
+
+Quest Property undauntedQuest  Auto  
