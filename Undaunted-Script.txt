@@ -1,4 +1,6 @@
-NPC is limited to 150 characters per line, however multiple can be chained together.
+Voice over for an old skilled adventurer who has spent his life travelling Skyrim and slaying evil.
+Context with tempoary voice work: https://www.youtube.com/watch?v=F1D0vOlTMWM
+Only the NPC lines need voicing.
 
 
 NPC: You're a long way from home, traveler. Are you really so undaunted as to approach my camp?
@@ -23,10 +25,10 @@ Player: So I don't have to report back to you with severed pieces of creature in
 
 NPC: The Undaunted invocation manifests itself in ethereal keys, these in turn can summon material goods should purging evil not prove reward enough.
 
-Player: I'll consider it, but not at this time.
+Option 1: Player: I'll consider it, but not at this time.
 
 NPC: Evil does not sleep, traveler. We are too few, and I see in your eyes you have felt the calling of the invocation. I suspect you will return in time.
 
-Player: Very well, let's see what this Undaunted power can do.
+Option 2: Player: Very well, let's see what this Undaunted power can do.
 
 NPC: The invocation of the Undaunted called out to you. Already its power had manifested itself within you. All evil will quake at your acceptance of this.

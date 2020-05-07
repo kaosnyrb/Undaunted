@@ -6,5 +6,13 @@
         ["LCharForswornMissile","Skyrim.esm",124820,"Enemy"],
         ["LCharForswornMissile","Skyrim.esm",124820,"Enemy"],
         ["LCharForswornShaman","Skyrim.esm",124821,"Enemy"]
+    ],
+    [
+        ["Kill the Hagraven","Skyrim.esm",20,0],
+        ["EncHagraven","Skyrim.esm",146096,"Enemy"],
+        ["LCharHagravenCompanion","Skyrim.esm",409792,"Enemy"],
+        ["LCharHagravenCompanion","Skyrim.esm",409792,"Enemy"],
+        ["LCharForswornMissile","Skyrim.esm",124820,"Enemy"],
+        ["LCharForswornShaman","Skyrim.esm",124821,"Enemy"]
     ]
 ]

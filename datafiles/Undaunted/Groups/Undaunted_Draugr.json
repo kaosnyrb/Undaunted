@@ -9,7 +9,7 @@
         ["NordBattleCryAreaEffect01","Skyrim.esm",1092425,"SpawnEffect"]
     ],
     [
-        ["Kill the Hulking Draugr","Skyrim.esm",15,0],
+        ["Kill the Hulking Draugr","Skyrim.esm",25,0],
         ["DLC2SubCharDraugrHulkingMeleeM","Dragonborn.esm",221510,"Enemy"],
         ["DLC2SubCharDraugrHulkingMeleeM","Dragonborn.esm",221510,"Enemy"],
         ["NordBattleCryAreaEffect01","Skyrim.esm",1092425,"SpawnEffect"]
@@ -25,7 +25,7 @@
         ["NordBattleCryAreaEffect01","Skyrim.esm",1092425,"SpawnEffect"]
     ],
     [
-        ["Kill the Risen Draugr Warlocks","Skyrim.esm",0,0],
+        ["Kill the Risen Draugr Warlocks","Skyrim.esm",10,0],
         ["LCharDraugrWarlock","Skyrim.esm",124843,"Enemy"],
         ["LCharDraugrWarlock","Skyrim.esm",124843,"Enemy"],
         ["LCharDraugrWarlock","Skyrim.esm",124843,"Enemy"],
@@ -38,10 +38,13 @@
         ["Attune to the Summoning Crystals","Skyrim.esm",0,0],
         ["LCharDraugrBoss","Skyrim.esm",271488,"Enemy"],
         ["LCharDraugrMeleeAllFemale","Skyrim.esm",784312,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Ally"],
         ["1_Undaunted_DestructObjectiveMagic_01","Undaunted.esp",80944,"Scripted","dlc01/clutter/dlc01idealmastercrystal.nif"],
         ["LCharDraugrMeleeAllFemale","Skyrim.esm",784312,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Ally"],
         ["1_Undaunted_DestructObjectiveMagic_01","Undaunted.esp",80944,"Scripted","dlc01/clutter/dlc01idealmastercrystal.nif"],
         ["LCharDraugrMeleeAllFemale","Skyrim.esm",784312,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Ally"],
         ["1_Undaunted_DestructObjectiveMagic_01","Undaunted.esp",80944,"Scripted","dlc01/clutter/dlc01idealmastercrystal.nif"],
         ["LCharDraugrWarlock","Skyrim.esm",124843,"Enemy"],
         ["LCharDraugrWarlock","Skyrim.esm",124843,"Enemy"],
@@ -50,10 +53,12 @@
     [
         ["Destroy the Draugr Phylacteries","Skyrim.esm",0,0],
         ["LCharDraugrBoss","Skyrim.esm",271488,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Ally"],
         ["1_Undaunted_DestructObjectiveMagic_01","Undaunted.esp",80946,"Scripted","Clutter/Ruins/RuinsLargeUrnNoStand01.nif"],
         ["LCharDraugrMeleeAllFemale","Skyrim.esm",784312,"Enemy"],
         ["LCharDraugrMeleeAllMale","Skyrim.esm",350549,"Enemy"],
         ["LCharDraugrMeleeAllFemale","Skyrim.esm",784312,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Ally"],
         ["1_Undaunted_DestructObjectiveMagic_01","Undaunted.esp",80946,"Scripted","Clutter/Ruins/RuinsLargeUrnNoStand01.nif"]
     ]
 ]

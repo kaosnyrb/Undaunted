@@ -105,28 +105,28 @@ Function CleanUpBounty()
 	int allylength = allies.Length
 	while(allylength > 0)
 		allylength -= 1
-		allies[allylength].Disable(true)
+		allies[allylength].DisableNoWait(true)
 		allies[allylength].Delete()
 	endwhile
 	ObjectReference[] decorations = GetBountyObjectRefs("BountyDecoration")		
 	int decorationslength = decorations.Length
 	while(decorationslength > 0)
 	decorationslength -= 1
-		decorations[decorationslength].Disable(true)
+		decorations[decorationslength].DisableNoWait(true)
 		decorations[decorationslength].Delete()
 	endwhile
 	ObjectReference[] ScriptedDoors = GetBountyObjectRefs("ScriptedDoor")		
 	int ScriptedDoorslength = ScriptedDoors.Length
 	while(ScriptedDoorslength > 0)
 		ScriptedDoorslength -= 1
-		ScriptedDoors[ScriptedDoorslength].Disable(false)
+		ScriptedDoors[ScriptedDoorslength].DisableNoWait(false)
 		ScriptedDoors[ScriptedDoorslength].Delete()
 	endwhile	
 	ObjectReference[] BossroomEnemy = GetBountyObjectRefs("BossroomEnemy")		
 	int BossroomEnemylength = BossroomEnemy.Length
 	while(BossroomEnemylength > 0)
 		BossroomEnemylength -= 1
-		BossroomEnemy[BossroomEnemylength].Disable(false)
+		BossroomEnemy[BossroomEnemylength].DisableNoWait(false)
 		BossroomEnemy[BossroomEnemylength].Delete()
 	endwhile
 endFunction

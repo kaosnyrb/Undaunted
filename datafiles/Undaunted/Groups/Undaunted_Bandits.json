@@ -1,5 +1,9 @@
 [
     [
+        ["Kill the Thief","Skyrim.esm",0,5],
+        ["WIThief","Skyrim.esm",147176,"Enemy"]
+    ],
+    [
         ["Kill the Bandit Gang","Skyrim.esm",0,0],
         ["LCharBanditBoss","Skyrim.esm",253718,"Enemy"],
         ["LCharBanditMeleeAny","Skyrim.esm",253645,"Enemy"],
@@ -24,6 +28,15 @@
         ["LCharBanditOnlyOrcM","Skyrim.esm",228394,"Enemy"]        
     ],
     [
+        ["Help the Ambushed Merchant","Skyrim.esm",0,0],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Ally"],
+        ["1_Undaunted_OblivionGate","Undaunted.esp",13206,"BountyDecoration","clutter/quest/dbbrokencart01.nif"],
+        ["WEMerchantMiscFemaleCommoner","Skyrim.esm",744794,"Ally"],
+        ["LCharBanditOnlyOrcM","Skyrim.esm",228394,"Enemy"],
+        ["LCharBanditOnlyOrcM","Skyrim.esm",228394,"Enemy"],
+        ["LCharBanditOnlyOrcM","Skyrim.esm",228394,"Enemy"]
+    ],
+    [
         ["Kill the Khajiiti Raiders","Skyrim.esm",0,0],
         ["LCharBanditMeleeKhajiitM","Dawnguard.esm",35831,"Enemy"],
         ["LCharBanditMeleeKhajiitM","Dawnguard.esm",35831,"Enemy"],
@@ -35,8 +48,10 @@
     [
         ["Recover the Crates of Firebrand Wine","Skyrim.esm",0,0],
         ["LCharBanditMeleeAny","Skyrim.esm",253645,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Ally"],
         ["1_Undaunted_firebrandwinecrate","Undaunted.esp",80942,"PhysicsScripted", "clutter/quest/firebrandwinecrate01.nif"],
         ["LCharBanditMeleeAny","Skyrim.esm",253645,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Ally"],
         ["1_Undaunted_firebrandwinecrate","Undaunted.esp",80942,"PhysicsScripted", "clutter/quest/firebrandwinecrate01.nif"],
         ["LCharBanditMeleeAny","Skyrim.esm",253645,"Enemy"],
         ["LCharBanditMeleeAny","Skyrim.esm",253645,"Enemy"],
@@ -53,20 +68,24 @@
     [
         ["Destroy the Blockade","Skyrim.esm",0,0],
         ["LCharBanditMeleeAny","Skyrim.esm",253645,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Ally"],
         ["1_Undaunted_DestructObjectiveBarricade","Undaunted.esp",80945,"Scripted","Clutter/Stockade/StockadeBarricade/StockadeBarricade01.nif"],
         ["LCharBanditMeleeAny","Skyrim.esm",253645,"Enemy"],
         ["LCharBanditMissile","Skyrim.esm",124784,"Enemy"],
         ["LCharBanditMissile","Skyrim.esm",124784,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Ally"],
         ["1_Undaunted_DestructObjectiveBarricade","Undaunted.esp",80945,"Scripted","Clutter/Stockade/StockadeBarricade/StockadeBarricade01.nif"]
     ],
     [
         ["Destroy the Bandit Camp","Skyrim.esm",0,0],
         ["LCharBanditBoss","Skyrim.esm",253718,"Enemy"],
         ["LCharBanditMissileNordF","Skyrim.esm",107334,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Ally"],
         ["1_Undaunted_DestructObjective_01","Undaunted.esp",80945,"Scripted","architecture/tents/smallnordictent01.nif"],
         ["LCharBanditMissileNordF","Skyrim.esm",107334,"Enemy"],
         ["LCharBanditMissileNordF","Skyrim.esm",107334,"Enemy"],
         ["LCharBanditMissileNordF","Skyrim.esm",107334,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Ally"],
         ["1_Undaunted_DestructObjective_02","Undaunted.esp",101684,"Scripted","architecture/tents/largenordictent01.nif"]
     ],
     [
@@ -77,6 +96,7 @@
         ["LCharBanditBossNordF","Skyrim.esm",107328,"BossroomEnemy"],
         ["LCharBanditMeleeAny","Skyrim.esm",253645,"BossroomEnemy"],
         ["LCharBanditMissile","Skyrim.esm",124784,"BossroomEnemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Ally"],
         ["1_Undaunted_BanditCaveEnterance","Undaunted.esp",184990,"ScriptedDoor","Architecture/Farmhouse/Interior/Basement/FarmBTrapdoor02.nif"]
     ]
 ]

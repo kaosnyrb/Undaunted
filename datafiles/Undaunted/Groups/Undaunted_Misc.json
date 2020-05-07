@@ -1,0 +1,37 @@
+[
+    [
+        ["Hunt the Wolf Pack","Skyrim.esm",0,4],
+        ["EncWolf","Skyrim.esm",146110,"Enemy"],
+        ["EncWolf","Skyrim.esm",146110,"Enemy"],
+        ["EncWolf","Skyrim.esm",146110,"Enemy"]
+    ],
+    [
+        ["Hunt the Roaming Bear","Skyrim.esm",0,12],
+        ["EncBear","Skyrim.esm",146058,"Enemy"]
+    ],
+    [
+        ["Slay the Clutists","Dragonborn.esm",10,0],
+        ["DLC2LCharCultist","Dragonborn.esm",199900,"Enemy"],
+        ["DLC2LCharCultist","Dragonborn.esm",199900,"Enemy"],
+        ["DLC2LCharCultistSummoner","Dragonborn.esm",218701,"Enemy"]
+    ],
+    [
+        ["Dust and Ash","Dragonborn.esm",20,0],
+        ["DLC2LCharAshSpawnAll","Dragonborn.esm",205501,"Enemy"],
+        ["DLC2LCharAshSpawnAll","Dragonborn.esm",205501,"Enemy"],
+        ["DLC2LCharAshSpawnAll","Dragonborn.esm",205501,"Enemy"],
+        ["DLC2LCharAshSpawnMagic","Dragonborn.esm",205506,"Enemy"]
+    ],
+    [
+        ["Slay the Seekers","Dragonborn.esm",20,0],
+        ["DLC2LCharSeeker","Dragonborn.esm",167559,"Enemy"],
+        ["DLC2LCharSeeker","Dragonborn.esm",167559,"Enemy"]
+    ],
+    [
+        ["Destroy the Forbidden Knowledge","Dragonborn.esm",20,0],
+        ["DLC2LCharSeeker","Dragonborn.esm",167559,"Enemy"],
+        ["DLC2LCharSeeker","Dragonborn.esm",167559,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Ally"],
+        ["1_Undaunted_DLC01IdealMasterCrystal","Undaunted.esp",80944,"Scripted","DLC02/Dungeons/Apocrypha/Animated/ForbiddenBook02/ApoForbiddenBook02.nif"]
+    ]
+]
