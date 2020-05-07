@@ -1,0 +1,13 @@
+[
+    [
+        ["Help the Oppressed Bosmer","Skyrim.esm",0,0],
+        ["WEAdventurerBrawlerWoodElfM","Skyrim.esm",1070432,"Ally"],
+        ["WEAdventurerRangedConjurerWoodElfF","Skyrim.esm",1070415,"Ally"],
+        ["WEAdventurerRangedConjurerWoodElfF","Skyrim.esm",1070415,"Ally"],
+        ["WEAdventurerRangedConjurerWoodElfM","Skyrim.esm",1070416,"Ally"],
+        ["LCharThalmorMagic","Skyrim.esm",176424,"Enemy"],
+        ["LCharThalmorMelee1H","Skyrim.esm",176425,"Enemy"],
+        ["LCharThalmorMagicBoss","Skyrim.esm",515241,"Enemy"],
+        ["LCharThalmorMagic","Skyrim.esm",176424,"Enemy"]
+    ]
+]

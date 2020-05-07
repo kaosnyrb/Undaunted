@@ -3,6 +3,27 @@
 
 namespace Undaunted
 {
+	int GetRewardType() {
+		int choice_weight[] = 
+		{ 
+			GetConfigValueInt("RewardWeaponWeight"),
+			GetConfigValueInt("RewardArmourWeight"),
+			GetConfigValueInt("RewardPotionWeight"),
+			GetConfigValueInt("RewardScrollWeight") 
+		};
+		int numberofchoices = 4;
+		int sum_of_weight = 0;
+		for (int i = 0; i < numberofchoices; i++) {
+			sum_of_weight += choice_weight[i];
+		}
+		int rnd = rand() % sum_of_weight;
+		for (int i = 0; i < numberofchoices; i++) {
+			if (rnd < choice_weight[i])
+				return i;
+			rnd -= choice_weight[i];
+		}
+	}
+
 	UInt32 GetReward(UInt32 playerlevel)
 	{
 		srand(time(NULL));
@@ -22,16 +43,29 @@ namespace Undaunted
 			if (npc->skinForm.skin)
 				exclude.insert(npc->skinForm.skin);
 		}
+
+		int type = GetRewardType();
 		bool found = false;
 		while (!found)
 		{
-			int type = rand() % 2;
+			
 			TESObjectWEAP* weapon = NULL;
 			TESObjectARMO* armour = NULL;
-			//type = 0;
+			AlchemyItem* potion = NULL;
+			ScrollItem* scroll = NULL;
+			//type = 3;
 			switch (type)
 			{
 			case 0:
+			case 1:
+				dataHandler->armors.GetNthItem(rand() % dataHandler->armors.count, armour);
+				if (exclude.find(armour) != exclude.end())
+					if (!armour->IsPlayable()) continue;
+				if (armour->templateArmor) continue;
+				if (armour->value.value == 0) continue;
+				if (!IsArmourLevelOk(armour, playerlevel))continue;
+				return armour->formID;
+			case 2:
 				dataHandler->weapons.GetNthItem(rand() % dataHandler->weapons.count, weapon);
 				if (!weapon->IsPlayable()) continue;
 				if (!weapon->Has3D()) continue;
@@ -39,14 +73,15 @@ namespace Undaunted
 				if (weapon->templateForm) continue;
 				if (!IsWeaponLevelOk(weapon, playerlevel)) continue;
 				return weapon->formID;
-			case 1:
-				dataHandler->armors.GetNthItem(rand() % dataHandler->armors.count, armour);
-				if(exclude.find(armour) != exclude.end())
-				if (armour->IsPlayable()) continue;
-				if (armour->templateArmor) continue;
-				if (armour->value.value == 0) continue;
-				if (!IsArmourLevelOk(armour,playerlevel))continue;
-				return armour->formID;
+			case 3:
+				dataHandler->potions.GetNthItem(rand() % dataHandler->potions.count, potion);
+				return potion->formID;
+			case 4:
+				dataHandler->scrolls.GetNthItem(rand() % dataHandler->scrolls.count, scroll);
+				if (!scroll->IsPlayable()) continue;
+				if (!scroll->Has3D()) continue;
+				if (scroll->value.value == 0) continue;
+				return scroll->formID;
 			default:
 				dataHandler->weapons.GetNthItem(rand() % dataHandler->weapons.count, weapon);
 				if (!weapon->IsPlayable()) continue;
@@ -68,12 +103,11 @@ namespace Undaunted
 		float minDamage = GetConfigValueInt("RewardWeaponMinDamage");
 		float maxDamage = GetConfigValueInt("RewardWeaponMaxDamage");
 		float partcoeffient = (maxDamage - minDamage) / targetMaxLevel;
-		_MESSAGE("levelcoeffient: %f , partcoeffient: %f", levelcoeffient, partcoeffient);
+		//_MESSAGE("levelcoeffient: %f , partcoeffient: %f", levelcoeffient, partcoeffient);
 
 		int minValueForPart = GetConfigValueInt("RewardWeaponMinValue");
 		int maxValueForPart = GetConfigValueInt("RewardWeaponMaxValue");
 		float valuecoeffient = (maxValueForPart - minValueForPart) / targetMaxLevel;
-		//_MESSAGE("levelcoeffient: %f , partcoeffient: %f", levelcoeffient, partcoeffient);
 		for (int i = 0; i < weapon->keyword.numKeywords; i++)
 		{			
 			if (_stricmp(weapon->keyword.keywords[i]->keyword.data, "DaedricArtifact") == 0 && GetConfigValueInt("RewardAllowDaedricArtifacts") == 1)return false;
@@ -105,6 +139,11 @@ namespace Undaunted
 //		_MESSAGE("Level %08X, weightClass: %08X, Value: %i, mask: %08X,  Moneyvalue: %08X", playerlevel, weightClass, Armourvalue, mask, Moneyvalue);
 		int minArmourForPart = 0;
 		int maxArmourForPart = 0;
+		for (int i = 0; i < armour->keyword.numKeywords; i++)
+		{
+			if (_stricmp(armour->keyword.keywords[i]->keyword.data, "DaedricArtifact") == 0 && GetConfigValueInt("RewardAllowDaedricArtifacts") == 1)return false;
+			if (_stricmp(armour->keyword.keywords[i]->keyword.data, "ArmorShield") == 0 && GetConfigValueInt("RewardAllowShields") == 0)return false;
+		}
 		//To calculate if an armour is in our level range we figure out a per level amour value for each slot then compare to the item.
 		//So if the item is better than what we should have at our level we don't use it.
 		//Light Armour
@@ -132,6 +171,7 @@ namespace Undaunted
 			}
 			if ((mask & armour->bipedObject.kPart_Shield) != 0)
 			{
+				if (GetConfigValueInt("RewardAllowShields") == 0) return false;
 				minArmourForPart = GetConfigValueInt("Reward_Armour_Light_Shield_Value_Min");
 				maxArmourForPart = GetConfigValueInt("Reward_Armour_Light_Shield_Value_Max");
 			}
@@ -167,6 +207,7 @@ namespace Undaunted
 			}
 			if ((mask & armour->bipedObject.kPart_Shield) != 0)
 			{
+				if (GetConfigValueInt("RewardAllowShields") == 0) return false;
 				minArmourForPart = GetConfigValueInt("Reward_Armour_Heavy_Shield_Value_Min");
 				maxArmourForPart = GetConfigValueInt("Reward_Armour_Heavy_Shield_Value_Max");
 			}

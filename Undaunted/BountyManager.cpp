@@ -115,7 +115,7 @@ namespace Undaunted {
 				target = GetRandomObjectInCell(bountyworldcell.cell);
 				NiPoint3 distance = (*g_thePlayer)->pos - target->pos;
 				Vector3 distvector = Vector3(distance.x, distance.y, distance.z);
-				_MESSAGE("Distance to Bounty: %f", distvector.Magnitude());
+				//_MESSAGE("Distance to Bounty: %f", distvector.Magnitude());
 				if (distvector.Magnitude() > BountyMinSpawnDistance && distvector.Magnitude() < BountyMaxSpawnDistance)
 				{
 					foundtarget = true;
