@@ -142,7 +142,7 @@ namespace Undaunted {
 			bool bountyran = false;
 			for (int j = 0; j < bountiesRan.length; j++)
 			{
-				if (strcmp(bountiesRan.data[i].key, bountygrouplist.questText) == 0)
+				if (strcmp(bountiesRan.data[j].key, bountygrouplist.questText) == 0)
 				{
 					bountyran = true;
 				}
@@ -155,7 +155,6 @@ namespace Undaunted {
 		UnString bountydata = UnString();
 		bountydata.key = bountygrouplist.questText;
 		bountiesRan.AddItem(bountydata);
-		//ClearBountyData();
 		_MESSAGE("Setting Bounty Message: %s", bountygrouplist.questText);
 		bountymessageref->fullName.name = bountygrouplist.questText;
 
