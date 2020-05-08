@@ -62,7 +62,7 @@
         ["WEMerchantMiscFemaleCommoner","Skyrim.esm",744794,"Ally"]
     ],
     [
-        ["Stop the Thalmor Experiments","Skyrim.esm",0,0],
+        ["Stop the Thalmor Experiments","Skyrim.esm",10,0],
         ["LCharThalmorMagic","Skyrim.esm",176424,"Enemy"],
         ["1_Undaunted_DestructObjectiveMagic_01","Undaunted.esp",80946,"Scripted","Dungeons/AzurasStar/AzuraLargeCrystalMoving01.nif"],
         ["LCharThalmorMelee1H","Skyrim.esm",176425,"Enemy"],
@@ -115,5 +115,29 @@
         ["LCharThalmorMelee1H","Skyrim.esm",176425,"Enemy"],
         ["LCharThalmorMagicBoss","Skyrim.esm",515241,"Enemy"],
         ["LCharThalmorMagic","Skyrim.esm",176424,"Enemy"]
+    ],
+    [
+        ["Kill the Rieklin Warband","Dragonborn.esm",25,0],
+        ["DLC2LCharMountedRiekling","Dragonborn.esm",233136,"Enemy"],
+        ["DLC2LCharRieklingMelee","Dragonborn.esm",112211,"Enemy"],
+        ["DLC2LCharRieklingMelee","Dragonborn.esm",112211,"Enemy"],
+        ["DLC2LCharRieklingMissile","Dragonborn.esm",112212,"Enemy"],
+        ["DLC2LCharRieklingMissile","Dragonborn.esm",112212,"Enemy"]
+    ],
+    [
+        ["Kill the Forsworn Warband","Skyrim.esm",0,0],
+        ["LCharForswornBossShaman","Skyrim.esm",279293,"Enemy"],
+        ["LCharForswornMelee1H","Skyrim.esm",124818,"Enemy"],
+        ["LCharForswornMissile","Skyrim.esm",124820,"Enemy"],
+        ["LCharForswornMissile","Skyrim.esm",124820,"Enemy"],
+        ["LCharForswornShaman","Skyrim.esm",124821,"Enemy"]
+    ],
+    [
+        ["Kill the Hagraven","Skyrim.esm",20,0],
+        ["EncHagraven","Skyrim.esm",146096,"Enemy"],
+        ["LCharHagravenCompanion","Skyrim.esm",409792,"Enemy"],
+        ["LCharHagravenCompanion","Skyrim.esm",409792,"Enemy"],
+        ["LCharForswornMissile","Skyrim.esm",124820,"Enemy"],
+        ["LCharForswornShaman","Skyrim.esm",124821,"Enemy"]
     ]
 ]
