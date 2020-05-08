@@ -136,7 +136,7 @@ Event OnUpdate()
 	;	UnregisterForUpdate()
 	;	return
 	;EndIf
-	Debug.Notification("questProperty Stage: " + QuestStage.GetValue())
+	;Debug.Notification("questProperty Stage: " + QuestStage.GetValue())
 	if (!isSystemReady())
 		;If we've got here something has gone wrong. Force a refresh.
 		StartEvent(true)
@@ -154,14 +154,14 @@ Event OnUpdate()
 			endif
 		endwhile
 		;Bossroom enemy check
-		ObjectReference[] BossroomEnemy = GetBountyObjectRefs("BossroomEnemy")		
-		int BossroomEnemylength = BossroomEnemy.Length
-		while(BossroomEnemylength > 0)
-		BossroomEnemylength -= 1
-			if (BossroomEnemy[BossroomEnemylength] as Actor).IsDead()
-				SetGroupMemberComplete(BossroomEnemy[BossroomEnemylength])
-			endif
-		endwhile
+		;ObjectReference[] BossroomEnemy = GetBountyObjectRefs("BossroomEnemy")		
+		;int BossroomEnemylength = BossroomEnemy.Length
+		;while(BossroomEnemylength > 0)
+		;BossroomEnemylength -= 1
+		;	if (BossroomEnemy[BossroomEnemylength] as Actor).IsDead()
+		;		SetGroupMemberComplete(BossroomEnemy[BossroomEnemylength])
+	;		endif
+	;	endwhile
 		bool complete = isBountyComplete()
 		;Debug.Notification("Bounty State: " + complete)
 		if (QuestStage.GetValue() == 10)

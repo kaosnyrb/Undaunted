@@ -147,6 +147,15 @@ namespace Undaunted {
 		BountyManager::getInstance()->SpawnBossRoomEnemies(target);
 	}
 
+	void hook_PlayerTraveled(StaticFunctionTag* base, float distance)
+	{
+		BountyManager::getInstance()->ClearBountyData();
+		if (distance > 1.5f)
+		{
+			BountyManager::getInstance()->ResetBountiesRan();
+		}
+	}
+
 	void hook_SetBountyComplete(StaticFunctionTag* base)
 	{
 		_MESSAGE("Starting hook_SetBountyComplete");
@@ -199,6 +208,9 @@ namespace Undaunted {
 
 		registry->RegisterFunction(
 			new NativeFunction0 <StaticFunctionTag, bool>("InitSystem", "Undaunted_SystemScript", Undaunted::hook_InitSystem, registry));
+
+		registry->RegisterFunction(
+			new NativeFunction1 <StaticFunctionTag, void,float>("PlayerTraveled", "Undaunted_SystemScript", Undaunted::hook_PlayerTraveled, registry));
 
 		//Config
 

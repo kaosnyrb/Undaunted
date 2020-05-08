@@ -8,6 +8,8 @@ bool Function isSystemReady() global native
 
 bool Function InitSystem() global native
 
+Function PlayerTraveled(float distance) global native
+
 bool Function AddBadRegion(int regionid) global native
 
 int Function AddGroup(String questtext,String modRequirement, int minLevel, int maxLevel, int playerLevel) global native

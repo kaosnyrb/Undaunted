@@ -44,7 +44,7 @@ namespace Undaunted
 				return 1;
 			}
 		}
-		if (strcmp(type, "BountyDecoration") == 0 || strcmp(type,"EndEffect") == 0 || strcmp(type, "SpawnEffect") == 0 || strcmp(type, "Ally") == 0 )
+		if (strcmp(type, "BountyDecoration") == 0 || strcmp(type,"EndEffect") == 0 || strcmp(type, "SpawnEffect") == 0 || strcmp(type, "Ally") == 0 || strcmp(type, "BossroomEnemy") == 0)
 		{
 			return 1;
 		}

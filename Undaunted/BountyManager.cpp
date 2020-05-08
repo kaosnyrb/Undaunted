@@ -134,7 +134,27 @@ namespace Undaunted {
 		_MESSAGE("target is set. Moving marker: WorldSpace: %s Cell: %08X ", bountyworldcell.world->editorId.Get(), bountyworldcell.cell->formID);
 		MoveRefToWorldCell(xmarkerref, bountyworldcell.cell, bountyworldcell.world, target->pos, NiPoint3(0, 0, 0));
 
-		bountygrouplist = GetRandomGroup();
+		bool foundbounty = false;
+		//We do our best but if someone has ran 50 bounties without traveling there's not much we can do.
+		for (int i = 0; i < 50 && !foundbounty; i++)
+		{
+			bountygrouplist = GetRandomGroup();
+			bool bountyran = false;
+			for (int j = 0; j < bountiesRan.length; j++)
+			{
+				if (strcmp(bountiesRan.data[i].key, bountygrouplist.questText) == 0)
+				{
+					bountyran = true;
+				}
+			}
+			if (!bountyran)
+			{
+				foundbounty = true;
+			}
+		}
+		UnString bountydata = UnString();
+		bountydata.key = bountygrouplist.questText;
+		bountiesRan.AddItem(bountydata);
 		//ClearBountyData();
 		_MESSAGE("Setting Bounty Message: %s", bountygrouplist.questText);
 		bountymessageref->fullName.name = bountygrouplist.questText;
@@ -172,6 +192,16 @@ namespace Undaunted {
 			}
 		}
 
+	}
+
+	void BountyManager::ResetBountiesRan()
+	{
+		//This plays a more important role than the code suggests.
+		//Micro dungeons require a cell reset to repopulate the enemies.
+		//They are flagged as waiting to reset once you enter/leave them, however this only happens when the cell is unloaded.
+		//Unloading the cell happens on game load OR when the player fast travels a certain distance.
+		//So we watch to see when the player fast travels far enough and then allow the microdungeon back on the allowed bounty list.
+		bountiesRan = UnStringList();
 	}
 
 }
