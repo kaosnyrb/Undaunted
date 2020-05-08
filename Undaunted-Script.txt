@@ -3,32 +3,32 @@ Context with tempoary voice work: https://www.youtube.com/watch?v=F1D0vOlTMWM
 Only the NPC lines need voicing.
 
 
-NPC: You're a long way from home, traveler. Are you really so undaunted as to approach my camp?
+NPC1: You're a long way from home, traveler. Are you really so undaunted as to approach my camp?
 
 Player: What do you mean, undaunted?
 
-NPC: The way you carry yourself, wary but without fear. You have the look of one who is Undaunted, who wishes to test themselves against all of Skyrim.
+NPC2: The way you carry yourself, wary but without fear. You have the look of one who is Undaunted, who wishes to test themselves against all of Skyrim.
 
 Player: So you're some kind of bounty hunter then?
 
-NPC: I am one of the last Undaunted left roaming these lands. We task ourselves with purging evil, but far too few are of the character to join our ranks.
+NPC3: I am one of the last Undaunted left roaming these lands. We task ourselves with purging evil, but far too few are of the character to join our ranks.
 
 Player: So you're asking me for my help in exchange for coin I take it?
 
-NPC: We are not the simple bounty hunters you suspect us of being. Becoming one of us grants you the power to sense out evil. It's an important obligation.
+NPC4: We are not the simple bounty hunters you suspect us of being. Becoming one of us grants you the power to sense out evil. It's an important obligation.
 
 Player: Sense out evil? So you're offering some kind of magic to find monsters?
 
-NPC: The power of your invocation allows you to sense out evil in Skyrim, even in places that you have not been. It will also reward you for your deeds.
+NPC5: The power of your invocation allows you to sense out evil in Skyrim, even in places that you have not been. It will also reward you for your deeds.
 
 Player: So I don't have to report back to you with severed pieces of creature in my pack? Is gold going to sprout in my coin purse?
 
-NPC: The Undaunted invocation manifests itself in ethereal keys, these in turn can summon material goods should purging evil not prove reward enough.
+NPC6: The Undaunted invocation manifests itself in ethereal keys, these in turn can summon material goods should purging evil not prove reward enough.
 
 Option 1: Player: I'll consider it, but not at this time.
 
-NPC: Evil does not sleep, traveler. We are too few, and I see in your eyes you have felt the calling of the invocation. I suspect you will return in time.
+NPC7: Evil does not sleep, traveler. We are too few, and I see in your eyes you have felt the calling of the invocation. I suspect you will return in time.
 
 Option 2: Player: Very well, let's see what this Undaunted power can do.
 
-NPC: The invocation of the Undaunted called out to you. Already its power had manifested itself within you. All evil will quake at your acceptance of this.
+NPC8: The invocation of the Undaunted called out to you. Already its power had manifested itself within you. All evil will quake at your acceptance of this.
