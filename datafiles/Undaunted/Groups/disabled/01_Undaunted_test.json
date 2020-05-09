@@ -1,13 +1,7 @@
 [
     [
-        ["Help the Oppressed Bosmer","Skyrim.esm",0,0],
-        ["WEAdventurerBrawlerWoodElfM","Skyrim.esm",1070432,"Ally"],
-        ["WEAdventurerRangedConjurerWoodElfF","Skyrim.esm",1070415,"Ally"],
-        ["WEAdventurerRangedConjurerWoodElfF","Skyrim.esm",1070415,"Ally"],
-        ["WEAdventurerRangedConjurerWoodElfM","Skyrim.esm",1070416,"Ally"],
-        ["LCharThalmorMagic","Skyrim.esm",176424,"Enemy"],
-        ["LCharThalmorMelee1H","Skyrim.esm",176425,"Enemy"],
-        ["LCharThalmorMagicBoss","Skyrim.esm",515241,"Enemy"],
-        ["LCharThalmorMagic","Skyrim.esm",176424,"Enemy"]
+        ["Disable the Dwemer Power Conduits","Skyrim.esm",0,0],
+        ["LCharDwarvenAutomaton","Skyrim.esm",124803,"Enemy"],
+        ["1_Undaunted_DestructObjectiveMagic_01","Undaunted.esp",80946,"Scripted","DLC02/Dungeons/Dwemer/Rubble/DLC2DweRubbleColumn01.nif"]
     ]
 ]
