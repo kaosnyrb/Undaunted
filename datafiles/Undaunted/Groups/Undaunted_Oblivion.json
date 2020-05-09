@@ -2,15 +2,18 @@
     [
         ["Close the Oblivion Gate","Skyrim.esm",0,0],
         ["LCharDremoraMelee","Skyrim.esm",124827,"Enemy"],
+        ["ExplosionIllusionDark01","Skyrim.esm",263277,"SpawnEffect"],
         ["LCharDremoraMelee","Skyrim.esm",124827,"Enemy"],
+        ["ExplosionIllusionDark01","Skyrim.esm",263277,"SpawnEffect"],
         ["LCharDremoraMissile","Skyrim.esm",154906,"Enemy"],
+        ["ExplosionIllusionDark01","Skyrim.esm",263277,"SpawnEffect"],
         ["LCharDremoraMissile","Skyrim.esm",154906,"Enemy"],
+        ["ExplosionIllusionDark01","Skyrim.esm",263277,"SpawnEffect"],
         ["LCharDremoraWarlock","Skyrim.esm",154907,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
         ["Gate Outside","Undaunted.esp",13206,"BountyDecoration"],
-        ["1_Undaunted_OblivionGateGlow","Undaunted.esp",3522,"ScriptedDoor"],
-        ["SummonEffect","Skyrim.esm",263277,"SpawnEffect"],
-        ["SummonEffect","Skyrim.esm",781487,"SpawnEffect"],
-        ["SummonEffect","Skyrim.esm",263277,"EndEffect"],
-        ["SummonEffect","Skyrim.esm",781487,"EndEffect"]
+        ["1_Undaunted_OblivionGateGlow","Undaunted.esp",3522,"ScriptedDoor"],        
+        ["ExplosionIllusionMassiveDark01","Skyrim.esm",781487,"SpawnEffect"],
+        ["ExplosionIllusionMassiveDark01","Skyrim.esm",781487,"EndEffect"]
     ]
 ]

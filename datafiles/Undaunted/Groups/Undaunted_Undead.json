@@ -37,8 +37,10 @@
     [
         ["Disrupt the Necromancers Ritual","Skyrim.esm",0,0],
         ["LCharWarlockNecromancer","Skyrim.esm",124791,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
         ["1_Undaunted_DestructObjective_01","Undaunted.esp",80945,"Scripted","Clutter/Coffins/NordicCoffinStatic01.nif"],
         ["LCharWarlockNecromancer","Skyrim.esm",124791,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
         ["1_Undaunted_DestructObjective_01","Undaunted.esp",80945,"Scripted","Clutter/Coffins/NordicCoffinStatic01.nif"],
         ["LCharWarlockNecromancer","Skyrim.esm",124791,"Enemy"]
     ]
