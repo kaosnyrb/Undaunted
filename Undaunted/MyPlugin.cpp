@@ -2,12 +2,14 @@
 
 namespace Undaunted {
 	
+	// Triggers a new bounty stage to start.
 	float hook_StartBounty(StaticFunctionTag* base, bool nearby) {
 		BountyManager::getInstance()->StartBounty(nearby);
 		return 2;
 	}
 
-	// Fill out the WorldList
+	// Fill out the WorldList, this checks the loaded world cells and finds the persistant reference cells.
+	// This takes a while so we only do this once at the start
 	bool hook_InitSystem(StaticFunctionTag* base)
 	{
 		if (!BountyManager::getInstance()->isReady)
@@ -27,30 +29,37 @@ namespace Undaunted {
 		return BountyManager::getInstance()->isReady;
 	}
 
+	// A check to see if the Init call has finished
 	bool hook_isSystemReady(StaticFunctionTag* base)
 	{
 		return BountyManager::getInstance()->isReady;
 	}
 
+	// Check if all the bounty objectives have been complete
 	bool hook_isBountyComplete(StaticFunctionTag* base) {
 		_MESSAGE("Starting Bounty Check");
 		return BountyManager::getInstance()->BountyUpdate();
 	}
+
+	// Pass the reference to the XMarker that we use as the quest target and the target of the placeatme calls
 	bool hook_SetXMarker(StaticFunctionTag* base, TESObjectREFR* marker) {
 		BountyManager::getInstance()->xmarkerref = marker;
 		return true;
 	}
 
+	// Pass the reference to the quest objective message. This allows us to edit it from the code.
 	bool hook_SetBountyMessageRef(StaticFunctionTag* base, BGSMessage* ref) {
 		BountyManager::getInstance()->bountymessageref = ref;
 		return true;
 	}
 
+	// For reasons as yet unknown, some of the regions in memory cause crash to desktops. We have to skip processing these. Hoping to fix this.
 	bool hook_AddBadRegion(StaticFunctionTag* base, UInt32 region) {
 		AddBadRegionToConfig(region);
 		return true;
 	}
 
+	// Process the Group header line. We return the groups position which we can use to add to later.
 	UInt32 hook_AddGroup(StaticFunctionTag* base, BSFixedString questText, BSFixedString modRequirement, UInt32 minLevel, UInt32 maxLevel, UInt32 playerLevel){
 		//Player is too low level for this bounty
 		if (playerLevel + GetConfigValueInt("BountyLevelCache") < minLevel && minLevel != 0)
@@ -85,6 +94,7 @@ namespace Undaunted {
 		return AddGroup(questText.Get());
 	}
 
+	// Add a member to a group.
 	void hook_AddMembertoGroup(StaticFunctionTag* base, UInt32 groupid, UInt32 member, BSFixedString BountyType, BSFixedString ModelFilepath) {
 		GroupMember newMember = GroupMember();
 		newMember.FormId = member;
@@ -93,6 +103,7 @@ namespace Undaunted {
 		AddMembertoGroup(groupid, newMember);
 	}
 
+	// Given a mod name and a FormId - load order, return the actualy form id
 	UInt32 hook_GetModForm(StaticFunctionTag* base, BSFixedString ModName, UInt32 FormId){
 		DataHandler* dataHandler = DataHandler::GetSingleton();
 		const ModInfo* modInfo = dataHandler->LookupModByName(ModName.c_str());
@@ -113,22 +124,26 @@ namespace Undaunted {
 		return UInt32();
 	}
 
+	// Spawn a reward at the target reference
 	void hook_SpawnRandomReward(StaticFunctionTag* base, TESObjectREFR* target, UInt32 playerlevel)
 	{
 		TESForm* spawnForm = LookupFormByID(GetReward(playerlevel));
 		PlaceAtMe_Native(BountyManager::getInstance()->_registry, 1, target, spawnForm, 1, false, false);
 	}
 
+	// Tell the bounty system that this object should be marked as complete
 	void hook_SetGroupMemberComplete(StaticFunctionTag* base, TESObjectREFR* taget)
 	{
 		BountyManager::getInstance()->bountygrouplist.SetGroupMemberComplete(taget->formID);
 	}
 
+	// Pass in a config value
 	void hook_SetConfigValue(StaticFunctionTag* base, BSFixedString key, BSFixedString value)
 	{
 		SetConfigValue(key.Get(), value.Get());
 	}
 
+	// Currently unused, checks if the object reference is in the current bounty.
 	bool hook_IsGroupMemberUsed(StaticFunctionTag* base, TESObjectREFR* target)
 	{
 		//Is this reference in the current bounty? If it isn't we can get rid of it.
@@ -142,11 +157,8 @@ namespace Undaunted {
 		return false;
 	}
 
-	void hook_SpawnBossroom(StaticFunctionTag* base, TESObjectREFR* target)
-	{
-		BountyManager::getInstance()->SpawnBossRoomEnemies(target);
-	}
-
+	// The player has fast travelled. This causes cells which are marked to reset to reset.
+	// This means we can take all bounties off the blacklist.
 	void hook_PlayerTraveled(StaticFunctionTag* base, float distance)
 	{
 		BountyManager::getInstance()->ClearBountyData();
@@ -156,7 +168,8 @@ namespace Undaunted {
 		}
 	}
 
-	void hook_SetBountyComplete(StaticFunctionTag* base)
+	// Triggered when leaving a microdungeon. Tells all the doors that the microdungeon has been completed.
+	void hook_SetScriptedDoorsComplete(StaticFunctionTag* base)
 	{
 		_MESSAGE("Starting hook_SetBountyComplete");
 		for (int i = 0; i < BountyManager::getInstance()->bountygrouplist.length; i++)
@@ -169,6 +182,7 @@ namespace Undaunted {
 		}
 	}
 
+	// Returns the references of all the spawned objects of a certain type
 	VMResultArray<TESObjectREFR*> hook_GetBountyObjectRefs(StaticFunctionTag* base, BSFixedString bountyType)
 	{
 		VMResultArray<TESObjectREFR*> allies = VMResultArray<TESObjectREFR*>();
@@ -185,6 +199,7 @@ namespace Undaunted {
 		return allies;
 	}
 
+	// Returns an int that is in the config
 	UInt32 hook_GetConfigValueInt(StaticFunctionTag* base, BSFixedString key)
 	{
 		return GetConfigValueInt(key.Get());
@@ -244,10 +259,7 @@ namespace Undaunted {
 			new NativeFunction1<StaticFunctionTag, VMResultArray<TESObjectREFR*>, BSFixedString>("GetBountyObjectRefs", "Undaunted_SystemScript", Undaunted::hook_GetBountyObjectRefs, registry));
 
 		registry->RegisterFunction(
-			new NativeFunction1<StaticFunctionTag, void, TESObjectREFR*>("SpawnBossRoom", "Undaunted_SystemScript", Undaunted::hook_SpawnBossroom, registry));
-
-		registry->RegisterFunction(
-			new NativeFunction0<StaticFunctionTag, void>("SetBountyComplete", "Undaunted_SystemScript", Undaunted::hook_SetBountyComplete, registry));
+			new NativeFunction0<StaticFunctionTag, void>("SetScriptedDoorsComplete", "Undaunted_SystemScript", Undaunted::hook_SetScriptedDoorsComplete, registry));
 
 		//Rewards
 		registry->RegisterFunction(

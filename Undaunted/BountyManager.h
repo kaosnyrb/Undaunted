@@ -24,7 +24,6 @@ namespace Undaunted {
 		bool BountyUpdate();
 		float StartBounty(bool nearby);
 		void ClearBountyData();
-		void SpawnBossRoomEnemies(TESObjectREFR* target);
 		void ResetBountiesRan();
 	};
 #endif

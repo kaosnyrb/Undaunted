@@ -12,8 +12,6 @@ event onActivate(objectReference akActivator)
     ResetCellRef.Reset()
     exitRed.MoveTo(akActivator)
     akActivator.MoveTo(TargetRef)
-    SpawnBossRoom(BossRoomSpawnMarker)
-    ;SetGroupMemberComplete(self as objectReference)
 endEvent
 
 

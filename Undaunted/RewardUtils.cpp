@@ -60,7 +60,7 @@ namespace Undaunted
 			case 1:
 				dataHandler->armors.GetNthItem(rand() % dataHandler->armors.count, armour);
 				if (exclude.find(armour) != exclude.end())
-					if (!armour->IsPlayable()) continue;
+				if (!armour->IsPlayable()) continue;
 				if (armour->templateArmor) continue;
 				if (armour->value.value == 0) continue;
 				if (!IsArmourLevelOk(armour, playerlevel))continue;

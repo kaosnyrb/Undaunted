@@ -179,20 +179,6 @@ namespace Undaunted {
 		_MESSAGE("ClearBountyData Complete");
 	}
 
-	void BountyManager::SpawnBossRoomEnemies(TESObjectREFR* target)
-	{
-		_MESSAGE("SpawnBossRoomEnemies");
-		for (UInt32 i = 0; i < bountygrouplist.length; i++)
-		{
-			if (strcmp(bountygrouplist.data[i].BountyType.Get(), "BossroomEnemy") == 0)
-			{
-				bountygrouplist.data[i].isComplete = false;
-				bountygrouplist.data[i].objectRef = SpawnMonsterInCell(_registry,bountygrouplist.data[i].FormId, target, (*g_thePlayer)->parentCell, (*g_thePlayer)->currentWorldSpace);
-			}
-		}
-
-	}
-
 	void BountyManager::ResetBountiesRan()
 	{
 		//This plays a more important role than the code suggests.

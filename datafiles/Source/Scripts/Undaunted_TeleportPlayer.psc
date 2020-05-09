@@ -6,6 +6,6 @@ Cell Property ResetCellRef  Auto
 
 event onActivate(objectReference akActivator)
 	akActivator.MoveTo(TargetLocation)
-	SetBountyComplete()
+	SetScriptedDoorsComplete()
 	ResetCellRef.Reset()
 endEvent
