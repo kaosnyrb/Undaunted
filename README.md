@@ -29,13 +29,13 @@ https://youtu.be/3igoZVReoZE
 
 ## Spawning Groups
 
-* Simple Oblivion Gate
-* 8 different bandit encounters 
+* Oblivion Gate with Sigilroom
+* 11 different bandit encounters 
 * 3 vampire encounters
-* 6 Draugr encounters
+* 9 Draugr encounters
 * 3 Falmer encounters
-* 1 Forsworn encounter
-* 3 Undead encounters 
+* 5 Undead encounters 
+* 19 other encounters
 
 ## How it works
 
