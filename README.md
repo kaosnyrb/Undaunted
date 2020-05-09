@@ -5,6 +5,9 @@
 SkyrimSE Mod for Dynamic Quest/bounties.
 Inspired by the ESO Guild The Undaunted and the Diablo 3 Adventure mode.
 
+v0.5 Gameplay Demo: Microdungeon
+https://www.youtube.com/watch?v=VvVT04Nxe3Y
+
 v0.4 Gameplay Demo
 https://www.youtube.com/watch?v=Kl8bDEZH1Ms
 
@@ -18,14 +21,14 @@ https://youtu.be/3igoZVReoZE
 ## How to play
 
 1. Visit the Undaunted Camp northwest of Windhelm.
-2. Use the Pillar to get the Start Undaunted Bounty power.
-3. Anywhere you want use the Start Undaunted Bounty power.
+2. Speak to Brynjolf and accept the Undaunted Invocation.
+3. Anywhere you want use the Undaunted Invocation.
 4. A Quest will start called Undaunted.
 5. Somewhere nearby a quest marker will appear pointing to where the bounty starts.
 6. Go to the marker, once you are in range the event will begin.
 7. Complete the event and another event will appear nearby.
 8. Complete 3 events to be rewarded an Undaunted Key.
-9. Start another event chain or return to the Undaunted Camp and trade your Keys for scaled weapons and armour from any loaded mod.
+9. Cast the Undaunted Invocation again or return to the Undaunted Camp and trade your Keys for scaled weapons, armour, scrolls or potions from any loaded mod.
 
 ## Spawning Groups
 
