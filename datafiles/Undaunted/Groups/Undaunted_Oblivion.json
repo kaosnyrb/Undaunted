@@ -1,14 +1,13 @@
 [
     [
-        ["Close the Oblivion Gate","Skyrim.esm",5,0],
+        ["Close the Oblivion Gate","Skyrim.esm",0,0],
         ["LCharDremoraMelee","Skyrim.esm",124827,"Enemy"],
         ["LCharDremoraMelee","Skyrim.esm",124827,"Enemy"],
         ["LCharDremoraMissile","Skyrim.esm",154906,"Enemy"],
         ["LCharDremoraMissile","Skyrim.esm",154906,"Enemy"],
         ["LCharDremoraWarlock","Skyrim.esm",154907,"Enemy"],
-        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Ally"],
         ["Gate Outside","Undaunted.esp",13206,"BountyDecoration"],
-        ["Effect1","Undaunted.esp",3522,"BountyDecoration"],
+        ["1_Undaunted_OblivionGateGlow","Undaunted.esp",3522,"ScriptedDoor"],
         ["SummonEffect","Skyrim.esm",263277,"SpawnEffect"],
         ["SummonEffect","Skyrim.esm",781487,"SpawnEffect"],
         ["SummonEffect","Skyrim.esm",263277,"EndEffect"],

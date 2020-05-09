@@ -96,6 +96,13 @@
         ["1_Undaunted_DLC01IdealMasterCrystal","Undaunted.esp",80944,"Scripted","Dungeons/Dwemer/Animated/Astrolabe/LexiconStand/DweLexiconStandRunes01.nif"]
     ],
     [
+        ["Clear out the Dwemer Ruins","Skyrim.esm",0,0],
+        ["LCharDwarvenAutomaton","Skyrim.esm",124803,"Enemy"],
+        ["LCharDwarvenAutomaton","Skyrim.esm",124803,"Enemy"],
+        ["LCharDwarvenAutomaton","Skyrim.esm",124803,"Enemy"],
+        ["1_Undaunted_DwemerRuins_Enterance","Undaunted.esp",475922,"ScriptedDoor","DLC01/Dungeons/Dwemer/Animated/DweSpecialForge01/DweSpecialForge01.nif"]
+    ],
+    [
         ["Prevent the Thalmor from harnessing the Dwemer Lexigraphs","Skyrim.esm",15,0],
         ["LCharThalmorMagicBoss","Skyrim.esm",515241,"Enemy"],
         ["LCharThalmorMagic","Skyrim.esm",176424,"Enemy"],

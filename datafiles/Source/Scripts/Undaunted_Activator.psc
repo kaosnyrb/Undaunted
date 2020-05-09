@@ -96,8 +96,8 @@ endFunction
 
 event onActivate(objectReference akActivator)
 	;Game.GetPlayer().AddSpell(startBountySpell)
-	;ClearBountyStatus()
-	;StartEvent(false)
+	ClearBountyStatus()
+	StartEvent(true)
 endEvent
 
 Function CleanUpBounty()
