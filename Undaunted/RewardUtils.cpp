@@ -24,9 +24,9 @@ namespace Undaunted
 		}
 	}
 
-	UInt32 GetReward(UInt32 playerlevel)
+	UInt32 GetReward(UInt32 rewardOffset, UInt32 playerlevel)
 	{
-		srand(time(NULL));
+		srand(time(NULL) + rewardOffset);
 		DataHandler* dataHandler = DataHandler::GetSingleton();
 		std::set<TESObjectARMO*> exclude;
 		TESRace* race = NULL;
@@ -48,7 +48,6 @@ namespace Undaunted
 		bool found = false;
 		while (!found)
 		{
-			
 			TESObjectWEAP* weapon = NULL;
 			TESObjectARMO* armour = NULL;
 			AlchemyItem* potion = NULL;
@@ -57,15 +56,14 @@ namespace Undaunted
 			switch (type)
 			{
 			case 0:
-			case 1:
 				dataHandler->armors.GetNthItem(rand() % dataHandler->armors.count, armour);
 				if (exclude.find(armour) != exclude.end())
 				if (!armour->IsPlayable()) continue;
 				if (armour->templateArmor) continue;
-				if (armour->value.value == 0) continue;
+				if (armour->value.value <= 10) continue;
 				if (!IsArmourLevelOk(armour, playerlevel))continue;
 				return armour->formID;
-			case 2:
+			case 1:
 				dataHandler->weapons.GetNthItem(rand() % dataHandler->weapons.count, weapon);
 				if (!weapon->IsPlayable()) continue;
 				if (!weapon->Has3D()) continue;
@@ -73,10 +71,10 @@ namespace Undaunted
 				if (weapon->templateForm) continue;
 				if (!IsWeaponLevelOk(weapon, playerlevel)) continue;
 				return weapon->formID;
-			case 3:
+			case 2:
 				dataHandler->potions.GetNthItem(rand() % dataHandler->potions.count, potion);
 				return potion->formID;
-			case 4:
+			case 3:
 				dataHandler->scrolls.GetNthItem(rand() % dataHandler->scrolls.count, scroll);
 				if (!scroll->IsPlayable()) continue;
 				if (!scroll->Has3D()) continue;
@@ -143,6 +141,7 @@ namespace Undaunted
 		{
 			if (_stricmp(armour->keyword.keywords[i]->keyword.data, "DaedricArtifact") == 0 && GetConfigValueInt("RewardAllowDaedricArtifacts") == 1)return false;
 			if (_stricmp(armour->keyword.keywords[i]->keyword.data, "ArmorShield") == 0 && GetConfigValueInt("RewardAllowShields") == 0)return false;
+			if (_stricmp(armour->keyword.keywords[i]->keyword.data, "Dummy") == 0) return false;
 		}
 		//To calculate if an armour is in our level range we figure out a per level amour value for each slot then compare to the item.
 		//So if the item is better than what we should have at our level we don't use it.

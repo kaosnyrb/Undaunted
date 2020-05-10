@@ -28,7 +28,7 @@ bool Function SetXMarker(objectReference markerref) global native
 
 float Function StartBounty(bool nearby) global native
 
-Function SpawnRandomReward(objectReference markerref,int playerlevel) global native
+Form Function SpawnRandomReward(int rewardOffset,int playerlevel) global native
 
 Function SetGroupMemberComplete(objectReference objref) global native
 

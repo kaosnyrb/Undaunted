@@ -19,7 +19,7 @@ event onActivate(objectReference akActivator)
             goToState("DoNothing")
             int rewards = GetConfigValueInt("RewardsPerKey");
             while rewards > 0
-                SpawnRandomReward(RewardMarker,Game.GetPlayer().GetLevel())
+                ;SpawnRandomReward(RewardMarker,Game.GetPlayer().GetLevel())
                 Utility.Wait(1.1)
                 rewards -= 1
             endwhile

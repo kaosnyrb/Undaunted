@@ -124,11 +124,14 @@ namespace Undaunted {
 		return UInt32();
 	}
 
-	// Spawn a reward at the target reference
-	void hook_SpawnRandomReward(StaticFunctionTag* base, TESObjectREFR* target, UInt32 playerlevel)
+	// Return a reward form. We seed the random data with the offset + time so that we can spawn multiple things at once.
+	TESForm* hook_SpawnRandomReward(StaticFunctionTag* base, UInt32 rewardOffset, UInt32 playerlevel)
 	{
-		TESForm* spawnForm = LookupFormByID(GetReward(playerlevel));
-		PlaceAtMe_Native(BountyManager::getInstance()->_registry, 1, target, spawnForm, 1, false, false);
+		UInt32 rewardid = GetReward(rewardOffset, playerlevel);
+		_MESSAGE("RewardID: %08X", rewardid);
+		TESForm* spawnForm = LookupFormByID(rewardid);
+		return spawnForm;
+//		PlaceAtMe_Native(BountyManager::getInstance()->_registry, 1, target, spawnForm, 1, false, false);
 	}
 
 	// Tell the bounty system that this object should be marked as complete
@@ -263,7 +266,7 @@ namespace Undaunted {
 
 		//Rewards
 		registry->RegisterFunction(
-			new NativeFunction2 <StaticFunctionTag, void, TESObjectREFR*, UInt32>("SpawnRandomReward", "Undaunted_SystemScript", Undaunted::hook_SpawnRandomReward, registry));
+			new NativeFunction2 <StaticFunctionTag, TESForm*, UInt32, UInt32>("SpawnRandomReward", "Undaunted_SystemScript", Undaunted::hook_SpawnRandomReward, registry));
 
 
 		return true;
