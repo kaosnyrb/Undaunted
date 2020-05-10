@@ -1,0 +1,38 @@
+Making a micro dungeon
+
+Create a new cell.
+
+Create your dungeon. It should be reasonably short, maybe 1/2 fights. 
+Personally I just copy and paste from preexisiting places.
+
+Duplicate the BanditCaeEnterance amd Exit
+
+Change the ResetCellRef in the script properties to the Cell you created.
+Change the TargetRef to a marker at the enterance of your dungeon.
+Leave exitRed alone.
+
+Place the Exit in your dungeon. Make it fairly obvious what the player needs to do.
+
+Find the formid of your new Enterance in the object window for example:
+
+0408D8F5
+
+That the load order off the value, in this example it's 04 so we end up with 
+
+08D8F5
+
+Convert the hex to dec. Loads of tools can do this or just google it.
+
+You end up with 579829
+
+Create a bounty using this value as a scripted door:
+
+[
+    [
+        ["Clear out the Bandit Cave","Skyrim.esm",0,0],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_BanditCaveEnterance","Undaunted.esp",579829,"ScriptedDoor","Architecture/Farmhouse/Interior/Basement/FarmBTrapdoor02.nif"]
+    ]
+]
+
+And that's it. Test out your microdungeon!
