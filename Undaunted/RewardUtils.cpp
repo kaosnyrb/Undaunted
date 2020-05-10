@@ -9,9 +9,11 @@ namespace Undaunted
 			GetConfigValueInt("RewardWeaponWeight"),
 			GetConfigValueInt("RewardArmourWeight"),
 			GetConfigValueInt("RewardPotionWeight"),
-			GetConfigValueInt("RewardScrollWeight") 
+			GetConfigValueInt("RewardScrollWeight"),
+			GetConfigValueInt("RewardIngredientWeight"),
+			GetConfigValueInt("RewardBookWeight")
 		};
-		int numberofchoices = 4;
+		int numberofchoices = 6;
 		int sum_of_weight = 0;
 		for (int i = 0; i < numberofchoices; i++) {
 			sum_of_weight += choice_weight[i];
@@ -52,6 +54,8 @@ namespace Undaunted
 			TESObjectARMO* armour = NULL;
 			AlchemyItem* potion = NULL;
 			ScrollItem* scroll = NULL;
+			IngredientItem* ingre = NULL;
+			TESObjectBOOK* book = NULL;
 			//type = 3;
 			switch (type)
 			{
@@ -80,6 +84,20 @@ namespace Undaunted
 				if (!scroll->Has3D()) continue;
 				if (scroll->value.value == 0) continue;
 				return scroll->formID;
+			case 4:
+				dataHandler->ingredients.GetNthItem(rand() % dataHandler->ingredients.count, ingre);
+				if (!ingre->IsPlayable()) continue;
+				if (!ingre->Has3D()) continue;
+				if (ingre->value.value == 0) continue;
+				return ingre->formID;
+			case 5:
+				dataHandler->books.GetNthItem(rand() % dataHandler->books.count, book);
+				if (!book->IsPlayable()) continue;
+				if (!book->Has3D()) continue;
+				if (book->value.value == 0) continue;
+				if (book->value.value <= 50) continue;
+				if (book->value.value >= 2000) continue;
+				return book->formID;
 			default:
 				dataHandler->weapons.GetNthItem(rand() % dataHandler->weapons.count, weapon);
 				if (!weapon->IsPlayable()) continue;
