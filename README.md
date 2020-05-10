@@ -30,16 +30,6 @@ https://youtu.be/3igoZVReoZE
 8. Complete 3 events to be rewarded an Undaunted Key.
 9. Cast the Undaunted Invocation again or return to the Undaunted Camp and trade your Keys for scaled weapons, armour, scrolls or potions from any loaded mod.
 
-## Spawning Groups
-
-* Oblivion Gate with Sigilroom
-* 11 different bandit encounters 
-* 3 vampire encounters
-* 9 Draugr encounters
-* 3 Falmer encounters
-* 5 Undead encounters 
-* 19 other encounters
-
 ## How it works
 
 I wanted to see if I could dynamically create quest content without having to place thousand of markers over skyrim.
