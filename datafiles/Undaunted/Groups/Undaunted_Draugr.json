@@ -98,5 +98,14 @@
         ["LCharDraugrWarlock","Skyrim.esm",124843,"Enemy"],
         ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
         ["1_Undaunted_DestructObjectiveMagic_02","Undaunted.esp",101687,"Scripted","Clutter/Ruins/RuinsSarcophagusVert02.nif"]
+    ],
+    [
+        ["Clear out the Draugr Crypt","Skyrim.esm",0,0],
+        ["LCharDraugrBoss","Skyrim.esm",271488,"Enemy"],
+        ["LCharDraugrMeleeAllFemale","Skyrim.esm",784312,"Enemy"],
+        ["LCharDraugrMissileMale","Skyrim.esm",682052,"Enemy"],
+        ["LCharDraugrWarlock","Skyrim.esm",124843,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_DraugrEnterance","Undaunted.esp",579829,"ScriptedDoor","dungeons/nordic/doors/tempobliskgate01.nif"]
     ]
 ]
