@@ -16,7 +16,7 @@ https://youtu.be/3igoZVReoZE
 
 ## Requirements
 * SKSE SE build 2.0.17 (runtime 1.5.97)
-* JContainers (Currently bundled with the release)
+* JContainers https://www.nexusmods.com/skyrimspecialedition/mods/16495
 
 ## How to play
 
