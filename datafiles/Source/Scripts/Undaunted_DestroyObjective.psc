@@ -12,7 +12,6 @@ Int Property NewStage = 4 Auto
 ObjectReference CollisionLink 
 
 Event OnLoad()
-	;Trace("DARYL - " + self + " Running OnLoad().")
 	if GetCurrentDestructionStage() < NewStage
 		CollisionLink = GetLinkedRef()
 		CollisionLink.Enable()

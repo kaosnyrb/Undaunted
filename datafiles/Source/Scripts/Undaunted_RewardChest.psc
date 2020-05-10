@@ -9,7 +9,8 @@ event onActivate(objectReference akActivator)
             Game.GetPlayer().removeItem(keyform, 1)
             int rewards = GetConfigValueInt("RewardsPerKey");            
             while rewards > 0
-                self.addItem(SpawnRandomReward(rewards,Game.GetPlayer().GetLevel()), 1);
+                Form reward = SpawnRandomReward(rewards,Game.GetPlayer().GetLevel())
+                self.addItem(reward, 1);
                 rewards -= 1
             endwhile            
         else
