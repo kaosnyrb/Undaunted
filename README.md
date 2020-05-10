@@ -5,6 +5,8 @@
 SkyrimSE Mod for Dynamic Quest/bounties.
 Inspired by the ESO Guild The Undaunted and the Diablo 3 Adventure mode.
 
+Nexus: https://www.nexusmods.com/skyrimspecialedition/mods/35532
+
 v0.5 Gameplay Demo: Microdungeon
 https://www.youtube.com/watch?v=VvVT04Nxe3Y
 
