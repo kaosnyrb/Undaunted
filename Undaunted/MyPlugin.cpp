@@ -4,7 +4,14 @@ namespace Undaunted {
 	
 	// Triggers a new bounty stage to start.
 	float hook_StartBounty(StaticFunctionTag* base, bool nearby) {
-		BountyManager::getInstance()->StartBounty(nearby);
+		BountyManager::getInstance()->StartBounty(nearby, "");
+		return 2;
+	}
+
+
+	// Triggers a new bounty stage to start with a certain name.
+	float hook_StartNamedBounty(StaticFunctionTag* base, bool nearby, BSFixedString bountyName) {
+		BountyManager::getInstance()->StartBounty(nearby, bountyName.Get());
 		return 2;
 	}
 
@@ -218,12 +225,24 @@ namespace Undaunted {
 		return GetConfigValueInt(key.Get());
 	}
 
+	BSFixedString hook_GetRandomBountyName(StaticFunctionTag* base)
+	{
+		GroupList list = GetRandomGroup();
+		BSFixedString result = BSFixedString();
+		result.data = list.questText;
+		return result;
+	}
+	
+
 	bool RegisterFuncs(VMClassRegistry* registry) {
 
 		BountyManager::getInstance()->_registry = registry;
 		//General
 		registry->RegisterFunction(
 			new NativeFunction1 <StaticFunctionTag, float,bool>("StartBounty", "Undaunted_SystemScript", Undaunted::hook_StartBounty, registry));
+		registry->RegisterFunction(
+			new NativeFunction2 <StaticFunctionTag, float, bool, BSFixedString>("StartNamedBounty", "Undaunted_SystemScript", Undaunted::hook_StartNamedBounty, registry));
+
 		registry->RegisterFunction(
 			new NativeFunction0 <StaticFunctionTag, bool>("isBountyComplete", "Undaunted_SystemScript", Undaunted::hook_isBountyComplete, registry));
 		registry->RegisterFunction(
@@ -238,13 +257,16 @@ namespace Undaunted {
 			new NativeFunction0 <StaticFunctionTag, bool>("InitSystem", "Undaunted_SystemScript", Undaunted::hook_InitSystem, registry));
 
 		registry->RegisterFunction(
+			new NativeFunction0 <StaticFunctionTag, BSFixedString>("GetRandomBountyName", "Undaunted_SystemScript", Undaunted::hook_GetRandomBountyName, registry));
+
+
+		registry->RegisterFunction(
 			new NativeFunction1 <StaticFunctionTag, void,float>("PlayerTraveled", "Undaunted_SystemScript", Undaunted::hook_PlayerTraveled, registry));
 
 		registry->RegisterFunction(
 			new NativeFunction1 <StaticFunctionTag, bool, BSFixedString>("isPlayerInWorldSpace", "Undaunted_SystemScript", Undaunted::hook_isPlayerInWorldSpace, registry));
 
 		//Config
-
 		registry->RegisterFunction(
 			new NativeFunction2 <StaticFunctionTag, void, BSFixedString, BSFixedString>("SetConfigValue", "Undaunted_SystemScript", Undaunted::hook_SetConfigValue, registry));
 		

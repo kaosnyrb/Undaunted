@@ -5,6 +5,7 @@ Quest Property questProperty  Auto
 objectReference Property markerref Auto
 {This will cause the bounties from this pillar to spawn in the named worldspace.It matches the values in the world section of the CK.}
 Message Property QuestTextMessage  Auto  
+Message Property missiveMessage  Auto  
 GlobalVariable Property QuestStage  auto
 GlobalVariable Property TotalBounties  auto
 Spell Property startBountySpell Auto
@@ -16,6 +17,7 @@ Key Property keyform Auto
 int numberOfBountiesNeeded = 1
 int numberOfBountiesCurrently = 0
 
+string currentbounty = "loading"
 bool bountystarted = false;
 
 Event OnInit()
@@ -23,13 +25,18 @@ Event OnInit()
 	;RegisterForUpdate(5.0)
 EndEvent
 
+string Function SetBounty()
+	currentbounty = GetRandomBountyName()
+	missiveMessage.SetName("Missive: " + currentbounty)
+	QuestTextMessage.SetName(currentbounty)
+endFunction
 
 int Function StartEvent(bool nearby)
+	;Pass the refs the plugin will edit
+	SetXMarker(markerref)
+	SetBountyMessageRef(QuestTextMessage)
 	if (!isSystemReady())
-		Debug.Notification("Undaunted initialising...")		
-		;Pass the refs the plugin will edit
-		SetXMarker(markerref)
-		SetBountyMessageRef(QuestTextMessage)
+		Debug.Notification("Undaunted initialising...")
 		;Load the Settings file
 		int SettingsList = JValue.readFromFile("Data/Undaunted/Settings.json")
 		int setcount = JArray.count(SettingsList)
@@ -130,7 +137,7 @@ Event OnUpdate()
 	if (isSystemReady())		
 		if (bountystarted == false)		
 			if (Game.GetPlayer().IsInLocation(hold) && isPlayerInWorldSpace(worldspaceName) )
-				StartBounty(true)
+				StartNamedBounty(true,currentbounty)
 				bountystarted = true;
 			endif
 		endif

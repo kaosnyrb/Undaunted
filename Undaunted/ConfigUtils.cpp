@@ -34,6 +34,19 @@ namespace Undaunted
 		GroupLibary.data[id].AddItem(member);
 	}
 
+	GroupList GetGroup(const char * bountyName)
+	{
+		for (int i = 0; i < GroupLibary.length; i++)
+		{
+			if (_stricmp(GroupLibary.data[i].questText, bountyName) == 0)
+			{
+				return GroupLibary.data[i];
+			}
+		}
+		//All else fails return something at least.
+		return GetRandomGroup();
+	}
+
 	GroupList GetRandomGroup()
 	{
 		srand(time(NULL));

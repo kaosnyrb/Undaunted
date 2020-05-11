@@ -74,7 +74,7 @@ namespace Undaunted {
 		return true;
 	}
 
-	float BountyManager::StartBounty(bool nearby)
+	float BountyManager::StartBounty(bool nearby, const char* BountyName)
 	{
 		srand(time(NULL));
 		if (xmarkerref == NULL)
@@ -138,7 +138,14 @@ namespace Undaunted {
 		//We do our best but if someone has ran 50 bounties without traveling there's not much we can do.
 		for (int i = 0; i < 50 && !foundbounty; i++)
 		{
-			bountygrouplist = GetRandomGroup();
+			if (_stricmp(BountyName, "") == 0)
+			{
+				bountygrouplist = GetRandomGroup();
+			}
+			else
+			{
+				bountygrouplist = GetGroup(BountyName);
+			}
 			bool bountyran = false;
 			for (int j = 0; j < bountiesRan.length; j++)
 			{

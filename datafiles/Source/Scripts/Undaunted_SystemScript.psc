@@ -28,6 +28,8 @@ bool Function SetXMarker(objectReference markerref) global native
 
 float Function StartBounty(bool nearby) global native
 
+float Function StartNamedBounty(bool nearby, String bountyName) global native
+
 Form Function SpawnRandomReward(int rewardOffset,int playerlevel) global native
 
 Function SetGroupMemberComplete(objectReference objref) global native
@@ -37,3 +39,5 @@ ObjectReference[] Function GetBountyObjectRefs(string bountyType) global native
 Function SetScriptedDoorsComplete() global native
 
 bool Function isPlayerInWorldSpace(String WorldspaceName) global native  
+
+string Function GetRandomBountyName() global native

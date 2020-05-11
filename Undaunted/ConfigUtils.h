@@ -13,6 +13,7 @@ namespace Undaunted
 	int AddGroup(const char* questText);
 	void AddMembertoGroup(int id, GroupMember member);
 	GroupList GetRandomGroup();
+	GroupList GetGroup(const char* bountyName);
 
 	//General
 	void SetConfigValue(const char* key, const char* value);

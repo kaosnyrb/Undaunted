@@ -22,7 +22,7 @@ namespace Undaunted {
 		UnStringList bountiesRan = UnStringList();
 
 		bool BountyUpdate();
-		float StartBounty(bool nearby);
+		float StartBounty(bool nearby, const char* BountyName);
 		void ClearBountyData();
 		void ResetBountiesRan();
 	};
