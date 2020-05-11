@@ -146,6 +146,11 @@ namespace Undaunted {
 		SetConfigValue(key.Get(), value.Get());
 	}
 
+	bool hook_isPlayerInWorldSpace(StaticFunctionTag* base, BSFixedString worldspacename)
+	{
+		return _stricmp((*g_thePlayer)->currentWorldSpace->editorId.Get(), worldspacename.Get()) == 0;
+	}
+
 	// Currently unused, checks if the object reference is in the current bounty.
 	bool hook_IsGroupMemberUsed(StaticFunctionTag* base, TESObjectREFR* target)
 	{
@@ -164,7 +169,12 @@ namespace Undaunted {
 	// This means we can take all bounties off the blacklist.
 	void hook_PlayerTraveled(StaticFunctionTag* base, float distance)
 	{
-		BountyManager::getInstance()->ClearBountyData();
+		//If a bounty is running and we fast travel then clean it up.
+		//If it hasn't started yet we don't need to worry.
+		if (BountyManager::getInstance()->bountywave > 0)
+		{
+			BountyManager::getInstance()->ClearBountyData();
+		}
 		if (distance > 1.5f)
 		{
 			BountyManager::getInstance()->ResetBountiesRan();
@@ -229,6 +239,9 @@ namespace Undaunted {
 
 		registry->RegisterFunction(
 			new NativeFunction1 <StaticFunctionTag, void,float>("PlayerTraveled", "Undaunted_SystemScript", Undaunted::hook_PlayerTraveled, registry));
+
+		registry->RegisterFunction(
+			new NativeFunction1 <StaticFunctionTag, bool, BSFixedString>("isPlayerInWorldSpace", "Undaunted_SystemScript", Undaunted::hook_isPlayerInWorldSpace, registry));
 
 		//Config
 

@@ -35,3 +35,5 @@ Function SetGroupMemberComplete(objectReference objref) global native
 ObjectReference[] Function GetBountyObjectRefs(string bountyType) global native
 
 Function SetScriptedDoorsComplete() global native
+
+bool Function isPlayerInWorldSpace(String WorldspaceName) global native  
