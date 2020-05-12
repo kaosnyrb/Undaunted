@@ -30,6 +30,8 @@ float Function StartBounty(bool nearby) global native
 
 float Function StartNamedBounty(bool nearby, String bountyName) global native
 
+float Function StartNamedBountyNearRef(bool nearby, String bountyName, ObjectReference ref, string WorldspaceName) global native
+
 Form Function SpawnRandomReward(int rewardOffset,int playerlevel) global native
 
 Function SetGroupMemberComplete(objectReference objref) global native

@@ -16,24 +16,11 @@ int numberOfBountiesNeeded = 2
 int numberOfBountiesCurrently = 0
 
 Event OnInit()
-	;config values probably not loaded yet.
-	;RegisterForUpdate(5.0)
 EndEvent
 
-
-int Function StartEvent(bool nearby)
+Function LoadJsonData()
 	if (!isSystemReady())
-		Debug.Notification("Undaunted initialising...")
-		;Load the bad regions
-		int BadRegionList = JValue.readFromFile("Data/Undaunted/BadRegion.json")
-		int bri = JValue.count(BadRegionList)
-		while bri > 0
-		bri -= 1		
-			AddBadRegion(JArray.getInt(BadRegionList,bri))
-		endwhile
-		;Pass the refs the plugin will edit
-		SetXMarker(markerref)
-		SetBountyMessageRef(QuestTextMessage)
+		Debug.Notification("Undaunted Loading...")
 		;Load the Settings file
 		int SettingsList = JValue.readFromFile("Data/Undaunted/Settings.json")
 		int setcount = JArray.count(SettingsList)
@@ -81,9 +68,16 @@ int Function StartEvent(bool nearby)
 				endif
 			endWhile
 		endWhile
-		numberOfBountiesNeeded = GetConfigValueInt("NumberOfBountiesPerChain")
 		InitSystem()
-	EndIf
+		Debug.Notification("Undaunted initialised")
+    EndIf
+endFunction
+
+int Function StartEvent(bool nearby)
+	;Pass the refs the plugin will edit
+	SetXMarker(markerref)
+	SetBountyMessageRef(QuestTextMessage)
+	LoadJsonData()
 	StartBounty(nearby)
 	questProperty.SetCurrentStageID(10)
 	QuestStage.SetValue(10)

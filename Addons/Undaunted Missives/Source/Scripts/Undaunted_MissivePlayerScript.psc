@@ -3,9 +3,10 @@ import Undaunted_SystemScript
 import Undaunted_MissivesActivator
 
 objectReference Property missiveActivator Auto
-Event OnInit()
-    if (!isSystemReady())
-		Debug.Notification("Undaunted initialising...")
+
+Function LoadJsonData()
+	if (!isSystemReady())
+		Debug.Notification("Undaunted Loading...")
 		;Load the Settings file
 		int SettingsList = JValue.readFromFile("Data/Undaunted/Settings.json")
 		int setcount = JArray.count(SettingsList)
@@ -54,7 +55,12 @@ Event OnInit()
 			endWhile
 		endWhile
 		InitSystem()
+		Debug.Notification("Undaunted initialised")
     EndIf
+endFunction
+
+Event OnInit()
+    LoadJsonData()
     (missiveActivator as Undaunted_MissivesActivator).SetBounty()
 EndEvent
 

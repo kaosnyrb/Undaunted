@@ -4,14 +4,19 @@ namespace Undaunted {
 	
 	// Triggers a new bounty stage to start.
 	float hook_StartBounty(StaticFunctionTag* base, bool nearby) {
-		BountyManager::getInstance()->StartBounty(nearby, "");
+		BountyManager::getInstance()->StartBounty(nearby, "",NULL,"");
 		return 2;
 	}
 
 
 	// Triggers a new bounty stage to start with a certain name.
 	float hook_StartNamedBounty(StaticFunctionTag* base, bool nearby, BSFixedString bountyName) {
-		BountyManager::getInstance()->StartBounty(nearby, bountyName.Get());
+		BountyManager::getInstance()->StartBounty(nearby, bountyName.Get(),NULL,"");
+		return 2;
+	}
+
+	float hook_StartNamedBountyNearRef(StaticFunctionTag* base, bool nearby, BSFixedString bountyName, TESObjectREFR* ref, BSFixedString WorldSpaceName) {
+		BountyManager::getInstance()->StartBounty(nearby, bountyName.Get(),ref,WorldSpaceName);
 		return 2;
 	}
 
@@ -242,6 +247,9 @@ namespace Undaunted {
 			new NativeFunction1 <StaticFunctionTag, float,bool>("StartBounty", "Undaunted_SystemScript", Undaunted::hook_StartBounty, registry));
 		registry->RegisterFunction(
 			new NativeFunction2 <StaticFunctionTag, float, bool, BSFixedString>("StartNamedBounty", "Undaunted_SystemScript", Undaunted::hook_StartNamedBounty, registry));
+		registry->RegisterFunction(
+			new NativeFunction4 <StaticFunctionTag, float, bool, BSFixedString, TESObjectREFR*, BSFixedString>("StartNamedBountyNearRef", "Undaunted_SystemScript", Undaunted::hook_StartNamedBountyNearRef, registry));
+
 
 		registry->RegisterFunction(
 			new NativeFunction0 <StaticFunctionTag, bool>("isBountyComplete", "Undaunted_SystemScript", Undaunted::hook_isBountyComplete, registry));

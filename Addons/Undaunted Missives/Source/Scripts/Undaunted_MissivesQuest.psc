@@ -104,6 +104,8 @@ Alias_MissiveBoard.GetRef().RemoveItem(Alias_Missive.GetRef())
 elseif(Game.GetPlayer().GetItemCount(Alias_Missive.GetRef()) > 0)
 Game.GetPlayer().RemoveItem(Alias_Missive.GetRef())
 ;Debug.Trace("Missive Removed from Player")
+Undaunted_MissivesActivator act = Alias_undauntedactivator.GetRef() as Undaunted_MissivesActivator
+act.SetBounty()
 endIf
 
 Stop()

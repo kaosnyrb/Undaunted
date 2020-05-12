@@ -74,7 +74,7 @@ namespace Undaunted {
 		return true;
 	}
 
-	float BountyManager::StartBounty(bool nearby, const char* BountyName)
+	float BountyManager::StartBounty(bool nearby, const char* BountyName,TESObjectREFR* ref,BSFixedString WorldSpaceName)
 	{
 		srand(time(NULL));
 		if (xmarkerref == NULL)
@@ -97,8 +97,15 @@ namespace Undaunted {
 
 		TESObjectREFR* target = NULL;
 		if (!nearby )
-		{	
-			bountyworldcell = GetNamedWorldCell((*g_thePlayer)->currentWorldSpace->editorId.Get());
+		{
+			if (ref == NULL)
+			{
+				bountyworldcell = GetNamedWorldCell((*g_thePlayer)->currentWorldSpace->editorId.Get());
+			}
+			else
+			{
+				bountyworldcell = GetNamedWorldCell(WorldSpaceName.Get());
+			}
 			target = GetRandomObjectInCell(bountyworldcell.cell);
 		}
 		else
@@ -107,13 +114,22 @@ namespace Undaunted {
 			int BountyMinSpawnDistance = GetConfigValueInt("BountyMinSpawnDistance");
 			int BountyMaxSpawnDistance = GetConfigValueInt("BountyMaxSpawnDistance");
 			int BountySearchAttempts = GetConfigValueInt("BountySearchAttempts");
-
 			bool foundtarget = false;
 			while (!foundtarget)
 			{
-				bountyworldcell = GetNamedWorldCell((*g_thePlayer)->currentWorldSpace->editorId.Get());
-				target = GetRandomObjectInCell(bountyworldcell.cell);
-				NiPoint3 distance = (*g_thePlayer)->pos - target->pos;
+				NiPoint3 distance;
+				if (ref == NULL)
+				{
+					bountyworldcell = GetNamedWorldCell((*g_thePlayer)->currentWorldSpace->editorId.Get());
+					target = GetRandomObjectInCell(bountyworldcell.cell);
+					distance = (*g_thePlayer)->pos - target->pos;
+				}
+				else
+				{
+					bountyworldcell = GetNamedWorldCell(WorldSpaceName.Get());
+					target = GetRandomObjectInCell(bountyworldcell.cell);
+					distance = ref->pos - target->pos;
+				}
 				Vector3 distvector = Vector3(distance.x, distance.y, distance.z);
 				//_MESSAGE("Distance to Bounty: %f", distvector.Magnitude());
 				if (distvector.Magnitude() > BountyMinSpawnDistance && distvector.Magnitude() < BountyMaxSpawnDistance)
