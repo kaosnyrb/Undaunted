@@ -3,7 +3,7 @@ import Undaunted_SystemScript
 
 Function LoadJsonData()
     if (!isSystemReady())
-        Debug.Notification("Undaunted Loading...")
+        Debug.Notification("Undaunted_PlayerTravelCheck Undaunted Loading...")
 		;Load the Settings file
 		int SettingsList = JValue.readFromFile("Data/Undaunted/Settings.json")
 		int setcount = JArray.count(SettingsList)
@@ -52,12 +52,12 @@ Function LoadJsonData()
 			endWhile
 		endWhile
 		InitSystem()
-		Debug.Notification("Undaunted initialised")
+		Debug.Notification("Undaunted_PlayerTravelCheck Undaunted initialised")
     EndIf
 endFunction
 
 Event OnInit()
-    LoadJsonData()
+    ;LoadJsonData()
 EndEvent
 
 Event OnPlayerFastTravelEnd(float afTravelGameTimeHours)

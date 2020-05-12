@@ -100,6 +100,7 @@ namespace Undaunted {
 		{
 			if (ref == NULL)
 			{
+				_MESSAGE("ref == NULL");
 				bountyworldcell = GetNamedWorldCell((*g_thePlayer)->currentWorldSpace->editorId.Get());
 			}
 			else
@@ -120,18 +121,21 @@ namespace Undaunted {
 				NiPoint3 distance;
 				if (ref == NULL)
 				{
+					_MESSAGE("ref == NULL");
 					bountyworldcell = GetNamedWorldCell((*g_thePlayer)->currentWorldSpace->editorId.Get());
 					target = GetRandomObjectInCell(bountyworldcell.cell);
 					distance = (*g_thePlayer)->pos - target->pos;
 				}
 				else
 				{
+					_MESSAGE("ref != NULL");
 					bountyworldcell = GetNamedWorldCell(WorldSpaceName.Get());
 					target = GetRandomObjectInCell(bountyworldcell.cell);
 					distance = ref->pos - target->pos;
 				}
 				Vector3 distvector = Vector3(distance.x, distance.y, distance.z);
 				//_MESSAGE("Distance to Bounty: %f", distvector.Magnitude());
+				_MESSAGE("distance %f", distvector.Magnitude());
 				if (distvector.Magnitude() > BountyMinSpawnDistance && distvector.Magnitude() < BountyMaxSpawnDistance)
 				{
 					foundtarget = true;
@@ -152,6 +156,7 @@ namespace Undaunted {
 
 		bool foundbounty = false;
 		//We do our best but if someone has ran 50 bounties without traveling there's not much we can do.
+		_MESSAGE("BountyName == %s", BountyName);
 		for (int i = 0; i < 50 && !foundbounty; i++)
 		{
 			if (_stricmp(BountyName, "") == 0)

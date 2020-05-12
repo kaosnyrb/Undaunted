@@ -1,12 +1,12 @@
 Scriptname Undaunted_MissivePlayerScript extends ReferenceAlias  
 import Undaunted_SystemScript
-import Undaunted_MissivesActivator
+import Undaunted_MissivesQuest
 
-objectReference Property missiveActivator Auto
+Quest Property questProperty  Auto
 
 Function LoadJsonData()
 	if (!isSystemReady())
-		Debug.Notification("Undaunted Loading...")
+		Debug.Notification("Undaunted_MissivePlayerScript Undaunted Loading...")
 		;Load the Settings file
 		int SettingsList = JValue.readFromFile("Data/Undaunted/Settings.json")
 		int setcount = JArray.count(SettingsList)
@@ -55,13 +55,18 @@ Function LoadJsonData()
 			endWhile
 		endWhile
 		InitSystem()
-		Debug.Notification("Undaunted initialised")
+		Debug.Notification("Undaunted_MissivePlayerScript Undaunted initialised")
     EndIf
 endFunction
 
+Event OnPlayerLoadGame()
+	Debug.Notification("Missive OnPlayerLoadGame")
+	LoadJsonData()
+	(questProperty as Undaunted_MissivesQuest).SetBounty()
+EndEvent
+
 Event OnInit()
-    LoadJsonData()
-    (missiveActivator as Undaunted_MissivesActivator).SetBounty()
+	LoadJsonData()
 EndEvent
 
 Event OnPlayerFastTravelEnd(float afTravelGameTimeHours)
