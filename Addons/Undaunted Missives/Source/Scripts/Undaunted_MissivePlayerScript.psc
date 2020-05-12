@@ -62,7 +62,7 @@ endFunction
 Event OnPlayerLoadGame()
 	Debug.Notification("Missive OnPlayerLoadGame")
 	LoadJsonData()
-	(questProperty as Undaunted_MissivesQuest).SetBounty()
+	(questProperty as Undaunted_MissivesQuest).postLoad()
 EndEvent
 
 Event OnInit()

@@ -131,17 +131,32 @@ string currentbounty = "loading"
 bool bountystarted = false
 
 Event OnInit()
+	bool isready = false;
+	while (!isready)
+		if (isSystemReady())
+			isready = true
+		else
+			Utility.Wait(5.0)
+		endif		
+	endwhile
 	SetBounty()
 EndEvent
 
-string Function SetBounty()
-	SetStage(0)
+Function postLoad()
 	if (currentbounty == "loading" || currentbounty == "The Bounty has moved on")
 		currentbounty = GetRandomBountyName()
 	endIf
 	missiveMessage.SetName("Undaunted Missive: " + currentbounty)
 	QuestTextMessage.SetName(currentbounty)
 	StartEvent(true)
+endFunction 
+
+string Function SetBounty()
+	if (currentbounty == "loading" || currentbounty == "The Bounty has moved on")
+		currentbounty = GetRandomBountyName()
+	endIf
+	missiveMessage.SetName("Undaunted Missive: " + currentbounty)
+	QuestTextMessage.SetName(currentbounty)
 endFunction
 
 int Function StartEvent(bool nearby)
@@ -152,6 +167,7 @@ int Function StartEvent(bool nearby)
 	StartNamedBountyNearRef(true,currentbounty,BountyStartRef,worldspaceName)
 	RegisterForSingleUpdate(GetConfigValueInt("BountyUpdateRate"))
 endFunction
+
 
 int Function ClearBountyStatus()
 	numberOfBountiesCurrently = 0;
@@ -178,13 +194,6 @@ Function CleanUpBounty()
 		ScriptedDoorslength -= 1
 		ScriptedDoors[ScriptedDoorslength].DisableNoWait(false)
 		ScriptedDoors[ScriptedDoorslength].Delete()
-	endwhile	
-	ObjectReference[] BossroomEnemy = GetBountyObjectRefs("BossroomEnemy")		
-	int BossroomEnemylength = BossroomEnemy.Length
-	while(BossroomEnemylength > 0)
-		BossroomEnemylength -= 1
-		BossroomEnemy[BossroomEnemylength].DisableNoWait(false)
-		BossroomEnemy[BossroomEnemylength].Delete()
 	endwhile
 endFunction
 

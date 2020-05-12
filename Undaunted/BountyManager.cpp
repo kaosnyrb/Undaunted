@@ -77,6 +77,7 @@ namespace Undaunted {
 	float BountyManager::StartBounty(bool nearby, const char* BountyName,TESObjectREFR* ref,BSFixedString WorldSpaceName)
 	{
 		srand(time(NULL));
+		_MESSAGE("time %i", time(NULL));
 		if (xmarkerref == NULL)
 		{
 			_MESSAGE("NO XMARKER SET");
