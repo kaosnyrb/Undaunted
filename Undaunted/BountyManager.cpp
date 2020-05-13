@@ -13,24 +13,28 @@ namespace Undaunted {
 	}
 
 
-	bool BountyManager::BountyUpdate()
+	bool BountyManager::BountyUpdate(int BountyID)
 	{
-		if (bountywave == 0 && bountyworldcell.world != NULL)
+		Bounty* bounty = &activebounties.data[BountyID];
+		_MESSAGE("BountyUpdate BountyID: %08X", BountyID);
+		_MESSAGE("BountyID bountywave: %i", bounty->bountywave);
+
+		if (bounty->bountywave == 0 && bounty->bountyworldcell.world != NULL)
 		{
 			//Is the player in the right worldspace?
-			if (_stricmp((*g_thePlayer)->currentWorldSpace->editorId.Get(), bountyworldcell.world->editorId.Get()) == 0)
+			if (_stricmp((*g_thePlayer)->currentWorldSpace->editorId.Get(), bounty->bountyworldcell.world->editorId.Get()) == 0)
 			{
 				_MESSAGE("Player in Worldspace");
 				//Check the distance to the XMarker
-				NiPoint3 distance = (*g_thePlayer)->pos - xmarkerref->pos;
+				NiPoint3 distance = (*g_thePlayer)->pos - bounty->xmarkerref->pos;
 				Vector3 distvector = Vector3(distance.x, distance.y, distance.z);
 				_MESSAGE("Distance to marker: %f", distvector.Magnitude());
 				
 				if (distvector.Magnitude() < GetConfigValueInt("BountyStartDistance"))
 				{
-					bountygrouplist = SpawnGroupAtTarget(_registry, bountygrouplist, xmarkerref, bountyworldcell.cell, bountyworldcell.world);
-					_MESSAGE("Enemy Count : %08X ", bountygrouplist.length);
-					bountywave = 1;
+					bounty->bountygrouplist = SpawnGroupAtTarget(_registry, bounty->bountygrouplist, bounty->xmarkerref, bounty->bountyworldcell.cell, bounty->bountyworldcell.world);
+					_MESSAGE("Enemy Count : %08X ", bounty->bountygrouplist.length);
+					bounty->bountywave = 1;
 				}
 				else
 				{
@@ -43,20 +47,20 @@ namespace Undaunted {
 			}
 		}
 
-		if (bountygrouplist.length == 0)
+		if (bounty->bountygrouplist.length == 0)
 			return false;
 
 //		bool NoncompleteObj = false;
 		int NonComplete = 0;
-		for (UInt32 i = 0; i < bountygrouplist.length; i++)
+		for (UInt32 i = 0; i < bounty->bountygrouplist.length; i++)
 		{
-			_MESSAGE("Type, Member, complete: %s, %08X , %i", bountygrouplist.data[i].BountyType.Get(), bountygrouplist.data[i].FormId, bountygrouplist.data[i].IsComplete());
-			if (bountygrouplist.data[i].IsComplete() != 1)
+			_MESSAGE("Type, Member, complete: %s, %08X , %i", bounty->bountygrouplist.data[i].BountyType.Get(), bounty->bountygrouplist.data[i].FormId, bounty->bountygrouplist.data[i].IsComplete());
+			if (bounty->bountygrouplist.data[i].IsComplete() != 1)
 			{
 				NonComplete++;
-				if (bountygrouplist.data[i].objectRef != NULL)
+				if (bounty->bountygrouplist.data[i].objectRef != NULL)
 				{
-					MoveRefToWorldCell(xmarkerref, bountyworldcell.cell, bountyworldcell.world, bountygrouplist.data[i].objectRef->pos, NiPoint3(0, 0, 0));
+					MoveRefToWorldCell(bounty->xmarkerref, bounty->bountyworldcell.cell, bounty->bountyworldcell.world, bounty->bountygrouplist.data[i].objectRef->pos, NiPoint3(0, 0, 0));
 				}
 			}
 		}
@@ -67,23 +71,24 @@ namespace Undaunted {
 	//		return false;
 
 		_MESSAGE("Starting PostBounty");
-		for (UInt32 i = 0; i < bountygrouplist.length; i++)
+		for (UInt32 i = 0; i < bounty->bountygrouplist.length; i++)
 		{
-			bountygrouplist.data[i].PostBounty();
+			bounty->bountygrouplist.data[i].PostBounty();
 		}
 		return true;
 	}
 
-	float BountyManager::StartBounty(bool nearby, const char* BountyName,TESObjectREFR* ref,BSFixedString WorldSpaceName)
+	float BountyManager::StartBounty(int BountyID,bool nearby, const char* BountyName,TESObjectREFR* ref,BSFixedString WorldSpaceName)
 	{
+		Bounty* bounty = &activebounties.data[BountyID];
 		srand(time(NULL));
 		_MESSAGE("time %i", time(NULL));
-		if (xmarkerref == NULL)
+		if (bounty->xmarkerref == NULL)
 		{
 			_MESSAGE("NO XMARKER SET");
 			return 0;
 		}
-		if (bountymessageref == NULL)
+		if (bounty->bountymessageref == NULL)
 		{
 			_MESSAGE("NO BOUNTYMESSAGEREF SET");
 			return 0;
@@ -94,7 +99,7 @@ namespace Undaunted {
 			return 0;
 		}
 		//Cleanup previous bounties
-		ClearBountyData();
+		ClearBountyData(BountyID);
 
 		TESObjectREFR* target = NULL;
 		if (!nearby )
@@ -102,13 +107,13 @@ namespace Undaunted {
 			if (ref == NULL)
 			{
 				_MESSAGE("ref == NULL");
-				bountyworldcell = GetNamedWorldCell((*g_thePlayer)->currentWorldSpace->editorId.Get());
+				bounty->bountyworldcell = GetNamedWorldCell((*g_thePlayer)->currentWorldSpace->editorId.Get());
 			}
 			else
 			{
-				bountyworldcell = GetNamedWorldCell(WorldSpaceName.Get());
+				bounty->bountyworldcell = GetNamedWorldCell(WorldSpaceName.Get());
 			}
-			target = GetRandomObjectInCell(bountyworldcell.cell);
+			target = GetRandomObjectInCell(bounty->bountyworldcell.cell);
 		}
 		else
 		{
@@ -124,15 +129,15 @@ namespace Undaunted {
 				if (ref == NULL)
 				{
 					_MESSAGE("ref == NULL");
-					bountyworldcell = GetNamedWorldCell((*g_thePlayer)->currentWorldSpace->editorId.Get());
-					target = GetRandomObjectInCell(bountyworldcell.cell);
+					bounty->bountyworldcell = GetNamedWorldCell((*g_thePlayer)->currentWorldSpace->editorId.Get());
+					target = GetRandomObjectInCell(bounty->bountyworldcell.cell);
 					distance = (*g_thePlayer)->pos - target->pos;
 				}
 				else
 				{
 					_MESSAGE("ref != NULL");
-					bountyworldcell = GetNamedWorldCell(WorldSpaceName.Get());
-					target = GetRandomObjectInCell(bountyworldcell.cell);
+					bounty->bountyworldcell = GetNamedWorldCell(WorldSpaceName.Get());
+					target = GetRandomObjectInCell(bounty->bountyworldcell.cell);
 					distance = ref->pos - target->pos;
 				}
 				Vector3 distvector = Vector3(distance.x, distance.y, distance.z);
@@ -146,15 +151,15 @@ namespace Undaunted {
 				if (loopcounts > BountySearchAttempts)
 				{
 					//Can't find anything. Give up and use this cell.
-					bountyworldcell.cell = (*g_thePlayer)->parentCell;
-					bountyworldcell.world = (*g_thePlayer)->currentWorldSpace;
-					target = GetRandomObjectInCell(bountyworldcell.cell);
+					bounty->bountyworldcell.cell = (*g_thePlayer)->parentCell;
+					bounty->bountyworldcell.world = (*g_thePlayer)->currentWorldSpace;
+					target = GetRandomObjectInCell(bounty->bountyworldcell.cell);
 					foundtarget = true;
 				}
 			}
 		}
-		_MESSAGE("target is set. Moving marker: WorldSpace: %s Cell: %08X ", bountyworldcell.world->editorId.Get(), bountyworldcell.cell->formID);
-		MoveRefToWorldCell(xmarkerref, bountyworldcell.cell, bountyworldcell.world, target->pos, NiPoint3(0, 0, 0));
+		_MESSAGE("target is set. Moving marker: WorldSpace: %s Cell: %08X ", bounty->bountyworldcell.world->editorId.Get(), bounty->bountyworldcell.cell->formID);
+		MoveRefToWorldCell(bounty->xmarkerref, bounty->bountyworldcell.cell, bounty->bountyworldcell.world, target->pos, NiPoint3(0, 0, 0));
 
 		bool foundbounty = false;
 		//We do our best but if someone has ran 50 bounties without traveling there's not much we can do.
@@ -163,16 +168,16 @@ namespace Undaunted {
 		{
 			if (_stricmp(BountyName, "") == 0)
 			{
-				bountygrouplist = GetRandomGroup();
+				bounty->bountygrouplist = GetRandomGroup();
 			}
 			else
 			{
-				bountygrouplist = GetGroup(BountyName);
+				bounty->bountygrouplist = GetGroup(BountyName);
 			}
 			bool bountyran = false;
 			for (int j = 0; j < bountiesRan.length; j++)
 			{
-				if (strcmp(bountiesRan.data[j].key, bountygrouplist.questText) == 0)
+				if (strcmp(bountiesRan.data[j].key, bounty->bountygrouplist.questText) == 0)
 				{
 					bountyran = true;
 				}
@@ -183,35 +188,38 @@ namespace Undaunted {
 			}
 		}
 		UnString bountydata = UnString();
-		bountydata.key = bountygrouplist.questText;
+		bountydata.key = bounty->bountygrouplist.questText;
 		bountiesRan.AddItem(bountydata);
-		_MESSAGE("Setting Bounty Message: %s", bountygrouplist.questText);
-		bountymessageref->fullName.name = bountygrouplist.questText;
+		_MESSAGE("Setting Bounty Message: %s", bounty->bountygrouplist.questText);
+		bounty->bountymessageref->fullName.name = bounty->bountygrouplist.questText;
 
 		return 0;
 	}
 
-	float BountyManager::restartBounty(const char* BountyName)
+	float BountyManager::restartBounty(int BountyID,const char* BountyName)
 	{
+		Bounty* bounty = &activebounties.data[BountyID];
 		srand(time(NULL));
-		ClearBountyData();
+		ClearBountyData(BountyID);
 		bool foundbounty = false;
-		bountygrouplist = GetGroup(BountyName);
-		bountyworldcell = GetWorldCellFromRef(xmarkerref);
-		_MESSAGE("GetWorldCellFromRef World: %s", bountyworldcell.world->editorId.Get());
+		bounty->bountygrouplist = GetGroup(BountyName);
+		bounty->bountyworldcell = GetWorldCellFromRef(bounty->xmarkerref);
+		_MESSAGE("GetWorldCellFromRef World: %s", bounty->bountyworldcell.world->editorId.Get());
+		bounty->bountymessageref->fullName.name = bounty->bountygrouplist.questText;
 		//BountyUpdate();
 		return 0.0f;
 	}
 
-	void BountyManager::ClearBountyData() {
-		for (int i = 0; i < bountygrouplist.length; i++)
+	void BountyManager::ClearBountyData(int BountyID) {
+		Bounty bounty = activebounties.data[BountyID];
+		for (int i = 0; i < bounty.bountygrouplist.length; i++)
 		{
 			//Clear all completed flags
-			bountygrouplist.data[i].isComplete = false;
-			bountygrouplist.data[i].objectRef = NULL;
+			bounty.bountygrouplist.data[i].isComplete = false;
+			bounty.bountygrouplist.data[i].objectRef = NULL;
 		}
-		bountywave = 0;
-		bountygrouplist = GroupList();
+		bounty.bountywave = 0;
+		bounty.bountygrouplist = GroupList();
 		/*
 		//If there's been a reload then the bounty currently breaks. Inform the user.
 		if (isReady)

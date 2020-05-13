@@ -31,6 +31,9 @@
       <Filter>Utils</Filter>
     </ClCompile>
     <ClCompile Include="BountyManager.cpp" />
+    <ClCompile Include="BountyList.cpp">
+      <Filter>Collections</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyPlugin.h" />
@@ -63,6 +66,9 @@
     </ClInclude>
     <ClInclude Include="BountyManager.h" />
     <ClInclude Include="SKSELink.h" />
+    <ClInclude Include="BountyList.h">
+      <Filter>Collections</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="exports.def" />

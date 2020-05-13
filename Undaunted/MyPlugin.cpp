@@ -1,32 +1,45 @@
 #include "MyPlugin.h"
 
 namespace Undaunted {
-	
+
+	UInt32 hook_CreateBounty(StaticFunctionTag* base) {
+		int result = BountyManager::getInstance()->activebounties.length;
+		_MESSAGE("hook_CreateBounty result: %08X", result);
+		Bounty newBounty = Bounty();
+		BountyManager::getInstance()->activebounties.AddItem(newBounty);
+		return result;
+	}
+
 	// Triggers a new bounty stage to start.
-	float hook_StartBounty(StaticFunctionTag* base, bool nearby) {
-		BountyManager::getInstance()->StartBounty(nearby, "",NULL,"");
+	float hook_StartBounty(StaticFunctionTag* base, UInt32 BountyId, bool nearby) {
+		_MESSAGE("hook_StartBounty BountyId: %08X", BountyId);
+		BountyManager::getInstance()->StartBounty(BountyId,nearby, "",NULL,"");
 		return 2;
 	}
 
 
 	// Triggers a new bounty stage to start with a certain name.
-	float hook_StartNamedBounty(StaticFunctionTag* base, bool nearby, BSFixedString bountyName) {
-		BountyManager::getInstance()->StartBounty(nearby, bountyName.Get(),NULL,"");
+	float hook_StartNamedBounty(StaticFunctionTag* base, UInt32 BountyId, bool nearby, BSFixedString bountyName) {
+		_MESSAGE("hook_StartNamedBounty BountyId: %08X", BountyId);
+		BountyManager::getInstance()->StartBounty(BountyId,nearby, bountyName.Get(),NULL,"");
 		return 2;
 	}
 
 
 	// Triggers a new bounty stage to start with a certain name.
-	float hook_restartNamedBounty(StaticFunctionTag* base,BSFixedString bountyName) {
-		BountyManager::getInstance()->restartBounty(bountyName.Get());
+	float hook_restartNamedBounty(StaticFunctionTag* base, UInt32 BountyId,BSFixedString bountyName) {
+		_MESSAGE("hook_restartNamedBounty BountyId: %08X", BountyId);
+		BountyManager::getInstance()->restartBounty(BountyId,bountyName.Get());
 		return 2;
 	}
 
 	
-	float hook_StartNamedBountyNearRef(StaticFunctionTag* base, bool nearby, BSFixedString bountyName, TESObjectREFR* ref, BSFixedString WorldSpaceName) {
-		BountyManager::getInstance()->StartBounty(nearby, bountyName.Get(),ref,WorldSpaceName);
+	float hook_StartNamedBountyNearRef(StaticFunctionTag* base, UInt32 BountyId,bool nearby, BSFixedString bountyName, TESObjectREFR* ref, BSFixedString WorldSpaceName) {
+		_MESSAGE("hook_StartNamedBountyNearRef BountyId: %08X", BountyId);
+		BountyManager::getInstance()->StartBounty(BountyId,nearby, bountyName.Get(),ref,WorldSpaceName);
 		return 2;
 	}
+
 
 	// Fill out the WorldList, this checks the loaded world cells and finds the persistant reference cells.
 	// This takes a while so we only do this once at the start
@@ -64,25 +77,34 @@ namespace Undaunted {
 	}
 
 	// Check if all the bounty objectives have been complete
-	bool hook_isBountyComplete(StaticFunctionTag* base) {
+	bool hook_isBountyComplete(StaticFunctionTag* base, UInt32 BountyId) {
 		_MESSAGE("Starting Bounty Check");
-		return BountyManager::getInstance()->BountyUpdate();
+		return BountyManager::getInstance()->BountyUpdate(BountyId);
+	}
+	// Tell the bounty system that this object should be marked as complete
+	void hook_SetGroupMemberComplete(StaticFunctionTag* base, TESObjectREFR* taget)
+	{
+		//This actually works as it's using the object reference. The object should only be in one bounty.
+		for (int i = 0; i < BountyManager::getInstance()->activebounties.length; i++)
+		{
+			BountyManager::getInstance()->activebounties.data[i].bountygrouplist.SetGroupMemberComplete(taget->formID);
+		}	
 	}
 
-	BSFixedString hook_getBountyName(StaticFunctionTag* base) {
+	BSFixedString hook_getBountyName(StaticFunctionTag* base, UInt32 BountyId) {
 		_MESSAGE("Starting Bounty Check");
-		return BountyManager::getInstance()->bountygrouplist.questText;
+		return BountyManager::getInstance()->activebounties.data[BountyId].bountygrouplist.questText;
 	}	
 
 	// Pass the reference to the XMarker that we use as the quest target and the target of the placeatme calls
-	bool hook_SetXMarker(StaticFunctionTag* base, TESObjectREFR* marker) {
-		BountyManager::getInstance()->xmarkerref = marker;
+	bool hook_SetXMarker(StaticFunctionTag* base, UInt32 BountyId, TESObjectREFR* marker) {
+		BountyManager::getInstance()->activebounties.data[BountyId].xmarkerref = marker;
 		return true;
 	}
 
 	// Pass the reference to the quest objective message. This allows us to edit it from the code.
-	bool hook_SetBountyMessageRef(StaticFunctionTag* base, BGSMessage* ref) {
-		BountyManager::getInstance()->bountymessageref = ref;
+	bool hook_SetBountyMessageRef(StaticFunctionTag* base, UInt32 BountyId, BGSMessage* ref) {
+		BountyManager::getInstance()->activebounties.data[BountyId].bountymessageref = ref;
 		return true;
 	}
 
@@ -167,18 +189,18 @@ namespace Undaunted {
 //		PlaceAtMe_Native(BountyManager::getInstance()->_registry, 1, target, spawnForm, 1, false, false);
 	}
 
-	// Tell the bounty system that this object should be marked as complete
-	void hook_SetGroupMemberComplete(StaticFunctionTag* base, TESObjectREFR* taget)
-	{
-		BountyManager::getInstance()->bountygrouplist.SetGroupMemberComplete(taget->formID);
-	}
+
 
 	// Pass in a config value
 	void hook_SetConfigValue(StaticFunctionTag* base, BSFixedString key, BSFixedString value)
 	{
 		SetConfigValue(key.Get(), value.Get());
 	}
-
+	// Returns an int that is in the config
+	UInt32 hook_GetConfigValueInt(StaticFunctionTag* base, BSFixedString key)
+	{
+		return GetConfigValueInt(key.Get());
+	}
 	
 	BSFixedString hook_GetPlayerWorldSpaceName(StaticFunctionTag* base)
 	{
@@ -194,6 +216,7 @@ namespace Undaunted {
 	// Currently unused, checks if the object reference is in the current bounty.
 	bool hook_IsGroupMemberUsed(StaticFunctionTag* base, TESObjectREFR* target)
 	{
+		/*
 		//Is this reference in the current bounty? If it isn't we can get rid of it.
 		for (int i = 0; i < BountyManager::getInstance()->bountygrouplist.length; i++)
 		{
@@ -201,19 +224,19 @@ namespace Undaunted {
 			{
 				return true;
 			}
-		}
+		}*/
 		return false;
 	}
 
 	// The player has fast travelled. This causes cells which are marked to reset to reset.
 	// This means we can take all bounties off the blacklist.
-	void hook_PlayerTraveled(StaticFunctionTag* base, float distance)
+	void hook_PlayerTraveled(StaticFunctionTag* base, UInt32 BountyId, float distance)
 	{
 		//If a bounty is running and we fast travel then clean it up.
 		//If it hasn't started yet we don't need to worry.
-		if (BountyManager::getInstance()->bountywave > 0)
+		if (BountyManager::getInstance()->activebounties.data[BountyId].bountywave > 0)
 		{
-			BountyManager::getInstance()->ClearBountyData();
+			BountyManager::getInstance()->ClearBountyData(BountyId);
 		}
 		if (distance > 1.5f)
 		{
@@ -225,38 +248,37 @@ namespace Undaunted {
 	void hook_SetScriptedDoorsComplete(StaticFunctionTag* base)
 	{
 		_MESSAGE("Starting hook_SetBountyComplete");
-		for (int i = 0; i < BountyManager::getInstance()->bountygrouplist.length; i++)
+		for (int i = 0; i < BountyManager::getInstance()->activebounties.length; i++)
 		{
-			const char* type = BountyManager::getInstance()->bountygrouplist.data[i].BountyType.Get();
-			if (strcmp(type, "ScriptedDoor") == 0)
+			for (int j = 0; j < BountyManager::getInstance()->activebounties.data[i].bountygrouplist.length; j++)
 			{
-				BountyManager::getInstance()->bountygrouplist.data[i].isComplete = true;
+				const char* type = BountyManager::getInstance()->activebounties.data[i].bountygrouplist.data[j].BountyType.Get();
+				if (strcmp(type, "ScriptedDoor") == 0)
+				{
+					BountyManager::getInstance()->activebounties.data[i].bountygrouplist.data[j].isComplete = true;
+				}
 			}
 		}
 	}
 
 	// Returns the references of all the spawned objects of a certain type
-	VMResultArray<TESObjectREFR*> hook_GetBountyObjectRefs(StaticFunctionTag* base, BSFixedString bountyType)
+	VMResultArray<TESObjectREFR*> hook_GetBountyObjectRefs(StaticFunctionTag* base, UInt32 BountyId,BSFixedString bountyType)
 	{
 		VMResultArray<TESObjectREFR*> allies = VMResultArray<TESObjectREFR*>();
-		for (int i = 0; i < BountyManager::getInstance()->bountygrouplist.length; i++)
+		for (int i = 0; i < BountyManager::getInstance()->activebounties.data[BountyId].bountygrouplist.length; i++)
 		{
-			if (strcmp(BountyManager::getInstance()->bountygrouplist.data[i].BountyType.Get(), bountyType.Get()) == 0)
+			if (strcmp(BountyManager::getInstance()->activebounties.data[BountyId].bountygrouplist.data[i].BountyType.Get(), bountyType.Get()) == 0)
 			{
-				if (BountyManager::getInstance()->bountygrouplist.data[i].objectRef != NULL)
+				if (BountyManager::getInstance()->activebounties.data[BountyId].bountygrouplist.data[i].objectRef != NULL)
 				{
-					allies.push_back(BountyManager::getInstance()->bountygrouplist.data[i].objectRef);
+					allies.push_back(BountyManager::getInstance()->activebounties.data[BountyId].bountygrouplist.data[i].objectRef);
 				}
 			}
 		}
 		return allies;
 	}
 
-	// Returns an int that is in the config
-	UInt32 hook_GetConfigValueInt(StaticFunctionTag* base, BSFixedString key)
-	{
-		return GetConfigValueInt(key.Get());
-	}
+
 
 	BSFixedString hook_GetRandomBountyName(StaticFunctionTag* base)
 	{
@@ -272,28 +294,31 @@ namespace Undaunted {
 		BountyManager::getInstance()->_registry = registry;
 		//General
 		registry->RegisterFunction(
-			new NativeFunction1 <StaticFunctionTag, float,bool>("StartBounty", "Undaunted_SystemScript", Undaunted::hook_StartBounty, registry));
+			new NativeFunction0 <StaticFunctionTag, UInt32>("CreateBounty", "Undaunted_SystemScript", Undaunted::hook_CreateBounty, registry));
 
 		registry->RegisterFunction(
-			new NativeFunction2 <StaticFunctionTag, float, bool, BSFixedString>("StartNamedBounty", "Undaunted_SystemScript", Undaunted::hook_StartNamedBounty, registry));
+			new NativeFunction2 <StaticFunctionTag, float, UInt32,bool>("StartBounty", "Undaunted_SystemScript", Undaunted::hook_StartBounty, registry));
 
 		registry->RegisterFunction(
-			new NativeFunction1 <StaticFunctionTag, float, BSFixedString>("RestartNamedBounty", "Undaunted_SystemScript", Undaunted::hook_restartNamedBounty, registry));
-
-
-		registry->RegisterFunction(
-			new NativeFunction4 <StaticFunctionTag, float, bool, BSFixedString, TESObjectREFR*, BSFixedString>("StartNamedBountyNearRef", "Undaunted_SystemScript", Undaunted::hook_StartNamedBountyNearRef, registry));
+			new NativeFunction3 <StaticFunctionTag, float, UInt32, bool, BSFixedString>("StartNamedBounty", "Undaunted_SystemScript", Undaunted::hook_StartNamedBounty, registry));
 
 		registry->RegisterFunction(
-			new NativeFunction0 <StaticFunctionTag, BSFixedString>("GetBountyName", "Undaunted_SystemScript", Undaunted::hook_getBountyName, registry));
+			new NativeFunction2 <StaticFunctionTag, float, UInt32, BSFixedString>("RestartNamedBounty", "Undaunted_SystemScript", Undaunted::hook_restartNamedBounty, registry));
 
 
 		registry->RegisterFunction(
-			new NativeFunction0 <StaticFunctionTag, bool>("isBountyComplete", "Undaunted_SystemScript", Undaunted::hook_isBountyComplete, registry));
+			new NativeFunction5 <StaticFunctionTag, float, UInt32,bool, BSFixedString, TESObjectREFR*, BSFixedString>("StartNamedBountyNearRef", "Undaunted_SystemScript", Undaunted::hook_StartNamedBountyNearRef, registry));
+
 		registry->RegisterFunction(
-			new NativeFunction1 <StaticFunctionTag, bool, TESObjectREFR*>("SetXMarker", "Undaunted_SystemScript", Undaunted::hook_SetXMarker, registry));
+			new NativeFunction1 <StaticFunctionTag, BSFixedString, UInt32>("GetBountyName", "Undaunted_SystemScript", Undaunted::hook_getBountyName, registry));
+
+
 		registry->RegisterFunction(
-			new NativeFunction1 <StaticFunctionTag, bool, BGSMessage*>("SetBountyMessageRef", "Undaunted_SystemScript", Undaunted::hook_SetBountyMessageRef, registry));
+			new NativeFunction1 <StaticFunctionTag, bool, UInt32>("isBountyComplete", "Undaunted_SystemScript", Undaunted::hook_isBountyComplete, registry));
+		registry->RegisterFunction(
+			new NativeFunction2 <StaticFunctionTag, bool, UInt32, TESObjectREFR*>("SetXMarker", "Undaunted_SystemScript", Undaunted::hook_SetXMarker, registry));
+		registry->RegisterFunction(
+			new NativeFunction2 <StaticFunctionTag, bool, UInt32,BGSMessage*>("SetBountyMessageRef", "Undaunted_SystemScript", Undaunted::hook_SetBountyMessageRef, registry));
 
 		registry->RegisterFunction(
 			new NativeFunction0 <StaticFunctionTag, UInt32>("isSystemReady", "Undaunted_SystemScript", Undaunted::hook_isSystemReady, registry));
@@ -311,7 +336,7 @@ namespace Undaunted {
 
 
 		registry->RegisterFunction(
-			new NativeFunction1 <StaticFunctionTag, void,float>("PlayerTraveled", "Undaunted_SystemScript", Undaunted::hook_PlayerTraveled, registry));
+			new NativeFunction2 <StaticFunctionTag, void, UInt32,float>("PlayerTraveled", "Undaunted_SystemScript", Undaunted::hook_PlayerTraveled, registry));
 
 
 		registry->RegisterFunction(
@@ -348,7 +373,7 @@ namespace Undaunted {
 			new NativeFunction1 <StaticFunctionTag, bool, TESObjectREFR*>("IsGroupMemberUsed", "Undaunted_SystemScript", Undaunted::hook_IsGroupMemberUsed, registry));
 
 		registry->RegisterFunction(
-			new NativeFunction1<StaticFunctionTag, VMResultArray<TESObjectREFR*>, BSFixedString>("GetBountyObjectRefs", "Undaunted_SystemScript", Undaunted::hook_GetBountyObjectRefs, registry));
+			new NativeFunction2<StaticFunctionTag, VMResultArray<TESObjectREFR*>, UInt32, BSFixedString>("GetBountyObjectRefs", "Undaunted_SystemScript", Undaunted::hook_GetBountyObjectRefs, registry));
 
 		registry->RegisterFunction(
 			new NativeFunction0<StaticFunctionTag, void>("SetScriptedDoorsComplete", "Undaunted_SystemScript", Undaunted::hook_SetScriptedDoorsComplete, registry));

@@ -15,31 +15,33 @@ Key Property keyform Auto
 int numberOfBountiesNeeded = 2
 int numberOfBountiesCurrently = 0
 string currentbounty = "loading"
+int bountyId = -1
 
 Function RestartEvent()
-	SetXMarker(markerref)
-	SetBountyMessageRef(QuestTextMessage)
+	bountyId = CreateBounty()
+	SetXMarker(bountyId,markerref)
+	SetBountyMessageRef(bountyId,QuestTextMessage)
 	if (QuestStage.GetValue() != 10)
 		return
 	endif
-	QuestTextMessage.SetName(currentbounty)
-	RestartNamedBounty(currentbounty)
+	;QuestTextMessage.SetName(currentbounty)
+	RestartNamedBounty(bountyId,currentbounty)
 	questProperty.SetCurrentStageID(10)
 	QuestStage.SetValue(10)
 	RegisterForSingleUpdate(GetConfigValueInt("BountyUpdateRate"))	
 endFunction
 
 int Function StartEvent(bool nearby)
+	bountyId = CreateBounty()
 	;Pass the refs the plugin will edit
-	SetXMarker(markerref)
-	SetBountyMessageRef(QuestTextMessage)
-	
-	StartBounty(true)
+	SetXMarker(bountyId,markerref)
+	SetBountyMessageRef(bountyId,QuestTextMessage)
+	StartBounty(bountyId,true)
 	questProperty.SetCurrentStageID(10)
 	QuestStage.SetValue(10)
 	RegisterForSingleUpdate(GetConfigValueInt("BountyUpdateRate"))
-	currentbounty = GetBountyName()
-	QuestTextMessage.SetName(currentbounty)
+	currentbounty = GetBountyName(bountyId)
+	;QuestTextMessage.SetName(currentbounty)
 endFunction
 
 int Function ClearBountyStatus()
@@ -61,21 +63,21 @@ event onActivate(objectReference akActivator)
 endEvent
 
 Function CleanUpBounty()
-	ObjectReference[] allies = GetBountyObjectRefs("Ally")		
+	ObjectReference[] allies = GetBountyObjectRefs(bountyId,"Ally")		
 	int allylength = allies.Length
 	while(allylength > 0)
 		allylength -= 1
 		allies[allylength].DisableNoWait(true)
 		allies[allylength].Delete()
 	endwhile
-	ObjectReference[] decorations = GetBountyObjectRefs("BountyDecoration")		
+	ObjectReference[] decorations = GetBountyObjectRefs(bountyId,"BountyDecoration")		
 	int decorationslength = decorations.Length
 	while(decorationslength > 0)
 	decorationslength -= 1
 		decorations[decorationslength].DisableNoWait(true)
 		decorations[decorationslength].Delete()
 	endwhile
-	ObjectReference[] ScriptedDoors = GetBountyObjectRefs("ScriptedDoor")		
+	ObjectReference[] ScriptedDoors = GetBountyObjectRefs(bountyId,"ScriptedDoor")		
 	int ScriptedDoorslength = ScriptedDoors.Length
 	while(ScriptedDoorslength > 0)
 		ScriptedDoorslength -= 1
@@ -95,7 +97,7 @@ Event OnUpdate()
 	endwhile
 	numberOfBountiesNeeded = GetConfigValueInt("NumberOfBountiesPerChain")
 	;Enemy check
-	ObjectReference[] enemies = GetBountyObjectRefs("Enemy")		
+	ObjectReference[] enemies = GetBountyObjectRefs(bountyId,"Enemy")		
 	int enemieslength = enemies.Length
 	while(enemieslength > 0)
 		enemieslength -= 1
@@ -103,7 +105,7 @@ Event OnUpdate()
 			SetGroupMemberComplete(enemies[enemieslength])
 		endif
 	endwhile
-	bool complete = isBountyComplete()
+	bool complete = isBountyComplete(bountyId)
 	;Debug.Notification("Bounty State: " + complete)
 	if (QuestStage.GetValue() == 10)
 		If complete

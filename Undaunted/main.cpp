@@ -57,7 +57,13 @@ extern "C"	{
 		{
 			//We're loading the game. Clear up any bounty data.
 			_MESSAGE("kMessage_PreLoadGame rechieved, clearing bounty data.");
-			Undaunted::BountyManager::getInstance()->ClearBountyData();
+			if (Undaunted::BountyManager::getInstance()->activebounties.length > 0)
+			{
+				for (int i = 0; i < Undaunted::BountyManager::getInstance()->activebounties.length; i++)
+				{
+					Undaunted::BountyManager::getInstance()->ClearBountyData(i);
+				}
+			}
 		}
 		//Register to recieve interface from Enchantment Framework
 		//if (msg->type == SKSEMessagingInterface::kMessage_PostLoad)

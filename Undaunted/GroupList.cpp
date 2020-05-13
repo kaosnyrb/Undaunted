@@ -68,7 +68,7 @@ namespace Undaunted
 			}
 			else
 			{
-				PlaceAtMe_Native(BountyManager::getInstance()->_registry, 1, BountyManager::getInstance()->xmarkerref, spawnForm, 1, false, false);
+//				PlaceAtMe_Native(BountyManager::getInstance()->_registry, 1, BountyManager::getInstance()->xmarkerref, spawnForm, 1, false, false);
 			}
 		}
 	}
