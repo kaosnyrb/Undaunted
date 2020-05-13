@@ -90,14 +90,14 @@ string currentbounty = "loading"
 int bountyId = -1
 
 Function RestartEvent()
+	if (QuestStage.GetValue() != 10)
+		return
+	endif
 	bountyId = CreateBounty()	
 	XMarkerRef = Game.GetPlayer().PlaceAtMe(XMakerStatic)
 	SetXMarker(bountyId,XMarkerRef)
 	Alias_BountyMarker.ForceRefTo(XMarkerRef)
 	SetBountyMessageRef(bountyId,QuestTextMessage)
-	if (QuestStage.GetValue() != 10)
-		return
-	endif
 	;QuestTextMessage.SetName(currentbounty)
 	RestartNamedBounty(bountyId,currentbounty)
 	SetCurrentStageID(10)

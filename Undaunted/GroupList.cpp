@@ -25,11 +25,14 @@ namespace Undaunted
 	{
 		for (int i = 0; i < this->length; i++)
 		{
-			if ( id == this->data[i].objectRef->formID)
+			if (this->data[i].objectRef != NULL)
 			{
-				this->data[i].isComplete = true;
-				_MESSAGE("SetGroupMemberComplete: %08X ", id);
-				return;
+				if (id == this->data[i].objectRef->formID)
+				{
+					this->data[i].isComplete = true;
+					_MESSAGE("SetGroupMemberComplete: %08X ", id);
+					return;
+				}
 			}
 		}
 	}

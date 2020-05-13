@@ -79,11 +79,16 @@ namespace Undaunted {
 	// Check if all the bounty objectives have been complete
 	bool hook_isBountyComplete(StaticFunctionTag* base, UInt32 BountyId) {
 		_MESSAGE("Starting Bounty Check");
+		if (BountyManager::getInstance()->activebounties.length < BountyId)
+		{
+			return false;
+		}
 		return BountyManager::getInstance()->BountyUpdate(BountyId);
 	}
 	// Tell the bounty system that this object should be marked as complete
 	void hook_SetGroupMemberComplete(StaticFunctionTag* base, TESObjectREFR* taget)
 	{
+		_MESSAGE("hook_SetGroupMemberComplete");
 		//This actually works as it's using the object reference. The object should only be in one bounty.
 		for (int i = 0; i < BountyManager::getInstance()->activebounties.length; i++)
 		{
@@ -93,17 +98,23 @@ namespace Undaunted {
 
 	BSFixedString hook_getBountyName(StaticFunctionTag* base, UInt32 BountyId) {
 		_MESSAGE("Starting Bounty Check");
-		return BountyManager::getInstance()->activebounties.data[BountyId].bountygrouplist.questText;
+		if (BountyManager::getInstance()->activebounties.length > BountyId)
+		{
+			return BountyManager::getInstance()->activebounties.data[BountyId].bountygrouplist.questText;
+		}
+		return "NO BOUNTIES";
 	}	
 
 	// Pass the reference to the XMarker that we use as the quest target and the target of the placeatme calls
 	bool hook_SetXMarker(StaticFunctionTag* base, UInt32 BountyId, TESObjectREFR* marker) {
+		_MESSAGE("hook_SetXMarker");
 		BountyManager::getInstance()->activebounties.data[BountyId].xmarkerref = marker;
 		return true;
 	}
 
 	// Pass the reference to the quest objective message. This allows us to edit it from the code.
 	bool hook_SetBountyMessageRef(StaticFunctionTag* base, UInt32 BountyId, BGSMessage* ref) {
+		_MESSAGE("hook_SetBountyMessageRef");
 		BountyManager::getInstance()->activebounties.data[BountyId].bountymessageref = ref;
 		return true;
 	}
@@ -182,6 +193,7 @@ namespace Undaunted {
 	// Return a reward form. We seed the random data with the offset + time so that we can spawn multiple things at once.
 	TESForm* hook_SpawnRandomReward(StaticFunctionTag* base, UInt32 rewardOffset, UInt32 playerlevel)
 	{
+		_MESSAGE("hook_SpawnRandomReward");
 		UInt32 rewardid = GetReward(rewardOffset, playerlevel);
 		_MESSAGE("RewardID: %08X", rewardid);
 		TESForm* spawnForm = LookupFormByID(rewardid);
@@ -204,18 +216,21 @@ namespace Undaunted {
 	
 	BSFixedString hook_GetPlayerWorldSpaceName(StaticFunctionTag* base)
 	{
+		_MESSAGE("hook_GetPlayerWorldSpaceName");
 		return (*g_thePlayer)->currentWorldSpace->editorId.Get();
 	}
 
 
 	bool hook_isPlayerInWorldSpace(StaticFunctionTag* base, BSFixedString worldspacename)
 	{
+		_MESSAGE("hook_isPlayerInWorldSpace");
 		return _stricmp((*g_thePlayer)->currentWorldSpace->editorId.Get(), worldspacename.Get()) == 0;
 	}
 
 	// Currently unused, checks if the object reference is in the current bounty.
 	bool hook_IsGroupMemberUsed(StaticFunctionTag* base, TESObjectREFR* target)
 	{
+		_MESSAGE("hook_IsGroupMemberUsed");
 		/*
 		//Is this reference in the current bounty? If it isn't we can get rid of it.
 		for (int i = 0; i < BountyManager::getInstance()->bountygrouplist.length; i++)
@@ -232,6 +247,7 @@ namespace Undaunted {
 	// This means we can take all bounties off the blacklist.
 	void hook_PlayerTraveled(StaticFunctionTag* base, float distance)
 	{
+		_MESSAGE("hook_PlayerTraveled");
 		//If a bounty is running and we fast travel then clean it up.
 		//If it hasn't started yet we don't need to worry.
 //		if (BountyManager::getInstance()->activebounties.data[BountyId].bountywave > 0)
@@ -264,6 +280,11 @@ namespace Undaunted {
 	// Returns the references of all the spawned objects of a certain type
 	VMResultArray<TESObjectREFR*> hook_GetBountyObjectRefs(StaticFunctionTag* base, UInt32 BountyId,BSFixedString bountyType)
 	{
+		_MESSAGE("hook_GetBountyObjectRefs");
+		if (BountyManager::getInstance()->activebounties.length < BountyId)
+		{
+			return VMResultArray<TESObjectREFR*>();
+		}
 		VMResultArray<TESObjectREFR*> allies = VMResultArray<TESObjectREFR*>();
 		for (int i = 0; i < BountyManager::getInstance()->activebounties.data[BountyId].bountygrouplist.length; i++)
 		{
@@ -282,6 +303,7 @@ namespace Undaunted {
 
 	BSFixedString hook_GetRandomBountyName(StaticFunctionTag* base)
 	{
+		_MESSAGE("hook_GetRandomBountyName");
 		GroupList list = GetRandomGroup();
 		BSFixedString result = BSFixedString();
 		result.data = list.questText;

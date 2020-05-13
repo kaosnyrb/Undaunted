@@ -47,9 +47,11 @@ namespace Undaunted
 		return GetRandomGroup();
 	}
 
+	
+	int count = 0;
 	GroupList GetRandomGroup()
 	{
-		srand(time(NULL));
+		srand(time(NULL) + count++);
 		int groupid = rand() % GroupLibary.length;
 		_MESSAGE("Random Group: %i",groupid);
 		_MESSAGE("Random Member Count: %i", GroupLibary.data[groupid].length);

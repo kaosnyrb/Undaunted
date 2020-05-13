@@ -141,6 +141,7 @@ namespace Undaunted {
 				else
 				{
 					_MESSAGE("ref != NULL");
+					_MESSAGE("WorldSpaceName: %s", WorldSpaceName.Get());
 					bounty->bountyworldcell = GetNamedWorldCell(WorldSpaceName.Get());
 					target = GetRandomObjectInCell(bounty->bountyworldcell.cell);
 					distance = ref->pos - target->pos;
