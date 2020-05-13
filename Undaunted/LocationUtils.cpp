@@ -235,6 +235,32 @@ namespace Undaunted {
 		MoveRefrToPosition(object, &nullHandle, cell, worldspace, &finalPos, &rot);
 	}
 
+	//Expensive...
+	WorldCell GetWorldCellFromRef(TESObjectREFR* object)
+	{
+		NiPoint3 distance;
+		TESObjectREFR* ref;
+		int numberofRefs;
+		for (int i = 0; i < worldCellList.length; i++)
+		{
+			numberofRefs = papyrusCell::GetNumRefs(worldCellList.data[i].cell, 0);
+			for (int j = 0; j < numberofRefs; j++)
+			{
+				ref = papyrusCell::GetNthRef(worldCellList.data[i].cell, j, 0);
+				if (ref != NULL)
+				{
+					distance = object->pos - ref->pos;
+					Vector3 distvector = Vector3(distance.x, distance.y, distance.z);
+					if (distvector.Magnitude() < 200)
+					{
+						return worldCellList.data[i];
+					}
+				}
+			}
+		}
+		return WorldCell();
+	}
+
 	//Interiors
 /*
 if (SpawnLocref == NULL)
