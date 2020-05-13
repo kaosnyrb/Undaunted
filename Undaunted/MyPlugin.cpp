@@ -15,6 +15,14 @@ namespace Undaunted {
 		return 2;
 	}
 
+
+	// Triggers a new bounty stage to start with a certain name.
+	float hook_restartNamedBounty(StaticFunctionTag* base,BSFixedString bountyName) {
+		BountyManager::getInstance()->restartBounty(bountyName.Get());
+		return 2;
+	}
+
+	
 	float hook_StartNamedBountyNearRef(StaticFunctionTag* base, bool nearby, BSFixedString bountyName, TESObjectREFR* ref, BSFixedString WorldSpaceName) {
 		BountyManager::getInstance()->StartBounty(nearby, bountyName.Get(),ref,WorldSpaceName);
 		return 2;
@@ -52,6 +60,11 @@ namespace Undaunted {
 		_MESSAGE("Starting Bounty Check");
 		return BountyManager::getInstance()->BountyUpdate();
 	}
+
+	BSFixedString hook_getBountyName(StaticFunctionTag* base) {
+		_MESSAGE("Starting Bounty Check");
+		return BountyManager::getInstance()->bountygrouplist.questText;
+	}	
 
 	// Pass the reference to the XMarker that we use as the quest target and the target of the placeatme calls
 	bool hook_SetXMarker(StaticFunctionTag* base, TESObjectREFR* marker) {
@@ -158,6 +171,13 @@ namespace Undaunted {
 		SetConfigValue(key.Get(), value.Get());
 	}
 
+	
+	BSFixedString hook_GetPlayerWorldSpaceName(StaticFunctionTag* base)
+	{
+		return (*g_thePlayer)->currentWorldSpace->editorId.Get();
+	}
+
+
 	bool hook_isPlayerInWorldSpace(StaticFunctionTag* base, BSFixedString worldspacename)
 	{
 		return _stricmp((*g_thePlayer)->currentWorldSpace->editorId.Get(), worldspacename.Get()) == 0;
@@ -245,10 +265,19 @@ namespace Undaunted {
 		//General
 		registry->RegisterFunction(
 			new NativeFunction1 <StaticFunctionTag, float,bool>("StartBounty", "Undaunted_SystemScript", Undaunted::hook_StartBounty, registry));
+
 		registry->RegisterFunction(
 			new NativeFunction2 <StaticFunctionTag, float, bool, BSFixedString>("StartNamedBounty", "Undaunted_SystemScript", Undaunted::hook_StartNamedBounty, registry));
+
+		registry->RegisterFunction(
+			new NativeFunction1 <StaticFunctionTag, float, BSFixedString>("RestartNamedBounty", "Undaunted_SystemScript", Undaunted::hook_restartNamedBounty, registry));
+
+
 		registry->RegisterFunction(
 			new NativeFunction4 <StaticFunctionTag, float, bool, BSFixedString, TESObjectREFR*, BSFixedString>("StartNamedBountyNearRef", "Undaunted_SystemScript", Undaunted::hook_StartNamedBountyNearRef, registry));
+
+		registry->RegisterFunction(
+			new NativeFunction0 <StaticFunctionTag, BSFixedString>("GetBountyName", "Undaunted_SystemScript", Undaunted::hook_getBountyName, registry));
 
 
 		registry->RegisterFunction(
@@ -270,6 +299,10 @@ namespace Undaunted {
 
 		registry->RegisterFunction(
 			new NativeFunction1 <StaticFunctionTag, void,float>("PlayerTraveled", "Undaunted_SystemScript", Undaunted::hook_PlayerTraveled, registry));
+
+
+		registry->RegisterFunction(
+			new NativeFunction0 <StaticFunctionTag, BSFixedString>("GetPlayerWorldSpaceName", "Undaunted_SystemScript", Undaunted::hook_GetPlayerWorldSpaceName, registry));
 
 		registry->RegisterFunction(
 			new NativeFunction1 <StaticFunctionTag, bool, BSFixedString>("isPlayerInWorldSpace", "Undaunted_SystemScript", Undaunted::hook_isPlayerInWorldSpace, registry));

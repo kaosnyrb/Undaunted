@@ -23,6 +23,7 @@ namespace Undaunted {
 
 		bool BountyUpdate();
 		float StartBounty(bool nearby, const char* BountyName, TESObjectREFR* ref, BSFixedString WorldSpaceName);
+		float restartBounty(const char* BountyName);
 		void ClearBountyData();
 		void ResetBountiesRan();
 	};

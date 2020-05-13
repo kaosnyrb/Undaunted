@@ -9,4 +9,5 @@ namespace Undaunted
 	WorldCell GetRandomWorldCell();
 	WorldCell GetNamedWorldCell(BSFixedString WorldspaceName);
 	void MoveRefToWorldCell(TESObjectREFR* object, TESObjectCELL* cell, TESWorldSpace* worldspace, NiPoint3 pos, NiPoint3 rot);
+	WorldCell GetWorldCellFromRef(TESObjectREFR* object);
 }

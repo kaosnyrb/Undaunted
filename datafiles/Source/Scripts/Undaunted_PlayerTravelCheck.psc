@@ -1,5 +1,8 @@
 Scriptname Undaunted_PlayerTravelCheck extends ReferenceAlias  
 import Undaunted_SystemScript
+import Undaunted_Activator
+
+objectReference Property undauntedActivator Auto
 
 Function LoadJsonData()
 	if (!isSystemReady())
@@ -59,6 +62,8 @@ endFunction
 Event OnPlayerLoadGame()
 	Debug.Notification("Undaunted OnPlayerLoadGame")
 	LoadJsonData()
+	;Tell the Undaunted Activator that we've loaded.
+	(undauntedActivator as Undaunted_Activator).RestartEvent()
 EndEvent
 
 

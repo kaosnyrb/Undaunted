@@ -14,74 +14,32 @@ Key Property keyform Auto
 
 int numberOfBountiesNeeded = 2
 int numberOfBountiesCurrently = 0
+string currentbounty = "loading"
 
-Event OnInit()
-EndEvent
-
-Function LoadJsonData()
-	if (!isSystemReady())
-		Debug.Notification("Undaunted Loading...")
-		;Load the Settings file
-		int SettingsList = JValue.readFromFile("Data/Undaunted/Settings.json")
-		int setcount = JArray.count(SettingsList)
-		int setiter = 0
-		while(setiter < setcount)
-			int settingdata = JArray.getObj(SettingsList, setiter)
-			string settingkey = JArray.getStr(settingdata,0)
-			string settingvalue = JArray.getStr(settingdata,1)
-			SetConfigValue(settingkey,settingvalue)
-			setiter+=1
-		endwhile
-		;Load the Groups
-		int GroupFiles = JValue.readFromDirectory("Data/Undaunted/Groups/")
-		int filecount = JMap.count(GroupFiles)
-		;Debug.Notification("File Count: " + filecount)
-		String[] FileNames = JMap.allKeysPArray(GroupFiles)
-		while(filecount > 0)
-			filecount -= 1
-			int GroupsList = JValue.readFromFile("Data/Undaunted/Groups/" + FileNames[filecount])
-			;Debug.Notification("Reading File: " + FileNames[filecount])
-			int i = JArray.count(GroupsList)
-			while(i > 0)
-				i -= 1
-				int data = JArray.getObj(GroupsList, i)
-				;Get the header row
-				int obj = JArray.getObj(data, 0)
-				string questtext = JArray.getStr(obj,0)		
-				string modreq = JArray.getStr(obj,1)
-				int minlevel = JArray.getInt(obj,2)
-				int maxlevel = JArray.getInt(obj,3)
-				int group = AddGroup(questtext,modreq,minlevel,maxlevel,Game.GetPlayer().GetLevel())
-				if group >= 0
-					int jcount = JArray.count(data)
-					int j = 1
-					while(j < jcount)
-						obj = JArray.getObj(data, j)
-						string sourcemod = JArray.getStr(obj,1)
-						int formid = JArray.getInt(obj,2)
-						string bountyType = JArray.getStr(obj,3)
-						string ModelFilepath = JArray.getStr(obj,4)
-						int modform = GetModForm(sourcemod, formid)
-						AddMembertoGroup(group,modform,bountyType,ModelFilepath)
-						j += 1
-					endWhile
-				endif
-			endWhile
-		endWhile
-		InitSystem()
-		Debug.Notification("Undaunted initialised")
-    EndIf
+Function RestartEvent()
+	SetXMarker(markerref)
+	SetBountyMessageRef(QuestTextMessage)
+	if (QuestStage.GetValue() != 10)
+		return
+	endif
+	QuestTextMessage.SetName(currentbounty)
+	RestartNamedBounty(currentbounty)
+	questProperty.SetCurrentStageID(10)
+	QuestStage.SetValue(10)
+	RegisterForSingleUpdate(GetConfigValueInt("BountyUpdateRate"))	
 endFunction
 
 int Function StartEvent(bool nearby)
 	;Pass the refs the plugin will edit
 	SetXMarker(markerref)
 	SetBountyMessageRef(QuestTextMessage)
-	LoadJsonData()
-	StartBounty(nearby)
+	
+	StartBounty(true)
 	questProperty.SetCurrentStageID(10)
 	QuestStage.SetValue(10)
 	RegisterForSingleUpdate(GetConfigValueInt("BountyUpdateRate"))
+	currentbounty = GetBountyName()
+	QuestTextMessage.SetName(currentbounty)
 endFunction
 
 int Function ClearBountyStatus()
@@ -90,6 +48,14 @@ endFunction
 
 event onActivate(objectReference akActivator)
 	;Game.GetPlayer().AddSpell(startBountySpell)
+	bool isready = false;
+	while (!isready)
+		if (isSystemReady())
+			isready = true
+		else
+			Utility.Wait(5.0)
+		endif		
+	endwhile	
 	ClearBountyStatus()
 	StartEvent(true)
 endEvent
@@ -119,56 +85,43 @@ Function CleanUpBounty()
 endFunction
 
 Event OnUpdate()
-	;if (QuestStage.GetValue() != 10)
-	;	UnregisterForUpdate()
-	;	return
-	;EndIf
-	;Debug.Notification("questProperty Stage: " + QuestStage.GetValue())
-	if (!isSystemReady())
-		;If we've got here something has gone wrong. Force a refresh.
-		StartEvent(true)
-		;UnregisterForUpdate()
-		return
-	EndIf
-	if (isSystemReady())
-		;Enemy check
-		ObjectReference[] enemies = GetBountyObjectRefs("Enemy")		
-		int enemieslength = enemies.Length
-		while(enemieslength > 0)
-			enemieslength -= 1
-			if (enemies[enemieslength] as Actor).IsDead()
-				SetGroupMemberComplete(enemies[enemieslength])
-			endif
-		endwhile
-		;Bossroom enemy check
-		;ObjectReference[] BossroomEnemy = GetBountyObjectRefs("BossroomEnemy")		
-		;int BossroomEnemylength = BossroomEnemy.Length
-		;while(BossroomEnemylength > 0)
-		;BossroomEnemylength -= 1
-		;	if (BossroomEnemy[BossroomEnemylength] as Actor).IsDead()
-		;		SetGroupMemberComplete(BossroomEnemy[BossroomEnemylength])
-	;		endif
-	;	endwhile
-		bool complete = isBountyComplete()
-		;Debug.Notification("Bounty State: " + complete)
-		if (QuestStage.GetValue() == 10)
-			If complete
-				numberOfBountiesCurrently += 1
-				TotalBounties.SetValueInt(TotalBounties.GetValueInt() + 1)
-				;UnregisterForUpdate()
-				CleanUpBounty()
-				if (numberOfBountiesCurrently < numberOfBountiesNeeded)
-					;questProperty.SetCurrentStageID(20)
-					StartEvent(true)
-				Else
-					Game.GetPlayer().AddItem(keyform, 1, false)
-					questProperty.SetCurrentStageID(20)
-					QuestStage.SetValue(20)
-					;UnregisterForUpdate()
-				EndIf
+	bool isready = false;
+	while (!isready)
+		if (isSystemReady())
+			isready = true
+		else
+			Utility.Wait(5.0)
+		endif		
+	endwhile
+	numberOfBountiesNeeded = GetConfigValueInt("NumberOfBountiesPerChain")
+	;Enemy check
+	ObjectReference[] enemies = GetBountyObjectRefs("Enemy")		
+	int enemieslength = enemies.Length
+	while(enemieslength > 0)
+		enemieslength -= 1
+		if (enemies[enemieslength] as Actor).IsDead()
+			SetGroupMemberComplete(enemies[enemieslength])
+		endif
+	endwhile
+	bool complete = isBountyComplete()
+	;Debug.Notification("Bounty State: " + complete)
+	if (QuestStage.GetValue() == 10)
+		If complete
+			numberOfBountiesCurrently += 1
+			TotalBounties.SetValueInt(TotalBounties.GetValueInt() + 1)
+			;UnregisterForUpdate()
+			CleanUpBounty()
+			if (numberOfBountiesCurrently < numberOfBountiesNeeded)
+				;questProperty.SetCurrentStageID(20)
+				StartEvent(true)
 			Else
-				RegisterForSingleUpdate(GetConfigValueInt("BountyUpdateRate"))
-			endif
-		EndIf
+				Game.GetPlayer().AddItem(keyform, 1, false)
+				questProperty.SetCurrentStageID(20)
+				QuestStage.SetValue(20)
+				;UnregisterForUpdate()
+			EndIf
+		Else
+			RegisterForSingleUpdate(GetConfigValueInt("BountyUpdateRate"))
+		endif
 	EndIf
 EndEvent

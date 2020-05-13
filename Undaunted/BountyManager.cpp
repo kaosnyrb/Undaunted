@@ -191,6 +191,18 @@ namespace Undaunted {
 		return 0;
 	}
 
+	float BountyManager::restartBounty(const char* BountyName)
+	{
+		srand(time(NULL));
+		ClearBountyData();
+		bool foundbounty = false;
+		bountygrouplist = GetGroup(BountyName);
+		bountyworldcell = GetWorldCellFromRef(xmarkerref);
+		_MESSAGE("GetWorldCellFromRef World: %s", bountyworldcell.world->editorId.Get());
+		//BountyUpdate();
+		return 0.0f;
+	}
+
 	void BountyManager::ClearBountyData() {
 		for (int i = 0; i < bountygrouplist.length; i++)
 		{
@@ -200,12 +212,12 @@ namespace Undaunted {
 		}
 		bountywave = 0;
 		bountygrouplist = GroupList();
-
+		/*
 		//If there's been a reload then the bounty currently breaks. Inform the user.
 		if (isReady)
 		{
 			bountymessageref->fullName.name = "The Bounty has moved on, start a new Bounty";
-		}
+		}*/
 		_MESSAGE("ClearBountyData Complete");
 	}
 
