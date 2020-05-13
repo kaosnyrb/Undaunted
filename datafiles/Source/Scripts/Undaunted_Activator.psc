@@ -115,13 +115,6 @@ Function CleanUpBounty()
 		ScriptedDoorslength -= 1
 		ScriptedDoors[ScriptedDoorslength].DisableNoWait(false)
 		ScriptedDoors[ScriptedDoorslength].Delete()
-	endwhile	
-	ObjectReference[] BossroomEnemy = GetBountyObjectRefs("BossroomEnemy")		
-	int BossroomEnemylength = BossroomEnemy.Length
-	while(BossroomEnemylength > 0)
-		BossroomEnemylength -= 1
-		BossroomEnemy[BossroomEnemylength].DisableNoWait(false)
-		BossroomEnemy[BossroomEnemylength].Delete()
 	endwhile
 endFunction
 

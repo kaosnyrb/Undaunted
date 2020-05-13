@@ -116,6 +116,7 @@ namespace Undaunted {
 			int BountyMinSpawnDistance = GetConfigValueInt("BountyMinSpawnDistance");
 			int BountyMaxSpawnDistance = GetConfigValueInt("BountyMaxSpawnDistance");
 			int BountySearchAttempts = GetConfigValueInt("BountySearchAttempts");
+			int BountyMaxHeight = GetConfigValueInt("BountyMaxHeight");
 			bool foundtarget = false;
 			while (!foundtarget)
 			{
@@ -137,7 +138,7 @@ namespace Undaunted {
 				Vector3 distvector = Vector3(distance.x, distance.y, distance.z);
 				//_MESSAGE("Distance to Bounty: %f", distvector.Magnitude());
 				_MESSAGE("distance %f", distvector.Magnitude());
-				if (distvector.Magnitude() > BountyMinSpawnDistance && distvector.Magnitude() < BountyMaxSpawnDistance)
+				if (distvector.Magnitude() > BountyMinSpawnDistance && distvector.Magnitude() < BountyMaxSpawnDistance && target->pos.z < BountyMaxHeight)
 				{
 					foundtarget = true;
 				}
