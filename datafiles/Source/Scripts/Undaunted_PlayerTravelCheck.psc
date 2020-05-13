@@ -3,6 +3,7 @@ import Undaunted_SystemScript
 import Undaunted_Activator
 
 objectReference Property undauntedActivator Auto
+Quest Property undauntedQuest Auto
 
 Function LoadJsonData()
 	if (ClaimStartupLock())
@@ -63,7 +64,7 @@ Event OnPlayerLoadGame()
 	Debug.Notification("Undaunted OnPlayerLoadGame")
 	LoadJsonData()
 	;Tell the Undaunted Activator that we've loaded.
-	(undauntedActivator as Undaunted_Activator).RestartEvent()
+	(undauntedQuest as Undaunted_TestQuest01).RestartEvent()
 EndEvent
 
 
