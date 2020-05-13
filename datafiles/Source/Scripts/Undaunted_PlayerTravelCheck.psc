@@ -2,7 +2,6 @@ Scriptname Undaunted_PlayerTravelCheck extends ReferenceAlias
 import Undaunted_SystemScript
 import Undaunted_Activator
 
-objectReference Property undauntedActivator Auto
 Quest Property undauntedQuest Auto
 
 Function LoadJsonData()

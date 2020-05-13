@@ -106,8 +106,6 @@ import Undaunted_SystemScript
 MiscObject Property Gold001  Auto  
 GlobalVariable Property GoldReward  Auto  
 
-objectReference Property markerref Auto
-{This will cause the bounties from this pillar to spawn in the named worldspace.It matches the values in the world section of the CK.}
 Message Property QuestTextMessage  Auto
 Message Property missiveMessage  Auto
 GlobalVariable Property QuestStage  auto
@@ -115,6 +113,8 @@ GlobalVariable Property TotalBounties  auto
 String Property worldspaceName Auto
 
 ObjectReference Property BountyStartRef Auto
+STATIC Property XMakerStatic  Auto  
+
 
 Key Property keyform Auto
 
@@ -123,6 +123,9 @@ int numberOfBountiesCurrently = 0
 
 string currentbounty = "loading"
 bool bountystarted = false
+int bountyId = -1
+
+ObjectReference XMarkerRef
 
 Event OnInit()
 	bool isready = false;
@@ -133,23 +136,43 @@ Event OnInit()
 			Utility.Wait(5.0)
 		endif		
 	endwhile
+	XMarkerRef = Game.GetPlayer().PlaceAtMe(XMakerStatic)
 	SetBounty()
 EndEvent
 
 Function postLoad()
+	bool isready = false;
+	while (!isready)
+		if (isSystemReady() == 2)
+			isready = true
+		else
+			Utility.Wait(5.0)
+		endif		
+	endwhile
 	if (currentbounty == "loading" || currentbounty == "The Bounty has moved on")
 		currentbounty = GetRandomBountyName()
 	endIf
+	bountyId = CreateBounty()	
 	missiveMessage.SetName("Undaunted Missive: " + currentbounty)
-	QuestTextMessage.SetName(currentbounty)
-	SetXMarker(markerref)
-	SetBountyMessageRef(QuestTextMessage)
-	QuestTextMessage.SetName(currentbounty)
-	RestartNamedBounty(currentbounty)
+	QuestTextMessage.SetName(currentbounty)	
+	SetXMarker(bountyId,XMarkerRef)
+	Alias_BountyMarker.ForceRefTo(XMarkerRef)
+	SetBountyMessageRef(bountyId,QuestTextMessage)
+	;QuestTextMessage.SetName(currentbounty)
+	currentbounty = GetBountyName(bountyId)
+	RestartNamedBounty(bountyId,currentbounty)
 	RegisterForSingleUpdate(GetConfigValueInt("BountyUpdateRate"))	
 endFunction 
 
-string Function SetBounty()
+Function SetBounty()
+	bool isready = false;
+	while (!isready)
+		if (isSystemReady() == 2)
+			isready = true
+		else
+			Utility.Wait(5.0)
+		endif		
+	endwhile
 	if (currentbounty == "loading" || currentbounty == "The Bounty has moved on")
 		currentbounty = GetRandomBountyName()
 	endIf
@@ -157,36 +180,46 @@ string Function SetBounty()
 	QuestTextMessage.SetName(currentbounty)
 endFunction
 
-int Function StartEvent(bool nearby)
+Function StartEvent(bool nearby)
+	bool isready = false;
+	while (!isready)
+		if (isSystemReady() == 2)
+			isready = true
+		else
+			Utility.Wait(5.0)
+		endif		
+	endwhile
 	;Pass the refs the plugin will edit
-	SetXMarker(markerref)
-	SetBountyMessageRef(QuestTextMessage)
+	bountyId = CreateBounty()
+	SetXMarker(bountyId,XMarkerRef)
+	Alias_BountyMarker.ForceRefTo(XMarkerRef)
+	SetBountyMessageRef(bountyId,QuestTextMessage)
 	numberOfBountiesNeeded = GetConfigValueInt("NumberOfBountiesPerChain")
-	StartNamedBountyNearRef(true,currentbounty,BountyStartRef,worldspaceName)
+	StartNamedBountyNearRef(bountyId,true,currentbounty,BountyStartRef,worldspaceName)
 	RegisterForSingleUpdate(GetConfigValueInt("BountyUpdateRate"))
 endFunction
 
 
-int Function ClearBountyStatus()
+Function ClearBountyStatus()
 	numberOfBountiesCurrently = 0;
 endFunction
 
 Function CleanUpBounty()
-	ObjectReference[] allies = GetBountyObjectRefs("Ally")		
+	ObjectReference[] allies = GetBountyObjectRefs(bountyId,"Ally")		
 	int allylength = allies.Length
 	while(allylength > 0)
 		allylength -= 1
 		allies[allylength].DisableNoWait(true)
 		allies[allylength].Delete()
 	endwhile
-	ObjectReference[] decorations = GetBountyObjectRefs("BountyDecoration")		
+	ObjectReference[] decorations = GetBountyObjectRefs(bountyId,"BountyDecoration")		
 	int decorationslength = decorations.Length
 	while(decorationslength > 0)
 	decorationslength -= 1
 		decorations[decorationslength].DisableNoWait(true)
 		decorations[decorationslength].Delete()
 	endwhile
-	ObjectReference[] ScriptedDoors = GetBountyObjectRefs("ScriptedDoor")		
+	ObjectReference[] ScriptedDoors = GetBountyObjectRefs(bountyId,"ScriptedDoor")		
 	int ScriptedDoorslength = ScriptedDoors.Length
 	while(ScriptedDoorslength > 0)
 		ScriptedDoorslength -= 1
@@ -196,29 +229,32 @@ Function CleanUpBounty()
 endFunction
 
 Event OnUpdate()
-	if (!isSystemReady())
-		StartEvent(true)
-		return
-	EndIf
-	if (isSystemReady())		
-		ObjectReference[] enemies = GetBountyObjectRefs("Enemy")		
-		int enemieslength = enemies.Length
-		while(enemieslength > 0)
-			enemieslength -= 1
-			if (enemies[enemieslength] as Actor).IsDead()
-				SetGroupMemberComplete(enemies[enemieslength])
-			endif
-		endwhile
-		bool complete = isBountyComplete()
-        If complete
-            numberOfBountiesCurrently += 1
-            TotalBounties.SetValueInt(TotalBounties.GetValueInt() + 1)
-            CleanUpBounty()
-            Game.GetPlayer().AddItem(keyform, 1, false)
-            SetCurrentStageID(100)
-            QuestStage.SetValue(100)
-        Else
-            RegisterForSingleUpdate(GetConfigValueInt("BountyUpdateRate"))
-        endif
-	EndIf
+	bool isready = false;
+	while (!isready)
+		if (isSystemReady() == 2)
+			isready = true
+		else
+			Utility.Wait(5.0)
+		endif		
+	endwhile
+	Debug.Notification("Missive OnUpdate")
+	ObjectReference[] enemies = GetBountyObjectRefs(bountyId,"Enemy")		
+	int enemieslength = enemies.Length
+	while(enemieslength > 0)
+		enemieslength -= 1
+		if (enemies[enemieslength] as Actor).IsDead()
+			SetGroupMemberComplete(enemies[enemieslength])
+		endif
+	endwhile
+	bool complete = isBountyComplete(bountyId)
+	If complete
+		numberOfBountiesCurrently += 1
+		TotalBounties.SetValueInt(TotalBounties.GetValueInt() + 1)
+		CleanUpBounty()
+		Game.GetPlayer().AddItem(keyform, 1, false)
+		SetCurrentStageID(100)
+		QuestStage.SetValue(100)
+	Else
+		RegisterForSingleUpdate(GetConfigValueInt("BountyUpdateRate"))
+	endif
 EndEvent

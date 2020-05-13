@@ -230,14 +230,14 @@ namespace Undaunted {
 
 	// The player has fast travelled. This causes cells which are marked to reset to reset.
 	// This means we can take all bounties off the blacklist.
-	void hook_PlayerTraveled(StaticFunctionTag* base, UInt32 BountyId, float distance)
+	void hook_PlayerTraveled(StaticFunctionTag* base, float distance)
 	{
 		//If a bounty is running and we fast travel then clean it up.
 		//If it hasn't started yet we don't need to worry.
-		if (BountyManager::getInstance()->activebounties.data[BountyId].bountywave > 0)
-		{
-			BountyManager::getInstance()->ClearBountyData(BountyId);
-		}
+//		if (BountyManager::getInstance()->activebounties.data[BountyId].bountywave > 0)
+	//	{
+			//BountyManager::getInstance()->ClearBountyData(BountyId);
+		//}
 		if (distance > 1.5f)
 		{
 			BountyManager::getInstance()->ResetBountiesRan();
@@ -336,7 +336,7 @@ namespace Undaunted {
 
 
 		registry->RegisterFunction(
-			new NativeFunction2 <StaticFunctionTag, void, UInt32,float>("PlayerTraveled", "Undaunted_SystemScript", Undaunted::hook_PlayerTraveled, registry));
+			new NativeFunction1 <StaticFunctionTag, void,float>("PlayerTraveled", "Undaunted_SystemScript", Undaunted::hook_PlayerTraveled, registry));
 
 
 		registry->RegisterFunction(

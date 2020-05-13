@@ -15,6 +15,11 @@ namespace Undaunted {
 
 	bool BountyManager::BountyUpdate(int BountyID)
 	{
+		//The bounty list has changed. Probably from a reload.
+		if (BountyID > activebounties.length)
+		{
+			return false;
+		}
 		Bounty* bounty = &activebounties.data[BountyID];
 		_MESSAGE("BountyUpdate BountyID: %08X", BountyID);
 		_MESSAGE("BountyID bountywave: %i", bounty->bountywave);
