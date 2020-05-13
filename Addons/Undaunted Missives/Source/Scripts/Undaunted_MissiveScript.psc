@@ -1,2 +1,0 @@
-Scriptname Undaunted_MissiveScript extends ObjectReference  
-import Undaunted_SystemScript

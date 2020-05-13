@@ -1,2 +1,0 @@
-Scriptname Undaunted_MissivesActivator extends ObjectReference  
-import Undaunted_SystemScript

@@ -108,7 +108,6 @@ GlobalVariable Property GoldReward  Auto
 
 Message Property QuestTextMessage  Auto
 Message Property missiveMessage  Auto
-GlobalVariable Property QuestStage  auto
 GlobalVariable Property TotalBounties  auto
 String Property worldspaceName Auto
 
@@ -253,7 +252,6 @@ Event OnUpdate()
 		CleanUpBounty()
 		Game.GetPlayer().AddItem(keyform, 1, false)
 		SetCurrentStageID(100)
-		QuestStage.SetValue(100)
 	Else
 		RegisterForSingleUpdate(GetConfigValueInt("BountyUpdateRate"))
 	endif

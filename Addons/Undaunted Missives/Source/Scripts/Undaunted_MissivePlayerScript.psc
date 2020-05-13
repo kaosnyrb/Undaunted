@@ -14,7 +14,6 @@ Event OnPlayerLoadGame()
 			Utility.Wait(5.0)
 		endif		
 	endwhile
-	Debug.Notification("Missive OnPlayerLoadGame")
 	(questProperty as Undaunted_MissivesQuest).postLoad()
 EndEvent
 
