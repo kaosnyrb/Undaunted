@@ -4,7 +4,9 @@ Function SetConfigValue(string key, string value) global native
 
 int Function GetConfigValueInt(string key) global native
 
-bool Function isSystemReady() global native
+int Function isSystemReady() global native
+
+bool Function ClaimStartupLock() global native
 
 bool Function InitSystem() global native
 

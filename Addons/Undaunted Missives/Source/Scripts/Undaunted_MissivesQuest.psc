@@ -60,12 +60,6 @@ EndFunction
 ;BEGIN FRAGMENT Fragment_2
 Function Fragment_2()
 ;BEGIN CODE
-SetObjectiveCompleted(20)
-if(Alias_Steward.GetRef())
-SetObjectiveDisplayed(40)
-else
-SetObjectiveDisplayed(41)
-endIf
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -133,7 +127,7 @@ bool bountystarted = false
 Event OnInit()
 	bool isready = false;
 	while (!isready)
-		if (isSystemReady())
+		if (isSystemReady() == 2)
 			isready = true
 		else
 			Utility.Wait(5.0)
@@ -148,7 +142,11 @@ Function postLoad()
 	endIf
 	missiveMessage.SetName("Undaunted Missive: " + currentbounty)
 	QuestTextMessage.SetName(currentbounty)
-	StartEvent(true)
+	SetXMarker(markerref)
+	SetBountyMessageRef(QuestTextMessage)
+	QuestTextMessage.SetName(currentbounty)
+	RestartNamedBounty(currentbounty)
+	RegisterForSingleUpdate(GetConfigValueInt("BountyUpdateRate"))	
 endFunction 
 
 string Function SetBounty()

@@ -8,7 +8,7 @@ Event OnPlayerLoadGame()
 ;	LoadJsonData()
 	bool isready = false;
 	while (!isready)
-		if (isSystemReady())
+		if (isSystemReady() == 2)
 			isready = true
 		else
 			Utility.Wait(5.0)

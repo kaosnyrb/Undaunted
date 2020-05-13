@@ -32,27 +32,35 @@ namespace Undaunted {
 	// This takes a while so we only do this once at the start
 	bool hook_InitSystem(StaticFunctionTag* base)
 	{
-		if (!BountyManager::getInstance()->isReady)
+		DataHandler* dataHandler = DataHandler::GetSingleton();
+		_MESSAGE("Mod Count: %08X", dataHandler->modList.loadedMods.count);
+		for (int i = 0; i < dataHandler->modList.loadedMods.count; i++)
 		{
-			DataHandler* dataHandler = DataHandler::GetSingleton();
-			_MESSAGE("Mod Count: %08X", dataHandler->modList.loadedMods.count);
-			for (int i = 0; i < dataHandler->modList.loadedMods.count; i++)
-			{
-				ModInfo* mod;
-				dataHandler->modList.loadedMods.GetNthItem(i, mod);
-				_MESSAGE("Listing Mods: %s ", mod->name);
-			}
-
-			BuildWorldList();
-			BountyManager::getInstance()->isReady = true;
+			ModInfo* mod;
+			dataHandler->modList.loadedMods.GetNthItem(i, mod);
+			_MESSAGE("Listing Mods: %s ", mod->name);
 		}
-		return BountyManager::getInstance()->isReady;
+		BuildWorldList();
+		BountyManager::getInstance()->isReady = 2;
+		_MESSAGE("ReadyState: %i ", BountyManager::getInstance()->isReady);
+		return true;
 	}
 
 	// A check to see if the Init call has finished
-	bool hook_isSystemReady(StaticFunctionTag* base)
+	UInt32 hook_isSystemReady(StaticFunctionTag* base)
 	{
 		return BountyManager::getInstance()->isReady;
+	}
+
+	bool hook_ClaimStartupLock(StaticFunctionTag* base)
+	{
+		_MESSAGE("ReadyState: %i ", BountyManager::getInstance()->isReady);
+		if (BountyManager::getInstance()->isReady == 0)
+		{
+			BountyManager::getInstance()->isReady = 1;
+			return true;
+		}
+		return false;
 	}
 
 	// Check if all the bounty objectives have been complete
@@ -288,7 +296,12 @@ namespace Undaunted {
 			new NativeFunction1 <StaticFunctionTag, bool, BGSMessage*>("SetBountyMessageRef", "Undaunted_SystemScript", Undaunted::hook_SetBountyMessageRef, registry));
 
 		registry->RegisterFunction(
-			new NativeFunction0 <StaticFunctionTag, bool>("isSystemReady", "Undaunted_SystemScript", Undaunted::hook_isSystemReady, registry));
+			new NativeFunction0 <StaticFunctionTag, UInt32>("isSystemReady", "Undaunted_SystemScript", Undaunted::hook_isSystemReady, registry));
+
+		registry->RegisterFunction(
+			new NativeFunction0 <StaticFunctionTag, bool>("ClaimStartupLock", "Undaunted_SystemScript", Undaunted::hook_ClaimStartupLock, registry));
+
+	
 
 		registry->RegisterFunction(
 			new NativeFunction0 <StaticFunctionTag, bool>("InitSystem", "Undaunted_SystemScript", Undaunted::hook_InitSystem, registry));

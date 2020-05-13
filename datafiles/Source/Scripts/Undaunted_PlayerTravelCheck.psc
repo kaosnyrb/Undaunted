@@ -5,7 +5,7 @@ import Undaunted_Activator
 objectReference Property undauntedActivator Auto
 
 Function LoadJsonData()
-	if (!isSystemReady())
+	if (ClaimStartupLock())
 		Debug.Notification("Undaunted Loading...")
 		;Load the Settings file
 		int SettingsList = JValue.readFromFile("Data/Undaunted/Settings.json")

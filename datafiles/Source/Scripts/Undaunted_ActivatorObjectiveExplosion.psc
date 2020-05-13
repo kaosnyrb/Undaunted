@@ -6,7 +6,7 @@ Explosion Property explosionProp  Auto
 event onActivate(objectReference akActivator)
     bool isready = false;
 	while (!isready)
-		if (isSystemReady())
+		if (isSystemReady() == 2)
 			isready = true
 		else
 			Utility.Wait(5.0)

@@ -14,7 +14,7 @@ namespace Undaunted {
 		VMClassRegistry* _registry;
 		TESObjectREFR* xmarkerref = NULL;
 		BGSMessage* bountymessageref = NULL;
-		bool isReady = false;
+		int isReady = 0;
 		GroupList bountygrouplist;
 		WorldCell bountyworldcell;
 		int bountywave = 0;
