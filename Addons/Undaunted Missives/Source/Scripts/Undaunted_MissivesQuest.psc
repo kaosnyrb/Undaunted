@@ -186,7 +186,14 @@ Function StartEvent(bool nearby)
 	Alias_BountyMarker.ForceRefTo(XMarkerRef)
 	SetBountyMessageRef(bountyId,QuestTextMessage)
 	numberOfBountiesNeeded = GetConfigValueInt("NumberOfBountiesPerChain")
+	int mindis = GetConfigValueInt("BountyMinSpawnDistance")
+	int maxdis = GetConfigValueInt("BountyMaxSpawnDistance")
+	SetConfigValue("BountyMinSpawnDistance",20000)
+	SetConfigValue("BountyMaxSpawnDistance",50000)
 	StartNamedBountyNearRef(bountyId,true,currentbounty,BountyStartRef,worldspaceName)
+	SetConfigValue("BountyMinSpawnDistance",mindis)
+	SetConfigValue("BountyMaxSpawnDistance",maxdis)
+
 	RegisterForSingleUpdate(GetConfigValueInt("BountyUpdateRate"))
 endFunction
 
@@ -228,6 +235,9 @@ Event OnUpdate()
 			Utility.Wait(5.0)
 		endif		
 	endwhile
+	if(QuestTextMessage.GetName() == "loading")
+		postLoad()
+	endIf
 	ObjectReference[] enemies = GetBountyObjectRefs(bountyId,"Enemy")		
 	int enemieslength = enemies.Length
 	while(enemieslength > 0)

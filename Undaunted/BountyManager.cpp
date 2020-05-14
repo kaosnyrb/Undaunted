@@ -156,9 +156,8 @@ namespace Undaunted {
 				loopcounts++;
 				if (loopcounts > BountySearchAttempts)
 				{
-					//Can't find anything. Give up and use this cell.
-					bounty->bountyworldcell.cell = (*g_thePlayer)->parentCell;
-					bounty->bountyworldcell.world = (*g_thePlayer)->currentWorldSpace;
+					//Can't find anything. Give up and use any cell
+					bounty->bountyworldcell = GetNamedWorldCell(WorldSpaceName.Get());
 					target = GetRandomObjectInCell(bounty->bountyworldcell.cell);
 					foundtarget = true;
 				}

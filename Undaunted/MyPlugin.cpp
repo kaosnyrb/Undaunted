@@ -78,7 +78,7 @@ namespace Undaunted {
 
 	// Check if all the bounty objectives have been complete
 	bool hook_isBountyComplete(StaticFunctionTag* base, UInt32 BountyId) {
-		_MESSAGE("Starting Bounty Check");
+		_MESSAGE("Starting Bounty Check %08X ", BountyId);
 		if (BountyManager::getInstance()->activebounties.length < BountyId)
 		{
 			return false;
@@ -107,14 +107,14 @@ namespace Undaunted {
 
 	// Pass the reference to the XMarker that we use as the quest target and the target of the placeatme calls
 	bool hook_SetXMarker(StaticFunctionTag* base, UInt32 BountyId, TESObjectREFR* marker) {
-		_MESSAGE("hook_SetXMarker");
+		_MESSAGE("hook_SetXMarker %08X ", BountyId);
 		BountyManager::getInstance()->activebounties.data[BountyId].xmarkerref = marker;
 		return true;
 	}
 
 	// Pass the reference to the quest objective message. This allows us to edit it from the code.
 	bool hook_SetBountyMessageRef(StaticFunctionTag* base, UInt32 BountyId, BGSMessage* ref) {
-		_MESSAGE("hook_SetBountyMessageRef");
+		_MESSAGE("hook_SetBountyMessageRef %08X ", BountyId);
 		BountyManager::getInstance()->activebounties.data[BountyId].bountymessageref = ref;
 		return true;
 	}
@@ -280,7 +280,7 @@ namespace Undaunted {
 	// Returns the references of all the spawned objects of a certain type
 	VMResultArray<TESObjectREFR*> hook_GetBountyObjectRefs(StaticFunctionTag* base, UInt32 BountyId,BSFixedString bountyType)
 	{
-		_MESSAGE("hook_GetBountyObjectRefs");
+		_MESSAGE("hook_GetBountyObjectRefs %08X ", BountyId);
 		if (BountyManager::getInstance()->activebounties.length < BountyId)
 		{
 			return VMResultArray<TESObjectREFR*>();
