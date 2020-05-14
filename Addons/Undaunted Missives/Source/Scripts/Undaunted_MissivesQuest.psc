@@ -2,14 +2,9 @@
 ;NEXT FRAGMENT INDEX 11
 Scriptname Undaunted_MissivesQuest Extends Quest Hidden
 
-;BEGIN ALIAS PROPERTY BountyMarker
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_BountyMarker Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY target
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_target Auto
+;BEGIN ALIAS PROPERTY Dungeon
+;ALIAS PROPERTY TYPE LocationAlias
+LocationAlias Property Alias_Dungeon Auto
 ;END ALIAS PROPERTY
 
 ;BEGIN ALIAS PROPERTY Steward
@@ -17,19 +12,9 @@ ReferenceAlias Property Alias_target Auto
 ReferenceAlias Property Alias_Steward Auto
 ;END ALIAS PROPERTY
 
-;BEGIN ALIAS PROPERTY Hold
-;ALIAS PROPERTY TYPE LocationAlias
-LocationAlias Property Alias_Hold Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY Player
+;BEGIN ALIAS PROPERTY target
 ;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Player Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY Dungeon
-;ALIAS PROPERTY TYPE LocationAlias
-LocationAlias Property Alias_Dungeon Auto
+ReferenceAlias Property Alias_target Auto
 ;END ALIAS PROPERTY
 
 ;BEGIN ALIAS PROPERTY Jarl
@@ -37,9 +22,9 @@ LocationAlias Property Alias_Dungeon Auto
 ReferenceAlias Property Alias_Jarl Auto
 ;END ALIAS PROPERTY
 
-;BEGIN ALIAS PROPERTY MissiveBoard
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_MissiveBoard Auto
+;BEGIN ALIAS PROPERTY Hold
+;ALIAS PROPERTY TYPE LocationAlias
+LocationAlias Property Alias_Hold Auto
 ;END ALIAS PROPERTY
 
 ;BEGIN ALIAS PROPERTY Missive
@@ -47,25 +32,20 @@ ReferenceAlias Property Alias_MissiveBoard Auto
 ReferenceAlias Property Alias_Missive Auto
 ;END ALIAS PROPERTY
 
-;BEGIN FRAGMENT Fragment_4
-Function Fragment_4()
-;BEGIN CODE
-CompleteAllObjectives()
-Game.GetPlayer().AddItem(Gold001, GoldReward.GetValue() as int)
-SetStage(110)
-;END CODE
-EndFunction
-;END FRAGMENT
+;BEGIN ALIAS PROPERTY Player
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_Player Auto
+;END ALIAS PROPERTY
 
-;BEGIN FRAGMENT Fragment_0
-Function Fragment_0()
-;BEGIN CODE
-ClearBountyStatus()
-StartEvent(true)
-SetObjectiveDisplayed(20)
-;END CODE
-EndFunction
-;END FRAGMENT
+;BEGIN ALIAS PROPERTY MissiveBoard
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_MissiveBoard Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY BountyMarker
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_BountyMarker Auto
+;END ALIAS PROPERTY
 
 ;BEGIN FRAGMENT Fragment_7
 Function Fragment_7()
@@ -89,6 +69,26 @@ endIf
 Utility.Wait(5.0)
 SetBounty()
 Stop()
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_0
+Function Fragment_0()
+;BEGIN CODE
+ClearBountyStatus()
+StartEvent(true)
+SetObjectiveDisplayed(20)
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_4
+Function Fragment_4()
+;BEGIN CODE
+CompleteAllObjectives()
+Game.GetPlayer().AddItem(Gold001, GoldReward.GetValue() as int)
+SetStage(110)
 ;END CODE
 EndFunction
 ;END FRAGMENT
