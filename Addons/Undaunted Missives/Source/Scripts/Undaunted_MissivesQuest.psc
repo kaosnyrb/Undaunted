@@ -189,7 +189,7 @@ Function StartEvent(bool nearby)
 	int mindis = GetConfigValueInt("BountyMinSpawnDistance")
 	int maxdis = GetConfigValueInt("BountyMaxSpawnDistance")
 	SetConfigValue("BountyMinSpawnDistance",20000)
-	SetConfigValue("BountyMaxSpawnDistance",50000)
+	SetConfigValue("BountyMaxSpawnDistance",100000)
 	StartNamedBountyNearRef(bountyId,true,currentbounty,BountyStartRef,worldspaceName)
 	SetConfigValue("BountyMinSpawnDistance",mindis)
 	SetConfigValue("BountyMaxSpawnDistance",maxdis)
@@ -237,6 +237,9 @@ Event OnUpdate()
 	endwhile
 	if(QuestTextMessage.GetName() == "loading")
 		postLoad()
+	endIf
+	if(GetCurrentStageID() != 20)
+		return
 	endIf
 	ObjectReference[] enemies = GetBountyObjectRefs(bountyId,"Enemy")		
 	int enemieslength = enemies.Length

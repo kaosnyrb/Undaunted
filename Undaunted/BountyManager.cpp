@@ -127,6 +127,7 @@ namespace Undaunted {
 			int BountyMaxSpawnDistance = GetConfigValueInt("BountyMaxSpawnDistance");
 			int BountySearchAttempts = GetConfigValueInt("BountySearchAttempts");
 			int BountyMaxHeight = GetConfigValueInt("BountyMaxHeight");
+			int BountyMinHeight = GetConfigValueInt("BountyMinHeight");
 			bool foundtarget = false;
 			while (!foundtarget)
 			{
@@ -148,15 +149,15 @@ namespace Undaunted {
 				}
 				Vector3 distvector = Vector3(distance.x, distance.y, distance.z);
 				//_MESSAGE("Distance to Bounty: %f", distvector.Magnitude());
-				_MESSAGE("distance %f", distvector.Magnitude());
-				if (distvector.Magnitude() > BountyMinSpawnDistance && distvector.Magnitude() < BountyMaxSpawnDistance && target->pos.z < BountyMaxHeight)
+				_MESSAGE("Distance %f, Height: %f", distvector.Magnitude(), target->pos.z);
+				if (distvector.Magnitude() > BountyMinSpawnDistance && distvector.Magnitude() < BountyMaxSpawnDistance && target->pos.z < BountyMaxHeight && target->pos.z > BountyMinHeight)
 				{
 					foundtarget = true;
 				}
 				loopcounts++;
 				if (loopcounts > BountySearchAttempts)
 				{
-					//Can't find anything. Give up and use any cell
+					_MESSAGE("Can't find anything. Give up and use any cell");
 					bounty->bountyworldcell = GetNamedWorldCell(WorldSpaceName.Get());
 					target = GetRandomObjectInCell(bounty->bountyworldcell.cell);
 					foundtarget = true;
