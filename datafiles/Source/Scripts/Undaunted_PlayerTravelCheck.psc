@@ -60,7 +60,7 @@ Function LoadJsonData()
 endFunction
 
 Event OnPlayerLoadGame()
-	Debug.Notification("Undaunted OnPlayerLoadGame")
+	;Debug.Notification("Undaunted OnPlayerLoadGame")
 	LoadJsonData()
 	;Tell the Undaunted Activator that we've loaded.
 	(undauntedQuest as Undaunted_TestQuest01).RestartEvent()
