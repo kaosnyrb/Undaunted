@@ -60,6 +60,16 @@ namespace Undaunted
 
 	void SetConfigValue(const char* key, const char* value)
 	{
+		//check if it exists
+		for (int i = 0; i < SettingsList.length; i++)
+		{
+			if (strcmp(SettingsList.data[i].key, key) == 0)
+			{
+				SettingsList.data[i].value = value;
+				return;
+			}
+		}
+		//doesn't exist
 		UnString setting = UnString();
 		setting.key = key;
 		setting.value = value;

@@ -26,6 +26,7 @@ namespace Undaunted
 		}
 	}
 
+	UInt32 LastReward = 0;
 	UInt32 GetReward(UInt32 rewardOffset, UInt32 playerlevel)
 	{
 		srand(time(NULL) + rewardOffset);
@@ -66,6 +67,8 @@ namespace Undaunted
 				if (armour->templateArmor) continue;
 				if (armour->value.value <= 10) continue;
 				if (!IsArmourLevelOk(armour, playerlevel))continue;
+				if (armour->formID == LastReward) continue;
+				LastReward = armour->formID;
 				return armour->formID;
 			case 1:
 				dataHandler->weapons.GetNthItem(rand() % dataHandler->weapons.count, weapon);
@@ -74,21 +77,29 @@ namespace Undaunted
 				if (weapon->value.value == 0) continue;
 				if (weapon->templateForm) continue;
 				if (!IsWeaponLevelOk(weapon, playerlevel)) continue;
+				if (weapon->formID == LastReward) continue;
+				LastReward = weapon->formID;
 				return weapon->formID;
 			case 2:
 				dataHandler->potions.GetNthItem(rand() % dataHandler->potions.count, potion);
+				if (potion->formID == LastReward) continue;
+				LastReward = potion->formID;
 				return potion->formID;
 			case 3:
 				dataHandler->scrolls.GetNthItem(rand() % dataHandler->scrolls.count, scroll);
 				if (!scroll->IsPlayable()) continue;
 				if (!scroll->Has3D()) continue;
 				if (scroll->value.value == 0) continue;
+				if (scroll->formID == LastReward) continue;
+				LastReward = scroll->formID;
 				return scroll->formID;
 			case 4:
 				dataHandler->ingredients.GetNthItem(rand() % dataHandler->ingredients.count, ingre);
 				if (!ingre->IsPlayable()) continue;
 				if (!ingre->Has3D()) continue;
 				if (ingre->value.value == 0) continue;
+				if (ingre->formID == LastReward) continue;
+				LastReward = ingre->formID;
 				return ingre->formID;
 			case 5:
 				dataHandler->books.GetNthItem(rand() % dataHandler->books.count, book);
@@ -97,6 +108,8 @@ namespace Undaunted
 				if (book->value.value == 0) continue;
 				if (book->value.value <= 50) continue;
 				if (book->value.value >= 2000) continue;
+				if (book->formID == LastReward) continue;
+				LastReward = book->formID;
 				return book->formID;
 			default:
 				dataHandler->weapons.GetNthItem(rand() % dataHandler->weapons.count, weapon);
@@ -105,6 +118,8 @@ namespace Undaunted
 				if (weapon->value.value == 0) continue;
 				if (weapon->templateForm) continue;
 				if (!IsWeaponLevelOk(weapon, playerlevel)) continue;
+				if (weapon->formID == LastReward) continue;
+				LastReward = weapon->formID;
 				return weapon->formID;
 			}
 		}
