@@ -64,12 +64,14 @@ namespace Undaunted
 					//Actors jump to the navmesh. Objects don't. This tries to used the jump to find the ground.
 					TESObjectREFR* decoration = PlaceAtMe_Native(registry, 1, spawned, spawnForm, 1, true, false);
 					Types.data[i].objectRef = decoration;
+					Types.data[i].isComplete = false;
 					Types.data[i].PreBounty();
 				}
 				else
 				{
 					TESObjectREFR* decoration = PlaceAtMe_Native(registry, 1, Target, spawnForm, 1, true, false);
 					Types.data[i].objectRef = decoration;
+					Types.data[i].isComplete = false;
 					Types.data[i].PreBounty();
 				}
 			}

@@ -162,7 +162,6 @@ Event OnUpdate()
 		enemieslength -= 1
 		if (enemies[enemieslength] as Actor).IsDead()
 			SetGroupMemberComplete(enemies[enemieslength])
-			enemies[enemieslength].Delete()
 		endif
 	endwhile
 	bool complete = isBountyComplete(bountyId)

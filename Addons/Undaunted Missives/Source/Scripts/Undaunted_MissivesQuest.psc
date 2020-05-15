@@ -238,13 +238,12 @@ Event OnUpdate()
 	if(GetCurrentStageID() != 20)
 		return
 	endIf
-	ObjectReference[] enemies = GetBountyObjectRefs(bountyId,"Enemy")		
+	ObjectReference[] enemies = GetBountyObjectRefs(bountyId,"Enemy")
 	int enemieslength = enemies.Length
 	while(enemieslength > 0)
 		enemieslength -= 1
 		if (enemies[enemieslength] as Actor).IsDead()
 			SetGroupMemberComplete(enemies[enemieslength])
-			enemies[enemieslength].Delete()
 		endif	
 	endwhile
 	bool complete = isBountyComplete(bountyId)

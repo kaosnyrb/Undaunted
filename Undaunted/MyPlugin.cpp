@@ -247,7 +247,7 @@ namespace Undaunted {
 	// This means we can take all bounties off the blacklist.
 	void hook_PlayerTraveled(StaticFunctionTag* base, float distance)
 	{
-		_MESSAGE("hook_PlayerTraveled");
+		_MESSAGE("hook_PlayerTraveled %f hours", distance);
 		//If a bounty is running and we fast travel then clean it up.
 		//If it hasn't started yet we don't need to worry.
 //		if (BountyManager::getInstance()->activebounties.data[BountyId].bountywave > 0)
