@@ -288,7 +288,8 @@ namespace Undaunted {
 		VMResultArray<TESObjectREFR*> allies = VMResultArray<TESObjectREFR*>();
 		for (int i = 0; i < BountyManager::getInstance()->activebounties.data[BountyId].bountygrouplist.length; i++)
 		{
-			if (strcmp(BountyManager::getInstance()->activebounties.data[BountyId].bountygrouplist.data[i].BountyType.Get(), bountyType.Get()) == 0)
+			if (strcmp(BountyManager::getInstance()->activebounties.data[BountyId].bountygrouplist.data[i].BountyType.Get(), bountyType.Get()) == 0 ||
+				strcmp(bountyType.Get(),"ALL") == 0)
 			{
 				if (BountyManager::getInstance()->activebounties.data[BountyId].bountygrouplist.data[i].objectRef != NULL)
 				{
@@ -296,6 +297,7 @@ namespace Undaunted {
 				}
 			}
 		}
+		_MESSAGE("hook_GetBountyObjectRefs %08X Success", BountyId);
 		return allies;
 	}
 

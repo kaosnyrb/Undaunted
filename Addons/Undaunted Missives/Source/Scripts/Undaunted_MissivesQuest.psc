@@ -203,26 +203,23 @@ Function ClearBountyStatus()
 endFunction
 
 Function CleanUpBounty()
-	ObjectReference[] allies = GetBountyObjectRefs(bountyId,"Ally")		
-	int allylength = allies.Length
-	while(allylength > 0)
-		allylength -= 1
-		allies[allylength].DisableNoWait(true)
-		allies[allylength].Delete()
+	ObjectReference[] all = GetBountyObjectRefs(bountyId,"ALL")		
+	int alllength = all.Length
+	while(alllength > 0)
+		alllength -= 1
+		all[alllength].Delete()
 	endwhile
 	ObjectReference[] decorations = GetBountyObjectRefs(bountyId,"BountyDecoration")		
 	int decorationslength = decorations.Length
 	while(decorationslength > 0)
 	decorationslength -= 1
 		decorations[decorationslength].DisableNoWait(true)
-		decorations[decorationslength].Delete()
 	endwhile
 	ObjectReference[] ScriptedDoors = GetBountyObjectRefs(bountyId,"ScriptedDoor")		
 	int ScriptedDoorslength = ScriptedDoors.Length
 	while(ScriptedDoorslength > 0)
 		ScriptedDoorslength -= 1
 		ScriptedDoors[ScriptedDoorslength].DisableNoWait(false)
-		ScriptedDoors[ScriptedDoorslength].Delete()
 	endwhile
 endFunction
 
@@ -247,7 +244,8 @@ Event OnUpdate()
 		enemieslength -= 1
 		if (enemies[enemieslength] as Actor).IsDead()
 			SetGroupMemberComplete(enemies[enemieslength])
-		endif
+			enemies[enemieslength].Delete()
+		endif	
 	endwhile
 	bool complete = isBountyComplete(bountyId)
 	If complete

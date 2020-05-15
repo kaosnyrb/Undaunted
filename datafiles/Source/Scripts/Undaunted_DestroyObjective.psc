@@ -13,8 +13,10 @@ ObjectReference CollisionLink
 
 Event OnLoad()
 	if GetCurrentDestructionStage() < NewStage
-		CollisionLink = GetLinkedRef()
-		CollisionLink.Enable()
+        CollisionLink = GetLinkedRef()
+        if (CollisionLink)
+            CollisionLink.Enable()
+        endif
 	EndIf
 EndEvent
 
