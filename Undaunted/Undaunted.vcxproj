@@ -100,6 +100,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="addrlib\offsets.cpp" />
     <ClCompile Include="BountyList.cpp" />
     <ClCompile Include="BountyManager.cpp" />
     <ClCompile Include="ConfigUtils.cpp" />
@@ -110,6 +111,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MyPlugin.cpp" />
     <ClCompile Include="RewardUtils.cpp" />
+    <ClCompile Include="SKSELink.cpp" />
     <ClCompile Include="SpawnUtils.cpp" />
     <ClCompile Include="UnStringList.cpp" />
     <ClCompile Include="WorldCellList.cpp" />
@@ -118,9 +120,14 @@
     <None Include="exports.def" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="addrlib\offsets.h" />
+    <ClInclude Include="addrlib\relocation.h" />
+    <ClInclude Include="addrlib\skse_macros.h" />
+    <ClInclude Include="addrlib\versiondb.h" />
     <ClInclude Include="BountyList.h" />
     <ClInclude Include="BountyManager.h" />
     <ClInclude Include="ConfigUtils.h" />
+    <ClInclude Include="eternal.hpp" />
     <ClInclude Include="GroupList.h" />
     <ClInclude Include="IntList.h" />
     <ClInclude Include="ListLibary.h" />

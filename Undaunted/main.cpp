@@ -31,10 +31,15 @@ extern "C"	{
 
 			return false;
 		}
-		else if(skse->runtimeVersion != RUNTIME_VERSION_1_5_97)
-		{
-			_MESSAGE("unsupported runtime version %08X", skse->runtimeVersion);
+		//else if(skse->runtimeVersion != RUNTIME_VERSION_1_5_97)
+		//{
+		//	_MESSAGE("unsupported runtime version %08X", skse->runtimeVersion);
 
+		//	return false;
+		//}
+		
+		if (!Offsets::Initialize()) {
+			_ERROR("Failed to load game offset database. Visit https://www.nexusmods.com/skyrimspecialedition/mods/32444 to aquire the correct database file.");			
 			return false;
 		}
 

@@ -45,7 +45,7 @@ namespace Undaunted {
 	// This takes a while so we only do this once at the start
 	bool hook_InitSystem(StaticFunctionTag* base)
 	{
-		DataHandler* dataHandler = DataHandler::GetSingleton();
+		DataHandler* dataHandler = GetDataHandler();
 		_MESSAGE("Mod Count: %08X", dataHandler->modList.loadedMods.count);
 		for (int i = 0; i < dataHandler->modList.loadedMods.count; i++)
 		{
@@ -141,7 +141,7 @@ namespace Undaunted {
 		}
 		//Mod required is not loaded
 		bool foundmod = false;
-		DataHandler* dataHandler = DataHandler::GetSingleton();
+		DataHandler* dataHandler = GetDataHandler();
 		for (int i = 0; i < dataHandler->modList.loadedMods.count; i++)
 		{
 			ModInfo* mod;
@@ -171,7 +171,7 @@ namespace Undaunted {
 
 	// Given a mod name and a FormId - load order, return the actualy form id
 	UInt32 hook_GetModForm(StaticFunctionTag* base, BSFixedString ModName, UInt32 FormId){
-		DataHandler* dataHandler = DataHandler::GetSingleton();
+		DataHandler* dataHandler = GetDataHandler();
 		const ModInfo* modInfo = dataHandler->LookupModByName(ModName.c_str());
 		if (modInfo != NULL)
 		{
@@ -217,14 +217,14 @@ namespace Undaunted {
 	BSFixedString hook_GetPlayerWorldSpaceName(StaticFunctionTag* base)
 	{
 		_MESSAGE("hook_GetPlayerWorldSpaceName");
-		return (*g_thePlayer)->currentWorldSpace->editorId.Get();
+		return GetPlayer()->currentWorldSpace->editorId.Get();
 	}
 
 
 	bool hook_isPlayerInWorldSpace(StaticFunctionTag* base, BSFixedString worldspacename)
 	{
 		_MESSAGE("hook_isPlayerInWorldSpace");
-		return _stricmp((*g_thePlayer)->currentWorldSpace->editorId.Get(), worldspacename.Get()) == 0;
+		return _stricmp(GetPlayer()->currentWorldSpace->editorId.Get(), worldspacename.Get()) == 0;
 	}
 
 	// Currently unused, checks if the object reference is in the current bounty.

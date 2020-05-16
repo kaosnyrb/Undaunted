@@ -27,11 +27,11 @@ namespace Undaunted {
 		if (bounty->bountywave == 0 && bounty->bountyworldcell.world != NULL)
 		{
 			//Is the player in the right worldspace?
-			if (_stricmp((*g_thePlayer)->currentWorldSpace->editorId.Get(), bounty->bountyworldcell.world->editorId.Get()) == 0)
+			if (_stricmp(GetPlayer()->currentWorldSpace->editorId.Get(), bounty->bountyworldcell.world->editorId.Get()) == 0)
 			{
 				_MESSAGE("Player in Worldspace");
 				//Check the distance to the XMarker
-				NiPoint3 distance = (*g_thePlayer)->pos - bounty->xmarkerref->pos;
+				NiPoint3 distance = GetPlayer()->pos - bounty->xmarkerref->pos;
 				Vector3 distvector = Vector3(distance.x, distance.y, distance.z);
 				_MESSAGE("Distance to marker: %f", distvector.Magnitude());
 				
@@ -113,7 +113,7 @@ namespace Undaunted {
 			if (ref == NULL)
 			{
 				_MESSAGE("ref == NULL");
-				bounty->bountyworldcell = GetNamedWorldCell((*g_thePlayer)->currentWorldSpace->editorId.Get());
+				bounty->bountyworldcell = GetNamedWorldCell(GetPlayer()->currentWorldSpace->editorId.Get());
 			}
 			else
 			{
@@ -136,9 +136,9 @@ namespace Undaunted {
 				if (ref == NULL)
 				{
 					_MESSAGE("ref == NULL");
-					bounty->bountyworldcell = GetNamedWorldCell((*g_thePlayer)->currentWorldSpace->editorId.Get());
+					bounty->bountyworldcell = GetNamedWorldCell(GetPlayer()->currentWorldSpace->editorId.Get());
 					target = GetRandomObjectInCell(bounty->bountyworldcell.cell);
-					distance = (*g_thePlayer)->pos - target->pos;
+					distance = GetPlayer()->pos - target->pos;
 				}
 				else
 				{
@@ -153,8 +153,8 @@ namespace Undaunted {
 				_MESSAGE("Distance %f, Height: %f", distvector.Magnitude(), target->pos.z);
 				if (distvector.Magnitude() > BountyMinSpawnDistance && 
 					distvector.Magnitude() < BountyMaxSpawnDistance && 
-					target->pos.z < (*g_thePlayer)->pos.z + BountyMaxHeight && 
-					target->pos.z >(*g_thePlayer)->pos.z - BountyMinHeight)
+					target->pos.z < GetPlayer()->pos.z + BountyMaxHeight &&
+					target->pos.z > GetPlayer()->pos.z - BountyMinHeight)
 				{
 					foundtarget = true;
 				}
@@ -168,7 +168,7 @@ namespace Undaunted {
 					}
 					else
 					{
-						bounty->bountyworldcell = GetNamedWorldCell((*g_thePlayer)->currentWorldSpace->editorId.Get());
+						bounty->bountyworldcell = GetNamedWorldCell(GetPlayer()->currentWorldSpace->editorId.Get());
 					}
 					target = GetRandomObjectInCell(bounty->bountyworldcell.cell);
 					foundtarget = true;
@@ -209,7 +209,7 @@ namespace Undaunted {
 		bountiesRan.AddItem(bountydata);
 		_MESSAGE("Setting Bounty Message: %s", bounty->bountygrouplist.questText);
 		bounty->bountymessageref->fullName.name = bounty->bountygrouplist.questText;
-		_MESSAGE("PlayerPos %f, %f, %f", (*g_thePlayer)->pos.x, (*g_thePlayer)->pos.y, (*g_thePlayer)->pos.z);
+		_MESSAGE("PlayerPos %f, %f, %f", GetPlayer()->pos.x, GetPlayer()->pos.y, GetPlayer()->pos.z);
 		return 0;
 	}
 

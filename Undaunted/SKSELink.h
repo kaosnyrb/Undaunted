@@ -21,6 +21,15 @@
 #include "skse64_common/skse_version.h"	// What version of SKSE is running?
 #include <skse64/PluginManager.h>
 #include <skse64/Serialization.h>
+#include "addrlib/relocation.h"
+#include "addrlib/offsets.h"
+#include "addrlib/versiondb.h"
 
 //#include "RE/Skyrim.h"
+namespace Undaunted
+{
+	PlayerCharacter* GetPlayer();
+	TESObjectREFR* PlaceAtMe(VMClassRegistry* registry, int count, TESObjectREFR* ref, TESForm* spawnForm, int something, bool ForcePersist, bool InitiallyDisabled);
+	DataHandler* GetDataHandler();
+}
 #endif

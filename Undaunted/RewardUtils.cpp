@@ -30,7 +30,7 @@ namespace Undaunted
 	UInt32 GetReward(UInt32 rewardOffset, UInt32 playerlevel)
 	{
 		srand(time(NULL) + rewardOffset);
-		DataHandler* dataHandler = DataHandler::GetSingleton();
+		DataHandler* dataHandler = GetDataHandler();
 		std::set<TESObjectARMO*> exclude;
 		TESRace* race = NULL;
 		for (UInt32 i = 0; i < dataHandler->races.count; i++)

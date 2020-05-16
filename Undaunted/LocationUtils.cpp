@@ -10,7 +10,7 @@ namespace Undaunted {
 
 	TESObjectREFR* GetRefObjectInCurrentCell(UInt32 formID)
 	{
-		TESObjectCELL* parentCell = (*g_thePlayer)->parentCell;
+		TESObjectCELL* parentCell = GetPlayer()->parentCell;
 		int numberofRefs = papyrusCell::GetNumRefs(parentCell, 0);
 		_MESSAGE("GetObjectInCurrentCell Num Ref: %i", numberofRefs);
 		for (int i = 0; i < numberofRefs; i++)
@@ -35,7 +35,7 @@ namespace Undaunted {
 	/*
 	TESObjectREFR* GetRefObjectFromWorld(UInt32 formID)
 	{
-		DataHandler* handler = DataHandler::GetSingleton();
+		DataHandler* handler = GetDataHandler();
 		_MESSAGE("RegionList Count: %08X", handler->regionList->Count());
 		UInt32 regioncount = handler->regionList->Count();
 		for (UInt32 i = 0; i < regioncount; i++)
@@ -118,7 +118,7 @@ namespace Undaunted {
 		{
 			return;
 		}
-		DataHandler* handler = DataHandler::GetSingleton();
+		DataHandler* handler = GetDataHandler();
 		_MESSAGE("RegionList Count: %08X", handler->regionList->Count());
 
 		IntList badregions = GetBadRegions();
@@ -265,13 +265,13 @@ namespace Undaunted {
 /*
 if (SpawnLocref == NULL)
 {
-	TESObjectCELL* here = (*g_thePlayer)->parentCell;
+	TESObjectCELL* here = GetPlayer()->parentCell;
 	_MESSAGE("Here form id %08X", here->formID);
-	_MESSAGE("Cell list Size %08X", DataHandler::GetSingleton()->cellList.m_size);
-	UInt32 cellcount = DataHandler::GetSingleton()->cellList.m_size;
+	_MESSAGE("Cell list Size %08X", GetDataHandler()->cellList.m_size);
+	UInt32 cellcount = GetDataHandler()->cellList.m_size;
 	for (int i = 0; i < cellcount; i++)
 	{
-		TESObjectCELL* parentCell = DataHandler::GetSingleton()->cellList.m_data[i];
+		TESObjectCELL* parentCell = GetDataHandler()->cellList.m_data[i];
 		_MESSAGE("Cell form id %08X", parentCell->formID);
 		_MESSAGE("Cell form id %08X", parentCell->formID);
 		int numberofRefs = papyrusCell::GetNumRefs(parentCell, 0);
