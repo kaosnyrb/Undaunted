@@ -99,7 +99,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="addrlib\offsets.cpp" />
     <ClCompile Include="BountyList.cpp" />
     <ClCompile Include="BountyManager.cpp" />
     <ClCompile Include="ConfigUtils.cpp" />

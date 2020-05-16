@@ -35,7 +35,6 @@
       <Filter>Collections</Filter>
     </ClCompile>
     <ClCompile Include="SKSELink.cpp" />
-    <ClCompile Include="addrlib\offsets.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyPlugin.h" />

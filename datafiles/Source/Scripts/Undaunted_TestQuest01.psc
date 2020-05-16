@@ -94,7 +94,7 @@ Function RestartEvent()
 		return
 	endif
 	bountyId = CreateBounty()	
-	XMarkerRef = Game.GetPlayer().PlaceAtMe(XMakerStatic)
+	;XMarkerRef = Game.GetPlayer().PlaceAtMe(XMakerStatic)
 	SetXMarker(bountyId,XMarkerRef)
 	Alias_BountyMarker.ForceRefTo(XMarkerRef)
 	SetBountyMessageRef(bountyId,QuestTextMessage)
