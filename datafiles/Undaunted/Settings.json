@@ -25,12 +25,14 @@
     ["RewardScrollWeight","5", "The chance of getting a scroll"],
     ["RewardIngredientWeight","5", "The chance of getting a Ingredient"],
     ["RewardBookWeight","5", "The chance of getting a Book"],
+    ["RewardMiscWeight","5", "The chance of getting a Misc Item"],
 
     ["RewardWeaponMinDamage","400", "The lowest damage weapon (for player level 1) multipled by 100"],
     ["RewardWeaponMaxDamage","2800", "The highest damage weapon (for player at max level) multipled by 100"],
     ["RewardWeaponMinValue","1", "The lowest gold value (for player level 1)"],
     ["RewardWeaponMaxValue","2563","The highest gold value (for player at max level)"],
 
+    ["RewardAllowMiscItems","0","Whether to spawn Misc items in the reward pool. A lot of quest breaking stuff in here such as claws etc."],    
     ["RewardAllowClothes","0","Whether to spawn clothing in the reward pool"],
     ["RewardAllowShields","0","Whether to spawn shields in the reward pool"],
     ["RewardAllowDaedricArtifacts","0","Whether to spawn Daedric Artifacts in the reward pool"],

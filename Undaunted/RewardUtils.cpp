@@ -11,7 +11,8 @@ namespace Undaunted
 			GetConfigValueInt("RewardPotionWeight"),
 			GetConfigValueInt("RewardScrollWeight"),
 			GetConfigValueInt("RewardIngredientWeight"),
-			GetConfigValueInt("RewardBookWeight")
+			GetConfigValueInt("RewardBookWeight"),
+			GetConfigValueInt("RewardMiscWeight")
 		};
 		int numberofchoices = 6;
 		int sum_of_weight = 0;
@@ -46,8 +47,18 @@ namespace Undaunted
 			if (npc->skinForm.skin)
 				exclude.insert(npc->skinForm.skin);
 		}
-
-		int type = GetRewardType();
+		int type = 0;
+		bool foundvalidrewardtype = false;
+		while (!foundvalidrewardtype)
+		{
+			type = GetRewardType();
+			if (type == 6 && GetConfigValueInt("RewardAllowMiscItems") == 0)
+			{
+				continue;
+			}
+			foundvalidrewardtype = true;
+		}
+		type = 6;
 		bool found = false;
 		while (!found)
 		{
@@ -57,6 +68,7 @@ namespace Undaunted
 			ScrollItem* scroll = NULL;
 			IngredientItem* ingre = NULL;
 			TESObjectBOOK* book = NULL;
+			TESObjectMISC* misc = NULL;
 			//type = 3;
 			switch (type)
 			{
@@ -111,6 +123,15 @@ namespace Undaunted
 				if (book->formID == LastReward) continue;
 				LastReward = book->formID;
 				return book->formID;
+			case 6:
+				dataHandler->miscObjects.GetNthItem(rand() % dataHandler->miscObjects.count, misc);
+				if (!misc->IsPlayable()) continue;
+				if (!misc->Has3D()) continue;
+				if (misc->value.value == 0) continue;
+				if (misc->value.value <= 50) continue;
+				if (misc->formID == LastReward) continue;
+				LastReward = misc->formID;
+				return misc->formID;
 			default:
 				dataHandler->weapons.GetNthItem(rand() % dataHandler->weapons.count, weapon);
 				if (!weapon->IsPlayable()) continue;
