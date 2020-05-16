@@ -23,7 +23,7 @@ https://youtu.be/3igoZVReoZE
 ## How to play
 
 1. Visit the Undaunted Camp northwest of Windhelm.
-2. Speak to Brynjolf and accept the Undaunted Invocation.
+2. Speak to Vigrod and accept the Undaunted Invocation.
 3. Anywhere you want use the Undaunted Invocation.
 4. A Quest will start called Undaunted.
 5. Somewhere nearby a quest marker will appear pointing to where the bounty starts.
