@@ -37,9 +37,7 @@ bool Offsets::Initialize() {
 #ifdef _DEBUG
 void Offsets::DumpDatabaseTextFile() {
 	if (!GetDB().Load(1, 5, 97, 0)) {
-		//FatalError(L"Failed to load offset database.");
 	}
-
 	GetDB().Dump("offsets.txt");
 }
 #endif
