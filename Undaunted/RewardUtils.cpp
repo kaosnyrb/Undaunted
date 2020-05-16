@@ -58,7 +58,6 @@ namespace Undaunted
 			}
 			foundvalidrewardtype = true;
 		}
-		type = 6;
 		bool found = false;
 		while (!found)
 		{
