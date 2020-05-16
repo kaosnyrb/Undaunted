@@ -63,6 +63,7 @@ As the mod is using the Region data from memory any mods which add these would a
 
 ## Credits
 
+* mwilsnd for address lib work https://github.com/mwilsnd/SkyrimSE-SmoothCam
 * LordKarnak for The Daedra Returns gate effects: https://www.nexusmods.com/skyrim/mods/64925
 * Hanaisse for her Oblivion Gate meshes and textures: https://www.nexusmods.com/skyrim/mods/18957/?
 * egocarib for SKSE sample code: https://github.com/egocarib/EnchantingAwakened
