@@ -8,6 +8,8 @@ Undaunted::RelocPtr<PlayerCharacter*> thePlayer(0x02F26EF8);
 
 Undaunted::RelocPtr <DataHandler*> dataHandler(0x01EBE428);
 
+Undaunted::RelocAddr<_MoveRefrToPosition> MoveReffunc(0x009AE5C0);
+
 DataHandler* Undaunted::GetDataHandler() {
 	return *dataHandler;
 }
@@ -22,6 +24,11 @@ TESObjectREFR* Undaunted::PlaceAtMe(VMClassRegistry* registry, int count, TESObj
 	return PlaceAtMerec(registry, count, ref, spawnForm, 1, ForcePersist, InitiallyDisabled);
 }
 
+void Undaunted::MoveRef(TESObjectREFR* object, TESObjectCELL* cell, TESWorldSpace* worldspace, NiPoint3 pos, NiPoint3 rot)
+{
+	UInt32 nullHandle = *g_invalidRefHandle;
+	MoveReffunc(object, &nullHandle, cell, worldspace, &pos, &rot);
+}
 
 static VersionDb db;
 
