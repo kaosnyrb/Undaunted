@@ -18,6 +18,11 @@ Function LoadJsonData()
 			SetConfigValue(settingkey,settingvalue)
 			setiter+=1
 		endwhile
+		if setiter == 0
+			;Found no settings. Something in the install is messed up.
+			Debug.MessageBox("Undaunted failed to read config. Is JContainers installed and the files in /Data/Undaunted?")
+			return
+		endif
 		;Load the Groups
 		int GroupFiles = JValue.readFromDirectory("Data/Undaunted/Groups/")
 		int filecount = JMap.count(GroupFiles)
