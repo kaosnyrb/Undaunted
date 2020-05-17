@@ -1,7 +1,19 @@
 [
     [
-        ["Disable the Dwemer Power Conduits","Skyrim.esm",0,0],
-        ["LCharDwarvenAutomaton","Skyrim.esm",124803,"Enemy"],
-        ["1_Undaunted_DestructObjectiveMagic_01","Undaunted.esp",80946,"Scripted","DLC02/Dungeons/Dwemer/Rubble/DLC2DweRubbleColumn01.nif"]
+        ["Close the Oblivion Gate","Skyrim.esm",0,0],
+        ["LCharDremoraMelee","Skyrim.esm",124827,"Enemy"],
+        ["ExplosionIllusionDark01","Skyrim.esm",263277,"SpawnEffect"],
+        ["LCharDremoraMelee","Skyrim.esm",124827,"Enemy"],
+        ["ExplosionIllusionDark01","Skyrim.esm",263277,"SpawnEffect"],
+        ["LCharDremoraMissile","Skyrim.esm",154906,"Enemy"],
+        ["ExplosionIllusionDark01","Skyrim.esm",263277,"SpawnEffect"],
+        ["LCharDremoraMissile","Skyrim.esm",154906,"Enemy"],
+        ["ExplosionIllusionDark01","Skyrim.esm",263277,"SpawnEffect"],
+        ["LCharDremoraWarlock","Skyrim.esm",154907,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["Gate Outside","Undaunted.esp",13206,"BountyDecoration"],
+        ["1_Undaunted_OblivionGateGlow","Undaunted.esp",3522,"ScriptedDoor"],        
+        ["ExplosionIllusionMassiveDark01","Skyrim.esm",781487,"SpawnEffect"],
+        ["ExplosionIllusionMassiveDark01","Skyrim.esm",781487,"EndEffect"]
     ]
 ]

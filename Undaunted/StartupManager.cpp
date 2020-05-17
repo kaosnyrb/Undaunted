@@ -72,7 +72,7 @@ namespace Undaunted {
 						std::string model = std::string("");
 						if (group[j].size() > 3)
 						{
-							model = group[j][4].as<std::string>("model");
+							model = group[j][4].as<std::string>("");
 						}
 						GroupMember newmember = GroupMember();
 						newmember.BountyType = type.c_str();
