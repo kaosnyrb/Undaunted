@@ -8,24 +8,25 @@ Function LoadJsonData()
 	if (ClaimStartupLock())
 		Debug.Notification("Undaunted Loading...")
 		;Load the Settings file
-		int SettingsList = JValue.readFromFile("Data/Undaunted/Settings.json")
-		int setcount = JArray.count(SettingsList)
-		int setiter = 0
-		while(setiter < setcount)
-			int settingdata = JArray.getObj(SettingsList, setiter)
-			string settingkey = JArray.getStr(settingdata,0)
-			string settingvalue = JArray.getStr(settingdata,1)
-			SetConfigValue(settingkey,settingvalue)
-			setiter+=1
-		endwhile
-		if setiter == 0
+		;int SettingsList = JValue.readFromFile("Data/Undaunted/Settings.json")
+		;int setcount = JArray.count(SettingsList)
+		;int setiter = 0
+		;while(setiter < setcount)
+	;		int settingdata = JArray.getObj(SettingsList, setiter)
+	;		string settingkey = JArray.getStr(settingdata,0)
+	;		string settingvalue = JArray.getStr(settingdata,1)
+	;		SetConfigValue(settingkey,settingvalue)
+	;		setiter+=1
+	;	endwhile
+
+		;Load the Groups
+		int GroupFiles = JValue.readFromDirectory("Data/Undaunted/Groups/")
+		int filecount = JMap.count(GroupFiles)
+		if filecount == 0
 			;Found no settings. Something in the install is messed up.
 			Debug.MessageBox("Undaunted failed to read config. Is JContainers installed and the files in /Data/Undaunted?")
 			return
 		endif
-		;Load the Groups
-		int GroupFiles = JValue.readFromDirectory("Data/Undaunted/Groups/")
-		int filecount = JMap.count(GroupFiles)
 		;Debug.Notification("File Count: " + filecount)
 		String[] FileNames = JMap.allKeysPArray(GroupFiles)
 		while(filecount > 0)

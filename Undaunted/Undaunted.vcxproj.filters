@@ -35,6 +35,9 @@
       <Filter>Collections</Filter>
     </ClCompile>
     <ClCompile Include="SKSELink.cpp" />
+    <ClCompile Include="StartupManager.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyPlugin.h" />
@@ -85,9 +88,15 @@
     <ClInclude Include="eternal.hpp">
       <Filter>addresslib</Filter>
     </ClInclude>
+    <ClInclude Include="StartupManager.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="exports.def" />
+    <None Include="RSJparser.tcc">
+      <Filter>Utils</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Collections">

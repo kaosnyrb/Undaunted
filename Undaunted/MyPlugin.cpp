@@ -1,4 +1,5 @@
 #include "MyPlugin.h"
+#include <Undaunted\StartupManager.h>
 
 namespace Undaunted {
 
@@ -53,6 +54,7 @@ namespace Undaunted {
 			dataHandler->modList.loadedMods.GetNthItem(i, mod);
 			_MESSAGE("Listing Mods: %s ", mod->name);
 		}
+		LoadSettings();
 		BuildWorldList();
 		BountyManager::getInstance()->isReady = 2;
 		_MESSAGE("ReadyState: %i ", BountyManager::getInstance()->isReady);
@@ -206,7 +208,7 @@ namespace Undaunted {
 	// Pass in a config value
 	void hook_SetConfigValue(StaticFunctionTag* base, BSFixedString key, BSFixedString value)
 	{
-		SetConfigValue(key.Get(), value.Get());
+		AddConfigValue(key.Get(), value.Get());
 	}
 	// Returns an int that is in the config
 	UInt32 hook_GetConfigValueInt(StaticFunctionTag* base, BSFixedString key)

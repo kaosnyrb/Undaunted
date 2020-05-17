@@ -23,7 +23,6 @@ namespace Undaunted {
 		Bounty* bounty = &activebounties.data[BountyID];
 		_MESSAGE("BountyUpdate BountyID: %08X", BountyID);
 		_MESSAGE("BountyID bountywave: %i", bounty->bountywave);
-
 		if (bounty->bountywave == 0 && bounty->bountyworldcell.world != NULL)
 		{
 			//Is the player in the right worldspace?
@@ -33,9 +32,9 @@ namespace Undaunted {
 				//Check the distance to the XMarker
 				NiPoint3 distance = GetPlayer()->pos - bounty->xmarkerref->pos;
 				Vector3 distvector = Vector3(distance.x, distance.y, distance.z);
-				_MESSAGE("Distance to marker: %f", distvector.Magnitude());
-				
-				if (distvector.Magnitude() < GetConfigValueInt("BountyStartDistance"))
+				int startdis = GetConfigValueInt("BountyStartDistance");
+				_MESSAGE("Distance to marker: %f / %i", distvector.Magnitude(), startdis);
+				if (distvector.Magnitude() < startdis)
 				{
 					bounty->bountygrouplist = SpawnGroupAtTarget(_registry, bounty->bountygrouplist, bounty->xmarkerref, bounty->bountyworldcell.cell, bounty->bountyworldcell.world);
 					_MESSAGE("Enemy Count : %08X ", bounty->bountygrouplist.length);
@@ -194,7 +193,7 @@ namespace Undaunted {
 			bool bountyran = false;
 			for (int j = 0; j < bountiesRan.length; j++)
 			{
-				if (strcmp(bountiesRan.data[j].key, bounty->bountygrouplist.questText) == 0)
+				if (strcmp(bountiesRan.data[j].key.c_str(), bounty->bountygrouplist.questText) == 0)
 				{
 					bountyran = true;
 				}

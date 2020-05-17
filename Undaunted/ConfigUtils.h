@@ -1,7 +1,6 @@
 #include "IntList.h"
 #include "ListLibary.h"
 #include "UnStringList.h"
-
 namespace Undaunted
 {
 	//Regions/Worldspaces
@@ -16,7 +15,7 @@ namespace Undaunted
 	GroupList GetGroup(const char* bountyName);
 
 	//General
-	void SetConfigValue(const char* key, const char* value);
-	UInt32 GetConfigValueInt(const char* key);
+	void AddConfigValue(std::string key, std::string value);
+	UInt32 GetConfigValueInt(std::string key);
 
 }

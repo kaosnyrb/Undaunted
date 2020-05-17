@@ -2,6 +2,8 @@
 #include <Undaunted\BountyManager.h>
 #include <Undaunted\ConfigUtils.h>
 #include <Undaunted\SKSELink.h>
+#include <Undaunted\StartupManager.h>
+
 
 static PluginHandle					g_pluginHandle = kPluginHandle_Invalid;
 static SKSEPapyrusInterface         * g_papyrus = NULL;
@@ -87,6 +89,8 @@ extern "C"	{
 
 		//Check if the function registration was a success...
 		bool btest = g_papyrus->Register(Undaunted::RegisterFuncs);
+		
+		//Undaunted::LoadSettings();
 
 		if (btest) {
 			_MESSAGE("Register Succeeded");

@@ -5,8 +5,8 @@ namespace Undaunted
 #define UnStringListdef
 	class UnString {
 	public:
-		const char* key;
-		const char* value;
+		std::string key;
+		std::string value;
 	};
 
 	class UnStringList {

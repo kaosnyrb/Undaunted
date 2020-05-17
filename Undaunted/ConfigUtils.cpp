@@ -58,14 +58,16 @@ namespace Undaunted
 		return GroupLibary.data[groupid];		
 	}
 
-	void SetConfigValue(const char* key, const char* value)
+	void AddConfigValue(std::string key, std::string value)
 	{
-		//check if it exists
+		//_MESSAGE("CONFIGLENGTH: %i", SettingsList.length);
+		//check if it exists		
 		for (int i = 0; i < SettingsList.length; i++)
 		{
-			if (strcmp(SettingsList.data[i].key, key) == 0)
+			if (SettingsList.data[i].key.compare(key) == 0)
 			{
 				SettingsList.data[i].value = value;
+				//_MESSAGE("SET: %s : %s", key, value);
 				return;
 			}
 		}
@@ -74,20 +76,23 @@ namespace Undaunted
 		setting.key = key;
 		setting.value = value;
 		SettingsList.AddItem(setting);
-		//_MESSAGE("%s : %s", key, value);
+		//_MESSAGE("ADD: %s : %s", key.c_str(), value.c_str());
 	}
 
-	UInt32 GetConfigValueInt(const char* key)
+	UInt32 GetConfigValueInt(std::string key)
 	{
 		for (int i = 0; i < SettingsList.length; i++)
 		{
-			if (strcmp(SettingsList.data[i].key, key) == 0)
+			//_MESSAGE("Comparing %s : %s", key.c_str(), SettingsList.data[i].key.c_str());
+			if (SettingsList.data[i].key.compare(key) == 0)
 			{
-				//_MESSAGE("Found Key %s : %s", key, SettingsList.data[i].value);
-				return atoi(SettingsList.data[i].value);
+				//_MESSAGE("Found Key %s : %s", key.c_str(), SettingsList.data[i].value.c_str());
+				return atoi(SettingsList.data[i].value.c_str());
 			}
 		}
 		//Not found.
 		return 0;
 	}
+
+
 }

@@ -111,11 +111,13 @@
     <ClCompile Include="RewardUtils.cpp" />
     <ClCompile Include="SKSELink.cpp" />
     <ClCompile Include="SpawnUtils.cpp" />
+    <ClCompile Include="StartupManager.cpp" />
     <ClCompile Include="UnStringList.cpp" />
     <ClCompile Include="WorldCellList.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="exports.def" />
+    <None Include="RSJparser.tcc" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="addrlib\offsets.h" />
@@ -134,6 +136,7 @@
     <ClInclude Include="RewardUtils.h" />
     <ClInclude Include="SKSELink.h" />
     <ClInclude Include="SpawnUtils.h" />
+    <ClInclude Include="StartupManager.h" />
     <ClInclude Include="UnStringList.h" />
     <ClInclude Include="WorldCellList.h" />
   </ItemGroup>
