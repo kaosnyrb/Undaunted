@@ -18,4 +18,9 @@ namespace Undaunted
 	void AddConfigValue(std::string key, std::string value);
 	UInt32 GetConfigValueInt(std::string key);
 
+
+	//RewardBlacklist
+	void AddRewardBlacklist(std::string key);
+	UnStringList getRewardBlacklist();
+
 }

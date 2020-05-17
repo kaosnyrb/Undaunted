@@ -41,14 +41,6 @@ bool Offsets::Initialize() {
 	return db.Load();
 }
 
-#ifdef _DEBUG
-void Offsets::DumpDatabaseTextFile() {
-	if (!GetDB().Load(1, 5, 97, 0)) {
-	}
-	GetDB().Dump("offsets.txt");
-}
-#endif
-
 constexpr uintptr_t Offsets::GetByVersionAddr(uintptr_t addr) {
 	return addrMap.at(addr);
 }
@@ -62,3 +54,11 @@ uintptr_t Offsets::GetOffset(uintptr_t id) {
 	GetDB().FindOffsetById(id, ret);
 	return ret;
 }
+
+#ifdef _DEBUG
+void Offsets::DumpDatabaseTextFile() {
+	if (!GetDB().Load(1, 5, 97, 0)) {
+	}
+	GetDB().Dump("offsets.txt");
+}
+#endif

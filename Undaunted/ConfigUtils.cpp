@@ -94,5 +94,17 @@ namespace Undaunted
 		return 0;
 	}
 
+	UnStringList RewardBlacklist = UnStringList();
+	void AddRewardBlacklist(std::string key)
+	{
+		UnString data = UnString();
+		data.value = key;
+		RewardBlacklist.AddItem(data);
+	}
+
+	UnStringList getRewardBlacklist()
+	{
+		return RewardBlacklist;
+	}
 
 }
