@@ -141,7 +141,7 @@ namespace Undaunted {
 				}
 				else
 				{
-					_MESSAGE("ref != NULL");
+					_MESSAGE("ref != NULL ");
 					_MESSAGE("WorldSpaceName: %s", WorldSpaceName.Get());
 					bounty->bountyworldcell = GetNamedWorldCell(WorldSpaceName.Get());
 					target = GetRandomObjectInCell(bounty->bountyworldcell.cell);
@@ -188,12 +188,12 @@ namespace Undaunted {
 			}
 			else
 			{
-				bounty->bountygrouplist = GetGroup(BountyName);
+				bounty->bountygrouplist = GetGroup(std::string(BountyName));
 			}
 			bool bountyran = false;
 			for (int j = 0; j < bountiesRan.length; j++)
-			{
-				if (strcmp(bountiesRan.data[j].key.c_str(), bounty->bountygrouplist.questText) == 0)
+			{				
+				if (bountiesRan.data[j].key.compare(bounty->bountygrouplist.questText) == 0)
 				{
 					bountyran = true;
 				}
@@ -206,8 +206,8 @@ namespace Undaunted {
 		UnString bountydata = UnString();
 		bountydata.key = bounty->bountygrouplist.questText;
 		bountiesRan.AddItem(bountydata);
-		_MESSAGE("Setting Bounty Message: %s", bounty->bountygrouplist.questText);
-		bounty->bountymessageref->fullName.name = bounty->bountygrouplist.questText;
+		_MESSAGE("Setting Bounty Message: %s", bounty->bountygrouplist.questText.c_str());
+		bounty->bountymessageref->fullName.name = bounty->bountygrouplist.questText.c_str();
 		_MESSAGE("PlayerPos %f, %f, %f", GetPlayer()->pos.x, GetPlayer()->pos.y, GetPlayer()->pos.z);
 		return 0;
 	}
@@ -218,10 +218,10 @@ namespace Undaunted {
 		srand(time(NULL));
 		ClearBountyData(BountyID);
 		bool foundbounty = false;
-		bounty->bountygrouplist = GetGroup(BountyName);
+		bounty->bountygrouplist = GetGroup(std::string(BountyName));
 		bounty->bountyworldcell = GetWorldCellFromRef(bounty->xmarkerref);
 		_MESSAGE("GetWorldCellFromRef World: %s", bounty->bountyworldcell.world->editorId.Get());
-		bounty->bountymessageref->fullName.name = bounty->bountygrouplist.questText;
+		bounty->bountymessageref->fullName.name = bounty->bountygrouplist.questText.c_str();
 		//BountyUpdate();
 		return 0.0f;
 	}

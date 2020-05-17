@@ -9,10 +9,10 @@ namespace Undaunted
 
 
 	//Groups
-	int AddGroup(const char* questText);
+	int AddGroup(std::string questText);
 	void AddMembertoGroup(int id, GroupMember member);
 	GroupList GetRandomGroup();
-	GroupList GetGroup(const char* bountyName);
+	GroupList GetGroup(std::string bountyName);
 
 	//General
 	void AddConfigValue(std::string key, std::string value);

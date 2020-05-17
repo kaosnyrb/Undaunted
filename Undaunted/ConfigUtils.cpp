@@ -19,9 +19,9 @@ namespace Undaunted
 	}
 
 	//Groups
-	int AddGroup(const char* questText)
+	int AddGroup(std::string questText)
 	{
-		_MESSAGE("Adding bounty to GroupLibary: %s", questText);
+		_MESSAGE("Adding bounty to GroupLibary: %s", questText.c_str());
 		GroupList newGroup = GroupList();
 		newGroup.questText = questText;
 		GroupLibary.AddItem(newGroup);
@@ -34,11 +34,11 @@ namespace Undaunted
 		GroupLibary.data[id].AddItem(member);
 	}
 
-	GroupList GetGroup(const char * bountyName)
+	GroupList GetGroup(std::string bountyName)
 	{
 		for (int i = 0; i < GroupLibary.length; i++)
 		{
-			if (_stricmp(GroupLibary.data[i].questText, bountyName) == 0)
+			if (GroupLibary.data[i].questText.compare(bountyName) == 0)
 			{
 				return GroupLibary.data[i];
 			}

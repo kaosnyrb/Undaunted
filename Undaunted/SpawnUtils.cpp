@@ -10,7 +10,7 @@ namespace Undaunted
 		TESForm* spawnForm = LookupFormByID(Type);
 		if (spawnForm == NULL)
 		{
-			_MESSAGE("Failed to Spawn. Form Invalid");
+			_MESSAGE("Failed to Spawn. Form Invalid: %08X", Type);
 			return NULL;
 		}
 		int spawnradius = GetConfigValueInt("BountyEnemyInteriorSpawnRadius");

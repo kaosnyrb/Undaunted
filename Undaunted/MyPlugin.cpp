@@ -55,6 +55,7 @@ namespace Undaunted {
 			_MESSAGE("Listing Mods: %s ", mod->name);
 		}
 		LoadSettings();
+		LoadGroups();
 		BuildWorldList();
 		BountyManager::getInstance()->isReady = 2;
 		_MESSAGE("ReadyState: %i ", BountyManager::getInstance()->isReady);
@@ -102,7 +103,7 @@ namespace Undaunted {
 		_MESSAGE("Starting Bounty Check");
 		if (BountyManager::getInstance()->activebounties.length > BountyId)
 		{
-			return BountyManager::getInstance()->activebounties.data[BountyId].bountygrouplist.questText;
+			return BountyManager::getInstance()->activebounties.data[BountyId].bountygrouplist.questText.c_str();
 		}
 		return "NO BOUNTIES";
 	}	
@@ -310,7 +311,7 @@ namespace Undaunted {
 		_MESSAGE("hook_GetRandomBountyName");
 		GroupList list = GetRandomGroup();
 		BSFixedString result = BSFixedString();
-		result.data = list.questText;
+		result.data = list.questText.c_str();
 		return result;
 	}
 	

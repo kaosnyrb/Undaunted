@@ -20,7 +20,7 @@ namespace Undaunted
 
 	class GroupList {
 	public:
-		const char* questText;
+		std::string questText;
 		GroupMember* data;
 		int length;
 		GroupList* AddItem(GroupMember item);
