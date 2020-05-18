@@ -1,5 +1,7 @@
 #include "ConfigUtils.h"
 #include <time.h>
+#include "SafezoneList.h"
+
 namespace Undaunted
 {
 	std::string s_configPath;
@@ -136,6 +138,18 @@ namespace Undaunted
 	UnStringList getRewardBlacklist()
 	{
 		return RewardBlacklist;
+	}
+
+	SafezoneList szlist = SafezoneList();
+
+	void AddSafezone(Safezone zone)
+	{
+		szlist.AddItem(zone);
+	}
+
+	SafezoneList GetSafezones()
+	{
+		return szlist;
 	}
 
 }

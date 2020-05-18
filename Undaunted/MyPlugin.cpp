@@ -209,14 +209,14 @@ namespace Undaunted {
 	BSFixedString hook_GetPlayerWorldSpaceName(StaticFunctionTag* base)
 	{
 		_MESSAGE("hook_GetPlayerWorldSpaceName");
-		return GetPlayer()->currentWorldSpace->editorId.Get();
+		return GetCurrentWorldspaceName().Get();
 	}
 
 
 	bool hook_isPlayerInWorldSpace(StaticFunctionTag* base, BSFixedString worldspacename)
 	{
 		_MESSAGE("hook_isPlayerInWorldSpace");
-		return _stricmp(GetPlayer()->currentWorldSpace->editorId.Get(), worldspacename.Get()) == 0;
+		return _stricmp(GetCurrentWorldspaceName().Get(), worldspacename.Get()) == 0;
 	}
 
 	// Currently unused, checks if the object reference is in the current bounty.
@@ -300,7 +300,7 @@ namespace Undaunted {
 		_MESSAGE("hook_GetRandomBountyName");
 		GroupList list = GetRandomGroup();
 		BSFixedString result = BSFixedString();
-		result.data = list.questText.c_str();
+		result = list.questText.c_str();
 		return result;
 	}
 	

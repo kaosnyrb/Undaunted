@@ -41,6 +41,28 @@ namespace Undaunted {
 			AddRewardBlacklist(modname);
 			_MESSAGE("RewardModBlacklist modname: %s", modname.c_str());
 		}
+
+		LoadJson("Data/Undaunted/Safezones.json");
+		auto Safezones = currentfile.as_array();
+		for (int i = 0; i < Safezones.size(); i++)
+		{
+			auto obj = Safezones[i].as_object();
+			std::string Zonename = obj.at("Zonename").as<std::string>("default string");
+			std::string Worldspace = obj.at("Worldspace").as<std::string>("default string");
+			int PosX = obj.at("PosX").as<int>();
+			int PosY = obj.at("PosY").as<int>();
+			int PosZ = obj.at("PosZ").as<int>();
+			int Radius = obj.at("Radius").as<int>();
+			Safezone zone = Safezone();
+			zone.Zonename = Zonename;
+			zone.Worldspace = Worldspace;
+			zone.PosX = PosX;
+			zone.PosY = PosY;
+			zone.PosZ = PosZ;
+			zone.Radius = Radius;
+			AddSafezone(zone);
+			_MESSAGE("Safezone %s, %s, %i, %i, %i, %i", Zonename.c_str(), Worldspace.c_str(), PosX, PosY, PosZ, Radius);
+		}
 	}
 
 	void LoadGroups()

@@ -14,6 +14,13 @@ DataHandler* Undaunted::GetDataHandler() {
 	return *dataHandler;
 }
 
+BSFixedString Undaunted::GetCurrentWorldspaceName()
+{
+	//You're thinking "Why is this here? we can already get this from the player?"
+	//Answer is this call doesn't work on the VR version, so this is centralising the differences.
+	return GetPlayer()->currentWorldSpace->editorId.Get();
+}
+
 PlayerCharacter* Undaunted::GetPlayer()
 {
 	return *thePlayer;

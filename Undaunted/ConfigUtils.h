@@ -1,6 +1,8 @@
 #include "IntList.h"
 #include "ListLibary.h"
 #include "UnStringList.h"
+#include "SafezoneList.h"
+
 namespace Undaunted
 {
 	//Regions/Worldspaces
@@ -23,5 +25,9 @@ namespace Undaunted
 	//RewardBlacklist
 	void AddRewardBlacklist(std::string key);
 	UnStringList getRewardBlacklist();
+
+	//Safezones
+	void AddSafezone(Safezone zone);
+	SafezoneList GetSafezones();
 
 }

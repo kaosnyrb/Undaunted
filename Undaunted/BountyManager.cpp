@@ -26,7 +26,7 @@ namespace Undaunted {
 		if (bounty->bountywave == 0 && bounty->bountyworldcell.world != NULL)
 		{
 			//Is the player in the right worldspace?
-			if (_stricmp(GetPlayer()->currentWorldSpace->editorId.Get(), bounty->bountyworldcell.world->editorId.Get()) == 0)
+			if (_stricmp(GetCurrentWorldspaceName().Get(), bounty->bountyworldcell.world->editorId.Get()) == 0)
 			{
 				_MESSAGE("Player in Worldspace");
 				//Check the distance to the XMarker
@@ -112,13 +112,13 @@ namespace Undaunted {
 			if (ref == NULL)
 			{
 				_MESSAGE("ref == NULL");
-				bounty->bountyworldcell = GetNamedWorldCell(GetPlayer()->currentWorldSpace->editorId.Get());
+				bounty->bountyworldcell = GetNamedWorldCell(GetCurrentWorldspaceName().Get());
 			}
 			else
 			{
 				bounty->bountyworldcell = GetNamedWorldCell(WorldSpaceName.Get());
 			}
-			target = GetRandomObjectInCell(bounty->bountyworldcell.cell);
+			target = GetRandomObjectInCell(bounty->bountyworldcell);
 		}
 		else
 		{
@@ -135,8 +135,8 @@ namespace Undaunted {
 				if (ref == NULL)
 				{
 					_MESSAGE("ref == NULL");
-					bounty->bountyworldcell = GetNamedWorldCell(GetPlayer()->currentWorldSpace->editorId.Get());
-					target = GetRandomObjectInCell(bounty->bountyworldcell.cell);
+					bounty->bountyworldcell = GetNamedWorldCell(GetCurrentWorldspaceName().Get());
+					target = GetRandomObjectInCell(bounty->bountyworldcell);
 					distance = GetPlayer()->pos - target->pos;
 				}
 				else
@@ -144,7 +144,7 @@ namespace Undaunted {
 					_MESSAGE("ref != NULL ");
 					_MESSAGE("WorldSpaceName: %s", WorldSpaceName.Get());
 					bounty->bountyworldcell = GetNamedWorldCell(WorldSpaceName.Get());
-					target = GetRandomObjectInCell(bounty->bountyworldcell.cell);
+					target = GetRandomObjectInCell(bounty->bountyworldcell);
 					distance = ref->pos - target->pos;
 				}
 				Vector3 distvector = Vector3(distance.x, distance.y, distance.z);
@@ -167,9 +167,9 @@ namespace Undaunted {
 					}
 					else
 					{
-						bounty->bountyworldcell = GetNamedWorldCell(GetPlayer()->currentWorldSpace->editorId.Get());
+						bounty->bountyworldcell = GetNamedWorldCell(GetCurrentWorldspaceName().Get());
 					}
-					target = GetRandomObjectInCell(bounty->bountyworldcell.cell);
+					target = GetRandomObjectInCell(bounty->bountyworldcell);
 					foundtarget = true;
 				}
 			}

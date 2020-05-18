@@ -110,6 +110,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MyPlugin.cpp" />
     <ClCompile Include="RewardUtils.cpp" />
+    <ClCompile Include="SafezoneList.cpp" />
     <ClCompile Include="SKSELink.cpp" />
     <ClCompile Include="SpawnUtils.cpp" />
     <ClCompile Include="StartupManager.cpp" />
@@ -135,6 +136,7 @@
     <ClInclude Include="LocationUtils.h" />
     <ClInclude Include="MyPlugin.h" />
     <ClInclude Include="RewardUtils.h" />
+    <ClInclude Include="SafezoneList.h" />
     <ClInclude Include="SKSELink.h" />
     <ClInclude Include="SpawnUtils.h" />
     <ClInclude Include="StartupManager.h" />

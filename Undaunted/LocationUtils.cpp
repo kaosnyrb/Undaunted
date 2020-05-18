@@ -95,16 +95,31 @@ namespace Undaunted {
 		return NULL;
 	}*/
 
-	TESObjectREFR* GetRandomObjectInCell(TESObjectCELL* cell)
+	TESObjectREFR* GetRandomObjectInCell(WorldCell worldcell)
 	{
-		int numberofRefs = papyrusCell::GetNumRefs(cell, 0);
+		int numberofRefs = papyrusCell::GetNumRefs(worldcell.cell, 0);
+		auto safezones = GetSafezones();
 		//_MESSAGE("GetRandomObjectInCell Num Ref: %i", numberofRefs);		
 		if (numberofRefs == 0)return NULL;
 		while (true)
 		{
 			int Nth = rand() % numberofRefs;
-			TESObjectREFR* ref = papyrusCell::GetNthRef(cell, Nth, 0);
-			if (ref != NULL)
+			TESObjectREFR* ref = papyrusCell::GetNthRef(worldcell.cell, Nth, 0);
+			bool valid = true;
+			for (int i = 0; i < safezones.length; i++)
+			{
+				if (strcmp(safezones.data[i].Worldspace.c_str(), worldcell.world->editorId.Get()) == 0)
+				{
+					Vector3 distvector = Vector3(ref->pos.x - safezones.data[i].PosX, ref->pos.y - safezones.data[i].PosY, ref->pos.z - safezones.data[i].PosZ);
+					if (distvector.Magnitude() < safezones.data[i].Radius)
+					{
+						valid = false;
+						_MESSAGE("Target in Safezone: %s", safezones.data[i].Zonename.c_str());
+						break;
+					}
+				}
+			}
+			if (ref != NULL && valid)
 			{
 				return ref;
 			}

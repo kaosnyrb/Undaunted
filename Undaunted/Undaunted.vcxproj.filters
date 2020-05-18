@@ -38,6 +38,9 @@
     <ClCompile Include="StartupManager.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
+    <ClCompile Include="SafezoneList.cpp">
+      <Filter>Collections</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyPlugin.h" />
@@ -90,6 +93,9 @@
     </ClInclude>
     <ClInclude Include="StartupManager.h">
       <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="SafezoneList.h">
+      <Filter>Collections</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

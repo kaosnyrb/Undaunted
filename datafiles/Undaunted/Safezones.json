@@ -1,0 +1,82 @@
+[
+    {
+        "Zonename": "Undaunted Camp",
+        "Worldspace": "Tamriel",
+        "PosX": 97134,
+        "PosY": 38965,
+        "PosZ": -8432,
+        "Radius": 8000
+    },
+    {
+        "Zonename": "Whiterun",
+        "Worldspace": "Tamriel",
+        "PosX": 24830,
+        "PosY": -4079,
+        "PosZ": -3017,
+        "Radius": 15000
+    },
+    {
+        "Zonename": "Riverwood",
+        "Worldspace": "Tamriel",
+        "PosX": 21736,
+        "PosY": -45248,
+        "PosZ": -144,
+        "Radius": 7500
+    },
+    {
+        "Zonename": "Falkreath",
+        "Worldspace": "Tamriel",
+        "PosX": -30896,
+        "PosY": -87765,
+        "PosZ": -3129,
+        "Radius": 7500
+    },
+    {
+        "Zonename": "Markath",
+        "Worldspace": "Tamriel",
+        "PosX": -172930,
+        "PosY": 5529,
+        "PosZ": -3349,
+        "Radius": 15000
+    },
+    {
+        "Zonename": "Riften",
+        "Worldspace": "Tamriel",
+        "PosX": 174314,
+        "PosY": -91958,
+        "PosZ": 11128,
+        "Radius": 10000
+    },
+    {
+        "Zonename": "Windhelm",
+        "Worldspace": "Tamriel",
+        "PosX": 135007,
+        "PosY": 34534,
+        "PosZ": -12441,
+        "Radius": 10000
+    },
+    {
+        "Zonename": "Winterhold",
+        "Worldspace": "Tamriel",
+        "PosX": 109254,
+        "PosY": 102420,
+        "PosZ": -9030,
+        "Radius": 8000
+    },
+    {
+        "Zonename": "Winterhold College",
+        "Worldspace": "Tamriel",
+        "PosX": 116378,
+        "PosY": 111640,
+        "PosZ": -7713,
+        "Radius": 8000
+    },
+    {
+        "Zonename": "Dawnstar",
+        "Worldspace": "Tamriel",
+        "PosX": 31037,
+        "PosY": 103676,
+        "PosZ": -13803,
+        "Radius": 8000
+    }
+]
