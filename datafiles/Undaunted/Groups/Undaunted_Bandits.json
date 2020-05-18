@@ -12,14 +12,14 @@
         ["LCharBanditMissile","Skyrim.esm",124784,"Enemy"]
     ],
     [
-        ["Kill the Bandit Gang","Skyrim.esm",5,0],
+        ["Kill the Bandit Gang","Skyrim.esm",0,0],
         ["LCharBanditMeleeAny","Skyrim.esm",253645,"Enemy"],
         ["LCharBanditMeleeAny","Skyrim.esm",253645,"Enemy"],
         ["LCharBanditMissile","Skyrim.esm",124784,"Enemy"],
         ["LCharBanditMissile","Skyrim.esm",124784,"Enemy"]
     ],
     [
-        ["Recover the Stolen Horses from the Bandit Gang","Skyrim.esm",5,0],
+        ["Recover the Stolen Horses from the Bandit Gang","Skyrim.esm",0,0],
         ["LCharBanditMeleeAny","Skyrim.esm",253645,"Enemy"],
         ["LCharBanditMeleeAny","Skyrim.esm",253645,"Enemy"],
         ["LCharBanditMissile","Skyrim.esm",124784,"Enemy"],

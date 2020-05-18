@@ -38,5 +38,14 @@
         ["LCharThalmorMelee1H","Skyrim.esm",176425,"Enemy"],
         ["LCharThalmorMissile","Skyrim.esm",176426,"Enemy"],
         ["LCharThalmorMissile","Skyrim.esm",176426,"Enemy"]
+    ],
+    [
+        ["Kill the Dragon feeding on Alikr","Skyrim.esm",15,0],
+        ["LCharDragonAny","Skyrim.esm",387791,"Enemy"],
+        ["LCharAlikrMissile","Skyrim.esm",423537,"Enemy"],
+        ["LCharAlikrMissile","Skyrim.esm",423537,"Enemy"],
+        ["LCharAlikrMelee2H","Skyrim.esm",423536,"Enemy"],
+        ["LCharAlikrMelee1H","Skyrim.esm",423535,"Enemy"],
+        ["LCharAlikrMagic","Skyrim.esm",423534,"Enemy"]
     ]
 ]

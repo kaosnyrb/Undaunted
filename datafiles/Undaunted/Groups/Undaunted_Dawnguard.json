@@ -46,6 +46,18 @@
         ["DLC1EncHunterTemplateMissile","Dawnguard.esm",13169,"Ally"]
     ],
     [
+        ["Help the Dawnguard defeat the Forsworn","Skyrim.esm",0,0],
+        ["DLC1EncHunterTemplate","Dawnguard.esm",13167,"Ally"],
+        ["LCharForswornMelee1H","Skyrim.esm",124818,"Enemy"],
+        ["LCharForswornMelee1H","Skyrim.esm",124818,"Enemy"],
+        ["LCharForswornMelee1H","Skyrim.esm",124818,"Enemy"],
+        ["LCharForswornMelee1H","Skyrim.esm",124818,"Enemy"],
+        ["LCharForswornMissile","Skyrim.esm",124820,"Enemy"],
+        ["LCharForswornMissile","Skyrim.esm",124820,"Enemy"],
+        ["DLC1EncHunterTemplate","Dawnguard.esm",13167,"Ally"],
+        ["DLC1EncHunterTemplateMissile","Dawnguard.esm",13169,"Ally"]
+    ],
+    [
         ["Help the Dawnguard defeat the Vampire Lord and his minions","Skyrim.esm",0,0],
         ["LCharVampireBoss","Skyrim.esm",211369,"Enemy"],
         ["LCharVampireCompanion","Skyrim.esm",124789,"Enemy"],
@@ -71,5 +83,24 @@
         ["Help the Dawngaurd hunt the Roaming Bear","Skyrim.esm",0,12],
         ["DLC1EncHunterTemplateMissile","Dawnguard.esm",13169,"Ally"],
         ["EncBear","Skyrim.esm",146058,"Enemy"]
+    ],
+    [
+        ["Help the Dawngaurd disable the Mad Automatons","Skyrim.esm",5,0],
+        ["LCharDwarvenAutomaton","Skyrim.esm",124803,"Enemy"],
+        ["DLC1EncHunterTemplateMissile","Dawnguard.esm",13169,"Ally"],
+        ["LCharDwarvenAutomaton","Skyrim.esm",124803,"Enemy"],
+        ["DLC1EncHunterTemplateMissile","Dawnguard.esm",13169,"Ally"],
+        ["LCharDwarvenAutomaton","Skyrim.esm",124803,"Enemy"]        
+    ],
+    [
+        ["Help the Dawngaurd kill the Falmer Coven","Skyrim.esm",10,0],
+        ["LCharFalmerShaman","Skyrim.esm",124799,"Enemy"],
+        ["DLC1EncHunterTemplateMissile","Dawnguard.esm",13169,"Ally"],
+        ["DLC1EncHunterTemplate","Dawnguard.esm",13167,"Ally"],
+        ["LCharFalmerShaman","Skyrim.esm",124799,"Enemy"],
+        ["LCharFalmerShaman","Skyrim.esm",124799,"Enemy"],
+        ["DLC1EncHunterTemplateMissile","Dawnguard.esm",13169,"Ally"],
+        ["DLC1EncHunterTemplate","Dawnguard.esm",13167,"Ally"],
+        ["LCharFalmerShaman","Skyrim.esm",124799,"Enemy"]
     ]
 ]

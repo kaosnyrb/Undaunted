@@ -14,19 +14,6 @@
         ["wispDeathExplosion","Skyrim.esm",987529,"SpawnEffect"]
     ],
     [
-        ["Kill the Werewolf Pack","Skyrim.esm",15,0],
-        ["LCharWerewolfBoss","Skyrim.esm",661889,"Enemy"],
-        ["LCharWerewolf","Skyrim.esm",124817,"Enemy"],
-        ["LCharWerewolf","Skyrim.esm",124817,"Enemy"],
-        ["LCharWerewolf","Skyrim.esm",124817,"Enemy"]
-    ],
-    [
-        ["Kill the Nesting Ice Wraiths","Skyrim.esm",10,0],
-        ["EncIceWraith","Skyrim.esm",146099,"Enemy"],
-        ["EncIceWraith","Skyrim.esm",146099,"Enemy"],
-        ["EncIceWraith","Skyrim.esm",146099,"Enemy"]
-    ],
-    [
         ["Purge the Necromancers","Skyrim.esm",0,0],
         ["LCharWarlockNecromancer","Skyrim.esm",124791,"Enemy"],
         ["LCharWarlockNecromancer","Skyrim.esm",124791,"Enemy"],

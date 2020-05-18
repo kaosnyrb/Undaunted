@@ -1,26 +1,55 @@
 [
     [
         ["Kill the Forsworn Warband","Skyrim.esm",0,0],
-        ["LCharForswornBossShaman","Skyrim.esm",279293,"Enemy"],
+        ["LCharForswornMelee1H","Skyrim.esm",124818,"Enemy"],
+        ["LCharForswornMelee1H","Skyrim.esm",124818,"Enemy"],
         ["LCharForswornMelee1H","Skyrim.esm",124818,"Enemy"],
         ["LCharForswornMissile","Skyrim.esm",124820,"Enemy"],
-        ["LCharForswornMissile","Skyrim.esm",124820,"Enemy"],
-        ["LCharForswornShaman","Skyrim.esm",124821,"Enemy"]
+        ["LCharForswornMissile","Skyrim.esm",124820,"Enemy"]
     ],
     [
         ["Kill the Forsworn Harem","Skyrim.esm",0,0],
+        ["LCharForswornMeleeFemale","Skyrim.esm",279240,"Enemy"],
+        ["LCharForswornMeleeFemale","Skyrim.esm",279240,"Enemy"],
+        ["LCharForswornMissileFemale","Skyrim.esm",279241,"Enemy"],
+        ["LCharForswornMissileFemale","Skyrim.esm",279241,"Enemy"],
+        ["LCharForswornMissileFemale","Skyrim.esm",279241,"Enemy"]
+    ],
+    [
+        ["Kill the Forsworn Shaman's Clan","Skyrim.esm",5,0],
         ["LCharForswornBossShaman","Skyrim.esm",279293,"Enemy"],
+        ["LCharForswornMeleeFemale","Skyrim.esm",279240,"Enemy"],
         ["LCharForswornMelee1H","Skyrim.esm",124818,"Enemy"],
         ["LCharForswornMissile","Skyrim.esm",124820,"Enemy"],
+        ["LCharForswornMissileFemale","Skyrim.esm",279241,"Enemy"],
+        ["LCharForswornMissileFemale","Skyrim.esm",279241,"Enemy"]
+    ],
+    [
+        ["Kill the Forsworn Warbringer's Clan","Skyrim.esm",5,0],
+        ["LCharForswornBossMelee1H","Skyrim.esm",279282,"Enemy"],
+        ["LCharForswornMeleeFemale","Skyrim.esm",279240,"Enemy"],
+        ["LCharForswornMelee1H","Skyrim.esm",124818,"Enemy"],
         ["LCharForswornMissile","Skyrim.esm",124820,"Enemy"],
-        ["LCharForswornShaman","Skyrim.esm",124821,"Enemy"]
+        ["LCharForswornMissileFemale","Skyrim.esm",279241,"Enemy"],
+        ["LCharForswornMissileFemale","Skyrim.esm",279241,"Enemy"]
     ],
     [
         ["Save the Merchant from the Forsworn","Skyrim.esm",0,0],
         ["LCharForswornMelee1H","Skyrim.esm",124818,"Enemy"],
+        ["LCharForswornMelee1H","Skyrim.esm",124818,"Enemy"],
         ["LCharForswornMissile","Skyrim.esm",124820,"Enemy"],
         ["LCharForswornMissile","Skyrim.esm",124820,"Enemy"],
         ["WEMerchantMiscFemaleCommoner","Skyrim.esm",744794,"Ally"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_OblivionGate","Undaunted.esp",13206,"BountyDecoration","clutter/quest/dbbrokencart01.nif"]
+    ],
+    [
+        ["Save the Peddler from the Forsworn","Skyrim.esm",0,0],
+        ["LCharForswornMelee1H","Skyrim.esm",124818,"Enemy"],
+        ["LCharForswornMelee1H","Skyrim.esm",124818,"Enemy"],
+        ["LCharForswornMissile","Skyrim.esm",124820,"Enemy"],
+        ["LCharForswornMissile","Skyrim.esm",124820,"Enemy"],
+        ["WEMerchantMiscMaleCommoner","Skyrim.esm",769234,"Ally"],
         ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
         ["1_Undaunted_OblivionGate","Undaunted.esp",13206,"BountyDecoration","clutter/quest/dbbrokencart01.nif"]
     ],
@@ -36,11 +65,36 @@
         ["LCharForswornMissile","Skyrim.esm",124820,"Enemy"]
     ],
     [
+        ["Destroy the Forsworn Camp","Skyrim.esm",0,0],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_DestructObjective_01","Undaunted.esp",80945,"Scripted","architecture/tents/smallnordictent01.nif"],
+        ["LCharForswornMelee1H","Skyrim.esm",124818,"Enemy"],
+        ["LCharForswornMelee1H","Skyrim.esm",124818,"Enemy"],
+        ["LCharForswornMissile","Skyrim.esm",124820,"Enemy"],
+        ["LCharForswornMissile","Skyrim.esm",124820,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_DestructObjective_02","Undaunted.esp",101684,"Scripted","architecture/tents/smallnordictent01.nif"]
+    ],
+    [
         ["Kill the Hagraven","Skyrim.esm",20,0],
         ["EncHagraven","Skyrim.esm",146096,"Enemy"],
         ["LCharHagravenCompanion","Skyrim.esm",409792,"Enemy"],
         ["LCharHagravenCompanion","Skyrim.esm",409792,"Enemy"],
         ["LCharForswornMissile","Skyrim.esm",124820,"Enemy"],
+        ["LCharForswornShaman","Skyrim.esm",124821,"Enemy"]
+    ],
+    [
+        ["Kill the Hagravens in Training","Skyrim.esm",20,0],
+        ["EncHagraven","Skyrim.esm",146096,"Enemy"],
+        ["LCharForswornMeleeFemale","Skyrim.esm",279240,"Enemy"],
+        ["LCharForswornMeleeFemale","Skyrim.esm",279240,"Enemy"],
+        ["LCharForswornMissileFemale","Skyrim.esm",279241,"Enemy"],
+        ["LCharForswornShaman","Skyrim.esm",124821,"Enemy"]
+    ],
+    [
+        ["Kill the Forsworn Shaman","Skyrim.esm",5,0],
+        ["LCharForswornBossShaman","Skyrim.esm",279293,"Enemy"],
+        ["LCharSpriggan","Skyrim.esm",1109124,"Enemy"],
         ["LCharForswornShaman","Skyrim.esm",124821,"Enemy"]
     ]
 ]

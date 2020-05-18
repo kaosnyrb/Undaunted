@@ -23,5 +23,18 @@
         ["Kill the Roaming Spriggan","Skyrim.esm",5,0],
         ["LCharSpriggan","Skyrim.esm",1109124,"Enemy"],
         ["LCharSprigganCompanion","Skyrim.esm",124790,"Enemy"]        
+    ],
+    [
+        ["Kill the Nesting Ice Wraiths","Skyrim.esm",10,0],
+        ["EncIceWraith","Skyrim.esm",146099,"Enemy"],
+        ["EncIceWraith","Skyrim.esm",146099,"Enemy"],
+        ["EncIceWraith","Skyrim.esm",146099,"Enemy"]
+    ],
+    [
+        ["Kill the Werewolf Pack","Skyrim.esm",15,0],
+        ["LCharWerewolfBoss","Skyrim.esm",661889,"Enemy"],
+        ["LCharWerewolf","Skyrim.esm",124817,"Enemy"],
+        ["LCharWerewolf","Skyrim.esm",124817,"Enemy"],
+        ["LCharWerewolf","Skyrim.esm",124817,"Enemy"]
     ]
 ]
