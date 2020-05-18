@@ -1,0 +1,60 @@
+[
+    [
+        ["Slay the Clutists","Dragonborn.esm",10,0],
+        ["DLC2LCharCultist","Dragonborn.esm",199900,"Enemy"],
+        ["DLC2LCharCultist","Dragonborn.esm",199900,"Enemy"],
+        ["DLC2LCharCultistSummoner","Dragonborn.esm",218701,"Enemy"]
+    ],
+    [
+        ["Attune to the Clutist Summoning Crystals","Dragonborn.esm",10,0],
+        ["DLC2LCharCultist","Dragonborn.esm",199900,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_DLC01IdealMasterCrystal","Undaunted.esp",80944,"Scripted","dlc01/clutter/dlc01idealmastercrystal.nif"],
+        ["DLC2LCharCultist","Dragonborn.esm",199900,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_DLC01IdealMasterCrystal","Undaunted.esp",80944,"Scripted","dlc01/clutter/dlc01idealmastercrystal.nif"],
+        ["DLC2LCharCultist","Dragonborn.esm",199900,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_DLC01IdealMasterCrystal","Undaunted.esp",80944,"Scripted","dlc01/clutter/dlc01idealmastercrystal.nif"],
+        ["DLC2LCharCultistSummoner","Dragonborn.esm",218701,"Enemy"]
+    ],
+    [
+        ["Dust and Ash","Dragonborn.esm",20,0],
+        ["DLC2LCharAshSpawnAll","Dragonborn.esm",205501,"Enemy"],
+        ["DLC2LCharAshSpawnAll","Dragonborn.esm",205501,"Enemy"],
+        ["DLC2LCharAshSpawnAll","Dragonborn.esm",205501,"Enemy"],
+        ["DLC2LCharAshSpawnMagic","Dragonborn.esm",205506,"Enemy"]
+    ],
+    [
+        ["Slay the Seekers","Dragonborn.esm",20,0],
+        ["DLC2LCharSeeker","Dragonborn.esm",167559,"Enemy"],
+        ["DLC2LCharSeeker","Dragonborn.esm",167559,"Enemy"]
+    ],
+    [
+        ["Destroy the Forbidden Knowledge","Dragonborn.esm",20,0],
+        ["DLC2LCharSeeker","Dragonborn.esm",167559,"Enemy"],
+        ["DLC2LCharSeeker","Dragonborn.esm",167559,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_DLC01IdealMasterCrystal","Undaunted.esp",80944,"Scripted","DLC02/Dungeons/Apocrypha/Animated/ForbiddenBook02/ApoForbiddenBook02.nif"]
+    ],
+    [
+        ["Kill the Riekling Warband","Dragonborn.esm",25,0],
+        ["DLC2LCharMountedRiekling","Dragonborn.esm",233136,"Enemy"],
+        ["DLC2LCharRieklingMelee","Dragonborn.esm",112211,"Enemy"],
+        ["DLC2LCharRieklingMelee","Dragonborn.esm",112211,"Enemy"],
+        ["DLC2LCharRieklingMissile","Dragonborn.esm",112212,"Enemy"],
+        ["DLC2LCharRieklingMissile","Dragonborn.esm",112212,"Enemy"]
+    ],
+    [
+        ["Recover the Crates of Firebrand Wine from the Rieklings","Skyrim.esm",0,0],
+        ["DLC2LCharRieklingMelee","Dragonborn.esm",112211,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_firebrandwinecrate","Undaunted.esp",80942,"Scripted", "clutter/quest/firebrandwinecrate01.nif"],
+        ["DLC2LCharRieklingMelee","Dragonborn.esm",112211,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_firebrandwinecrate","Undaunted.esp",80942,"Scripted", "clutter/quest/firebrandwinecrate01.nif"],
+        ["DLC2LCharRieklingMissile","Dragonborn.esm",112212,"Enemy"],
+        ["DLC2LCharRieklingMissile","Dragonborn.esm",112212,"Enemy"],
+        ["DLC2LCharMountedRiekling","Dragonborn.esm",233136,"Enemy"]
+    ]
+]

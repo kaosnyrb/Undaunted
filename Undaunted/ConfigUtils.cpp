@@ -51,6 +51,11 @@ namespace Undaunted
 		return GetRandomGroup();
 	}
 
+	int GetGroupCount()
+	{
+		return GroupLibary.length;
+	}
+
 	
 	int count = 0;
 	GroupList GetRandomGroup()

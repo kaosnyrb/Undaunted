@@ -1,0 +1,42 @@
+[
+    [
+        ["Kill the Dragon","Skyrim.esm",10,0],
+        ["LCharDragonAny","Skyrim.esm",387791,"Enemy"]
+    ],
+    [
+        ["Kill the Dragon feeding on Bandits","Skyrim.esm",10,0],
+        ["LCharDragonAny","Skyrim.esm",387791,"Enemy"],
+        ["LCharBanditMeleeAny","Skyrim.esm",253645,"Enemy"],
+        ["LCharBanditMissile","Skyrim.esm",124784,"Enemy"],
+        ["LCharBanditMissile","Skyrim.esm",124784,"Enemy"],
+        ["LCharBanditMissile","Skyrim.esm",124784,"Enemy"],
+        ["LCharBanditMissile","Skyrim.esm",124784,"Enemy"],
+        ["LCharBanditMissile","Skyrim.esm",124784,"Enemy"]
+    ],
+    [
+        ["Kill the Dragon feeding on Falmer","Skyrim.esm",15,0],
+        ["LCharDragonAny","Skyrim.esm",387791,"Enemy"],
+        ["LCharFalmerMissile","Skyrim.esm",124798,"Enemy"],
+        ["LCharFalmerMissile","Skyrim.esm",124798,"Enemy"],
+        ["LCharFalmerMissile","Skyrim.esm",124798,"Enemy"],
+        ["LCharFalmerSpellsword","Skyrim.esm",406057,"Enemy"]
+    ],
+    [
+        ["Kill the Dragon feeding on Draugr","Skyrim.esm",15,0],
+        ["LCharDragonAny","Skyrim.esm",387791,"Enemy"],
+        ["LCharDraugrMissileFemale","Skyrim.esm",244928,"Enemy"],
+        ["LCharDraugrMissileMale","Skyrim.esm",682052,"Enemy"],
+        ["LCharDraugrMissileFemale","Skyrim.esm",244928,"Enemy"],
+        ["LCharDraugrMissileMale","Skyrim.esm",682052,"Enemy"],
+        ["LCharDraugrMissileFemale","Skyrim.esm",244928,"Enemy"],
+        ["LCharDraugrMissileMale","Skyrim.esm",682052,"Enemy"]
+    ],
+    [
+        ["Kill the Dragon feeding on Thalmor","Skyrim.esm",15,0],
+        ["LCharDragonAny","Skyrim.esm",387791,"Enemy"],
+        ["LCharThalmorMagic","Skyrim.esm",176424,"Enemy"],
+        ["LCharThalmorMelee1H","Skyrim.esm",176425,"Enemy"],
+        ["LCharThalmorMissile","Skyrim.esm",176426,"Enemy"],
+        ["LCharThalmorMissile","Skyrim.esm",176426,"Enemy"]
+    ]
+]

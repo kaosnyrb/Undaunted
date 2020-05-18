@@ -10,154 +10,18 @@
         ["EncBear","Skyrim.esm",146058,"Enemy"]
     ],
     [
-        ["Slay the Clutists","Dragonborn.esm",10,0],
-        ["DLC2LCharCultist","Dragonborn.esm",199900,"Enemy"],
-        ["DLC2LCharCultist","Dragonborn.esm",199900,"Enemy"],
-        ["DLC2LCharCultistSummoner","Dragonborn.esm",218701,"Enemy"]
+        ["Hunt the Mubcrabs","Skyrim.esm",0,20],
+        ["LCharMudcrab","Skyrim.esm",137278,"Enemy"],
+        ["LCharMudcrab","Skyrim.esm",137278,"Enemy"],
+        ["LCharMudcrab","Skyrim.esm",137278,"Enemy"]
     ],
     [
-        ["Dust and Ash","Dragonborn.esm",20,0],
-        ["DLC2LCharAshSpawnAll","Dragonborn.esm",205501,"Enemy"],
-        ["DLC2LCharAshSpawnAll","Dragonborn.esm",205501,"Enemy"],
-        ["DLC2LCharAshSpawnAll","Dragonborn.esm",205501,"Enemy"],
-        ["DLC2LCharAshSpawnMagic","Dragonborn.esm",205506,"Enemy"]
+        ["Kill the Spriggan","Skyrim.esm",5,0],
+        ["LCharSpriggan","Skyrim.esm",1109124,"Enemy"]
     ],
     [
-        ["Slay the Seekers","Dragonborn.esm",20,0],
-        ["DLC2LCharSeeker","Dragonborn.esm",167559,"Enemy"],
-        ["DLC2LCharSeeker","Dragonborn.esm",167559,"Enemy"]
-    ],
-    [
-        ["Destroy the Forbidden Knowledge","Dragonborn.esm",20,0],
-        ["DLC2LCharSeeker","Dragonborn.esm",167559,"Enemy"],
-        ["DLC2LCharSeeker","Dragonborn.esm",167559,"Enemy"],
-        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
-        ["1_Undaunted_DLC01IdealMasterCrystal","Undaunted.esp",80944,"Scripted","DLC02/Dungeons/Apocrypha/Animated/ForbiddenBook02/ApoForbiddenBook02.nif"]
-    ],
-    [
-        ["Kill the Thalmor Agents","Skyrim.esm",10,0],
-        ["LCharThalmorMagic","Skyrim.esm",176424,"Enemy"],
-        ["LCharThalmorMelee1H","Skyrim.esm",176425,"Enemy"],
-        ["LCharThalmorMissile","Skyrim.esm",176426,"Enemy"]
-    ],
-    [
-        ["Kill the Thalmor Agents","Skyrim.esm",15,0],
-        ["LCharThalmorMagic","Skyrim.esm",176424,"Enemy"],
-        ["LCharThalmorMelee1H","Skyrim.esm",176425,"Enemy"],
-        ["LCharThalmorMissile","Skyrim.esm",176426,"Enemy"],
-        ["LCharThalmorMissile","Skyrim.esm",176426,"Enemy"],
-        ["DLC1EncHunterTemplate","Dawnguard.esm",13167,"Ally"],
-        ["DLC1EncHunterTemplateMissile","Dawnguard.esm",13169,"Ally"],
-        ["DLC1EncHunterTemplate","Dawnguard.esm",13167,"Ally"],
-        ["DLC1EncHunterTemplateMissile","Dawnguard.esm",13169,"Ally"]
-    ],
-    [
-        ["Stop the Thalmor Shakedown","Skyrim.esm",12,0],
-        ["LCharThalmorMagic","Skyrim.esm",176424,"Enemy"],
-        ["LCharThalmorMelee1H","Skyrim.esm",176425,"Enemy"],
-        ["LCharThalmorMissile","Skyrim.esm",176426,"Enemy"],
-        ["LCharThalmorMissile","Skyrim.esm",176426,"Enemy"],
-        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
-        ["1_Undaunted_OblivionGate","Undaunted.esp",13206,"BountyDecoration","clutter/quest/dbbrokencart01.nif"],
-        ["WEMerchantMiscFemaleCommoner","Skyrim.esm",744794,"Ally"]
-    ],
-    [
-        ["Stop the Thalmor Experiments","Skyrim.esm",10,0],
-        ["LCharThalmorMagic","Skyrim.esm",176424,"Enemy"],
-        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
-        ["1_Undaunted_DestructObjectiveMagic_01","Undaunted.esp",80946,"Scripted","Dungeons/AzurasStar/AzuraLargeCrystalMoving01.nif"],
-        ["LCharThalmorMelee1H","Skyrim.esm",176425,"Enemy"],
-        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
-        ["1_Undaunted_DestructObjectiveMagic_02","Undaunted.esp",101687,"Scripted","Dungeons/AzurasStar/AzuraLargeCrystalMoving02.nif"],
-        ["LCharThalmorMagicBoss","Skyrim.esm",515241,"Enemy"],
-        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
-        ["1_Undaunted_DestructObjectiveMagic_03","Undaunted.esp",101688,"Scripted","Dungeons/AzurasStar/AzuraLargeCrystalMoving03.nif"],
-        ["LCharThalmorMagic","Skyrim.esm",176424,"Enemy"]
-    ],
-    [
-        ["Disable the Mad Automatons","Skyrim.esm",5,0],
-        ["LCharDwarvenAutomaton","Skyrim.esm",124803,"Enemy"],
-        ["LCharDwarvenAutomaton","Skyrim.esm",124803,"Enemy"],
-        ["LCharDwarvenAutomaton","Skyrim.esm",124803,"Enemy"]        
-    ],
-    [
-        ["Disable the Dwemer Power Conduits","Skyrim.esm",0,0],
-        ["LCharDwarvenAutomaton","Skyrim.esm",124803,"Enemy"],
-        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
-        ["1_Undaunted_DestructObjectiveMagic_01","Undaunted.esp",80946,"Scripted","DLC02/Dungeons/Dwemer/Rubble/DLC2DweRubbleColumn01.nif"],
-        ["LCharDwarvenAutomaton","Skyrim.esm",124803,"Enemy"],
-        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
-        ["1_Undaunted_DestructObjectiveMagic_01","Undaunted.esp",80946,"Scripted","DLC02/Dungeons/Dwemer/Rubble/DLC2DweRubbleColumn01.nif"],
-        ["LCharDwarvenAutomaton","Skyrim.esm",124803,"Enemy"],
-        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
-        ["1_Undaunted_DestructObjectiveMagic_02","Undaunted.esp",101687,"Scripted","DLC01/Dungeons/Dwemer/Animated/DweSpecialForge01/DweSpecialForge01.nif"]
-    ],
-    [
-        ["Harness the Dwemer Lexigraphs","Skyrim.esm",0,0],
-        ["LCharDwarvenAutomaton","Skyrim.esm",124803,"Enemy"],
-        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
-        ["1_Undaunted_DLC01IdealMasterCrystal","Undaunted.esp",80944,"Scripted","Dungeons/Dwemer/Animated/Astrolabe/LexiconStand/DweLexiconStandRunes01.nif"],
-        ["LCharDwarvenAutomaton","Skyrim.esm",124803,"Enemy"],
-        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
-        ["1_Undaunted_DLC01IdealMasterCrystal","Undaunted.esp",80944,"Scripted","Dungeons/Dwemer/Animated/Astrolabe/LexiconStand/DweLexiconStandRunes01.nif"],
-        ["LCharDwarvenAutomaton","Skyrim.esm",124803,"Enemy"],  
-        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
-        ["1_Undaunted_DLC01IdealMasterCrystal","Undaunted.esp",80944,"Scripted","Dungeons/Dwemer/Animated/Astrolabe/LexiconStand/DweLexiconStandRunes01.nif"]
-    ],
-    [
-        ["Clear out the Dwemer Ruins","Skyrim.esm",0,0],
-        ["LCharDwarvenAutomaton","Skyrim.esm",124803,"Enemy"],
-        ["LCharDwarvenAutomaton","Skyrim.esm",124803,"Enemy"],
-        ["LCharDwarvenAutomaton","Skyrim.esm",124803,"Enemy"],
-        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
-        ["1_Undaunted_DwemerRuins_Enterance","Undaunted.esp",475922,"ScriptedDoor","DLC01/Dungeons/Dwemer/Animated/DweSpecialForge01/DweSpecialForge01.nif"]
-    ],
-    [
-        ["Prevent the Thalmor from harnessing the Dwemer Lexigraphs","Skyrim.esm",15,0],
-        ["LCharThalmorMagicBoss","Skyrim.esm",515241,"Enemy"],
-        ["LCharThalmorMagic","Skyrim.esm",176424,"Enemy"],
-        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
-        ["1_Undaunted_DLC01IdealMasterCrystal","Undaunted.esp",80944,"Scripted","Dungeons/Dwemer/Animated/Astrolabe/LexiconStand/DweLexiconStandRunes01.nif"],
-        ["LCharThalmorMagic","Skyrim.esm",176424,"Enemy"],
-        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
-        ["1_Undaunted_DLC01IdealMasterCrystal","Undaunted.esp",80944,"Scripted","Dungeons/Dwemer/Animated/Astrolabe/LexiconStand/DweLexiconStandRunes01.nif"],
-        ["LCharThalmorMagic","Skyrim.esm",176424,"Enemy"],
-        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
-        ["1_Undaunted_DLC01IdealMasterCrystal","Undaunted.esp",80944,"Scripted","Dungeons/Dwemer/Animated/Astrolabe/LexiconStand/DweLexiconStandRunes01.nif"]
-    ],
-    [
-        ["Help the Oppressed Bosmer","Skyrim.esm",0,0],
-        ["WEAdventurerBrawlerWoodElfM","Skyrim.esm",1070432,"Ally"],
-        ["WEAdventurerRangedConjurerWoodElfF","Skyrim.esm",1070415,"Ally"],
-        ["WEAdventurerRangedConjurerWoodElfF","Skyrim.esm",1070415,"Ally"],
-        ["WEAdventurerRangedConjurerWoodElfM","Skyrim.esm",1070416,"Ally"],
-        ["LCharThalmorMagic","Skyrim.esm",176424,"Enemy"],
-        ["LCharThalmorMelee1H","Skyrim.esm",176425,"Enemy"],
-        ["LCharThalmorMagicBoss","Skyrim.esm",515241,"Enemy"],
-        ["LCharThalmorMagic","Skyrim.esm",176424,"Enemy"]
-    ],
-    [
-        ["Kill the Rieklin Warband","Dragonborn.esm",25,0],
-        ["DLC2LCharMountedRiekling","Dragonborn.esm",233136,"Enemy"],
-        ["DLC2LCharRieklingMelee","Dragonborn.esm",112211,"Enemy"],
-        ["DLC2LCharRieklingMelee","Dragonborn.esm",112211,"Enemy"],
-        ["DLC2LCharRieklingMissile","Dragonborn.esm",112212,"Enemy"],
-        ["DLC2LCharRieklingMissile","Dragonborn.esm",112212,"Enemy"]
-    ],
-    [
-        ["Kill the Forsworn Warband","Skyrim.esm",0,0],
-        ["LCharForswornBossShaman","Skyrim.esm",279293,"Enemy"],
-        ["LCharForswornMelee1H","Skyrim.esm",124818,"Enemy"],
-        ["LCharForswornMissile","Skyrim.esm",124820,"Enemy"],
-        ["LCharForswornMissile","Skyrim.esm",124820,"Enemy"],
-        ["LCharForswornShaman","Skyrim.esm",124821,"Enemy"]
-    ],
-    [
-        ["Kill the Hagraven","Skyrim.esm",20,0],
-        ["EncHagraven","Skyrim.esm",146096,"Enemy"],
-        ["LCharHagravenCompanion","Skyrim.esm",409792,"Enemy"],
-        ["LCharHagravenCompanion","Skyrim.esm",409792,"Enemy"],
-        ["LCharForswornMissile","Skyrim.esm",124820,"Enemy"],
-        ["LCharForswornShaman","Skyrim.esm",124821,"Enemy"]
+        ["Kill the Roaming Spriggan","Skyrim.esm",5,0],
+        ["LCharSpriggan","Skyrim.esm",1109124,"Enemy"],
+        ["LCharSprigganCompanion","Skyrim.esm",124790,"Enemy"]        
     ]
 ]

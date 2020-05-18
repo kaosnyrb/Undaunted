@@ -8,6 +8,20 @@
         ["LCharFalmerSpellsword","Skyrim.esm",406057,"Enemy"]
     ],
     [
+        ["Kill the Falmer Scouts","Skyrim.esm",10,0],
+        ["LCharFalmerMissile","Skyrim.esm",124798,"Enemy"],
+        ["LCharFalmerMissile","Skyrim.esm",124798,"Enemy"],
+        ["LCharFalmerMissile","Skyrim.esm",124798,"Enemy"],
+        ["LCharFalmerSpellsword","Skyrim.esm",406057,"Enemy"]
+    ],
+    [
+        ["Kill the Falmer Divining Squad","Skyrim.esm",10,0],
+        ["LCharFalmerShaman","Skyrim.esm",124799,"Enemy"],
+        ["LCharFalmerMissile","Skyrim.esm",124798,"Enemy"],
+        ["LCharFalmerCompanionFrost","Skyrim.esm",409788,"Enemy"],
+        ["LCharFalmerMissile","Skyrim.esm",124798,"Enemy"]
+    ],
+    [
         ["Kill the Falmer Beastmaster","Skyrim.esm",10,0],
         ["LCharFalmerBoss","Skyrim.esm",336783,"Enemy"],
         ["LCharFalmerCompanionFrost","Skyrim.esm",409788,"Enemy"],
@@ -20,6 +34,20 @@
         ["LCharFalmerShaman","Skyrim.esm",124799,"Enemy"],
         ["LCharFalmerShaman","Skyrim.esm",124799,"Enemy"],
         ["LCharFalmerShaman","Skyrim.esm",124799,"Enemy"],
+        ["LCharFalmerShaman","Skyrim.esm",124799,"Enemy"]
+    ],
+    [
+        ["Attune to the Falmer Summoning Crystals","Skyrim.esm",10,0],
+        ["LCharFalmerBoss","Skyrim.esm",336783,"Enemy"],
+        ["LCharFalmerMissile","Skyrim.esm",124798,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_DLC01IdealMasterCrystal","Undaunted.esp",80944,"Scripted","dlc01/clutter/dlc01idealmastercrystal.nif"],
+        ["LCharFalmerMissile","Skyrim.esm",124798,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_DLC01IdealMasterCrystal","Undaunted.esp",80944,"Scripted","dlc01/clutter/dlc01idealmastercrystal.nif"],
+        ["LCharFalmerMissile","Skyrim.esm",124798,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_DLC01IdealMasterCrystal","Undaunted.esp",80944,"Scripted","dlc01/clutter/dlc01idealmastercrystal.nif"],
         ["LCharFalmerShaman","Skyrim.esm",124799,"Enemy"]
     ]
 ]

@@ -102,5 +102,53 @@
         "PosY": 64447,
         "PosZ": -13993,
         "Radius": 8000
+    },
+    {
+        "Zonename": "Sky Haven",
+        "Worldspace": "Tamriel",
+        "PosX": -141439,
+        "PosY": 6698,
+        "PosZ": -3967,
+        "Radius": 5000
+    },
+    {
+        "Zonename": "Dragon Bridge",
+        "Worldspace": "Tamriel",
+        "PosX": -101776,
+        "PosY": 83684,
+        "PosZ": -12078,
+        "Radius": 5000
+    },
+    {
+        "Zonename": "Ivarstead",
+        "Worldspace": "Tamriel",
+        "PosX": 76764,
+        "PosY": -64970,
+        "PosZ": 10850,
+        "Radius": 5000
+    },
+    {
+        "Zonename": "Karthwasten",
+        "Worldspace": "Tamriel",
+        "PosX": -132985,
+        "PosY": 38716,
+        "PosZ": -6170,
+        "Radius": 5000
+    },
+    {
+        "Zonename": "Rorikstead",
+        "Worldspace": "Tamriel",
+        "PosX": -84873,
+        "PosY": 7620,
+        "PosZ": -4101,
+        "Radius": 5000
+    },
+    {
+        "Zonename": "Shor's Stone",
+        "Worldspace": "Tamriel",
+        "PosX": 163471,
+        "PosY": -60504,
+        "PosZ": 7074,
+        "Radius": 5000
     }
 ]

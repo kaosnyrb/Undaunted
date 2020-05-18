@@ -24,8 +24,6 @@
         ["Kill the Nesting Ice Wraiths","Skyrim.esm",10,0],
         ["EncIceWraith","Skyrim.esm",146099,"Enemy"],
         ["EncIceWraith","Skyrim.esm",146099,"Enemy"],
-        ["EncIceWraith","Skyrim.esm",146099,"Enemy"],
-        ["EncIceWraith","Skyrim.esm",146099,"Enemy"],
         ["EncIceWraith","Skyrim.esm",146099,"Enemy"]
     ],
     [
@@ -35,13 +33,76 @@
         ["LCharWarlockNecromancer","Skyrim.esm",124791,"Enemy"]
     ],
     [
+        ["Clean up the Necromancers Ritual","Skyrim.esm",5,0],
+        ["LCharWarlockNecromancer","Skyrim.esm",124791,"Enemy"],
+        ["LCharDraugrMeleeAllFemale","Skyrim.esm",784312,"Enemy"],
+        ["LCharWarlockNecromancer","Skyrim.esm",124791,"Enemy"],
+        ["LCharDraugrMeleeAllFemale","Skyrim.esm",784312,"Enemy"],
+        ["LCharWarlockNecromancer","Skyrim.esm",124791,"Enemy"]
+    ],
+    [
+        ["Stop the Necromancers Ritual","Skyrim.esm",5,0],
+        ["LCharSkeletonMeleeMixed","Skyrim.esm",185044,"Enemy"],
+        ["LCharWarlockNecromancer","Skyrim.esm",124791,"Enemy"],
+        ["LCharSkeletonMeleeMixed","Skyrim.esm",185044,"Enemy"],
+        ["LCharSkeletonMeleeMixed","Skyrim.esm",185044,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_DestructObjectiveMagic_01","Undaunted.esp",80946,"Scripted","Clutter/Ruins/RuinsLargeUrnNoStand01.nif"],
+        ["LCharWarlockNecromancer","Skyrim.esm",124791,"Enemy"]
+    ],
+    [
         ["Disrupt the Necromancers Ritual","Skyrim.esm",0,0],
         ["LCharWarlockNecromancer","Skyrim.esm",124791,"Enemy"],
         ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
-        ["1_Undaunted_DestructObjective_01","Undaunted.esp",80945,"Scripted","Clutter/Coffins/NordicCoffinStatic01.nif"],
+        ["1_Undaunted_DestructObjectiveMagic_01","Undaunted.esp",80946,"Scripted","Clutter/Ruins/RuinsSarcophagusVert01.nif"],
         ["LCharWarlockNecromancer","Skyrim.esm",124791,"Enemy"],
         ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
-        ["1_Undaunted_DestructObjective_01","Undaunted.esp",80945,"Scripted","Clutter/Coffins/NordicCoffinStatic01.nif"],
+        ["1_Undaunted_DestructObjectiveMagic_01","Undaunted.esp",80946,"Scripted","Clutter/Ruins/RuinsSarcophagusVert01.nif"],
         ["LCharWarlockNecromancer","Skyrim.esm",124791,"Enemy"]
+    ],
+    [
+        ["Prevent the dark deal","Dragonborn.esm",20,0],
+        ["DLC2LCharSeeker","Dragonborn.esm",167559,"Enemy"],
+        ["LCharWarlockNecromancer","Skyrim.esm",124791,"Enemy"],
+        ["LCharWarlockNecromancer","Skyrim.esm",124791,"Enemy"],
+        ["LCharWarlockNecromancer","Skyrim.esm",124791,"Enemy"],
+        ["LCharWarlockNecromancer","Skyrim.esm",124791,"Enemy"],
+        ["LCharWarlockNecromancer","Skyrim.esm",124791,"Enemy"]
+    ],
+    [
+        ["Consult the Nordic Ancients","Skyrim.esm",0,0],
+        ["dunKilkreathGhostMelee","Skyrim.esm",1006524,"Enemy"],
+        ["dunKilkreathGhostMelee","Skyrim.esm",1006524,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_DLC01IdealMasterCrystal","Undaunted.esp",80944,"Scripted","Dungeons/Nordic/Clutter/NorSculptureHead01.nif"],
+        ["dunKilkreathGhostMelee","Skyrim.esm",1006524,"Enemy"],
+        ["dunKilkreathGhostMelee","Skyrim.esm",1006524,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_DLC01IdealMasterCrystal","Undaunted.esp",80944,"Scripted","Dungeons/Nordic/Clutter/NorSculptureHead01.nif"],
+        ["dunKilkreathGhostMelee","Skyrim.esm",1006524,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_DLC01IdealMasterCrystal","Undaunted.esp",80944,"Scripted","Dungeons/Nordic/Clutter/NorSculptureHead01.nif"],
+        ["dunKilkreathGhostMelee","Skyrim.esm",1006524,"Enemy"]
+    ],
+    [
+        ["Prevent the Corruption of the Nordic Ancients","Skyrim.esm",0,0],
+        ["LCharWarlockNecromancer","Skyrim.esm",124791,"Enemy"],
+        ["LCharWarlockNecromancer","Skyrim.esm",124791,"Enemy"],
+        ["dunKilkreathGhostMelee","Skyrim.esm",1006524,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_DLC01IdealMasterCrystal","Undaunted.esp",80944,"BountyDecoration","Dungeons/Nordic/Clutter/NorSculptureHead01.nif"],
+        ["dunKilkreathGhostMelee","Skyrim.esm",1006524,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_DLC01IdealMasterCrystal","Undaunted.esp",80944,"Scripted","Dungeons/Nordic/Clutter/NorSculptureHead01.nif"],
+        ["dunKilkreathGhostMelee","Skyrim.esm",1006524,"Enemy"]
+    ],
+    [
+        ["Stop the Necromancers using the Draugr Statue of Power","Skyrim.esm",0,0],
+        ["LCharDraugrMeleeAllFemale","Skyrim.esm",784312,"Enemy"],
+        ["LCharWarlockNecromancer","Skyrim.esm",124791,"Enemy"],
+        ["LCharWarlockNecromancer","Skyrim.esm",124791,"Enemy"],
+        ["LCharDraugrMeleeAllFemale","Skyrim.esm",784312,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_DestructObjectiveMagic_02","Undaunted.esp",101687,"Scripted","Dungeons/Nordic/RuinsDragonStatueMetal03.nif"]
     ]
 ]

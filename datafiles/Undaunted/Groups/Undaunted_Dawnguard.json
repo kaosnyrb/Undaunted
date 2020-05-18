@@ -1,9 +1,29 @@
 [
     [
         ["Kill the group of Vampires","Skyrim.esm",0,0],
-        ["DLC1LCharVampireFSultry","Dawnguard.esm",53403,"Enemy"],
-        ["DLC1LCharVampireFSultry","Dawnguard.esm",53403,"Enemy"],
         ["LCharVampire","Skyrim.esm",211315,"Enemy"],
+        ["LCharVampire","Skyrim.esm",211315,"Enemy"],
+        ["LCharVampire","Skyrim.esm",211315,"Enemy"]
+    ],
+    [
+        ["Kill the Vampire Harem","Skyrim.esm",0,0],
+        ["DLC1LCharVampireFSultry","Dawnguard.esm",53403,"Enemy"],
+        ["DLC1LCharVampireFSultry","Dawnguard.esm",53403,"Enemy"],
+        ["DLC1LCharVampireFSultry","Dawnguard.esm",53403,"Enemy"]
+    ],
+    [
+        ["Kill the Vampire Harem and their Beasts","Skyrim.esm",5,0],
+        ["DLC1LCharVampireFSultry","Dawnguard.esm",53403,"Enemy"],
+        ["LCharVampireCompanion","Skyrim.esm",124789,"Enemy"],
+        ["DLC1LCharVampireFSultry","Dawnguard.esm",53403,"Enemy"],
+        ["LCharVampireCompanion","Skyrim.esm",124789,"Enemy"],
+        ["DLC1LCharVampireFSultry","Dawnguard.esm",53403,"Enemy"]
+    ],
+    [
+        ["Kill the Vampire Lord and his Harem","Skyrim.esm",15,0],
+        ["DLC1LCharVampireFSultry","Dawnguard.esm",53403,"Enemy"],
+        ["DLC1LCharVampireFSultry","Dawnguard.esm",53403,"Enemy"],
+        ["DLC1LCharVampireFSultry","Dawnguard.esm",53403,"Enemy"],
         ["LCharVampireBossDLC1MaleVampireDarkElf","Dawnguard.esm",25402,"Enemy"]
     ],
     [
@@ -14,11 +34,11 @@
         ["LCharVampireCompanion","Skyrim.esm",124789,"Enemy"]
     ],
     [
-        ["Help the Dawnguard","Skyrim.esm",0,0],
+        ["Help the Dawnguard defeat the Vampire Harem","Skyrim.esm",0,0],
         ["DLC1LCharVampireFSultry","Dawnguard.esm",53403,"Enemy"],
         ["DLC1EncHunterTemplate","Dawnguard.esm",13167,"Ally"],
         ["DLC1LCharVampireFSultry","Dawnguard.esm",53403,"Enemy"],
-        ["LCharVampire","Skyrim.esm",211315,"Enemy"],
+        ["DLC1LCharVampireFSultry","Dawnguard.esm",53403,"Enemy"],
         ["DLC1EncHunterTemplate","Dawnguard.esm",13167,"Ally"],
         ["DLC1LCharVampireFSultry","Dawnguard.esm",53403,"Enemy"],
         ["DLC1EncHunterTemplateMissile","Dawnguard.esm",13169,"Ally"],
@@ -26,7 +46,19 @@
         ["DLC1EncHunterTemplateMissile","Dawnguard.esm",13169,"Ally"]
     ],
     [
-        ["Help the Dawnguard","Skyrim.esm",15,0],
+        ["Help the Dawnguard defeat the Vampire Lord and his minions","Skyrim.esm",0,0],
+        ["LCharVampireBoss","Skyrim.esm",211369,"Enemy"],
+        ["LCharVampireCompanion","Skyrim.esm",124789,"Enemy"],
+        ["LCharVampireCompanion","Skyrim.esm",124789,"Enemy"],
+        ["LCharVampireCompanion","Skyrim.esm",124789,"Enemy"],
+        ["LCharVampireCompanion","Skyrim.esm",124789,"Enemy"],
+        ["DLC1EncHunterTemplate","Dawnguard.esm",13167,"Ally"],
+        ["DLC1EncHunterTemplate","Dawnguard.esm",13167,"Ally"],
+        ["DLC1EncHunterTemplateMissile","Dawnguard.esm",13169,"Ally"],
+        ["DLC1EncHunterTemplateMissile","Dawnguard.esm",13169,"Ally"]
+    ],
+    [
+        ["Help the Dawnguard defeat the Werewolves","Skyrim.esm",15,0],
         ["DLC1EncHunterTemplate","Dawnguard.esm",13167,"Ally"],
         ["DLC1EncHunterTemplate","Dawnguard.esm",13167,"Ally"],
         ["DLC1EncHunterTemplateMissile","Dawnguard.esm",13169,"Ally"],
@@ -34,5 +66,10 @@
         ["LCharWerewolf","Skyrim.esm",124817,"Enemy"],
         ["LCharWerewolf","Skyrim.esm",124817,"Enemy"],
         ["LCharWerewolf","Skyrim.esm",124817,"Enemy"]
+    ],
+    [
+        ["Help the Dawngaurd hunt the Roaming Bear","Skyrim.esm",0,12],
+        ["DLC1EncHunterTemplateMissile","Dawnguard.esm",13169,"Ally"],
+        ["EncBear","Skyrim.esm",146058,"Enemy"]
     ]
 ]

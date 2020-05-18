@@ -15,6 +15,7 @@ namespace Undaunted
 	void AddMembertoGroup(int id, GroupMember member);
 	GroupList GetRandomGroup();
 	GroupList GetGroup(std::string bountyName);
+	int GetGroupCount();
 
 	//General
 	void AddConfigValue(std::string key, std::string value);

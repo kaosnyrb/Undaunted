@@ -1,0 +1,46 @@
+[
+    [
+        ["Kill the Forsworn Warband","Skyrim.esm",0,0],
+        ["LCharForswornBossShaman","Skyrim.esm",279293,"Enemy"],
+        ["LCharForswornMelee1H","Skyrim.esm",124818,"Enemy"],
+        ["LCharForswornMissile","Skyrim.esm",124820,"Enemy"],
+        ["LCharForswornMissile","Skyrim.esm",124820,"Enemy"],
+        ["LCharForswornShaman","Skyrim.esm",124821,"Enemy"]
+    ],
+    [
+        ["Kill the Forsworn Harem","Skyrim.esm",0,0],
+        ["LCharForswornBossShaman","Skyrim.esm",279293,"Enemy"],
+        ["LCharForswornMelee1H","Skyrim.esm",124818,"Enemy"],
+        ["LCharForswornMissile","Skyrim.esm",124820,"Enemy"],
+        ["LCharForswornMissile","Skyrim.esm",124820,"Enemy"],
+        ["LCharForswornShaman","Skyrim.esm",124821,"Enemy"]
+    ],
+    [
+        ["Save the Merchant from the Forsworn","Skyrim.esm",0,0],
+        ["LCharForswornMelee1H","Skyrim.esm",124818,"Enemy"],
+        ["LCharForswornMissile","Skyrim.esm",124820,"Enemy"],
+        ["LCharForswornMissile","Skyrim.esm",124820,"Enemy"],
+        ["WEMerchantMiscFemaleCommoner","Skyrim.esm",744794,"Ally"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_OblivionGate","Undaunted.esp",13206,"BountyDecoration","clutter/quest/dbbrokencart01.nif"]
+    ],
+    [
+        ["Recover the Crates of Firebrand Wine from the Forsworn","Skyrim.esm",0,0],
+        ["LCharForswornMelee1H","Skyrim.esm",124818,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_firebrandwinecrate","Undaunted.esp",80942,"Scripted", "clutter/quest/firebrandwinecrate01.nif"],
+        ["LCharForswornMelee1H","Skyrim.esm",124818,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_firebrandwinecrate","Undaunted.esp",80942,"Scripted", "clutter/quest/firebrandwinecrate01.nif"],
+        ["LCharForswornMissile","Skyrim.esm",124820,"Enemy"],
+        ["LCharForswornMissile","Skyrim.esm",124820,"Enemy"]
+    ],
+    [
+        ["Kill the Hagraven","Skyrim.esm",20,0],
+        ["EncHagraven","Skyrim.esm",146096,"Enemy"],
+        ["LCharHagravenCompanion","Skyrim.esm",409792,"Enemy"],
+        ["LCharHagravenCompanion","Skyrim.esm",409792,"Enemy"],
+        ["LCharForswornMissile","Skyrim.esm",124820,"Enemy"],
+        ["LCharForswornShaman","Skyrim.esm",124821,"Enemy"]
+    ]
+]

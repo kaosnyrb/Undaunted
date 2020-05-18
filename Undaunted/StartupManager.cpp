@@ -116,5 +116,6 @@ namespace Undaunted {
 				}
 			}
 		}
+		_MESSAGE("Groups loaded: %i", GetGroupCount());
 	}
 }

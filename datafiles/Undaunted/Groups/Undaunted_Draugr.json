@@ -1,11 +1,33 @@
 [
     [
+        ["Kill the Dragon Priest","Skyrim.esm",30,0],
+        ["SubCharDragonPriest","Skyrim.esm",271489,"Enemy"],
+        ["LCharDraugrMeleeAllMale","Skyrim.esm",350549,"Enemy"],
+        ["LCharDraugrMissileFemale","Skyrim.esm",244928,"Enemy"]
+    ],
+    [
         ["Kill the Risen Draugr","Skyrim.esm",0,0],
-        ["LCharDraugrBoss","Skyrim.esm",271488,"Enemy"],
         ["LCharDraugrMeleeAllFemale","Skyrim.esm",784312,"Enemy"],
         ["LCharDraugrMeleeAllMale","Skyrim.esm",350549,"Enemy"],
         ["LCharDraugrMeleeAllFemale","Skyrim.esm",784312,"Enemy"],
         ["LCharDraugrWarlock","Skyrim.esm",124843,"Enemy"],
+        ["NordBattleCryAreaEffect01","Skyrim.esm",1092425,"SpawnEffect"]
+    ],
+    [
+        ["Kill the Risen Draugr Lord","Skyrim.esm",10,0],
+        ["LCharDraugrBoss","Skyrim.esm",271488,"Enemy"],
+        ["LCharDraugrMeleeAllFemale","Skyrim.esm",784312,"Enemy"],
+        ["LCharDraugrMeleeAllMale","Skyrim.esm",350549,"Enemy"],
+        ["LCharDraugrMeleeAllFemale","Skyrim.esm",784312,"Enemy"],
+        ["NordBattleCryAreaEffect01","Skyrim.esm",1092425,"SpawnEffect"]
+    ],
+    [
+        ["Kill the Risen Draugr Harem","Skyrim.esm",0,0],
+        ["LCharDraugrMeleeAllFemale","Skyrim.esm",784312,"Enemy"],
+        ["LCharDraugrMeleeAllFemale","Skyrim.esm",784312,"Enemy"],
+        ["LCharDraugrMeleeAllFemale","Skyrim.esm",784312,"Enemy"],
+        ["LCharDraugrMeleeAllFemale","Skyrim.esm",784312,"Enemy"],
+        ["LCharDraugrMeleeAllFemale","Skyrim.esm",784312,"Enemy"],
         ["NordBattleCryAreaEffect01","Skyrim.esm",1092425,"SpawnEffect"]
     ],
     [
@@ -30,13 +52,10 @@
         ["LCharDraugrWarlock","Skyrim.esm",124843,"Enemy"],
         ["LCharDraugrWarlock","Skyrim.esm",124843,"Enemy"],
         ["LCharDraugrWarlock","Skyrim.esm",124843,"Enemy"],
-        ["LCharDraugrWarlock","Skyrim.esm",124843,"Enemy"],
-        ["LCharDraugrWarlock","Skyrim.esm",124843,"Enemy"],
         ["NordBattleCryAreaEffect01","Skyrim.esm",1092425,"SpawnEffect"]
     ],
     [
-        ["Attune to the Summoning Crystals","Skyrim.esm",0,0],
-        ["LCharDraugrBoss","Skyrim.esm",271488,"Enemy"],
+        ["Attune to the Draugr Summoning Crystals","Skyrim.esm",0,0],
         ["LCharDraugrMeleeAllFemale","Skyrim.esm",784312,"Enemy"],
         ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
         ["1_Undaunted_DLC01IdealMasterCrystal","Undaunted.esp",80944,"Scripted","dlc01/clutter/dlc01idealmastercrystal.nif"],
@@ -46,7 +65,6 @@
         ["LCharDraugrMeleeAllFemale","Skyrim.esm",784312,"Enemy"],
         ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
         ["1_Undaunted_DLC01IdealMasterCrystal","Undaunted.esp",80944,"Scripted","dlc01/clutter/dlc01idealmastercrystal.nif"],
-        ["LCharDraugrWarlock","Skyrim.esm",124843,"Enemy"],
         ["LCharDraugrWarlock","Skyrim.esm",124843,"Enemy"],
         ["NordBattleCryAreaEffect01","Skyrim.esm",1092425,"SpawnEffect"]
     ],
@@ -72,21 +90,6 @@
         ["LCharDraugrMeleeAllFemale","Skyrim.esm",784312,"Enemy"],
         ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
         ["1_Undaunted_DestructObjectiveMagic_02","Undaunted.esp",101687,"Scripted","Dungeons/Nordic/RuinsDragonStatueMetal03.nif"]
-    ],
-    [
-        ["Consult the Nordic Ancients","Skyrim.esm",0,0],
-        ["dunKilkreathGhostMelee","Skyrim.esm",1006524,"Enemy"],
-        ["dunKilkreathGhostMelee","Skyrim.esm",1006524,"Enemy"],
-        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
-        ["1_Undaunted_DLC01IdealMasterCrystal","Undaunted.esp",80944,"Scripted","Dungeons/Nordic/Clutter/NorSculptureHead01.nif"],
-        ["dunKilkreathGhostMelee","Skyrim.esm",1006524,"Enemy"],
-        ["dunKilkreathGhostMelee","Skyrim.esm",1006524,"Enemy"],
-        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
-        ["1_Undaunted_DLC01IdealMasterCrystal","Undaunted.esp",80944,"Scripted","Dungeons/Nordic/Clutter/NorSculptureHead01.nif"],
-        ["dunKilkreathGhostMelee","Skyrim.esm",1006524,"Enemy"],
-        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
-        ["1_Undaunted_DLC01IdealMasterCrystal","Undaunted.esp",80944,"Scripted","Dungeons/Nordic/Clutter/NorSculptureHead01.nif"],
-        ["dunKilkreathGhostMelee","Skyrim.esm",1006524,"Enemy"]
     ],
     [
         ["Destroy the Risen Draugr Sarcophagi","Skyrim.esm",5,0],

@@ -1,0 +1,40 @@
+[
+    [
+        ["Disable the Mad Automatons","Skyrim.esm",5,0],
+        ["LCharDwarvenAutomaton","Skyrim.esm",124803,"Enemy"],
+        ["LCharDwarvenAutomaton","Skyrim.esm",124803,"Enemy"],
+        ["LCharDwarvenAutomaton","Skyrim.esm",124803,"Enemy"]        
+    ],
+    [
+        ["Disable the Dwemer Power Conduits","Skyrim.esm",5,0],
+        ["LCharDwarvenAutomaton","Skyrim.esm",124803,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_DestructObjectiveMagic_01","Undaunted.esp",80946,"Scripted","DLC02/Dungeons/Dwemer/Rubble/DLC2DweRubbleColumn01.nif"],
+        ["LCharDwarvenAutomaton","Skyrim.esm",124803,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_DestructObjectiveMagic_01","Undaunted.esp",80946,"Scripted","DLC02/Dungeons/Dwemer/Rubble/DLC2DweRubbleColumn01.nif"],
+        ["LCharDwarvenAutomaton","Skyrim.esm",124803,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_DestructObjectiveMagic_02","Undaunted.esp",101687,"Scripted","DLC01/Dungeons/Dwemer/Animated/DweSpecialForge01/DweSpecialForge01.nif"]
+    ],
+    [
+        ["Harness the Dwemer Lexigraphs","Skyrim.esm",5,0],
+        ["LCharDwarvenAutomaton","Skyrim.esm",124803,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_DLC01IdealMasterCrystal","Undaunted.esp",80944,"Scripted","Dungeons/Dwemer/Animated/Astrolabe/LexiconStand/DweLexiconStandRunes01.nif"],
+        ["LCharDwarvenAutomaton","Skyrim.esm",124803,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_DLC01IdealMasterCrystal","Undaunted.esp",80944,"Scripted","Dungeons/Dwemer/Animated/Astrolabe/LexiconStand/DweLexiconStandRunes01.nif"],
+        ["LCharDwarvenAutomaton","Skyrim.esm",124803,"Enemy"],  
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_DLC01IdealMasterCrystal","Undaunted.esp",80944,"Scripted","Dungeons/Dwemer/Animated/Astrolabe/LexiconStand/DweLexiconStandRunes01.nif"]
+    ],
+    [
+        ["Clear out the Dwemer Ruins","Skyrim.esm",0,0],
+        ["LCharDwarvenAutomaton","Skyrim.esm",124803,"Enemy"],
+        ["LCharDwarvenAutomaton","Skyrim.esm",124803,"Enemy"],
+        ["LCharDwarvenAutomaton","Skyrim.esm",124803,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_DwemerRuins_Enterance","Undaunted.esp",475922,"ScriptedDoor","DLC01/Dungeons/Dwemer/Animated/DweSpecialForge01/DweSpecialForge01.nif"]
+    ]
+]
