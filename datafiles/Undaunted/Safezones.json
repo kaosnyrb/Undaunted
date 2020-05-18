@@ -48,6 +48,14 @@
         "Radius": 10000
     },
     {
+        "Zonename": "Riften Goldenglow Estate",
+        "Worldspace": "Tamriel",
+        "PosX": 154979,
+        "PosY": -97139,
+        "PosZ": 11055,
+        "Radius": 6000
+    },
+    {
         "Zonename": "Windhelm",
         "Worldspace": "Tamriel",
         "PosX": 135007,
@@ -77,6 +85,22 @@
         "PosX": 31037,
         "PosY": 103676,
         "PosZ": -13803,
+        "Radius": 8000
+    },
+    {
+        "Zonename": "Solitude",
+        "Worldspace": "Tamriel",
+        "PosX": -59264,
+        "PosY": 106735,
+        "PosZ": -8227,
+        "Radius": 12000
+    },
+    {
+        "Zonename": "Morthal",
+        "Worldspace": "Tamriel",
+        "PosX": -37412,
+        "PosY": 64447,
+        "PosZ": -13993,
         "Radius": 8000
     }
 ]
