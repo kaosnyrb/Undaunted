@@ -9,7 +9,7 @@ namespace Undaunted
 
 
 	//Groups
-	int AddGroup(std::string questText);
+	int AddGroup(std::string questText, UInt32 minlevel, UInt32 maxlevel);
 	void AddMembertoGroup(int id, GroupMember member);
 	GroupList GetRandomGroup();
 	GroupList GetGroup(std::string bountyName);
@@ -17,7 +17,8 @@ namespace Undaunted
 	//General
 	void AddConfigValue(std::string key, std::string value);
 	UInt32 GetConfigValueInt(std::string key);
-
+	void SetPlayerLevel(UInt32 level);
+	UInt32 GetPlayerLevel();
 
 	//RewardBlacklist
 	void AddRewardBlacklist(std::string key);

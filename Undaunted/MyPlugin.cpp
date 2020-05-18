@@ -44,7 +44,7 @@ namespace Undaunted {
 
 	// Fill out the WorldList, this checks the loaded world cells and finds the persistant reference cells.
 	// This takes a while so we only do this once at the start
-	bool hook_InitSystem(StaticFunctionTag* base)
+	bool hook_InitSystem(StaticFunctionTag* base, UInt32 playerLevel)
 	{
 		DataHandler* dataHandler = GetDataHandler();
 		_MESSAGE("Mod Count: %08X", dataHandler->modList.loadedMods.count);
@@ -57,6 +57,7 @@ namespace Undaunted {
 		LoadSettings();
 		LoadGroups();
 		BuildWorldList();
+		SetPlayerLevel(playerLevel);
 		BountyManager::getInstance()->isReady = 2;
 		_MESSAGE("ReadyState: %i ", BountyManager::getInstance()->isReady);
 		return true;
@@ -130,18 +131,6 @@ namespace Undaunted {
 
 	// Process the Group header line. We return the groups position which we can use to add to later.
 	UInt32 hook_AddGroup(StaticFunctionTag* base, BSFixedString questText, BSFixedString modRequirement, UInt32 minLevel, UInt32 maxLevel, UInt32 playerLevel){
-		//Player is too low level for this bounty
-		if (playerLevel + GetConfigValueInt("BountyLevelCache") < minLevel && minLevel != 0)
-		{
-			_MESSAGE("%s: Player level too low", questText.Get());
-			return -1;
-		}
-		//Player is too high level for this bounty
-		if (playerLevel > maxLevel && maxLevel != 0)
-		{
-			_MESSAGE("%s: Player level too high", questText.Get());
-			return -1;
-		}
 		//Mod required is not loaded
 		bool foundmod = false;
 		DataHandler* dataHandler = GetDataHandler();
@@ -160,7 +149,7 @@ namespace Undaunted {
 			_MESSAGE("%s: Mod %s is not loaded", questText.Get(), modRequirement.Get());
 			return -1;
 		}
-		return AddGroup(questText.Get());
+		return AddGroup(questText.Get(),minLevel,maxLevel);
 	}
 
 	// Add a member to a group.
@@ -356,7 +345,7 @@ namespace Undaunted {
 	
 
 		registry->RegisterFunction(
-			new NativeFunction0 <StaticFunctionTag, bool>("InitSystem", "Undaunted_SystemScript", Undaunted::hook_InitSystem, registry));
+			new NativeFunction1 <StaticFunctionTag, bool, UInt32>("InitSystem", "Undaunted_SystemScript", Undaunted::hook_InitSystem, registry));
 
 		registry->RegisterFunction(
 			new NativeFunction0 <StaticFunctionTag, BSFixedString>("GetRandomBountyName", "Undaunted_SystemScript", Undaunted::hook_GetRandomBountyName, registry));

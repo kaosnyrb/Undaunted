@@ -65,28 +65,31 @@ namespace Undaunted {
 					std::string modreq = group[0][1].as<std::string>("modreq");
 					int minlevel = group[0][2].as<int>(0);
 					int maxlevel = group[0][3].as<int>(0);
-
-					int groupid = AddGroup(groupname);
-					for (int j = 1; j < group.size(); j++)
+					const ModInfo* modInfo = dataHandler->LookupModByName(modreq.c_str());
+					if (modInfo != NULL)
 					{
-						std::string esp = group[j][1].as<std::string>("esp");
-						const ModInfo* modInfo = dataHandler->LookupModByName(esp.c_str());
-						int form = group[j][2].as<int>(0);
-						if (modInfo != NULL)
+						int groupid = AddGroup(groupname, minlevel, maxlevel);
+						for (int j = 1; j < group.size(); j++)
 						{
-							form = (modInfo->modIndex << 24) + form;
+							std::string esp = group[j][1].as<std::string>("esp");
+							const ModInfo* modInfo = dataHandler->LookupModByName(esp.c_str());
+							int form = group[j][2].as<int>(0);
+							if (modInfo != NULL)
+							{
+								form = (modInfo->modIndex << 24) + form;
+							}
+							std::string type = group[j][3].as<std::string>("type");
+							std::string model = std::string("");
+							if (group[j].size() > 3)
+							{
+								model = group[j][4].as<std::string>("");
+							}
+							GroupMember newmember = GroupMember();
+							newmember.BountyType = type.c_str();
+							newmember.FormId = form;
+							newmember.ModelFilepath = model.c_str();
+							AddMembertoGroup(groupid, newmember);
 						}
-						std::string type = group[j][3].as<std::string>("type");
-						std::string model = std::string("");
-						if (group[j].size() > 3)
-						{
-							model = group[j][4].as<std::string>("");
-						}
-						GroupMember newmember = GroupMember();
-						newmember.BountyType = type.c_str();
-						newmember.FormId = form;
-						newmember.ModelFilepath = model.c_str();
-						AddMembertoGroup(groupid, newmember);
 					}
 				}
 			}

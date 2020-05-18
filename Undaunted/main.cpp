@@ -90,7 +90,9 @@ extern "C"	{
 		//Check if the function registration was a success...
 		bool btest = g_papyrus->Register(Undaunted::RegisterFuncs);
 		
-		//Undaunted::LoadSettings();
+
+		Undaunted::GetDataHandler();
+		Undaunted::GetPlayer();
 
 		if (btest) {
 			_MESSAGE("Register Succeeded");

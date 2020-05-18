@@ -19,11 +19,13 @@ namespace Undaunted
 	}
 
 	//Groups
-	int AddGroup(std::string questText)
+	int AddGroup(std::string questText, UInt32 minlevel, UInt32 maxlevel)
 	{
 		_MESSAGE("Adding bounty to GroupLibary: %s", questText.c_str());
 		GroupList newGroup = GroupList();
 		newGroup.questText = questText;
+		newGroup.minLevel = minlevel;
+		newGroup.maxLevel = maxlevel;
 		GroupLibary.AddItem(newGroup);
 		return GroupLibary.length - 1;
 	}
@@ -52,6 +54,24 @@ namespace Undaunted
 	GroupList GetRandomGroup()
 	{
 		srand(time(NULL) + count++);
+		UInt32 playerLevel = GetPlayerLevel();
+		for (int i = 0; i < 50; i++)
+		{
+			int groupid = rand() % GroupLibary.length;
+			_MESSAGE("Random Group: %i", groupid);
+			_MESSAGE("Random Member Count: %i", GroupLibary.data[groupid].length);
+			//Player is too low level for this bounty
+			if (playerLevel + GetConfigValueInt("BountyLevelCache") < GroupLibary.data[groupid].minLevel && GroupLibary.data[groupid].minLevel != 0)
+			{
+				continue;
+			}
+			//Player is too high level for this bounty
+			if (playerLevel > GroupLibary.data[groupid].maxLevel && GroupLibary.data[groupid].maxLevel != 0)
+			{
+				continue;
+			}
+			return GroupLibary.data[groupid];
+		}
 		int groupid = rand() % GroupLibary.length;
 		_MESSAGE("Random Group: %i",groupid);
 		_MESSAGE("Random Member Count: %i", GroupLibary.data[groupid].length);
@@ -92,6 +112,17 @@ namespace Undaunted
 		}
 		//Not found.
 		return 0;
+	}
+
+	UInt32 Playerlevel;
+	void SetPlayerLevel(UInt32 level)
+	{
+		Playerlevel = level;
+	}
+
+	UInt32 GetPlayerLevel()
+	{
+		return Playerlevel;
 	}
 
 	UnStringList RewardBlacklist = UnStringList();

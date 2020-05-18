@@ -6,7 +6,7 @@ float Function StartNamedBounty(int bountyId,bool nearby, String bountyName) glo
 float Function RestartNamedBounty(int bountyId,String bountyName) global native
 float Function StartNamedBountyNearRef(int bountyId,bool nearby, String bountyName, ObjectReference ref, string WorldspaceName) global native
 
-bool Function InitSystem() global native
+bool Function InitSystem(int playerLevel) global native
 int Function isSystemReady() global native
 bool Function ClaimStartupLock() global native
 
