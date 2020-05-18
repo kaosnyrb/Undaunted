@@ -46,12 +46,18 @@ namespace Undaunted
 			{
 				return 1;
 			}
+			else
+			{
+				return 0;
+			}
 		}
 		if (strcmp(type, "BountyDecoration") == 0 || strcmp(type,"EndEffect") == 0 || strcmp(type, "SpawnEffect") == 0 || strcmp(type, "Ally") == 0 || strcmp(type, "BossroomEnemy") == 0 || strcmp(type, "Placer") == 0)
 		{
 			return 1;
 		}
-		return 0;
+		//In case I don't know what's happenening just mark it as done.
+		//Doing so due to an error from wyongcan2019 where the Ally type became lowercase for some reason.
+		return 1;
 	}
 
 	void GroupMember::PreBounty()
