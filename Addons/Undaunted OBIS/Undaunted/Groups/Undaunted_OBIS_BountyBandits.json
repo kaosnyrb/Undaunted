@@ -383,5 +383,236 @@
         ["LCharBanditOBIS_MeleeAny","OBIS SE.esp",1104517,"Enemy"],
         ["LCharBanditOBIS_Missile ","OBIS SE.esp",1104521,"Enemy"],
         ["LCharBanditOBIS_Mage","OBIS SE.esp",1104520,"Enemy"]
+    ],
+    [
+        ["Kill Egila","OBIS SE.esp",0,0],
+        ["EncBandit04BountyRedguardF002","OBIS SE.esp",2731,"Enemy"],
+        ["LCharBanditOBIS_MeleeAny","OBIS SE.esp",1104517,"Enemy"],
+        ["LCharBanditOBIS_Missile ","OBIS SE.esp",1104521,"Enemy"],
+        ["LCharBanditOBIS_Mage","OBIS SE.esp",1104520,"Enemy"]
+    ],
+    [
+        ["Kill Ekur","OBIS SE.esp",0,0],
+        ["EncBandit02BountyArgonianF002 ","OBIS SE.esp",4924,"Enemy"],
+        ["LCharBanditOBIS_MeleeAny","OBIS SE.esp",1104517,"Enemy"],
+        ["LCharBanditOBIS_Missile ","OBIS SE.esp",1104521,"Enemy"],
+        ["LCharBanditOBIS_Mage","OBIS SE.esp",1104520,"Enemy"]
+    ],
+    [
+        ["Kill Elga","OBIS SE.esp",0,0],
+        ["EncBandit01BountyNordF001","OBIS SE.esp",2491,"Enemy"],
+        ["LCharBanditOBIS_MeleeAny","OBIS SE.esp",1104517,"Enemy"],
+        ["LCharBanditOBIS_Missile ","OBIS SE.esp",1104521,"Enemy"],
+        ["LCharBanditOBIS_Mage","OBIS SE.esp",1104520,"Enemy"]
+    ],
+    [
+        ["Kill Elgliril","OBIS SE.esp",0,0],
+        ["EncBandit02BountyWoodElfF001","OBIS SE.esp",3133,"Enemy"],
+        ["LCharBanditOBIS_MeleeAny","OBIS SE.esp",1104517,"Enemy"],
+        ["LCharBanditOBIS_Missile ","OBIS SE.esp",1104521,"Enemy"],
+        ["LCharBanditOBIS_Mage","OBIS SE.esp",1104520,"Enemy"]
+    ],
+    [
+        ["Kill Ene the Greedy","OBIS SE.esp",0,0],
+        ["EncBandit04BountyImperialF001","OBIS SE.esp",2482,"Enemy"],
+        ["LCharBanditOBIS_MeleeAny","OBIS SE.esp",1104517,"Enemy"],
+        ["LCharBanditOBIS_Missile ","OBIS SE.esp",1104521,"Enemy"],
+        ["LCharBanditOBIS_Mage","OBIS SE.esp",1104520,"Enemy"]
+    ],
+    [
+        ["Kill Eri Longheart","OBIS SE.esp",0,0],
+        ["EncBandit04BountyNordF003","OBIS SE.esp",3294,"Enemy"],
+        ["LCharBanditOBIS_MeleeAny","OBIS SE.esp",1104517,"Enemy"],
+        ["LCharBanditOBIS_Missile ","OBIS SE.esp",1104521,"Enemy"],
+        ["LCharBanditOBIS_Mage","OBIS SE.esp",1104520,"Enemy"]
+    ],
+    [
+        ["Kill Eria Roninus","OBIS SE.esp",0,0],
+        ["EncBandit03BountyImperialF001","OBIS SE.esp",2469,"Enemy"],
+        ["LCharBanditOBIS_MeleeAny","OBIS SE.esp",1104517,"Enemy"],
+        ["LCharBanditOBIS_Missile ","OBIS SE.esp",1104521,"Enemy"],
+        ["LCharBanditOBIS_Mage","OBIS SE.esp",1104520,"Enemy"]
+    ],
+    [
+        ["Kill Erlaman Agelus","OBIS SE.esp",0,0],
+        ["EncBandit04BountyImperialM001","OBIS SE.esp",2483,"Enemy"],
+        ["LCharBanditOBIS_MeleeAny","OBIS SE.esp",1104517,"Enemy"],
+        ["LCharBanditOBIS_Missile ","OBIS SE.esp",1104521,"Enemy"],
+        ["LCharBanditOBIS_Mage","OBIS SE.esp",1104520,"Enemy"]
+    ],
+    [
+        ["Kill Errana","OBIS SE.esp",0,0],
+        ["EncBandit06BountyHighElfF001 ","OBIS SE.esp",3079,"Enemy"],
+        ["LCharBanditOBIS_MeleeAny","OBIS SE.esp",1104517,"Enemy"],
+        ["LCharBanditOBIS_Missile ","OBIS SE.esp",1104521,"Enemy"],
+        ["LCharBanditOBIS_Mage","OBIS SE.esp",1104520,"Enemy"]
+    ],
+    [
+        ["Kill Esa Dracira","OBIS SE.esp",0,0],
+        ["EncBandit05BountyImperialF002","OBIS SE.esp",2733,"Enemy"],
+        ["LCharBanditOBIS_MeleeAny","OBIS SE.esp",1104517,"Enemy"],
+        ["LCharBanditOBIS_Missile ","OBIS SE.esp",1104521,"Enemy"],
+        ["LCharBanditOBIS_Mage","OBIS SE.esp",1104520,"Enemy"]
+    ],
+    [
+        ["Kill Esartur","OBIS SE.esp",0,0],
+        ["EncBandit04BountyHighElfM001","OBIS SE.esp",3695,"Enemy"],
+        ["LCharBanditOBIS_MeleeAny","OBIS SE.esp",1104517,"Enemy"],
+        ["LCharBanditOBIS_Missile ","OBIS SE.esp",1104521,"Enemy"],
+        ["LCharBanditOBIS_Mage","OBIS SE.esp",1104520,"Enemy"]
+    ],
+    [
+        ["Kill Faan","OBIS SE.esp",0,0],
+        ["EncBandit01BountyHighElfM001","OBIS SE.esp",3131,"Enemy"],
+        ["LCharBanditOBIS_MeleeAny","OBIS SE.esp",1104517,"Enemy"],
+        ["LCharBanditOBIS_Missile ","OBIS SE.esp",1104521,"Enemy"],
+        ["LCharBanditOBIS_Mage","OBIS SE.esp",1104520,"Enemy"]
+    ],
+    [
+        ["Kill Fala Othi","OBIS SE.esp",0,0],
+        ["EncBandit03BountyDarkElfF001","OBIS SE.esp",3074,"Enemy"],
+        ["LCharBanditOBIS_MeleeAny","OBIS SE.esp",1104517,"Enemy"],
+        ["LCharBanditOBIS_Missile ","OBIS SE.esp",1104521,"Enemy"],
+        ["LCharBanditOBIS_Mage","OBIS SE.esp",1104520,"Enemy"]
+    ],
+    [
+        ["Kill Falx the Slivertongued","OBIS SE.esp",0,0],
+        ["EncBandit05BountyImperialM003","OBIS SE.esp",3536,"Enemy"],
+        ["LCharBanditOBIS_MeleeAny","OBIS SE.esp",1104517,"Enemy"],
+        ["LCharBanditOBIS_Missile ","OBIS SE.esp",1104521,"Enemy"],
+        ["LCharBanditOBIS_Mage","OBIS SE.esp",1104520,"Enemy"]
+    ],
+    [
+        ["Kill Fania Canipa","OBIS SE.esp",0,0],
+        ["EncBandit01BountyImperialF001","OBIS SE.esp",2486,"Enemy"],
+        ["LCharBanditOBIS_MeleeAny","OBIS SE.esp",1104517,"Enemy"],
+        ["LCharBanditOBIS_Missile ","OBIS SE.esp",1104521,"Enemy"],
+        ["LCharBanditOBIS_Mage","OBIS SE.esp",1104520,"Enemy"]
+    ],
+    [
+        ["Kill Faskar","OBIS SE.esp",0,0],
+        ["EncBandit06BountyNordM001","OBIS SE.esp",2543,"Enemy"],
+        ["LCharBanditOBIS_MeleeAny","OBIS SE.esp",1104517,"Enemy"],
+        ["LCharBanditOBIS_Missile ","OBIS SE.esp",1104521,"Enemy"],
+        ["LCharBanditOBIS_Mage","OBIS SE.esp",1104520,"Enemy"]
+    ],
+    [
+        ["Kill Felen Arith","OBIS SE.esp",0,0],
+        ["EncBandit02BountyDarkElfM001","OBIS SE.esp",2834,"Enemy"],
+        ["LCharBanditOBIS_MeleeAny","OBIS SE.esp",1104517,"Enemy"],
+        ["LCharBanditOBIS_Missile ","OBIS SE.esp",1104521,"Enemy"],
+        ["LCharBanditOBIS_Mage","OBIS SE.esp",1104520,"Enemy"]
+    ],
+    [
+        ["Kill Feno Daladen","OBIS SE.esp",0,0],
+        ["EncBandit02BountyDarkElfM002","OBIS SE.esp",3530,"Enemy"],
+        ["LCharBanditOBIS_MeleeAny","OBIS SE.esp",1104517,"Enemy"],
+        ["LCharBanditOBIS_Missile ","OBIS SE.esp",1104521,"Enemy"],
+        ["LCharBanditOBIS_Mage","OBIS SE.esp",1104520,"Enemy"]
+    ],
+    [
+        ["Kill Fovos Rori","OBIS SE.esp",0,0],
+        ["EncBandit06BountyDarkElfM001","OBIS SE.esp",3298,"Enemy"],
+        ["LCharBanditOBIS_MeleeAny","OBIS SE.esp",1104517,"Enemy"],
+        ["LCharBanditOBIS_Missile ","OBIS SE.esp",1104521,"Enemy"],
+        ["LCharBanditOBIS_Mage","OBIS SE.esp",1104520,"Enemy"]
+    ],
+    [
+        ["Kill Gakbra the Facebreaker","OBIS SE.esp",0,0],
+        ["EncBandit04BountyOrcM001","OBIS SE.esp",2522,"Enemy"],
+        ["LCharBanditOBIS_MeleeAny","OBIS SE.esp",1104517,"Enemy"],
+        ["LCharBanditOBIS_Missile ","OBIS SE.esp",1104521,"Enemy"],
+        ["LCharBanditOBIS_Mage","OBIS SE.esp",1104520,"Enemy"]
+    ],
+    [
+        ["Kill Garas","OBIS SE.esp",0,0],
+        ["EncBandit01BountyRedguardM003","OBIS SE.esp",2507,"Enemy"],
+        ["LCharBanditOBIS_MeleeAny","OBIS SE.esp",1104517,"Enemy"],
+        ["LCharBanditOBIS_Missile ","OBIS SE.esp",1104521,"Enemy"],
+        ["LCharBanditOBIS_Mage","OBIS SE.esp",1104520,"Enemy"]
+    ],
+    [
+        ["Kill Garrius Acilius","OBIS SE.esp",0,0],
+        ["EncBandit02BountyImperialM001","OBIS SE.esp",2457,"Enemy"],
+        ["LCharBanditOBIS_MeleeAny","OBIS SE.esp",1104517,"Enemy"],
+        ["LCharBanditOBIS_Missile ","OBIS SE.esp",1104521,"Enemy"],
+        ["LCharBanditOBIS_Mage","OBIS SE.esp",1104520,"Enemy"]
+    ],
+    [
+        ["Kill Gemar the Runner","OBIS SE.esp",0,0],
+        ["EncBandit05BountyNordM002","OBIS SE.esp",2533,"Enemy"],
+        ["LCharBanditOBIS_MeleeAny","OBIS SE.esp",1104517,"Enemy"],
+        ["LCharBanditOBIS_Missile ","OBIS SE.esp",1104521,"Enemy"],
+        ["LCharBanditOBIS_Mage","OBIS SE.esp",1104520,"Enemy"]
+    ],
+    [
+        ["Kill Gemir","OBIS SE.esp",0,0],
+        ["EncBandit03BountyNordM002","OBIS SE.esp",2477,"Enemy"],
+        ["LCharBanditOBIS_MeleeAny","OBIS SE.esp",1104517,"Enemy"],
+        ["LCharBanditOBIS_Missile ","OBIS SE.esp",1104521,"Enemy"],
+        ["LCharBanditOBIS_Mage","OBIS SE.esp",1104520,"Enemy"]
+    ],
+    [
+        ["Kill Geralas","OBIS SE.esp",0,0],
+        ["EncBandit03BountyWoodElfM001","OBIS SE.esp",2836,"Enemy"],
+        ["LCharBanditOBIS_MeleeAny","OBIS SE.esp",1104517,"Enemy"],
+        ["LCharBanditOBIS_Missile ","OBIS SE.esp",1104521,"Enemy"],
+        ["LCharBanditOBIS_Mage","OBIS SE.esp",1104520,"Enemy"]
+    ],
+    [
+        ["Kill Ghaambul gra-Aglarz","OBIS SE.esp",0,0],
+        ["EncBandit06BountyOrcM002","OBIS SE.esp",3078,"Enemy"],
+        ["LCharBanditOBIS_MeleeAny","OBIS SE.esp",1104517,"Enemy"],
+        ["LCharBanditOBIS_Missile ","OBIS SE.esp",1104521,"Enemy"],
+        ["LCharBanditOBIS_Mage","OBIS SE.esp",1104520,"Enemy"]
+    ],
+    [
+        ["Kill Godder","OBIS SE.esp",0,0],
+        ["EncBandit05BountyNordM005","OBIS SE.esp",2749,"Enemy"],
+        ["LCharBanditOBIS_MeleeAny","OBIS SE.esp",1104517,"Enemy"],
+        ["LCharBanditOBIS_Missile ","OBIS SE.esp",1104521,"Enemy"],
+        ["LCharBanditOBIS_Mage","OBIS SE.esp",1104520,"Enemy"]
+    ],
+    [
+        ["Kill Godir","OBIS SE.esp",0,0],
+        ["EncBandit02BountyNordM004","OBIS SE.esp",2744,"Enemy"],
+        ["LCharBanditOBIS_MeleeAny","OBIS SE.esp",1104517,"Enemy"],
+        ["LCharBanditOBIS_Missile ","OBIS SE.esp",1104521,"Enemy"],
+        ["LCharBanditOBIS_Mage","OBIS SE.esp",1104520,"Enemy"]
+    ],
+    [
+        ["Kill Gragak gra-Borzol","OBIS SE.esp",0,0],
+        ["EncBandit06BountyOrcF002","OBIS SE.esp",3361,"Enemy"],
+        ["LCharBanditOBIS_MeleeAny","OBIS SE.esp",1104517,"Enemy"],
+        ["LCharBanditOBIS_Missile ","OBIS SE.esp",1104521,"Enemy"],
+        ["LCharBanditOBIS_Mage","OBIS SE.esp",1104520,"Enemy"]
+    ],
+    [
+        ["Kill Graskar Hooknose","OBIS SE.esp",0,0],
+        ["EncBandit01BountyNordM003","OBIS SE.esp",2505,"Enemy"],
+        ["LCharBanditOBIS_MeleeAny","OBIS SE.esp",1104517,"Enemy"],
+        ["LCharBanditOBIS_Missile ","OBIS SE.esp",1104521,"Enemy"],
+        ["LCharBanditOBIS_Mage","OBIS SE.esp",1104520,"Enemy"]
+    ],
+    [
+        ["Kill Graves the Destroyer","OBIS SE.esp",0,0],
+        ["EncBandit01BountyRedguardM004","OBIS SE.esp",4396,"Enemy"],
+        ["LCharBanditOBIS_MeleeAny","OBIS SE.esp",1104517,"Enemy"],
+        ["LCharBanditOBIS_Missile ","OBIS SE.esp",1104521,"Enemy"],
+        ["LCharBanditOBIS_Mage","OBIS SE.esp",1104520,"Enemy"]
+    ],
+    [
+        ["Kill Grutia Maa","OBIS SE.esp",0,0],
+        ["EncBandit05BountyImperialF003","OBIS SE.esp",3363,"Enemy"],
+        ["LCharBanditOBIS_MeleeAny","OBIS SE.esp",1104517,"Enemy"],
+        ["LCharBanditOBIS_Missile ","OBIS SE.esp",1104521,"Enemy"],
+        ["LCharBanditOBIS_Mage","OBIS SE.esp",1104520,"Enemy"]
+    ],
+    [
+        ["Kill Gudlav","OBIS SE.esp",0,0],
+        ["EncBandit01BountyNordM004","OBIS SE.esp",3529,"Enemy"],
+        ["LCharBanditOBIS_MeleeAny","OBIS SE.esp",1104517,"Enemy"],
+        ["LCharBanditOBIS_Missile ","OBIS SE.esp",1104521,"Enemy"],
+        ["LCharBanditOBIS_Mage","OBIS SE.esp",1104520,"Enemy"]
     ]
 ]
