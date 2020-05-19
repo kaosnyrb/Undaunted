@@ -1,0 +1,98 @@
+[
+    [
+        ["Iron Blood tank","OBIS SE.esp",0,0],
+        ["LCharBanditIronBlood","OBIS SE.esp",2344,"Enemy"],
+        ["LCharBanditIronBlood","OBIS SE.esp",2344,"Enemy"],
+        ["LCharBanditIronBlood","OBIS SE.esp",2344,"Enemy"]
+    ],
+    [
+        ["Vermin mage","OBIS SE.esp",0,0],
+        ["LCharBanditVermin","OBIS SE.esp",2484,"Enemy"],
+        ["LCharBanditVermin","OBIS SE.esp",2484,"Enemy"],
+        ["LCharBanditVermin","OBIS SE.esp",2484,"Enemy"]
+    ],
+    [
+        ["Hidden theif","OBIS SE.esp",0,0],
+        ["LCharBanditHidden","OBIS SE.esp",2453,"Enemy"],
+        ["LCharBanditHidden","OBIS SE.esp",2453,"Enemy"],
+        ["LCharBanditHidden","OBIS SE.esp",2453,"Enemy"],
+    ],
+    [
+        ["Alikr","OBIS SE.esp",0,0],
+        ["LCharBanditAlikr ","OBIS SE.esp",2598,"Enemy"],
+        ["LCharBanditAlikr ","OBIS SE.esp",2598,"Enemy"],
+        ["LCharBanditAlikr","OBIS SE.esp",2598,"Enemy"],
+    ],
+    [
+        ["Hammer women","OBIS SE.esp",0,0],
+        ["LCharBanditHammer  ","OBIS SE.esp",2604,"Enemy"],
+        ["LCharBanditHammer ","OBIS SE.esp",2604,"Enemy"],
+        ["LCharBanditHammer","OBIS SE.esp",2604,"Enemy"]
+    ],
+    [
+        ["Vok summon","OBIS SE.esp",0,0],
+        ["LCharBanditVok","OBIS SE.esp",2756,"Enemy"],
+        ["LCharBanditVok","OBIS SE.esp",2756,"Enemy"],
+        ["LCharBanditVok","OBIS SE.esp",2756,"Enemy"]
+    ],
+    [
+        ["Blind archer","OBIS SE.esp",0,0],
+        ["LCharBanditBlind","OBIS SE.esp",2758,"Enemy"],
+        ["LCharBanditBlind","OBIS SE.esp",2758,"Enemy"],
+        ["LCharBanditBlind","OBIS SE.esp",2758,"Enemy"]
+    ],
+    [
+        ["Knights of the Burning Rose","OBIS SE.esp",0,0],
+        ["LCharBanditRose","OBIS SE.esp",2877,"Enemy"],
+        ["LCharBanditRose","OBIS SE.esp",2877,"Enemy"],
+        ["LCharBanditRose","OBIS SE.esp",2877,"Enemy"]
+    ],
+    [
+        ["Frostborn ice mage","OBIS SE.esp",0,0],
+        ["LCharBanditFrost ","OBIS SE.esp",2935,"Enemy"],
+        ["LCharBanditFrost ","OBIS SE.esp",2935,"Enemy"],
+        ["LCharBanditFrost ","OBIS SE.esp",2935,"Enemy"]
+    ],
+    [
+        ["Addled druggies","OBIS SE.esp",0,0],
+        ["LCharBanditAddled ","OBIS SE.esp",3060,"Enemy"],
+        ["LCharBanditAddled ","OBIS SE.esp",3060,"Enemy"],
+        ["LCharBanditAddled ","OBIS SE.esp",3060,"Enemy"]
+    ],
+    [
+        ["Digger Falmery","OBIS SE.esp",0,0],
+        ["LCharBanditDigger","OBIS SE.esp",3067,"Enemy"],
+        ["LCharBanditDigger","OBIS SE.esp",3067,"Enemy"],
+        ["LCharBanditDigger","OBIS SE.esp",3067,"Enemy"]
+    ],
+    [
+        ["Unloyal","OBIS SE.esp",0,0],
+        ["LCharBanditUnloyal","OBIS SE.esp",3148,"Enemy"],
+        ["LCharBanditUnloyal","OBIS SE.esp",3148,"Enemy"],
+        ["LCharBanditUnloyal","OBIS SE.esp",3148,"Enemy"]
+    ],
+    [
+        ["Gore 2H Attackers","OBIS SE.esp",0,0],
+        ["LCharBanditGore","OBIS SE.esp",3191,"Enemy"],
+        ["LCharBanditGore","OBIS SE.esp",3191,"Enemy"],
+        ["LCharBanditGore","OBIS SE.esp",3191,"Enemy"]
+    ],
+    [
+        ["Finger of the Mountain","OBIS SE.esp",0,0],
+        ["LCharBanditFinger","OBIS SE.esp",3256,"Enemy"],
+        ["LCharBanditFinger","OBIS SE.esp",3256,"Enemy"],
+        ["LCharBanditFinger","OBIS SE.esp",3256,"Enemy"]
+    ],
+    [
+        ["Blueskulls","OBIS SE.esp",0,0],
+        ["LCharBanditSkull","OBIS SE.esp",3287,"Enemy"],
+        ["LCharBanditSkull","OBIS SE.esp",3287,"Enemy"],
+        ["LCharBanditSkull","OBIS SE.esp",3287,"Enemy"]
+    ],
+    [
+        ["Droppers","OBIS SE.esp",0,0],
+        ["LCharBanditDropper","OBIS SE.esp",3509,"Enemy"],
+        ["LCharBanditDropper","OBIS SE.esp",3509,"Enemy"],
+        ["LCharBanditDropper","OBIS SE.esp",3509,"Enemy"]
+    ]
+]
