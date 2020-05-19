@@ -6,7 +6,7 @@
     ["BountyMinSpawnDistance","7000","The minimum distance at which a bounty will be allowed to be place at"],
     ["BountyMaxSpawnDistance","15000", "The maximum distance at which a bounty will be allowed to be place at"],
     ["BountySearchAttempts","5000","How many items it will search for a spawn point in the set distance before giving up"],
-    ["BountyUpdateRate","5","How often in seconds that the Bounty checks the state. Low values use up more cpu."],
+    ["BountyUpdateRate","3","How often in seconds that the Bounty checks the state. Low values use up more cpu."],
     ["BountyMaxHeight","1000","The height above the player that a bounty can spawn at."],
     ["BountyMinHeight","1000","The height below the player that a bounty can spawn at."],
     ["BountyEnemyExteriorSpawnRadius","2000","The radius around the bounty at which enemies will spawn outside"],

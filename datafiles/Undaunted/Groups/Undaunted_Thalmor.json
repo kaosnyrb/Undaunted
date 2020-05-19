@@ -62,7 +62,7 @@
         ["1_Undaunted_DLC01IdealMasterCrystal","Undaunted.esp",80944,"Scripted","Dungeons/Dwemer/Animated/Astrolabe/LexiconStand/DweLexiconStandRunes01.nif"]
     ],
     [
-        ["Help the Oppressed Bosmer","Skyrim.esm",0,0],
+        ["Help the Oppressed Bosmer","Skyrim.esm",15,0],
         ["WEAdventurerBrawlerWoodElfM","Skyrim.esm",1070432,"Ally"],
         ["WEAdventurerRangedConjurerWoodElfF","Skyrim.esm",1070415,"Ally"],
         ["WEAdventurerRangedConjurerWoodElfF","Skyrim.esm",1070415,"Ally"],
