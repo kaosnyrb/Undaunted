@@ -14,7 +14,7 @@ namespace Undaunted
 			GetConfigValueInt("RewardBookWeight"),
 			GetConfigValueInt("RewardMiscWeight")
 		};
-		int numberofchoices = 6;
+		int numberofchoices = 7;
 		int sum_of_weight = 0;
 		for (int i = 0; i < numberofchoices; i++) {
 			sum_of_weight += choice_weight[i];
@@ -35,11 +35,14 @@ namespace Undaunted
 		for (int i = 0; i < blacklist.length; i++)
 		{
 			auto mod = dataHandler->LookupModByName(blacklist.data[i].value.c_str());
-			if (mod->IsFormInMod(formid))
+			if (mod != NULL)
 			{
-				//loopcount++;
-				//srand(time(NULL) + loopcount);
-				return true;
+				if (mod->IsFormInMod(formid))
+				{
+					//loopcount++;
+					//srand(time(NULL) + loopcount);
+					return true;
+				}
 			}
 		}
 		return false;
