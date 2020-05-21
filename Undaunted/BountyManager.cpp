@@ -58,7 +58,7 @@ namespace Undaunted {
 		int NonComplete = 0;
 		for (UInt32 i = 0; i < bounty->bountygrouplist.length; i++)
 		{
-			_MESSAGE("Type, Member, complete: %s, %08X , %i", bounty->bountygrouplist.data[i].BountyType.Get(), bounty->bountygrouplist.data[i].FormId, bounty->bountygrouplist.data[i].IsComplete());
+			_MESSAGE("Type, Member, complete: %s, %08X , %i", bounty->bountygrouplist.data[i].BountyType.c_str(), bounty->bountygrouplist.data[i].FormId, bounty->bountygrouplist.data[i].IsComplete());
 			if (bounty->bountygrouplist.data[i].IsComplete() != 1)
 			{
 				NonComplete++;

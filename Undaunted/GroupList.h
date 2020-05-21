@@ -7,7 +7,7 @@ namespace Undaunted
 	class GroupMember {
 	public:
 		UInt32 FormId;
-		BSFixedString BountyType;
+		std::string BountyType;
 		TESObjectREFR* objectRef;
 
 		BSFixedString ModelFilepath;

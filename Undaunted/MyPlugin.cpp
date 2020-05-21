@@ -1,5 +1,7 @@
 #include "MyPlugin.h"
 #include <Undaunted\StartupManager.h>
+#include <algorithm>
+#include <string>
 
 namespace Undaunted {
 
@@ -260,8 +262,8 @@ namespace Undaunted {
 		{
 			for (int j = 0; j < BountyManager::getInstance()->activebounties.data[i].bountygrouplist.length; j++)
 			{
-				const char* type = BountyManager::getInstance()->activebounties.data[i].bountygrouplist.data[j].BountyType.Get();
-				if (strcmp(type, "ScriptedDoor") == 0)
+				const char* type = BountyManager::getInstance()->activebounties.data[i].bountygrouplist.data[j].BountyType.c_str();
+				if (strcmp(type, "SCRIPTEDDOOR") == 0)
 				{
 					BountyManager::getInstance()->activebounties.data[i].bountygrouplist.data[j].isComplete = true;
 				}
@@ -273,6 +275,10 @@ namespace Undaunted {
 	VMResultArray<TESObjectREFR*> hook_GetBountyObjectRefs(StaticFunctionTag* base, UInt32 BountyId,BSFixedString bountyType)
 	{
 		_MESSAGE("hook_GetBountyObjectRefs %08X ", BountyId);
+		std::string type = bountyType.c_str();
+
+		std::transform(type.begin(), type.end(), type.begin(), ::toupper);
+
 		if (BountyManager::getInstance()->activebounties.length < BountyId)
 		{
 			return VMResultArray<TESObjectREFR*>();
@@ -280,7 +286,7 @@ namespace Undaunted {
 		VMResultArray<TESObjectREFR*> allies = VMResultArray<TESObjectREFR*>();
 		for (int i = 0; i < BountyManager::getInstance()->activebounties.data[BountyId].bountygrouplist.length; i++)
 		{
-			if (strcmp(BountyManager::getInstance()->activebounties.data[BountyId].bountygrouplist.data[i].BountyType.Get(), bountyType.Get()) == 0 ||
+			if (strcmp(BountyManager::getInstance()->activebounties.data[BountyId].bountygrouplist.data[i].BountyType.c_str(), type.c_str()) == 0 ||
 				strcmp(bountyType.Get(),"ALL") == 0)
 			{
 				if (BountyManager::getInstance()->activebounties.data[BountyId].bountygrouplist.data[i].objectRef != NULL)

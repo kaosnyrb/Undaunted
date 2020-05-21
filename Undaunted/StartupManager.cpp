@@ -2,6 +2,8 @@
 #include "StartupManager.h"
 #include "RSJparser.tcc"
 #include <filesystem>
+#include <algorithm>
+#include <string>
 
 namespace Undaunted {
 	RSJresource currentfile;
@@ -106,8 +108,9 @@ namespace Undaunted {
 							{
 								model = group[j][4].as<std::string>("");
 							}
+							std::transform(type.begin(), type.end(), type.begin(), ::toupper);
 							GroupMember newmember = GroupMember();
-							newmember.BountyType = type.c_str();
+							newmember.BountyType = type;
 							newmember.FormId = form;
 							newmember.ModelFilepath = model.c_str();
 							AddMembertoGroup(groupid, newmember);

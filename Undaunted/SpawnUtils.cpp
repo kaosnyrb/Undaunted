@@ -45,7 +45,9 @@ namespace Undaunted
 					pWorldModel->SetModelName(Types.data[i].ModelFilepath.Get());
 				}
 			}
-			if (strcmp(Types.data[i].BountyType.Get(), "Enemy") == 0 || strcmp(Types.data[i].BountyType.Get(), "Ally") == 0 || strcmp(Types.data[i].BountyType.Get(), "Placer") == 0)
+			if (strcmp(Types.data[i].BountyType.c_str(), "ENEMY") == 0 || 
+				strcmp(Types.data[i].BountyType.c_str(), "ALLY") == 0 || 
+				strcmp(Types.data[i].BountyType.c_str(), "PLACER") == 0)
 			{
 				//Random Offset
 				NiPoint3 offset = NiPoint3(rand() & spawnradius, rand() & spawnradius, 0);
@@ -54,10 +56,10 @@ namespace Undaunted
 				Types.data[i].objectRef = spawned;
 				Types.data[i].isComplete = false;
 			}
-			else if (strcmp(Types.data[i].BountyType.Get(), "BountyDecoration") == 0 || 
-				strcmp(Types.data[i].BountyType.Get(), "SpawnEffect") == 0 ||
-				strcmp(Types.data[i].BountyType.Get(), "Scripted") == 0 ||
-				strcmp(Types.data[i].BountyType.Get(), "ScriptedDoor") == 0)
+			else if (strcmp(Types.data[i].BountyType.c_str(), "BOUNTYDECORATION") == 0 ||
+				strcmp(Types.data[i].BountyType.c_str(), "SPAWNEFFECT") == 0 ||
+				strcmp(Types.data[i].BountyType.c_str(), "SCRIPTED") == 0 ||
+				strcmp(Types.data[i].BountyType.c_str(), "SCRIPTEDDOOR") == 0)
 			{
 				if (spawned != NULL)
 				{
@@ -75,7 +77,7 @@ namespace Undaunted
 					Types.data[i].PreBounty();
 				}
 			}
-			else if (strcmp(Types.data[i].BountyType.Get(), "PhysicsScripted") == 0)
+			else if (strcmp(Types.data[i].BountyType.c_str(), "PHYSICSSCRIPTED") == 0)
 			{
 				//We don't want these falling through the floor, so we put them in the air.
 				TESObjectREFR* PhysicsScripted = PlaceAtMe(registry, 1, spawned, spawnForm, 1, true, false);

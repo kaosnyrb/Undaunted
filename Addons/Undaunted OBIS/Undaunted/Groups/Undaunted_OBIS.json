@@ -15,13 +15,13 @@
         ["Hidden theif","OBIS SE.esp",0,0],
         ["LCharBanditHidden","OBIS SE.esp",2453,"Enemy"],
         ["LCharBanditHidden","OBIS SE.esp",2453,"Enemy"],
-        ["LCharBanditHidden","OBIS SE.esp",2453,"Enemy"],
+        ["LCharBanditHidden","OBIS SE.esp",2453,"Enemy"]
     ],
     [
         ["Alikr","OBIS SE.esp",0,0],
         ["LCharBanditAlikr ","OBIS SE.esp",2598,"Enemy"],
         ["LCharBanditAlikr ","OBIS SE.esp",2598,"Enemy"],
-        ["LCharBanditAlikr","OBIS SE.esp",2598,"Enemy"],
+        ["LCharBanditAlikr","OBIS SE.esp",2598,"Enemy"]
     ],
     [
         ["Hammer women","OBIS SE.esp",0,0],
@@ -94,5 +94,221 @@
         ["LCharBanditDropper","OBIS SE.esp",3509,"Enemy"],
         ["LCharBanditDropper","OBIS SE.esp",3509,"Enemy"],
         ["LCharBanditDropper","OBIS SE.esp",3509,"Enemy"]
+    ],
+    [
+        ["Lightening wolves","OBIS SE.esp",0,0],
+        ["LCharBanditWolf ","OBIS SE.esp",3351,"Enemy"],
+        ["LCharBanditWolf ","OBIS SE.esp",3351,"Enemy"],
+        ["LCharBanditWolf ","OBIS SE.esp",3351,"Enemy"]
+    ],
+    [
+        ["Thornhides","OBIS SE.esp",0,0],
+        ["LCharBanditThorn ","OBIS SE.esp",3407,"Enemy"],
+        ["LCharBanditThorn ","OBIS SE.esp",3407,"Enemy"],
+        ["LCharBanditThorn ","OBIS SE.esp",3407,"Enemy"]
+    ],
+    [
+        ["Droppers","OBIS SE.esp",0,0],
+        ["LCharBanditDropper","OBIS SE.esp",3509,"Enemy"],
+        ["LCharBanditDropper","OBIS SE.esp",3509,"Enemy"],
+        ["LCharBanditDropper","OBIS SE.esp",3509,"Enemy"]
+    ],
+    [
+        ["Dusk dealers","OBIS SE.esp",0,0],
+        ["LCharBanditDusk","OBIS SE.esp",3527,"Enemy"],
+        ["LCharBanditDusk","OBIS SE.esp",3527,"Enemy"],
+        ["LCharBanditDusk","OBIS SE.esp",3527,"Enemy"]
+    ],
+    [
+        ["Warspells","OBIS SE.esp",0,0],
+        ["LCharBanditSpell","OBIS SE.esp",3608,"Enemy"],
+        ["LCharBanditSpell","OBIS SE.esp",3608,"Enemy"],
+        ["LCharBanditSpell","OBIS SE.esp",3608,"Enemy"]
+    ],
+    [
+        ["Broken","OBIS SE.esp",0,0],
+        ["LCharBanditBroken ","OBIS SE.esp",3684,"Enemy"],
+        ["LCharBanditBroken ","OBIS SE.esp",3684,"Enemy"],
+        ["LCharBanditBroken ","OBIS SE.esp",3684,"Enemy"]
+    ],
+    [
+        ["Blight","OBIS SE.esp",0,0],
+        ["LCharBanditBlight  ","OBIS SE.esp",3707,"Enemy"],
+        ["LCharBanditBlight  ","OBIS SE.esp",3707,"Enemy"],
+        ["LCharBanditBlight  ","OBIS SE.esp",3707,"Enemy"]
+    ],
+    [
+        ["Conjuers","OBIS SE.esp",0,0],
+        ["LCharBanditAtro","OBIS SE.esp",3814,"Enemy"],
+        ["LCharBanditAtro","OBIS SE.esp",3814,"Enemy"],
+        ["LCharBanditAtro","OBIS SE.esp",3814,"Enemy"]
+    ],
+    [
+        ["Steelshots","OBIS SE.esp",0,0],
+        ["LCharBanditShot","OBIS SE.esp",3858,"Enemy"],
+        ["LCharBanditShot","OBIS SE.esp",3858,"Enemy"],
+        ["LCharBanditShot","OBIS SE.esp",3858,"Enemy"]
+    ],
+    [
+        ["Doomragers","OBIS SE.esp",0,0],
+        ["LCharBanditDoom","OBIS SE.esp",3889,"Enemy"],
+        ["LCharBanditDoom","OBIS SE.esp",3889,"Enemy"],
+        ["LCharBanditDoom","OBIS SE.esp",3889,"Enemy"]
+    ],
+    [
+        ["Firemages","OBIS SE.esp",0,0],
+        ["LCharBanditFire","OBIS SE.esp",3988,"Enemy"],
+        ["LCharBanditFire","OBIS SE.esp",3988,"Enemy"],
+        ["LCharBanditFire","OBIS SE.esp",3988,"Enemy"]
+    ],
+    [
+        ["Disgraced","OBIS SE.esp",0,0],
+        ["LCharBanditDis","OBIS SE.esp",4112,"Enemy"],
+        ["LCharBanditDis","OBIS SE.esp",4112,"Enemy"],
+        ["LCharBanditDis","OBIS SE.esp",4112,"Enemy"]
+    ],
+    [
+        ["Spellmarred","OBIS SE.esp",0,0],
+        ["LCharBanditMar ","OBIS SE.esp",4234,"Enemy"],
+        ["LCharBanditMar ","OBIS SE.esp",4234,"Enemy"],
+        ["LCharBanditMar ","OBIS SE.esp",4234,"Enemy"]
+    ],
+    [
+        ["Agents","OBIS SE.esp",0,0],
+        ["LCharBanditAgent","OBIS SE.esp",4241,"Enemy"],
+        ["LCharBanditAgent","OBIS SE.esp",4241,"Enemy"],
+        ["LCharBanditAgent","OBIS SE.esp",4241,"Enemy"]
+    ],
+    [
+        ["Whispers","OBIS SE.esp",0,0],
+        ["LCharBanditWhisper ","OBIS SE.esp",4248,"Enemy"],
+        ["LCharBanditWhisper ","OBIS SE.esp",4248,"Enemy"],
+        ["LCharBanditWhisper ","OBIS SE.esp",4248,"Enemy"]
+    ],
+    [
+        ["Ice mages","OBIS SE.esp",0,0],
+        ["LCharBanditIce","OBIS SE.esp",4328,"Enemy"],
+        ["LCharBanditIce","OBIS SE.esp",4328,"Enemy"],
+        ["LCharBanditIce","OBIS SE.esp",4328,"Enemy"]
+    ],
+    [
+        ["Schemers","OBIS SE.esp",0,0],
+        ["LCharBanditScheme ","OBIS SE.esp",4394,"Enemy"],
+        ["LCharBanditScheme ","OBIS SE.esp",4394,"Enemy"],
+        ["LCharBanditScheme ","OBIS SE.esp",4394,"Enemy"]
+    ],
+    [
+        ["Ghost Knights","OBIS SE.esp",0,0],
+        ["LCharBanditGhost  ","OBIS SE.esp",4442,"Enemy"],
+        ["LCharBanditGhost  ","OBIS SE.esp",4442,"Enemy"],
+        ["LCharBanditGhost  ","OBIS SE.esp",4442,"Enemy"]
+    ],
+    [
+        ["Forsaken Bandits","OBIS SE.esp",0,0],
+        ["LCharBanditFor","OBIS SE.esp",4474,"Enemy"],
+        ["LCharBanditFor","OBIS SE.esp",4474,"Enemy"],
+        ["LCharBanditFor","OBIS SE.esp",4474,"Enemy"]
+    ],
+    [
+        ["Sickly","OBIS SE.esp",0,0],
+        ["LCharBanditSick","OBIS SE.esp",4503,"Enemy"],
+        ["LCharBanditSick","OBIS SE.esp",4503,"Enemy"],
+        ["LCharBanditSick","OBIS SE.esp",4503,"Enemy"]
+    ],
+    [
+        ["Fearstrikers","OBIS SE.esp",0,0],
+        ["LCharBanditStrike","OBIS SE.esp",4552,"Enemy"],
+        ["LCharBanditStrike","OBIS SE.esp",4552,"Enemy"],
+        ["LCharBanditStrike","OBIS SE.esp",4552,"Enemy"]
+    ],
+    [
+        ["Lightbringers","OBIS SE.esp",0,0],
+        ["LCharBanditLight","OBIS SE.esp",4597,"Enemy"],
+        ["LCharBanditLight","OBIS SE.esp",4597,"Enemy"],
+        ["LCharBanditLight","OBIS SE.esp",4597,"Enemy"]
+    ],
+    [
+        ["Trollers","OBIS SE.esp",0,0],
+        ["LCharBanditTroll ","OBIS SE.esp",4636,"Enemy"],
+        ["LCharBanditTroll ","OBIS SE.esp",4636,"Enemy"],
+        ["LCharBanditTroll ","OBIS SE.esp",4636,"Enemy"]
+    ],
+    [
+        ["Cloakers","OBIS SE.esp",0,0],
+        ["LCharBanditCloak","OBIS SE.esp",4778,"Enemy"],
+        ["LCharBanditCloak","OBIS SE.esp",4778,"Enemy"],
+        ["LCharBanditCloak","OBIS SE.esp",4778,"Enemy"]
+    ],
+    [
+        ["Diamondbound","OBIS SE.esp",0,0],
+        ["LCharBanditDiamond ","OBIS SE.esp",4822,"Enemy"],
+        ["LCharBanditDiamond ","OBIS SE.esp",4822,"Enemy"],
+        ["LCharBanditDiamond ","OBIS SE.esp",4822,"Enemy"]
+    ],
+    [
+        ["Lavians","OBIS SE.esp",0,0],
+        ["LCharBanditLav","OBIS SE.esp",4877,"Enemy"],
+        ["LCharBanditLav","OBIS SE.esp",4877,"Enemy"],
+        ["LCharBanditLav","OBIS SE.esp",4877,"Enemy"]
+    ],
+    [
+        ["Silverhand","OBIS SE.esp",0,0],
+        ["LCharBanditSilver","OBIS SE.esp",4921,"Enemy"],
+        ["LCharBanditSilver","OBIS SE.esp",4921,"Enemy"],
+        ["LCharBanditSilver","OBIS SE.esp",4921,"Enemy"]
+    ],
+    [
+        ["Blackhearts","OBIS SE.esp",0,0],
+        ["LCharBanditHeart","OBIS SE.esp",4972,"Enemy"],
+        ["LCharBanditHeart","OBIS SE.esp",4972,"Enemy"],
+        ["LCharBanditHeart","OBIS SE.esp",4972,"Enemy"]
+    ],
+    [
+        ["Armour breakers","OBIS SE.esp",0,0],
+        ["LCharBanditBreaker","OBIS SE.esp",5016,"Enemy"],
+        ["LCharBanditBreaker","OBIS SE.esp",5016,"Enemy"],
+        ["LCharBanditBreaker","OBIS SE.esp",5016,"Enemy"]
+    ],
+    [
+        ["Valian's","OBIS SE.esp",0,0],
+        ["LCharBanditVal","OBIS SE.esp",5066,"Enemy"],
+        ["LCharBanditVal","OBIS SE.esp",5066,"Enemy"],
+        ["LCharBanditVal","OBIS SE.esp",5066,"Enemy"]
+    ],
+    [
+        ["Crows","OBIS SE.esp",0,0],
+        ["LCharBanditCrow","OBIS SE.esp",5111,"Enemy"],
+        ["LCharBanditCrow","OBIS SE.esp",5111,"Enemy"],
+        ["LCharBanditCrow","OBIS SE.esp",5111,"Enemy"]
+    ],
+    [
+        ["Beserkers","OBIS SE.esp",0,0],
+        ["LCharBanditMelee1HBerserk","OBIS SE.esp",5155,"Enemy"],
+        ["LCharBanditMelee1HBerserk","OBIS SE.esp",5155,"Enemy"],
+        ["LCharBanditMelee1HBerserk","OBIS SE.esp",5155,"Enemy"]
+    ],
+    [
+        ["Minotaurs","OBIS SE.esp",0,0],
+        ["LCharBanditMinotaur","OBIS SE.esp",274852,"Enemy"],
+        ["LCharBanditMinotaur","OBIS SE.esp",274852,"Enemy"],
+        ["LCharBanditMinotaur","OBIS SE.esp",274852,"Enemy"]
+    ],
+    [
+        ["Ferals","OBIS SE.esp",0,0],
+        ["LCharBanditFeral","OBIS SE.esp",834803,"Enemy"],
+        ["LCharBanditFeral","OBIS SE.esp",834803,"Enemy"],
+        ["LCharBanditFeral","OBIS SE.esp",834803,"Enemy"]
+    ],
+    [
+        ["Vacateds","OBIS SE.esp",0,0],
+        ["LCharBanditVacated","OBIS SE.esp",917856,"Enemy"],
+        ["LCharBanditVacated","OBIS SE.esp",917856,"Enemy"],
+        ["LCharBanditVacated","OBIS SE.esp",917856,"Enemy"]
+    ],
+    [
+        ["Weary","OBIS SE.esp",0,0],
+        ["LCharBanditWeary","OBIS SE.esp",917861,"Enemy"],
+        ["LCharBanditWeary","OBIS SE.esp",917861,"Enemy"],
+        ["LCharBanditWeary","OBIS SE.esp",917861,"Enemy"]
     ]
 ]
