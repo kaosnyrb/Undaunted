@@ -76,17 +76,15 @@
     ],
     [
         ["Kill Baenir","OBIS SE.esp",0,0],
-        ["EncBandit04BountyWoodElfM001","OBIS SE.esp",2612,"Enemy"]
-        
-        
-        
+        ["EncBandit04BountyWoodElfM001","OBIS SE.esp",2612,"Enemy"],
+        ["LCharBanditBlind","OBIS SE.esp",2758,"Enemy"]       
     ],
     [
-        ["Kill Bailus","OBIS SE.esp",0,0],
-        ["EncBandit01BountyBretonM002","OBIS SE.esp",3352,"Enemy"]
-        
-        
-        
+        ["Kill Bailus and the Deserters","OBIS SE.esp",0,0],
+        ["EncBandit01BountyBretonM002","OBIS SE.esp",3352,"Enemy"],
+        ["LCharBanditUnloyal","OBIS SE.esp",3148,"Enemy"],
+        ["LCharBanditUnloyal","OBIS SE.esp",3148,"Enemy"],
+        ["LCharBanditUnloyal","OBIS SE.esp",3148,"Enemy"]
     ],
     [
         ["Kill Bakill","OBIS SE.esp",0,0],
@@ -100,8 +98,11 @@
         ["LCharBanditHeart","OBIS SE.esp",4972,"Enemy"]
     ],
     [
-        ["Kill Basmir","OBIS SE.esp",0,0],
-        ["EncBandit02BountyNordM003","OBIS SE.esp",2608,"Enemy"]
+        ["Kill Basmir and the Broken","OBIS SE.esp",0,0],
+        ["EncBandit02BountyNordM003","OBIS SE.esp",2608,"Enemy"],
+        ["LCharBanditBroken ","OBIS SE.esp",3684,"Enemy"],
+        ["LCharBanditBroken ","OBIS SE.esp",3684,"Enemy"],
+        ["LCharBanditBroken ","OBIS SE.esp",3684,"Enemy"]
     ],
     [
         ["Kill Beei and Recover the Treasure","OBIS SE.esp",0,0],
@@ -125,8 +126,14 @@
         ["EncBandit04BountyDarkElfM002","OBIS SE.esp",2730,"Enemy"]
     ],
     [
-        ["Kill Braldor","OBIS SE.esp",0,0],
-        ["EncBandit02BountyWoodElfM002","OBIS SE.esp",3291,"Enemy"]
+        ["Destroy Braldor and his Posion Cache","OBIS SE.esp",0,0],
+        ["EncBandit02BountyWoodElfM002","OBIS SE.esp",3291,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_DestructObjective_01","Undaunted.esp",80945,"Scripted","clutter/oilbarrel/bfxoilbarrelclosed01.nif"],
+        ["LCharBanditBlight  ","OBIS SE.esp",3707,"Enemy"],
+        ["LCharBanditBlight  ","OBIS SE.esp",3707,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_DestructObjective_02","Undaunted.esp",101684,"Scripted","clutter/oilbarrel/bfxoilbarrelclosed01.nif"]
     ],
     [
         ["Kill Brunir the Decimator","OBIS SE.esp",0,0],
@@ -134,8 +141,14 @@
         ["LCharBanditTroll ","OBIS SE.esp",4636,"Enemy"]
     ],
     [
-        ["Kill Calia Arlino","OBIS SE.esp",0,0],
-        ["EncBandit02BountyImperialF001","OBIS SE.esp",2454,"Enemy"]
+        ["Kill Calia Arlino and Harness the Dwemer Lexigraphs","OBIS SE.esp",0,0],
+        ["EncBandit02BountyImperialF001","OBIS SE.esp",2454,"Enemy"],
+        ["LCharBanditScheme ","OBIS SE.esp",4394,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_DLC01IdealMasterCrystal","Undaunted.esp",80944,"Scripted","Dungeons/Dwemer/Animated/Astrolabe/LexiconStand/DweLexiconStandRunes01.nif"],
+        ["LCharBanditScheme ","OBIS SE.esp",4394,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_DLC01IdealMasterCrystal","Undaunted.esp",80944,"Scripted","Dungeons/Dwemer/Animated/Astrolabe/LexiconStand/DweLexiconStandRunes01.nif"]
     ],
     [
         ["Kill Cinnora and the Deserters","OBIS SE.esp",0,0],
@@ -144,8 +157,12 @@
         ["LCharBanditUnloyal","OBIS SE.esp",3148,"Enemy"]
     ],
     [
-        ["Kill Clenwing","OBIS SE.esp",0,0],
-        ["EncBandit02BountyWoodElfM001","OBIS SE.esp",3071,"Enemy"]
+        ["Kill Clenwing and his Forsaken allies","OBIS SE.esp",0,0],
+        ["EncBandit02BountyWoodElfM001","OBIS SE.esp",3071,"Enemy"],
+        ["LCharBanditFor","OBIS SE.esp",4474,"Enemy"],
+        ["LCharBanditFor","OBIS SE.esp",4474,"Enemy"],
+        ["LCharBanditFor","OBIS SE.esp",4474,"Enemy"],
+        ["LCharBanditFor","OBIS SE.esp",4474,"Enemy"]
     ],
     [
         ["Kill Colus Gatus and the Deserters","OBIS SE.esp",0,0],
@@ -165,15 +182,18 @@
         ["1_Undaunted_collect_obj03","Undaunted.esp",683516,"Scripted","clutter/sovngarde/sovcandlestick02.nif"]
     ],
     [
-        ["Kill Dannet","OBIS SE.esp",0,0],
+        ["Kill Dannet and the Heartbroken","OBIS SE.esp",0,0],
         ["EncBandit01BountyRedguardF003","OBIS SE.esp",2506,"Enemy"],
         ["LCharBanditHeart","OBIS SE.esp",4972,"Enemy"],
         ["LCharBanditHeart","OBIS SE.esp",4972,"Enemy"],
         ["LCharBanditHeart","OBIS SE.esp",4972,"Enemy"]
     ],
     [
-        ["Kill Delne Verolas","OBIS SE.esp",0,0],
-        ["EncBandit02BountyDarkElfF001","OBIS SE.esp",3354,"Enemy"]
+        ["Kill Delne Verolas and the Blackhearts","OBIS SE.esp",0,0],
+        ["EncBandit02BountyDarkElfF001","OBIS SE.esp",3354,"Enemy"],
+        ["LCharBanditHeart","OBIS SE.esp",4972,"Enemy"],
+        ["LCharBanditHeart","OBIS SE.esp",4972,"Enemy"],
+        ["LCharBanditHeart","OBIS SE.esp",4972,"Enemy"]
     ],
     [
         ["Hunt Demus the Young and the Fearstrikers","OBIS SE.esp",0,0],
@@ -201,11 +221,12 @@
         ["1_Undaunted_collect_obj03","Undaunted.esp",683516,"Scripted","clutter/sovngarde/sovcandlestick02.nif"]
     ],
     [
-        ["Kill Dul gro-Khash","OBIS SE.esp",0,0],
+        ["Hunt Dul gro-Khash and his Crows","OBIS SE.esp",0,0],
         ["EncBandit02BountyOrcM001","OBIS SE.esp",2464,"Enemy"]
-        
-        
-        
+        ["LCharBanditCrow","OBIS SE.esp",5111,"Enemy"],
+        ["LCharBanditCrow","OBIS SE.esp",5111,"Enemy"],
+        ["LCharBanditCrow","OBIS SE.esp",5111,"Enemy"],
+        ["LCharBanditCrow","OBIS SE.esp",5111,"Enemy"]
     ],
     [
         ["Kill Dumzug gra-Ulma","OBIS SE.esp",0,0],
