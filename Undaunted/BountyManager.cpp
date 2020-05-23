@@ -255,5 +255,19 @@ namespace Undaunted {
 		bountiesRan = UnStringList();
 	}
 
+	void BountyManager::AddToDeleteList(TESObjectREFR* ref)
+	{
+		_MESSAGE("AddToDeleteList");
+		Ref newref = Ref();
+		newref.objectRef = ref;
+		deleteList.AddItem(newref);
+	}
+
+	void BountyManager::ClearDeleteList()
+	{
+		_MESSAGE("ClearDeleteList");
+		deleteList = RefList();
+	}
+
 }
 

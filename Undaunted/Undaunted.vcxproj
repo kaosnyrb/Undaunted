@@ -112,6 +112,7 @@
     <ClCompile Include="LocationUtils.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MyPlugin.cpp" />
+    <ClCompile Include="RefList.cpp" />
     <ClCompile Include="RewardUtils.cpp" />
     <ClCompile Include="SafezoneList.cpp" />
     <ClCompile Include="SKSELink.cpp" />
@@ -138,6 +139,7 @@
     <ClInclude Include="ListLibary.h" />
     <ClInclude Include="LocationUtils.h" />
     <ClInclude Include="MyPlugin.h" />
+    <ClInclude Include="RefList.h" />
     <ClInclude Include="RewardUtils.h" />
     <ClInclude Include="SafezoneList.h" />
     <ClInclude Include="SKSELink.h" />

@@ -41,6 +41,9 @@
     <ClCompile Include="SafezoneList.cpp">
       <Filter>Collections</Filter>
     </ClCompile>
+    <ClCompile Include="RefList.cpp">
+      <Filter>Collections</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyPlugin.h" />
@@ -95,6 +98,9 @@
       <Filter>Utils</Filter>
     </ClInclude>
     <ClInclude Include="SafezoneList.h">
+      <Filter>Collections</Filter>
+    </ClInclude>
+    <ClInclude Include="RefList.h">
       <Filter>Collections</Filter>
     </ClInclude>
   </ItemGroup>

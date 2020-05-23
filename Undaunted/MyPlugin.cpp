@@ -276,14 +276,26 @@ namespace Undaunted {
 	{
 		_MESSAGE("hook_GetBountyObjectRefs %08X ", BountyId);
 		std::string type = bountyType.c_str();
-
 		std::transform(type.begin(), type.end(), type.begin(), ::toupper);
+
+		VMResultArray<TESObjectREFR*> resultsarray = VMResultArray<TESObjectREFR*>();
 
 		if (BountyManager::getInstance()->activebounties.length < BountyId)
 		{
-			return VMResultArray<TESObjectREFR*>();
+			return resultsarray;
 		}
-		VMResultArray<TESObjectREFR*> allies = VMResultArray<TESObjectREFR*>();
+
+		if (strcmp("DELETE", type.c_str()) == 0)
+		{
+			_MESSAGE("hook_GetBountyObjectRefs DELETE");
+			for (int i = 0; i < BountyManager::getInstance()->deleteList.length; i++)
+			{
+				resultsarray.push_back(BountyManager::getInstance()->deleteList.data[i].objectRef);
+			}
+			BountyManager::getInstance()->ClearDeleteList();
+			return resultsarray;
+		}
+
 		for (int i = 0; i < BountyManager::getInstance()->activebounties.data[BountyId].bountygrouplist.length; i++)
 		{
 			if (strcmp(BountyManager::getInstance()->activebounties.data[BountyId].bountygrouplist.data[i].BountyType.c_str(), type.c_str()) == 0 ||
@@ -291,12 +303,12 @@ namespace Undaunted {
 			{
 				if (BountyManager::getInstance()->activebounties.data[BountyId].bountygrouplist.data[i].objectRef != NULL)
 				{
-					allies.push_back(BountyManager::getInstance()->activebounties.data[BountyId].bountygrouplist.data[i].objectRef);
+					resultsarray.push_back(BountyManager::getInstance()->activebounties.data[BountyId].bountygrouplist.data[i].objectRef);
 				}
 			}
 		}
 		_MESSAGE("hook_GetBountyObjectRefs %08X Success", BountyId);
-		return allies;
+		return resultsarray;
 	}
 
 

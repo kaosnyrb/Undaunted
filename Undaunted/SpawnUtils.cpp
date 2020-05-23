@@ -1,6 +1,7 @@
 #include "SpawnUtils.h"
 #include "ConfigUtils.h"
 #include "LocationUtils.h"
+#include "BountyManager.h"
 
 namespace Undaunted
 {
@@ -27,6 +28,8 @@ namespace Undaunted
 		srand(time(NULL));
 		NiPoint3 startingpoint = Target->pos;
 		int spawnradius = GetConfigValueInt("BountyEnemyExteriorSpawnRadius");
+		int HeightDistance = GetConfigValueInt("BountyEnemyPlacementHeightDistance");
+
 		for (UInt32 i = 0; i < Types.length; i++)
 		{
 			TESForm* spawnForm = LookupFormByID(Types.data[i].FormId);
@@ -49,10 +52,29 @@ namespace Undaunted
 				strcmp(Types.data[i].BountyType.c_str(), "ALLY") == 0 || 
 				strcmp(Types.data[i].BountyType.c_str(), "PLACER") == 0)
 			{
-				//Random Offset
-				NiPoint3 offset = NiPoint3(rand() & spawnradius, rand() & spawnradius, 0);
-				MoveRefToWorldCell(Target, cell, worldspace, startingpoint + offset, NiPoint3(0, 0, 0));
-				spawned = PlaceAtMe(registry, 1, Target, spawnForm, 1, true, false);
+				bool placedsuccessfully = false;
+				int giveupcount = 20; //It's possible that we'll never find anything valid. If that's the case give up. This is quite low as we are spawning something everytime we try this.
+				while (!placedsuccessfully && giveupcount > 0)
+				{
+					//Random Offset
+					NiPoint3 offset = NiPoint3(rand() & spawnradius, rand() & spawnradius, 0);
+					MoveRefToWorldCell(Target, cell, worldspace, startingpoint + offset, NiPoint3(0, 0, 0));
+					spawned = PlaceAtMe(registry, 1, Target, spawnForm, 1, true, false);
+
+					int heightdist = startingpoint.z - spawned->pos.z;
+					//Delete
+					if (heightdist > HeightDistance || heightdist < -HeightDistance)
+					{
+						_MESSAGE("Spawn Height is too different. Deleting.");
+						MoveRefToWorldCell(spawned, cell, worldspace, NiPoint3(0, 0, 10000), NiPoint3(0, 0, 0));
+						BountyManager::getInstance()->AddToDeleteList(spawned);
+						giveupcount--;
+					}
+					else
+					{
+						placedsuccessfully = true;
+					}
+				}
 				Types.data[i].objectRef = spawned;
 				Types.data[i].isComplete = false;
 			}

@@ -164,6 +164,16 @@ Event OnUpdate()
 			SetGroupMemberComplete(enemies[enemieslength])
 		endif
 	endwhile
+
+	;Delete check
+	ObjectReference[] Deletes = GetBountyObjectRefs(bountyId,"DELETE")		
+	int Deleteslength = Deletes.Length
+	while(Deleteslength > 0)
+		Deleteslength -= 1
+		Deletes[Deleteslength].DisableNoWait(false)
+		Deletes[Deleteslength].Delete()
+	endwhile
+
 	bool complete = isBountyComplete(bountyId)
 	;Debug.Notification("Bounty State: " + complete)
 	if (QuestStage.GetValue() == 10)
