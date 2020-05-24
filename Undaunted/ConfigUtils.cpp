@@ -7,7 +7,7 @@ namespace Undaunted
 	std::string s_configPath;
 	IntList BadRegionList;
 	ListLibary GroupLibary;
-	UnStringList SettingsList;
+	UnDictionary SettingsList;
 
 	//Regions
 	void AddBadRegionToConfig(UInt32 region)
@@ -21,13 +21,14 @@ namespace Undaunted
 	}
 
 	//Groups
-	int AddGroup(std::string questText, UInt32 minlevel, UInt32 maxlevel)
+	int AddGroup(std::string questText, UInt32 minlevel, UInt32 maxlevel, UnStringlist tags)
 	{
 		_MESSAGE("Adding bounty to GroupLibary: %s", questText.c_str());
 		GroupList newGroup = GroupList();
 		newGroup.questText = questText;
 		newGroup.minLevel = minlevel;
 		newGroup.maxLevel = maxlevel;
+		newGroup.Tags = tags;
 		GroupLibary.AddItem(newGroup);
 		return GroupLibary.length - 1;
 	}
@@ -77,11 +78,20 @@ namespace Undaunted
 			{
 				continue;
 			}
+			for (int i = 0; i < GroupLibary.data[groupid].Tags.length; i++)
+			{
+				_MESSAGE("Group Tags: %s", GroupLibary.data[groupid].Tags.data[i].c_str());
+			}
 			return GroupLibary.data[groupid];
 		}
 		int groupid = rand() % GroupLibary.length;
-		_MESSAGE("Random Group: %i",groupid);
+		_MESSAGE("Group: %s", GroupLibary.data[groupid].questText.c_str());
+		for (int i = 0; i < GroupLibary.data[groupid].Tags.length; i++)
+		{
+			_MESSAGE("Group Tags: %s", GroupLibary.data[groupid].Tags.data[i].c_str());
+		}
 		_MESSAGE("Random Member Count: %i", GroupLibary.data[groupid].length);
+
 		return GroupLibary.data[groupid];		
 	}
 
@@ -99,7 +109,7 @@ namespace Undaunted
 			}
 		}
 		//doesn't exist
-		UnString setting = UnString();
+		UnKeyValue setting = UnKeyValue();
 		setting.key = key;
 		setting.value = value;
 		SettingsList.AddItem(setting);
@@ -132,15 +142,15 @@ namespace Undaunted
 		return Playerlevel;
 	}
 
-	UnStringList RewardBlacklist = UnStringList();
+	UnDictionary RewardBlacklist = UnDictionary();
 	void AddRewardBlacklist(std::string key)
 	{
-		UnString data = UnString();
+		UnKeyValue data = UnKeyValue();
 		data.value = key;
 		RewardBlacklist.AddItem(data);
 	}
 
-	UnStringList getRewardBlacklist()
+	UnDictionary getRewardBlacklist()
 	{
 		return RewardBlacklist;
 	}

@@ -2,6 +2,7 @@
 #include <Undaunted\StartupManager.h>
 #include <algorithm>
 #include <string>
+#include "UnStringList.h"
 
 namespace Undaunted {
 
@@ -151,7 +152,7 @@ namespace Undaunted {
 			_MESSAGE("%s: Mod %s is not loaded", questText.Get(), modRequirement.Get());
 			return -1;
 		}
-		return AddGroup(questText.Get(),minLevel,maxLevel);
+		return AddGroup(questText.Get(),minLevel,maxLevel, UnStringlist());
 	}
 
 	// Add a member to a group.

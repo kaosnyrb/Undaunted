@@ -11,7 +11,7 @@ namespace Undaunted
 
 
 	//Groups
-	int AddGroup(std::string questText, UInt32 minlevel, UInt32 maxlevel);
+	int AddGroup(std::string questText, UInt32 minlevel, UInt32 maxlevel, UnStringlist tags);
 	void AddMembertoGroup(int id, GroupMember member);
 	GroupList GetRandomGroup();
 	GroupList GetGroup(std::string bountyName);
@@ -25,7 +25,7 @@ namespace Undaunted
 
 	//RewardBlacklist
 	void AddRewardBlacklist(std::string key);
-	UnStringList getRewardBlacklist();
+	UnDictionary getRewardBlacklist();
 
 	//Safezones
 	void AddSafezone(Safezone zone);

@@ -1,4 +1,5 @@
 #include "SKSELink.h"
+#include "UnStringList.h"
 
 namespace Undaunted
 {
@@ -25,6 +26,7 @@ namespace Undaunted
 		UInt32 minLevel;
 		UInt32 maxLevel;
 		int length;
+		UnStringlist Tags;
 		GroupList* AddItem(GroupMember item);
 		void SetGroupMemberComplete(UInt32 id);
 	};

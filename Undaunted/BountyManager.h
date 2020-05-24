@@ -16,7 +16,7 @@ namespace Undaunted {
 		int isReady = 0;
 
 		BountyList activebounties = BountyList();
-		UnStringList bountiesRan = UnStringList();
+		UnDictionary bountiesRan = UnDictionary();
 		RefList deleteList = RefList();
 
 		bool BountyUpdate(int BountyID);

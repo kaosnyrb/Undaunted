@@ -1,19 +1,27 @@
 
 namespace Undaunted
 {
-#ifndef UnStringListdef
-#define UnStringListdef
-	class UnString {
+#ifndef UnDictionaryListdef
+#define UnDictionaryListdef
+	class UnKeyValue {
 	public:
 		std::string key;
 		std::string value;
 	};
 
-	class UnStringList {
+	class UnDictionary {
 	public:
-		UnString* data;
+		UnKeyValue* data;
 		int length;
-		UnStringList* AddItem(UnString item);
+		UnDictionary* AddItem(UnKeyValue item);
 	};
+
+	class UnStringlist {
+	public:
+		std::string* data;
+		int length;
+		UnStringlist* AddItem(std::string item);
+	};
+
 #endif
 }

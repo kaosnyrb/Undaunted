@@ -89,10 +89,22 @@ namespace Undaunted {
 					std::string modreq = group[0][1].as<std::string>("modreq");
 					int minlevel = group[0][2].as<int>(0);
 					int maxlevel = group[0][3].as<int>(0);
+					std::string tags = group[0][4].as<std::string>("modreq");
+					_MESSAGE("tags: %s", tags.c_str());
+					std::string delimiter = ",";
+					size_t pos = 0;
+					std::string token;
+					UnStringlist taglist = UnStringlist();
+					while ((pos = tags.find(delimiter)) != std::string::npos) {
+						token = tags.substr(0, pos);
+						taglist.AddItem(token);
+						tags.erase(0, pos + delimiter.length());
+					}
+					taglist.AddItem(tags);
 					const ModInfo* modInfo = dataHandler->LookupModByName(modreq.c_str());
 					if (modInfo != NULL)
 					{
-						int groupid = AddGroup(groupname, minlevel, maxlevel);
+						int groupid = AddGroup(groupname, minlevel, maxlevel, taglist);
 						for (int j = 1; j < group.size(); j++)
 						{
 							std::string esp = group[j][1].as<std::string>("esp");

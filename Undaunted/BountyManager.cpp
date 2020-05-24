@@ -203,7 +203,7 @@ namespace Undaunted {
 				foundbounty = true;
 			}
 		}
-		UnString bountydata = UnString();
+		UnKeyValue bountydata = UnKeyValue();
 		bountydata.key = bounty->bountygrouplist.questText;
 		bountiesRan.AddItem(bountydata);
 		_MESSAGE("Setting Bounty Message: %s", bounty->bountygrouplist.questText.c_str());
@@ -252,7 +252,7 @@ namespace Undaunted {
 		//They are flagged as waiting to reset once you enter/leave them, however this only happens when the cell is unloaded.
 		//Unloading the cell happens on game load OR when the player fast travels a certain distance.
 		//So we watch to see when the player fast travels far enough and then allow the microdungeon back on the allowed bounty list.
-		bountiesRan = UnStringList();
+		bountiesRan = UnDictionary();
 	}
 
 	void BountyManager::AddToDeleteList(TESObjectREFR* ref)
