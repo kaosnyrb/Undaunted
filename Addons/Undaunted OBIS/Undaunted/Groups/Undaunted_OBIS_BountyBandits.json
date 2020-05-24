@@ -378,11 +378,11 @@
     [
         ["Recover the stolen supplies from Haspita Aleus","OBIS SE.esp",0,0],
         ["EncBandit02BountyImperialM002","OBIS SE.esp",2462,"Enemy"],
-        ["1_Undaunted_collect_obj01","Undaunted.esp",683514,"Scripted","clutter/barrel01.nif"],
+        ["1_Undaunted_collect_obj01","Undaunted.esp",683514,"Scripted","clutter/oilbarrel/bfxoilbarrelclosed01.nif"],
         ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
-        ["1_Undaunted_collect_obj02","Undaunted.esp",683515,"Scripted","clutter/barrel02.nif"],
+        ["1_Undaunted_collect_obj02","Undaunted.esp",683515,"Scripted","clutter/oilbarrel/bfxoilbarrelclosed01.nif"],
         ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
-        ["1_Undaunted_collect_obj03","Undaunted.esp",683516,"Scripted","clutter/barrel01.nif"],
+        ["1_Undaunted_collect_obj03","Undaunted.esp",683516,"Scripted","clutter/oilbarrel/bfxoilbarrelclosed01.nif"],
         ["LCharBanditUnloyal","OBIS SE.esp",3148,"Enemy"]
         
         
@@ -491,21 +491,18 @@
     ],
 
     [
-        ["Kill Larrod the Mangler","OBIS SE.esp",0,0],
-        ["EncBandit02BountyNordM001","OBIS SE.esp",2459,"Enemy"]
-        
-        
-        
+        ["Kill Larrod the Mangler and the Lightning wolves","OBIS SE.esp",0,0],
+        ["EncBandit02BountyNordM001","OBIS SE.esp",2459,"Enemy"],
+        ["LCharBanditWolf ","OBIS SE.esp",3351,"Enemy"],
+        ["LCharBanditWolf ","OBIS SE.esp",3351,"Enemy"],
+        ["LCharBanditWolf ","OBIS SE.esp",3351,"Enemy"]
     ],
     [
         ["Kill Liebe Nin","OBIS SE.esp",0,0],
         ["EncBandit02BountyImperialF004","OBIS SE.esp",3531,"Enemy"]
-        
-        
-        
     ],
     [
-        ["Kill Loge Helmsmasher and the Lightening wolves","OBIS SE.esp",0,0],
+        ["Kill Loge Helmsmasher and the Lightning wolves","OBIS SE.esp",0,0],
         ["EncBandit02BountyNordM002","OBIS SE.esp",2463,"Enemy"],
         ["LCharBanditWolf ","OBIS SE.esp",3351,"Enemy"],
         ["LCharBanditWolf ","OBIS SE.esp",3351,"Enemy"],
@@ -564,19 +561,24 @@
         
     ],
     [
-        ["Kill Mormag gra-Duga","OBIS SE.esp",0,0],
-        ["EncBandit03BountyOrcM002","OBIS SE.esp",3073,"Enemy"]
-        
+        ["Kill Skooma Lord Mormag gra-Duga","OBIS SE.esp",0,0],
+        ["EncBandit03BountyOrcM002","OBIS SE.esp",3073,"Enemy"],        
+        ["LCharBanditAddled ","OBIS SE.esp",3060,"Enemy"],
+        ["LCharBanditAddled ","OBIS SE.esp",3060,"Enemy"],
+        ["LCharBanditAddled ","OBIS SE.esp",3060,"Enemy"]        
     ],
     [
-        ["Kill Narileen","OBIS SE.esp",0,0],
-        ["EncBandit03BountyRedguardF002","OBIS SE.esp",3694,"Enemy"]
-        
+        ["Kill Narileen and her Diggers","OBIS SE.esp",0,0],
+        ["EncBandit03BountyRedguardF002","OBIS SE.esp",3694,"Enemy"],
+        ["LCharBanditDigger","OBIS SE.esp",3067,"Enemy"],
+        ["LCharBanditDigger","OBIS SE.esp",3067,"Enemy"]
     ],
     [
-        ["Kill Nasia Drana","OBIS SE.esp",0,0],
-        ["EncBandit01BountyImperialF002","OBIS SE.esp",2496,"Enemy"]
-        
+        ["Kill Skooma Lord Nasia Drana","OBIS SE.esp",0,0],
+        ["EncBandit01BountyImperialF002","OBIS SE.esp",2496,"Enemy"],
+        ["LCharBanditSick","OBIS SE.esp",4503,"Enemy"],
+        ["LCharBanditSick","OBIS SE.esp",4503,"Enemy"],
+        ["LCharBanditSick","OBIS SE.esp",4503,"Enemy"]
     ],
     [
         ["Kill Nectus the Grinder","OBIS SE.esp",0,0],
@@ -584,9 +586,10 @@
         
     ],
     [
-        ["Kill Odmir the Culler","OBIS SE.esp",0,0],
-        ["EncBandit02BountyNordM005","OBIS SE.esp",4925,"Enemy"]
-        
+        ["Kill Trollman Odmir the Culler","OBIS SE.esp",0,0],
+        ["EncBandit02BountyNordM005","OBIS SE.esp",4925,"Enemy"],
+        ["LCharBanditTroll ","OBIS SE.esp",4636,"Enemy"],
+        ["LCharBanditTroll ","OBIS SE.esp",4636,"Enemy"]
     ],
     [
         ["Deal with Ofish gro-Ghadulg and the Doomragers","OBIS SE.esp",0,0],
@@ -595,24 +598,25 @@
         ["LCharBanditDoom","OBIS SE.esp",3889,"Enemy"]
         
     ],
-
     [
-        ["Kill Skooma Lord  Ozan","OBIS SE.esp",0,0],
+        ["Kill Skooma Lord Ozan","OBIS SE.esp",0,0],
         ["EncBandit01BountyRedguardM002","OBIS SE.esp",2502,"Enemy"],
         ["LCharBanditAddled ","OBIS SE.esp",3060,"Enemy"],
         ["LCharBanditAddled ","OBIS SE.esp",3060,"Enemy"],
         ["LCharBanditAddled ","OBIS SE.esp",3060,"Enemy"]
     ],
     [
-        ["Kill Pirile Nin","OBIS SE.esp",0,0],
-        ["EncBandit01BountyBretonF002","OBIS SE.esp",4922,"Enemy"]
-        
+        ["End Pirile Nin's Vampire Coven","OBIS SE.esp",0,0],
+        ["EncBandit01BountyBretonF002","OBIS SE.esp",4922,"Enemy"],
+        ["LCharBanditLav","OBIS SE.esp",4877,"Enemy"],
+        ["LCharBanditLav","OBIS SE.esp",4877,"Enemy"],
+        ["LCharBanditLav","OBIS SE.esp",4877,"Enemy"]
     ],
-
     [
-        ["Kill Racthon","OBIS SE.esp",0,0],
-        ["EncBandit03BountyRedguardM001","OBIS SE.esp",2475,"Enemy"]
-        
+        ["Kill Caravan Raider Racthon","OBIS SE.esp",0,0],
+        ["EncBandit03BountyRedguardM001","OBIS SE.esp",2475,"Enemy"],
+        ["LCharBanditAlikr ","OBIS SE.esp",2598,"Enemy"],
+        ["LCharBanditAlikr ","OBIS SE.esp",2598,"Enemy"]
     ],
     [
         ["Destroy Raygel the Blinded and his Posion Cache","OBIS SE.esp",0,0],
@@ -623,31 +627,53 @@
         ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
         ["1_Undaunted_DestructObjective_02","Undaunted.esp",101684,"Scripted","clutter/oilbarrel/bfxoilbarrelclosed01.nif"]
     ],
-
     [
-        ["Kill Ris Ardilus","OBIS SE.esp",0,0],
-        ["EncBandit01BountyImperialM002","OBIS SE.esp",2497,"Enemy"]
-        
+        ["Recover the stolen ale from Ris Ardilus","OBIS SE.esp",0,0],
+        ["EncBandit01BountyImperialM002","OBIS SE.esp",2497,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_collect_obj01","Undaunted.esp",683514,"Scripted","clutter/sovngarde/sovbarrel01.nif"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_collect_obj02","Undaunted.esp",683515,"Scripted","clutter/sovngarde/sovbarrel01.nif"],
+        ["LCharBanditAddled ","OBIS SE.esp",3060,"Enemy"],
+        ["LCharBanditAddled ","OBIS SE.esp",3060,"Enemy"]        
     ],
     [
-        ["Kill Roggakh gra-Logmob","OBIS SE.esp",0,0],
-        ["EncBandit02BountyOrcF002","OBIS SE.esp",2743,"Enemy"]
-        
+        ["Recover the Stolen Cheese from Roggakh gra-Logmob","OBIS SE.esp",0,0],
+        ["EncBandit02BountyOrcF002","OBIS SE.esp",2743,"Enemy"],
+		["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_collect_obj01","Undaunted.esp",683514,"Scripted","clutter/food/cheesewheel01a.nif"],
+        ["LCharBanditAddled ","OBIS SE.esp",3060,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_collect_obj01","Undaunted.esp",683514,"Scripted","clutter/food/cheesewheel01a.nif"]
     ],
     [
-        ["Kill Rohanla","OBIS SE.esp",0,0],
-        ["EncBandit02BountyRedguardF001 ","OBIS SE.esp",2460,"Enemy"]
-        
+        ["Stop Rohanla stealing Artifacts","OBIS SE.esp",0,0],
+        ["EncBandit02BountyRedguardF001 ","OBIS SE.esp",2460,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_collect_obj01","Undaunted.esp",683514,"Scripted","clutter/glazed02potteryjug01.nif"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_collect_obj01","Undaunted.esp",683514,"Scripted","clutter/glazed02potteryurn01.nif"],
+        ["LCharBanditDigger","OBIS SE.esp",3067,"Enemy"],
+        ["LCharBanditDigger","OBIS SE.esp",3067,"Enemy"]
     ],
-
     [
-        ["Kill Shano","OBIS SE.esp",0,0],
-        ["EncBandit02BountyRedguardM001","OBIS SE.esp",2461,"Enemy"]
-        
+        ["Recover the Stolen Cheese from Shano","OBIS SE.esp",0,0],
+        ["EncBandit02BountyRedguardM001","OBIS SE.esp",2461,"Enemy"],
+		["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_collect_obj01","Undaunted.esp",683514,"Scripted","clutter/food/cheesewheel01a.nif"],
+        ["LCharBanditAddled ","OBIS SE.esp",3060,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_collect_obj01","Undaunted.esp",683514,"Scripted","clutter/food/cheesewheel01a.nif"]
     ],
     [
-        ["Kill Sharn gra-Mogol","OBIS SE.esp",0,0],
-        ["EncBandit01BountyOrcF003","OBIS SE.esp",3353,"Enemy"]
+        ["Recover the Stolen Ale from Sharn gra-Mogol","OBIS SE.esp",0,0],
+        ["EncBandit01BountyOrcF003","OBIS SE.esp",3353,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_collect_obj01","Undaunted.esp",683514,"Scripted","clutter/sovngarde/sovbarrel01.nif"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_collect_obj02","Undaunted.esp",683515,"Scripted","clutter/sovngarde/sovbarrel01.nif"],
+        ["LCharBanditAddled ","OBIS SE.esp",3060,"Enemy"],
+        ["LCharBanditAddled ","OBIS SE.esp",3060,"Enemy"]
         
     ],
     [
@@ -656,12 +682,16 @@
         ["LCharBanditAddled ","OBIS SE.esp",3060,"Enemy"],
         ["LCharBanditAddled ","OBIS SE.esp",3060,"Enemy"],
         ["LCharBanditAddled ","OBIS SE.esp",3060,"Enemy"]
-        
     ],
     [
-        ["Kill Sigta the Singer","OBIS SE.esp",0,0],
-        ["EncBandit02BountyNordF001","OBIS SE.esp",2458,"Enemy"]
-        
+        ["Stop Sigta the Singer stealing Artifacts","OBIS SE.esp",0,0],
+        ["EncBandit02BountyNordF001","OBIS SE.esp",2458,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_collect_obj01","Undaunted.esp",683514,"Scripted","clutter/glazed02potteryjug01.nif"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_collect_obj01","Undaunted.esp",683514,"Scripted","clutter/glazed02potteryurn01.nif"],
+        ["LCharBanditDigger","OBIS SE.esp",3067,"Enemy"],
+        ["LCharBanditDigger","OBIS SE.esp",3067,"Enemy"]        
     ],
     [
         ["Kill Sina and the Blackhearts","OBIS SE.esp",0,0],
@@ -682,9 +712,14 @@
         ["1_Undaunted_DestructObjective_02","Undaunted.esp",101684,"Scripted","clutter/oilbarrel/bfxoilbarrelclosed01.nif"]
     ],
     [
-        ["Kill Sonsa","OBIS SE.esp",0,0],
-        ["EncBandit01BountyHighElfF001","OBIS SE.esp",3288,"Enemy"]
-        
+        ["Recover the Stolen Cheese from Sonsa","OBIS SE.esp",0,0],
+        ["EncBandit01BountyHighElfF001","OBIS SE.esp",3288,"Enemy"],
+        ["LCharBanditHeart","OBIS SE.esp",4972,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_collect_obj01","Undaunted.esp",683514,"Scripted","clutter/food/cheesewheel01a.nif"],
+        ["LCharBanditHeart","OBIS SE.esp",4972,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_collect_obj01","Undaunted.esp",683514,"Scripted","clutter/food/cheesewheel01a.nif"]
     ],
     [
         ["Help the Dawnguard kill Soras the Daring","OBIS SE.esp",0,0],
@@ -709,18 +744,23 @@
         
     ],
     [
-        ["Kill Tar-Ra","OBIS SE.esp",0,0],
-        ["EncBandit02BountyArgonianF001","OBIS SE.esp",2607,"Enemy"]
-        
+        ["Stop Tar-Ra stealing Artifacts","OBIS SE.esp",0,0],
+        ["EncBandit02BountyArgonianF001","OBIS SE.esp",2607,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_collect_obj01","Undaunted.esp",683514,"Scripted","clutter/glazed02potteryjug01.nif"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_collect_obj01","Undaunted.esp",683514,"Scripted","clutter/glazed02potteryurn01.nif"],
+        ["LCharBanditDigger","OBIS SE.esp",3067,"Enemy"],
+        ["LCharBanditDigger","OBIS SE.esp",3067,"Enemy"]        
     ],
     [
         ["Recover the stolen supplies from Tasa","OBIS SE.esp",0,0],
         ["EncBandit02BountyArgonianM002","OBIS SE.esp",3692,"Enemy"],
-        ["1_Undaunted_collect_obj01","Undaunted.esp",683514,"Scripted","clutter/barrel01.nif"],
+        ["1_Undaunted_collect_obj01","Undaunted.esp",683514,"Scripted","clutter/oilbarrel/bfxoilbarrelclosed01.nif"],
         ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
-        ["1_Undaunted_collect_obj02","Undaunted.esp",683515,"Scripted","clutter/barrel02.nif"],
+        ["1_Undaunted_collect_obj02","Undaunted.esp",683515,"Scripted","clutter/oilbarrel/bfxoilbarrelclosed01.nif"],
         ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
-        ["1_Undaunted_collect_obj03","Undaunted.esp",683516,"Scripted","clutter/barrel01.nif"],
+        ["1_Undaunted_collect_obj03","Undaunted.esp",683516,"Scripted","clutter/oilbarrel/bfxoilbarrelclosed01.nif"],
         ["LCharBanditUnloyal","OBIS SE.esp",3148,"Enemy"]
     ],
     [
@@ -729,9 +769,10 @@
         
     ],
     [
-        ["Kill Thoger the Curse-Weary","OBIS SE.esp",0,0],
-        ["EncBandit03BountyNordM003 ","OBIS SE.esp",3293,"Enemy"]
-        
+        ["Kill Thoger the Curse-Weary and the Silverhand","OBIS SE.esp",0,0],
+        ["EncBandit03BountyNordM003 ","OBIS SE.esp",3293,"Enemy"],
+        ["LCharBanditSilver","OBIS SE.esp",4921,"Enemy"],
+        ["LCharBanditSilver","OBIS SE.esp",4921,"Enemy"]
     ],
 
     [
@@ -740,9 +781,10 @@
         
     ],
     [
-        ["Kill Vaber Arius","OBIS SE.esp",0,0],
-        ["EncBandit03BountyImperialM002 ","OBIS SE.esp",2476,"Enemy"]
-        
+        ["Kill Vaber Arius has Stolen your Sweetroll","OBIS SE.esp",0,0],
+        ["EncBandit03BountyImperialM002 ","OBIS SE.esp",2476,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_collect_obj01","Undaunted.esp",683514,"Scripted","clutter/ingredients/sweetroll01.nif"]        
     ],
     [
         ["Kill Skooma Baroness Via Vilus","OBIS SE.esp",0,0],
@@ -752,9 +794,13 @@
         ["LCharBanditAddled ","OBIS SE.esp",3060,"Enemy"]
     ],
     [
-        ["Kill Volemen","OBIS SE.esp",0,0],
-        ["EncBandit01BountyHighElfM002","OBIS SE.esp",4923,"Enemy"]
-        
+        ["Recover the Stolen Cheese from Volemen","OBIS SE.esp",0,0],
+        ["EncBandit01BountyHighElfM002","OBIS SE.esp",4923,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_collect_obj01","Undaunted.esp",683514,"Scripted","clutter/food/cheesewheel01a.nif"],
+        ["LCharBanditCloak","OBIS SE.esp",4778,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_collect_obj01","Undaunted.esp",683514,"Scripted","clutter/food/cheesewheel02a.nif"]      
     ],
     [
         ["Kill Wago and the Disgraced Nobles","OBIS SE.esp",0,0],
@@ -765,12 +811,19 @@
         
     ],
     [
-        ["Kill Wuleebum-Shei","OBIS SE.esp",0,0],
-        ["EncBandit02BountyArgonianM001 ","OBIS SE.esp",2466,"Enemy"]
-        
+        ["Stop Wuleebum-Shei stealing Artifacts","OBIS SE.esp",0,0],
+        ["EncBandit02BountyArgonianM001 ","OBIS SE.esp",2466,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_collect_obj01","Undaunted.esp",683514,"Scripted","clutter/glazed02potteryjug01.nif"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_collect_obj01","Undaunted.esp",683514,"Scripted","clutter/glazed02potteryurn01.nif"],
+        ["LCharBanditDigger","OBIS SE.esp",3067,"Enemy"],
+        ["LCharBanditDigger","OBIS SE.esp",3067,"Enemy"]        
     ],
     [
-        ["Kill Ylumzob gra-Marushar","OBIS SE.esp",0,0],
-        ["EncBandit02BountyOrcF001  ","OBIS SE.esp",2467,"Enemy"]
+        ["Ylumzob gra-Marushar has Stolen your Sweetroll","OBIS SE.esp",0,0],
+        ["EncBandit02BountyOrcF001  ","OBIS SE.esp",2467,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_collect_obj01","Undaunted.esp",683514,"Scripted","clutter/ingredients/sweetroll01.nif"]
     ]
 ]
