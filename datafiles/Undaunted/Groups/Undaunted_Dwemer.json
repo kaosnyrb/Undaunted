@@ -30,7 +30,7 @@
         ["1_Undaunted_DLC01IdealMasterCrystal","Undaunted.esp",80944,"Scripted","Dungeons/Dwemer/Animated/Astrolabe/LexiconStand/DweLexiconStandRunes01.nif"]
     ],
     [
-        ["Clear out the Dwemer Ruins","Skyrim.esm",0,0],
+        ["Clear out the Dwemer Ruins","Skyrim.esm",0,0,"Elite"],
         ["LCharDwarvenAutomaton","Skyrim.esm",124803,"Enemy"],
         ["LCharDwarvenAutomaton","Skyrim.esm",124803,"Enemy"],
         ["LCharDwarvenAutomaton","Skyrim.esm",124803,"Enemy"],

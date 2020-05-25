@@ -36,7 +36,7 @@
         ["WEMerchantMiscFemaleCommoner","Skyrim.esm",744794,"Ally"]
     ],
     [
-        ["Stop the Thalmor Experiments","Skyrim.esm",10,0],
+        ["Stop the Thalmor Experiments","Skyrim.esm",10,0,"Elite"],
         ["LCharThalmorMagic","Skyrim.esm",176424,"Enemy"],
         ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
         ["1_Undaunted_DestructObjectiveMagic_01","Undaunted.esp",80946,"Scripted","Dungeons/AzurasStar/AzuraLargeCrystalMoving01.nif"],

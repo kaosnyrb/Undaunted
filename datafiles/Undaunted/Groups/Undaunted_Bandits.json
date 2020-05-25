@@ -112,7 +112,7 @@
         ["1_Undaunted_DestructObjective_02","Undaunted.esp",101684,"Scripted","architecture/tents/smallnordictent01.nif"]
     ],
     [
-        ["Clear out the Bandit Cave","Skyrim.esm",0,0],
+        ["Clear out the Bandit Cave","Skyrim.esm",0,0,"Elite"],
         ["LCharBanditMeleeAny","Skyrim.esm",253645,"Enemy"],
         ["LCharBanditMeleeAny","Skyrim.esm",253645,"Enemy"],
         ["LCharBanditMissile","Skyrim.esm",124784,"Enemy"],
