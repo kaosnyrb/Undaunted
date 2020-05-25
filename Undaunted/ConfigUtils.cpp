@@ -95,6 +95,45 @@ namespace Undaunted
 		return GroupLibary.data[groupid];		
 	}
 
+	GroupList GetRandomTaggedGroup(std::string tag)
+	{
+		srand(time(NULL) + count++);
+		UInt32 playerLevel = GetPlayerLevel();
+		for (int i = 0; i < GroupLibary.length; i++)
+		{
+			int groupid = rand() % GroupLibary.length;
+			_MESSAGE("Random Group: %i", groupid);
+			_MESSAGE("Random Member Count: %i", GroupLibary.data[groupid].length);
+			//Player is too low level for this bounty
+			if (playerLevel + GetConfigValueInt("BountyLevelCache") < GroupLibary.data[groupid].minLevel && GroupLibary.data[groupid].minLevel != 0)
+			{
+				continue;
+			}
+			//Player is too high level for this bounty
+			if (playerLevel > GroupLibary.data[groupid].maxLevel && GroupLibary.data[groupid].maxLevel != 0)
+			{
+				continue;
+			}
+			for (int i = 0; i < GroupLibary.data[groupid].Tags.length; i++)
+			{
+				if (GroupLibary.data[groupid].Tags.data[i].compare(tag) == 0)
+				{
+					_MESSAGE("Found Tag: %s", GroupLibary.data[groupid].Tags.data[i].c_str());
+					return GroupLibary.data[groupid];
+				}				
+			}
+		}
+		int groupid = rand() % GroupLibary.length;
+		_MESSAGE("Group: %s", GroupLibary.data[groupid].questText.c_str());
+		for (int i = 0; i < GroupLibary.data[groupid].Tags.length; i++)
+		{
+			_MESSAGE("Group Tags: %s", GroupLibary.data[groupid].Tags.data[i].c_str());
+		}
+		_MESSAGE("Random Member Count: %i", GroupLibary.data[groupid].length);
+
+		return GroupLibary.data[groupid];
+	}
+
 	void AddConfigValue(std::string key, std::string value)
 	{
 		//_MESSAGE("CONFIGLENGTH: %i", SettingsList.length);

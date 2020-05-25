@@ -20,7 +20,7 @@ namespace Undaunted {
 		RefList deleteList = RefList();
 
 		bool BountyUpdate(int BountyID);
-		float StartBounty(int BountyID, bool nearby, const char* BountyName, TESObjectREFR* ref, BSFixedString WorldSpaceName);
+		float StartBounty(int BountyID, bool nearby, const char* BountyName, TESObjectREFR* ref, BSFixedString WorldSpaceName, std::string bountyTag = "");
 		float restartBounty(int BountyID, const char* BountyName);
 		void ClearBountyData(int BountyID);
 		void ResetBountiesRan();

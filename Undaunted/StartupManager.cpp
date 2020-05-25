@@ -97,9 +97,11 @@ namespace Undaunted {
 					UnStringlist taglist = UnStringlist();
 					while ((pos = tags.find(delimiter)) != std::string::npos) {
 						token = tags.substr(0, pos);
+						std::transform(token.begin(), token.end(), token.begin(), ::toupper);
 						taglist.AddItem(token);
 						tags.erase(0, pos + delimiter.length());
 					}
+					std::transform(tags.begin(), tags.end(), tags.begin(), ::toupper);
 					taglist.AddItem(tags);
 					const ModInfo* modInfo = dataHandler->LookupModByName(modreq.c_str());
 					if (modInfo != NULL)

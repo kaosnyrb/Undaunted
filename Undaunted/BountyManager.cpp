@@ -82,7 +82,7 @@ namespace Undaunted {
 		return true;
 	}
 
-	float BountyManager::StartBounty(int BountyID,bool nearby, const char* BountyName,TESObjectREFR* ref,BSFixedString WorldSpaceName)
+	float BountyManager::StartBounty(int BountyID,bool nearby, const char* BountyName,TESObjectREFR* ref,BSFixedString WorldSpaceName, std::string bountyTag)
 	{
 		Bounty* bounty = &activebounties.data[BountyID];
 		srand(time(NULL));
@@ -184,7 +184,14 @@ namespace Undaunted {
 		{
 			if (_stricmp(BountyName, "") == 0)
 			{
-				bounty->bountygrouplist = GetRandomGroup();
+				if (_stricmp(bountyTag.c_str(), "") == 0)
+				{
+					bounty->bountygrouplist = GetRandomGroup();
+				}
+				else
+				{
+					bounty->bountygrouplist = GetRandomTaggedGroup(bountyTag);
+				}
 			}
 			else
 			{

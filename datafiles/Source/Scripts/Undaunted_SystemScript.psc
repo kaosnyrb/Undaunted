@@ -2,6 +2,7 @@ Scriptname Undaunted_SystemScript
 
 int Function CreateBounty() global native
 float Function StartBounty(int bountyId, bool nearby) global native
+float Function StartEliteBounty(int bountyId, bool nearby) global native
 float Function StartNamedBounty(int bountyId,bool nearby, String bountyName) global native
 float Function RestartNamedBounty(int bountyId,String bountyName) global native
 float Function StartNamedBountyNearRef(int bountyId,bool nearby, String bountyName, ObjectReference ref, string WorldspaceName) global native

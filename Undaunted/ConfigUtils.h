@@ -14,6 +14,7 @@ namespace Undaunted
 	int AddGroup(std::string questText, UInt32 minlevel, UInt32 maxlevel, UnStringlist tags);
 	void AddMembertoGroup(int id, GroupMember member);
 	GroupList GetRandomGroup();
+	GroupList GetRandomTaggedGroup(std::string tag);
 	GroupList GetGroup(std::string bountyName);
 	int GetGroupCount();
 

@@ -112,7 +112,11 @@ int Function StartEvent(bool nearby)
 	SetXMarker(bountyId,XMarkerRef)
 	Alias_BountyMarker.ForceRefTo(XMarkerRef)
 	SetBountyMessageRef(bountyId,QuestTextMessage)
-	StartBounty(bountyId,true)
+	if ( numberOfBountiesCurrently + 1 == numberOfBountiesNeeded)
+		StartEliteBounty(bountyId,true)
+	else
+		StartBounty(bountyId,true)
+	endif
 	SetCurrentStageID(10)
 	QuestStage.SetValue(10)
 	RegisterForSingleUpdate(GetConfigValueInt("BountyUpdateRate"))

@@ -21,6 +21,12 @@ namespace Undaunted {
 		return 2;
 	}
 
+	// Triggers a new Elite bounty stage to start.
+	float hook_StartEliteBounty(StaticFunctionTag* base, UInt32 BountyId, bool nearby) {
+		_MESSAGE("hook_StartEliteBounty BountyId: %08X", BountyId);
+		BountyManager::getInstance()->StartBounty(BountyId, nearby, "", NULL, "", "ELITE");
+		return 2;
+	}
 
 	// Triggers a new bounty stage to start with a certain name.
 	float hook_StartNamedBounty(StaticFunctionTag* base, UInt32 BountyId, bool nearby, BSFixedString bountyName) {
@@ -333,6 +339,9 @@ namespace Undaunted {
 
 		registry->RegisterFunction(
 			new NativeFunction2 <StaticFunctionTag, float, UInt32,bool>("StartBounty", "Undaunted_SystemScript", Undaunted::hook_StartBounty, registry));
+
+		registry->RegisterFunction(
+			new NativeFunction2 <StaticFunctionTag, float, UInt32, bool>("StartEliteBounty", "Undaunted_SystemScript", Undaunted::hook_StartEliteBounty, registry));		
 
 		registry->RegisterFunction(
 			new NativeFunction3 <StaticFunctionTag, float, UInt32, bool, BSFixedString>("StartNamedBounty", "Undaunted_SystemScript", Undaunted::hook_StartNamedBounty, registry));
