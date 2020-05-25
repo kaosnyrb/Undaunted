@@ -216,6 +216,11 @@ namespace Undaunted {
 		_MESSAGE("Setting Bounty Message: %s", bounty->bountygrouplist.questText.c_str());
 		bounty->bountymessageref->fullName.name = bounty->bountygrouplist.questText.c_str();
 		_MESSAGE("PlayerPos %f, %f, %f", GetPlayer()->pos.x, GetPlayer()->pos.y, GetPlayer()->pos.z);
+
+
+		//Rift Spawn
+		SpawnRift(_registry, bounty->xmarkerref, GetPlayer()->parentCell, GetPlayer()->currentWorldSpace);
+
 		return 0;
 	}
 

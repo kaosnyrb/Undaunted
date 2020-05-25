@@ -106,6 +106,7 @@
     <ClCompile Include="BountyList.cpp" />
     <ClCompile Include="BountyManager.cpp" />
     <ClCompile Include="ConfigUtils.cpp" />
+    <ClCompile Include="FormRefList.cpp" />
     <ClCompile Include="GroupList.cpp" />
     <ClCompile Include="IntList.cpp" />
     <ClCompile Include="ListLibary.cpp" />
@@ -134,6 +135,7 @@
     <ClInclude Include="BountyManager.h" />
     <ClInclude Include="ConfigUtils.h" />
     <ClInclude Include="eternal.hpp" />
+    <ClInclude Include="FormRefList.h" />
     <ClInclude Include="GroupList.h" />
     <ClInclude Include="IntList.h" />
     <ClInclude Include="ListLibary.h" />

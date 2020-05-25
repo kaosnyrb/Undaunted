@@ -32,4 +32,5 @@ namespace Undaunted
 	void AddSafezone(Safezone zone);
 	SafezoneList GetSafezones();
 
+
 }

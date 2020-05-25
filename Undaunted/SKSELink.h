@@ -35,5 +35,8 @@ namespace Undaunted
 	BSFixedString GetCurrentWorldspaceName();
 
 	void MoveRef(TESObjectREFR* object, TESObjectCELL* cell, TESWorldSpace* worldspace, NiPoint3 pos, NiPoint3 rot);
+
+	TESForm* LookupFormByID(UInt32 id);
+
 }
 #endif

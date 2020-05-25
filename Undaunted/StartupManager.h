@@ -7,4 +7,6 @@ namespace Undaunted
 	void LoadSettings();
 
 	void LoadGroups();
+
+	void LoadRifts();
 }

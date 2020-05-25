@@ -10,6 +10,9 @@ Undaunted::RelocPtr <DataHandler*> dataHandler(0x01EBE428);
 
 Undaunted::RelocAddr<_MoveRefrToPosition> MoveReffunc(0x009AE5C0);
 
+Undaunted::RelocAddr <_LookupFormByID> FormByID(0x00194230);
+
+
 DataHandler* Undaunted::GetDataHandler() {
 	return *dataHandler;
 }
@@ -35,6 +38,11 @@ void Undaunted::MoveRef(TESObjectREFR* object, TESObjectCELL* cell, TESWorldSpac
 {
 	UInt32 nullHandle = *g_invalidRefHandle;
 	MoveReffunc(object, &nullHandle, cell, worldspace, &pos, &rot);
+}
+
+TESForm* Undaunted::LookupFormByID(UInt32 id)
+{
+	return FormByID(id);
 }
 
 static VersionDb db;

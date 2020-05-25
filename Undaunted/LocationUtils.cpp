@@ -1,6 +1,7 @@
 #include "LocationUtils.h"
 #include <Undaunted\ConfigUtils.h>
 #include "WorldCellList.h"
+#include "FormRefList.h"
 
 namespace Undaunted {
 	WorldCellList worldCellList;
@@ -271,6 +272,60 @@ namespace Undaunted {
 			}
 		}
 		return WorldCell();
+	}
+
+	void CaptureArea()
+	{
+		FormRefList list = FormRefList();
+		TESObjectCELL* parentCell = GetPlayer()->parentCell;
+
+		int numberofRefs = papyrusCell::GetNumRefs(parentCell, 0);
+		_MESSAGE("GetObjectInCurrentCell Num Ref: %i", numberofRefs);
+		for (int i = 0; i < numberofRefs; i++)
+		{
+			TESObjectREFR* ref = papyrusCell::GetNthRef(parentCell, i, 0);
+			if (ref != NULL)
+			{
+				if (ref->formID != NULL)
+				{
+					FormRef saveref = FormRef();
+					saveref.formId = ref->baseForm->formID;
+					saveref.pos = ref->pos;
+					saveref.rot = ref->rot;
+					saveref.type = static_cast<FormType>(ref->baseForm->formType);
+					if (saveref.type == kFormType_Static
+						|| saveref.type == kFormType_Furniture
+						|| saveref.type == kFormType_LeveledCharacter
+						|| saveref.type == kFormType_Sound
+						|| saveref.type == kFormType_Light
+						|| saveref.type == kFormType_NAVM
+						|| saveref.type == kFormType_NAVI
+						)
+					{
+						_MESSAGE("[\"%08X\",%f,%f,%f,%f,%f,%f],",
+							saveref.formId,
+							saveref.pos.x,
+							saveref.pos.y,
+							saveref.pos.z,
+							saveref.rot.x,
+							saveref.rot.y,
+							saveref.rot.z);
+					}
+
+				}
+			}
+		}
+	}
+
+	FormRefList formRefList;
+	void AddRift(FormRefList reflist)
+	{
+		formRefList = reflist;
+	}
+
+	FormRefList GetRandomRift()
+	{
+		return formRefList;
 	}
 
 	//Interiors

@@ -4,6 +4,8 @@
 #include <filesystem>
 #include <algorithm>
 #include <string>
+#include <Undaunted\FormRefList.h>
+#include <Undaunted\LocationUtils.h>
 
 namespace Undaunted {
 	RSJresource currentfile;
@@ -64,6 +66,43 @@ namespace Undaunted {
 			zone.Radius = Radius;
 			AddSafezone(zone);
 			_MESSAGE("Safezone %s, %s, %i, %i, %i, %i", Zonename.c_str(), Worldspace.c_str(), PosX, PosY, PosZ, Radius);
+		}
+	}
+
+	void LoadRifts()
+	{
+		DataHandler* dataHandler = GetDataHandler();
+		_MESSAGE("Loading Rifts...");
+		std::string path = "Data/Undaunted/Rifts";
+		for (const auto& entry : std::filesystem::directory_iterator(path))
+		{
+			auto filename = entry.path().u8string();
+			_MESSAGE("file: %s", filename.c_str());
+			if (entry.is_regular_file())
+			{
+				LoadJson(filename.c_str());
+				RSJresource settings = currentfile;
+				auto data = settings.as_array();
+				_MESSAGE("size: %i", data.size());
+				FormRefList reflist = FormRefList();
+				for (int i = 0; i < data.size(); i++)
+				{
+					std::string formid = data[i][0].as<std::string>("formid");
+					_MESSAGE("formid: %s", formid);
+					double xpos = data[i][1].as<double>();
+					double ypos = data[i][2].as<double>();
+					double zpos = data[i][3].as<double>();
+					double xrot = data[i][4].as<double>();
+					double yrot = data[i][5].as<double>();
+					double zrot = data[i][6].as<double>();
+					FormRef formref = FormRef();
+					formref.formId = std::stoul(formid.c_str(), nullptr, 16);
+					formref.pos = NiPoint3(xpos, ypos, zpos);
+					formref.rot = NiPoint3(xrot, yrot, zrot);
+					reflist.AddItem(formref);
+				}
+				AddRift(reflist);
+			}
 		}
 	}
 

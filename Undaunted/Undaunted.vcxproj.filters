@@ -44,6 +44,9 @@
     <ClCompile Include="RefList.cpp">
       <Filter>Collections</Filter>
     </ClCompile>
+    <ClCompile Include="FormRefList.cpp">
+      <Filter>Collections</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyPlugin.h" />
@@ -101,6 +104,9 @@
       <Filter>Collections</Filter>
     </ClInclude>
     <ClInclude Include="RefList.h">
+      <Filter>Collections</Filter>
+    </ClInclude>
+    <ClInclude Include="FormRefList.h">
       <Filter>Collections</Filter>
     </ClInclude>
   </ItemGroup>
