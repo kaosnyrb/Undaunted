@@ -25,7 +25,7 @@ int			BountyEnemyPlacementHeightDistanceOID_S
 int			BountyEnemyPlacementHeightDistance	= 300
 
 int			AllowChainResetingOID_S
-bool			AllowChainReseting	= false
+bool		AllowChainReseting	= false
 
 int			RewardsPerKeyOID_S
 int			RewardsPerKey	= 3
@@ -44,6 +44,15 @@ int			RewardBookWeightOID_S
 int			RewardBookWeight = 5
 int			RewardMiscWeightOID_S
 int			RewardMiscWeight = 5
+
+int			RewardAllowMiscItemsOID_S
+bool		RewardAllowMiscItems	= false
+int			RewardAllowClothesOID_S
+bool		RewardAllowClothes	= false
+int			RewardAllowShieldsOID_S
+bool		RewardAllowShields	= false
+int			RewardAllowDaedricArtifactsOID_S
+bool		RewardAllowDaedricArtifacts	= false
 
 
 function SetValues()
@@ -67,7 +76,26 @@ function SetValues()
 	SetConfigValue("RewardIngredientWeight", RewardIngredientWeight)
 	SetConfigValue("RewardBookWeight", RewardBookWeight)
 	SetConfigValue("RewardMiscWeight", RewardMiscWeight)
-
+	if (RewardAllowMiscItems)
+		SetConfigValue("RewardAllowMiscItems", 1)
+	else
+		SetConfigValue("RewardAllowMiscItems", 0)
+	endIf
+	if (RewardAllowClothes)
+		SetConfigValue("RewardAllowClothes", 1)
+	else
+		SetConfigValue("RewardAllowClothes", 0)
+	endIf
+	if (RewardAllowShields)
+		SetConfigValue("RewardAllowShields", 1)
+	else
+		SetConfigValue("RewardAllowShields", 0)
+	endIf
+	if (RewardAllowDaedricArtifacts)
+		SetConfigValue("RewardAllowDaedricArtifacts", 1)
+	else
+		SetConfigValue("RewardAllowDaedricArtifacts", 0)
+	endIf
 endfunction
 
 event OnConfigInit()
@@ -85,14 +113,20 @@ event OnPageReset(string page)
     if (page == "")
         AddHeaderOption("BountiesComplete: " + BountiesComplete.Value as int)
     elseIf (page == "Bounty Settings")
+		AddHeaderOption("Bounty Settings")
+		AddEmptyOption()
         _NumberOfBountiesPerChainOID_S		= AddSliderOption("Number Of Bounties Per Chain: ", _NumberOfBountiesPerChain)
         BountyStartDistanceOID_S		= AddSliderOption("Bounty Start Distance: ", BountyStartDistance)
         BountyMinSpawnDistanceOID_S		= AddSliderOption("Bounty Min Spawn Distance: ", BountyMinSpawnDistance)
         BountyMaxSpawnDistanceOID_S		= AddSliderOption("Bounty Max Spawn Distance: ", BountyMaxSpawnDistance)
         BountyEnemyExteriorSpawnRadiusOID_S		= AddSliderOption("Enemy Exterior Spawn Radius: ", BountyEnemyExteriorSpawnRadius)
 		BountyEnemyPlacementHeightDistanceOID_S		= AddSliderOption("Enemy Placement Height: ", BountyEnemyPlacementHeightDistance)
+		AddHeaderOption("Debug Settings")
+		AddEmptyOption()
 		AllowChainResetingOID_S = AddToggleOption("Allow Resetting Bounties: ", AllowChainReseting)
     elseIf (page == "Reward Settings")
+		AddHeaderOption("General Reward Settings")
+		AddEmptyOption()
 		RewardsPerKeyOID_S		= AddSliderOption("Number of rewards per key: ", RewardsPerKey)
 		AddEmptyOption()
 		AddHeaderOption("Reward Weighting")
@@ -104,6 +138,13 @@ event OnPageReset(string page)
 		RewardIngredientWeightOID_S	= AddSliderOption("Ingredient Chance: ", RewardIngredientWeight)
 		RewardBookWeightOID_S	= AddSliderOption("Book Chance: ", RewardBookWeight)
 		RewardMiscWeightOID_S	= AddSliderOption("Misc Chance: ", RewardMiscWeight)
+		AddEmptyOption()
+		AddHeaderOption("Reward Filtering")
+		AddEmptyOption()
+		RewardAllowMiscItemsOID_S = AddToggleOption("Allow Misc items as rewards ", RewardAllowMiscItems)
+		RewardAllowClothesOID_S = AddToggleOption("Allow Clothing as rewards ", RewardAllowClothes)
+		RewardAllowShieldsOID_S = AddToggleOption("Allow Shields as rewards ", RewardAllowShields)
+		RewardAllowDaedricArtifactsOID_S = AddToggleOption("Allow Daedric Artifacts as rewards", RewardAllowDaedricArtifacts)
     endIf
 endEvent
 
@@ -289,9 +330,9 @@ event OnOptionHighlight(int a_option)
 		SetInfoText("The chance of getting armour")
 	elseIf(a_option == RewardPotionWeightOID_S)
 		SetInfoText("The chance of getting a potion")
-	elseIf(a_option == RewardPotionWeightOID_S)
+	elseIf(a_option == RewardScrollWeightOID_S)
 		SetInfoText("The chance of getting a scroll")
-	elseIf(a_option == RewardPotionWeightOID_S)
+	elseIf(a_option == RewardIngredientWeightOID_S)
 		SetInfoText("The chance of getting an ingredient")
 	elseIf(a_option == RewardBookWeightOID_S)
 		SetInfoText("The chance of getting a book")
@@ -309,6 +350,43 @@ event OnOptionSelect(int a_option)
 			SetConfigValue("AllowChainReseting", 1)
 		else
 			SetConfigValue("AllowChainReseting", 0)
+		endIf
+	endif
+
+	if (a_option == RewardAllowMiscItemsOID_S)
+		RewardAllowMiscItems = !RewardAllowMiscItems
+		SetToggleOptionValue(a_option, RewardAllowMiscItems)
+		if (RewardAllowMiscItems)
+			SetConfigValue("RewardAllowMiscItems", 1)
+		else
+			SetConfigValue("RewardAllowMiscItems", 0)
+		endIf
+	endif
+	if (a_option == RewardAllowClothesOID_S)
+		RewardAllowClothes = !RewardAllowClothes
+		SetToggleOptionValue(a_option, RewardAllowClothes)
+		if (RewardAllowClothes)
+			SetConfigValue("RewardAllowClothes", 1)
+		else
+			SetConfigValue("RewardAllowClothes", 0)
+		endIf
+	endif
+	if (a_option == RewardAllowShieldsOID_S)
+		RewardAllowShields = !RewardAllowShields
+		SetToggleOptionValue(a_option, RewardAllowShields)
+		if (RewardAllowShields)
+			SetConfigValue("RewardAllowShields", 1)
+		else
+			SetConfigValue("RewardAllowShields", 0)
+		endIf
+	endif
+	if (a_option == RewardAllowDaedricArtifactsOID_S)
+		RewardAllowDaedricArtifacts = !RewardAllowDaedricArtifacts
+		SetToggleOptionValue(a_option, RewardAllowDaedricArtifacts)
+		if (RewardAllowDaedricArtifacts)
+			SetConfigValue("RewardAllowDaedricArtifacts", 1)
+		else
+			SetConfigValue("RewardAllowDaedricArtifacts", 0)
 		endIf
 	endif
 endEvent

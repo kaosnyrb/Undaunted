@@ -223,7 +223,7 @@ namespace Undaunted
 		int maxArmourForPart = 0;
 		for (int i = 0; i < armour->keyword.numKeywords; i++)
 		{
-			if (_stricmp(armour->keyword.keywords[i]->keyword.data, "DaedricArtifact") == 0 && GetConfigValueInt("RewardAllowDaedricArtifacts") == 1)return false;
+			if (_stricmp(armour->keyword.keywords[i]->keyword.data, "DaedricArtifact") == 0 && GetConfigValueInt("RewardAllowDaedricArtifacts") == 0)return false;
 			if (_stricmp(armour->keyword.keywords[i]->keyword.data, "ArmorShield") == 0 && GetConfigValueInt("RewardAllowShields") == 0)return false;
 			if (_stricmp(armour->keyword.keywords[i]->keyword.data, "Dummy") == 0) return false;
 		}
