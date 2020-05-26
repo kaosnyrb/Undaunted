@@ -18,11 +18,6 @@ namespace Undaunted {
 	float hook_StartBounty(StaticFunctionTag* base, UInt32 BountyId, bool nearby) {
 		_MESSAGE("hook_StartBounty BountyId: %08X", BountyId);
 		BountyManager::getInstance()->StartBounty(BountyId,nearby, "",NULL,"");
-
-		// Rift capture. DEBUG
-		//CaptureArea();
-		//
-
 		return 2;
 	}
 
@@ -334,6 +329,19 @@ namespace Undaunted {
 		result = list.questText.c_str();
 		return result;
 	}
+
+	void hook_CaptureCellData(StaticFunctionTag* base)
+	{
+		_MESSAGE("hook_CaptureCellData");
+		CaptureArea();		
+	}
+
+	TESObjectREFR* hook_SpawnRift(StaticFunctionTag* base, UInt32 BountyId, TESObjectREFR* Startpoint)
+	{
+		_MESSAGE("hook_SpawnRift");
+		return BountyManager::getInstance()->StartRift(BountyId, Startpoint);
+	}
+
 	
 
 	bool RegisterFuncs(VMClassRegistry* registry) {
@@ -431,6 +439,14 @@ namespace Undaunted {
 		//Rewards
 		registry->RegisterFunction(
 			new NativeFunction2 <StaticFunctionTag, TESForm*, UInt32, UInt32>("SpawnRandomReward", "Undaunted_SystemScript", Undaunted::hook_SpawnRandomReward, registry));
+
+
+		//Rifts
+		registry->RegisterFunction(
+			new NativeFunction0 <StaticFunctionTag, void>("CaptureCellData", "Undaunted_SystemScript", Undaunted::hook_CaptureCellData, registry));
+
+		registry->RegisterFunction(
+			new NativeFunction2 <StaticFunctionTag, TESObjectREFR*, UInt32, TESObjectREFR*>("SpawnRift", "Undaunted_SystemScript", Undaunted::hook_SpawnRift, registry));
 
 
 		return true;

@@ -120,12 +120,11 @@ namespace Undaunted
 		{
 			_MESSAGE("SpawnRift");
 			TESForm* spawnForm = LookupFormByID(formlist.data[i].formId);
-			MoveRefToWorldCell(Target, cell, worldspace, startingpoint + NiPoint3(0, 0, 2000), NiPoint3(0, 0, 0));
-			//MoveRefToWorldCell(Target, cell, worldspace, startingpoint + formlist.data[i].pos,formlist.data[i].rot);
+//			MoveRefToWorldCell(Target, cell, worldspace, startingpoint, NiPoint3(0, 0, 0));
+			MoveRefToWorldCell(Target, cell, worldspace, startingpoint, formlist.data[i].rot);
 			TESObjectREFR* spawned = PlaceAtMe(registry, 1, Target, spawnForm, 1, true, false);
-			NiPoint3 position = startingpoint + formlist.data[i].pos + NiPoint3(0, 0, 2000);
+			NiPoint3 position = startingpoint + formlist.data[i].pos;
 			MoveRefToWorldCell(spawned, cell, worldspace, position, formlist.data[i].rot);
-			//SetAngle(spawned, formlist.data[i].rot);
 			_MESSAGE("Spawn details: %f, %f, %f, %f, %f, %f", position.x, position.y, position.z, formlist.data[i].rot.x, formlist.data[i].rot.y, formlist.data[i].rot.z);
 
 		}

@@ -26,6 +26,9 @@ namespace Undaunted {
 		void ResetBountiesRan();
 		void AddToDeleteList(TESObjectREFR* ref);
 		void ClearDeleteList();
+
+		TESObjectREFR* StartRift(int BountyID, TESObjectREFR* Startpoint);
+
 	};
 #endif
 }

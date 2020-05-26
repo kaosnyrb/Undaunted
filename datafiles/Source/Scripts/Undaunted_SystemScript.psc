@@ -35,3 +35,6 @@ ObjectReference[] Function GetBountyObjectRefs(int bountyId,string bountyType) g
 
 string Function GetRandomBountyName() global native
 
+
+ObjectReference Function SpawnRift(int bountyId,ObjectReference ref) global native
+Function CaptureCellData() global native
