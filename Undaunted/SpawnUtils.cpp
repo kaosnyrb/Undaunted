@@ -112,21 +112,47 @@ namespace Undaunted
 		return Types;
 	}
 
-	void SpawnRift(VMClassRegistry* registry, TESObjectREFR* Target, TESObjectCELL* cell, TESWorldSpace* worldspace)
+	VMResultArray<float> RiftRotations;
+
+
+	RefList SpawnRift(VMClassRegistry* registry, TESObjectREFR* Target, TESObjectCELL* cell, TESWorldSpace* worldspace)
 	{
+		RefList results = RefList();
+
 		FormRefList formlist = GetRandomRift();
 		NiPoint3 startingpoint = Target->pos;
+		RiftRotations = VMResultArray<float>();
 		for (int i = 0; i < formlist.length; i++)
 		{
 			_MESSAGE("SpawnRift");
 			TESForm* spawnForm = LookupFormByID(formlist.data[i].formId);
-//			MoveRefToWorldCell(Target, cell, worldspace, startingpoint, NiPoint3(0, 0, 0));
-			MoveRefToWorldCell(Target, cell, worldspace, startingpoint, formlist.data[i].rot);
-			TESObjectREFR* spawned = PlaceAtMe(registry, 1, Target, spawnForm, 1, true, false);
-			NiPoint3 position = startingpoint + formlist.data[i].pos;
-			MoveRefToWorldCell(spawned, cell, worldspace, position, formlist.data[i].rot);
-			_MESSAGE("Spawn details: %f, %f, %f, %f, %f, %f", position.x, position.y, position.z, formlist.data[i].rot.x, formlist.data[i].rot.y, formlist.data[i].rot.z);
 
+			NiPoint3 position = startingpoint + formlist.data[i].pos;
+			NiPoint3 rotation = formlist.data[i].rot;
+			rotation.x = rotation.x* (180.0 / 3.141592653589793238463);
+			rotation.y = rotation.y* (180.0 / 3.141592653589793238463);
+			rotation.z = rotation.z* (180.0 / 3.141592653589793238463);
+
+
+			MoveRefToWorldCell(Target, cell, worldspace, startingpoint, NiPoint3(0, 0, 0));
+//			MoveRefToWorldCell(Target, cell, worldspace, startingpoint, rotation);
+			TESObjectREFR* spawned = PlaceAtMe(registry, 1, Target, spawnForm, 1, true, false);
+			MoveRefToWorldCell(spawned, cell, worldspace, position, rotation);
+
+
+			_MESSAGE("Spawn details: %f, %f, %f, %f, %f, %f", position.x, position.y, position.z, rotation.x, rotation.y, rotation.z);
+			Ref newref = Ref();
+			newref.objectRef = spawned;
+			results.AddItem(newref);
+			RiftRotations.push_back(rotation.x);
+			RiftRotations.push_back(rotation.y);
+			RiftRotations.push_back(rotation.z);
 		}
+		return results;
+	}
+
+	VMResultArray<float> GetRiftRotations()
+	{
+		return RiftRotations;
 	}
 }

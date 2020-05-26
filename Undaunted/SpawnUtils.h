@@ -1,5 +1,6 @@
 #include "SKSELink.h"
 #include "ConfigUtils.h"
+#include "RefList.h"
 
 namespace Undaunted
 {
@@ -9,5 +10,7 @@ namespace Undaunted
 //	GroupList SpawnGroupAtTarget(VMClassRegistry* registry, GroupList Types, TESObjectREFR* Target);
 	GroupList SpawnGroupAtTarget(VMClassRegistry* registry, GroupList Types, TESObjectREFR* Target, TESObjectCELL* cell, TESWorldSpace* worldspace);
 
-	void SpawnRift(VMClassRegistry* registry, TESObjectREFR* Target, TESObjectCELL* cell, TESWorldSpace* worldspace);
+	RefList SpawnRift(VMClassRegistry* registry, TESObjectREFR* Target, TESObjectCELL* cell, TESWorldSpace* worldspace);
+	VMResultArray<float> GetRiftRotations();
+
 }

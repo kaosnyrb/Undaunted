@@ -6,7 +6,15 @@ ObjectReference Property exitRed  Auto
 
 event onActivate(objectReference akActivator)
     exitRed.MoveTo(akActivator)
-    SpawnRift(1,TargetRef)
+    ObjectReference[] refs = SpawnRift(1,TargetRef)
+    float[] rotations = GetRiftRotations()
     akActivator.MoveTo(TargetRef)
+    ;Enemy check
+	int refslength = refs.Length
+	while(refslength > 0)
+        refslength -= 1
+        refs[refslength].SetAngle(rotations[(refslength * 3)],rotations[(refslength * 3)+1],rotations[(refslength * 3)+2]);
+	endwhile
     
+
 endEvent

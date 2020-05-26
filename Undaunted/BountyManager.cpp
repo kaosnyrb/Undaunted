@@ -276,11 +276,11 @@ namespace Undaunted {
 		deleteList = RefList();
 	}
 
-	TESObjectREFR* BountyManager::StartRift(int BountyID, TESObjectREFR* Startpoint)
+	RefList BountyManager::StartRift(int BountyID, TESObjectREFR* Startpoint)
 	{
 		//Bounty bounty = activebounties.data[BountyID];
-		SpawnRift(_registry, Startpoint, Startpoint->parentCell, GetPlayer()->currentWorldSpace);
-		return nullptr;
+		RefList refs = SpawnRift(_registry, Startpoint, Startpoint->parentCell, GetPlayer()->currentWorldSpace);
+		return refs;
 	}
 
 }

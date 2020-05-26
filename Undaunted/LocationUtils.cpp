@@ -294,7 +294,6 @@ namespace Undaunted {
 					saveref.rot = ref->rot;
 					saveref.type = static_cast<FormType>(ref->baseForm->formType);
 					if (saveref.type == kFormType_Static
-						|| saveref.type == kFormType_Furniture
 						|| saveref.type == kFormType_LeveledCharacter
 						|| saveref.type == kFormType_Sound
 						|| saveref.type == kFormType_Light
