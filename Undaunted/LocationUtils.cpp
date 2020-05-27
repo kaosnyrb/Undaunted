@@ -290,16 +290,33 @@ namespace Undaunted {
 				{
 					FormRef saveref = FormRef();
 					saveref.formId = ref->baseForm->formID;
-					saveref.pos = ref->pos;
+					saveref.pos = ref->pos - GetPlayer()->pos;
 					saveref.rot = ref->rot;
 					saveref.type = static_cast<FormType>(ref->baseForm->formType);
-					if (saveref.type == kFormType_Static
+					if ((saveref.type == kFormType_Static
 						|| saveref.type == kFormType_LeveledCharacter
+						|| saveref.type == kFormType_Activator
 						|| saveref.type == kFormType_Sound
 						|| saveref.type == kFormType_Light
+						|| saveref.type == kFormType_Ingredient
+						|| saveref.type == kFormType_Container
+						|| saveref.type == kFormType_Activator
+						|| saveref.type == kFormType_MovableStatic
+						|| saveref.type == kFormType_Furniture
+						|| saveref.type == kFormType_Reference
+						|| saveref.type == kFormType_Potion
+						|| saveref.type == kFormType_SoulGem
+						|| saveref.type == kFormType_LeveledItem
+						|| saveref.type == kFormType_NPC
+						|| saveref.type == kFormType_Misc
+						|| saveref.type == kFormType_Door
+						|| saveref.type == kFormType_Book
+						|| saveref.type == kFormType_Flora
+						|| saveref.type == kFormType_Tree
+						|| saveref.type == kFormType_Grass
 						|| saveref.type == kFormType_NAVM
-						|| saveref.type == kFormType_NAVI
-						)
+						|| saveref.type == kFormType_NAVI) 
+						&& saveref.formId < 4278190000)
 					{
 						_MESSAGE("[\"%08X\",%f,%f,%f,%f,%f,%f],",
 							saveref.formId,
@@ -310,7 +327,8 @@ namespace Undaunted {
 							saveref.rot.y,
 							saveref.rot.z);
 					}
-
+					/*						
+*/
 				}
 			}
 		}
