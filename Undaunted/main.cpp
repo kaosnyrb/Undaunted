@@ -86,7 +86,6 @@ extern "C"	{
 
 		g_papyrus = (SKSEPapyrusInterface *)skse->QueryInterface(kInterface_Papyrus);
 		g_messageInterface->RegisterListener(g_pluginHandle, "SKSE", SKSEMessageReceptor);
-
 		//Check if the function registration was a success...
 		bool btest = g_papyrus->Register(Undaunted::RegisterFuncs);
 		

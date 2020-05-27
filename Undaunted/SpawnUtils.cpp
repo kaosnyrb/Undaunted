@@ -2,6 +2,10 @@
 #include "ConfigUtils.h"
 #include "LocationUtils.h"
 #include "BountyManager.h"
+#include <skse64\PapyrusModEvent.h>
+#include <skse64\PapyrusEvents.h>
+#include <skse64\PapyrusObjects.h>
+#include <skse64\PapyrusModEvent.cpp>
 
 namespace Undaunted
 {
@@ -147,6 +151,17 @@ namespace Undaunted
 			RiftRotations.push_back(rotation.x);
 			RiftRotations.push_back(rotation.y);
 			RiftRotations.push_back(rotation.z);
+
+			//
+			/*
+			PapyrusModEvent* evn = new PapyrusModEvent("UndauntedRotate");
+			evn->PushArg<TESForm*>(spawned);
+			evn->PushArg<float>(rotation.x);
+			evn->PushArg<float>(rotation.y);
+			evn->PushArg<float>(rotation.z);
+			g_modCallbackRegs.ForEach(evn->EventName(), *evn);*/
+//			SInt32 handle = SKSEObjectStorageInstance().StoreObject(evn, 1);
+			
 		}
 		return results;
 	}
