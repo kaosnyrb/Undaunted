@@ -115,6 +115,7 @@
     <ClCompile Include="MyPlugin.cpp" />
     <ClCompile Include="RefList.cpp" />
     <ClCompile Include="RewardUtils.cpp" />
+    <ClCompile Include="RiftList.cpp" />
     <ClCompile Include="SafezoneList.cpp" />
     <ClCompile Include="SKSELink.cpp" />
     <ClCompile Include="SpawnUtils.cpp" />
@@ -143,6 +144,7 @@
     <ClInclude Include="MyPlugin.h" />
     <ClInclude Include="RefList.h" />
     <ClInclude Include="RewardUtils.h" />
+    <ClInclude Include="RiftList.h" />
     <ClInclude Include="SafezoneList.h" />
     <ClInclude Include="SKSELink.h" />
     <ClInclude Include="SpawnUtils.h" />

@@ -88,6 +88,7 @@ namespace Undaunted {
 				for (int i = 0; i < data.size(); i++)
 				{
 					std::string formid = data[i][0].as<std::string>("formid");
+
 					_MESSAGE("formid: %s", formid);
 					double xpos = data[i][1].as<double>();
 					double ypos = data[i][2].as<double>();
@@ -96,7 +97,14 @@ namespace Undaunted {
 					double yrot = data[i][5].as<double>();
 					double zrot = data[i][6].as<double>();
 					FormRef formref = FormRef();
-					formref.formId = std::stoul(formid.c_str(), nullptr, 16);
+					if (formid.compare("RiftExit") == 0) {
+						const ModInfo* modInfo = dataHandler->LookupModByName("Undaunted.esp");
+						formref.formId = (modInfo->modIndex << 24) + 745728;//RiftDoor
+					}
+					else
+					{
+						formref.formId = std::stoul(formid.c_str(), nullptr, 16);
+					}
 					formref.pos = NiPoint3(xpos, ypos, zpos);
 					formref.rot = NiPoint3(xrot, yrot, zrot);
 					reflist.AddItem(formref);

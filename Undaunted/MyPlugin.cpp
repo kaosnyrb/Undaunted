@@ -359,6 +359,17 @@ namespace Undaunted {
 	}
 
 	
+	VMResultArray<TESObjectREFR*> hook_GetRiftReferences(StaticFunctionTag* base)
+	{
+		_MESSAGE("hook_GetRiftReferences");
+		RefList results = GetCurrentRiftRefs();
+		VMResultArray<TESObjectREFR*> resultsarray = VMResultArray<TESObjectREFR*>();
+		for (int i = 0; i < results.length; i++)
+		{
+			resultsarray.push_back(results.data[i].objectRef);
+		}
+		return resultsarray;
+	}
 
 	
 
@@ -468,6 +479,9 @@ namespace Undaunted {
 
 		registry->RegisterFunction(
 			new NativeFunction0 <StaticFunctionTag, VMResultArray<float>>("GetRiftRotations", "Undaunted_SystemScript", Undaunted::hook_GetRiftRotations, registry));
+
+		registry->RegisterFunction(
+			new NativeFunction0 <StaticFunctionTag, VMResultArray<TESObjectREFR*>>("GetRiftReferences", "Undaunted_SystemScript", Undaunted::hook_GetRiftReferences, registry));
 
 		return true;
 	}

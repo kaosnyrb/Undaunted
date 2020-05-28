@@ -6,24 +6,40 @@ ObjectReference Property Holdingroom  Auto
 
 ObjectReference Property exitRed  Auto  
 
+ObjectReference[] refs
+
 event onActivate(objectReference akActivator)
-    exitRed.MoveTo(akActivator)
-    ObjectReference[] refs = SpawnRift(1,TargetRef)
-    float[] rotations = GetRiftRotations()
+    ;exitRed.MoveTo(akActivator)
     akActivator.MoveTo(Holdingroom)
-    Game.DisablePlayerControls()
-    ;Enemy check
-	int refslength = refs.Length
+    ;akActivator.MoveTo(TargetRef)
+
+    refs = GetRiftReferences()
+    int refslength = refs.Length
+	while(refslength > 0)
+        refslength -= 1
+        refs[refslength].DisableNoWait(false)
+        refs[refslength].Delete()
+    endwhile
+    refs = SpawnRift(1,TargetRef)
+    float[] rotations = GetRiftRotations()
+    ;Game.DisablePlayerControls()
+	refslength = refs.Length
 	while(refslength > 0)
         refslength -= 1
         refs[refslength].SetAngle(rotations[(refslength * 3)],rotations[(refslength * 3)+1],rotations[(refslength * 3)+2])
-        ;rotate(refs[refslength],rotations[(refslength * 3)],rotations[(refslength * 3)+1],rotations[(refslength * 3)+2])
     endwhile
-    Game.EnablePlayerControls()
+    ;Game.EnablePlayerControls()
+    akActivator.MoveTo(exitRed)
     akActivator.MoveTo(TargetRef)
     Debug.Notification("Rift Complete")
 endEvent
 
-function rotate(ObjectReference ref, float x, float y, float z)
-    ref.SetAngle(x,y,z)
+Function DeleteRefs()
+	int refslength = refs.Length
+	while(refslength > 0)
+        refslength -= 1
+        refs[refslength].DisableNoWait(false)
+        refs[refslength].Delete()
+    endwhile
 endfunction
+

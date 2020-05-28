@@ -117,14 +117,17 @@ namespace Undaunted
 	}
 
 	VMResultArray<float> RiftRotations;
-
+	RefList riftobjectrefs = RefList();
 
 	RefList SpawnRift(VMClassRegistry* registry, TESObjectREFR* Target, TESObjectCELL* cell, TESWorldSpace* worldspace)
 	{
-		RefList results = RefList();
+		//Debug
+		//srand(time(NULL));
+		NiPoint3 startingpoint = Target->pos;// +NiPoint3(rand() % 1000, rand() % 1000, rand() % 1000);
 
+
+		riftobjectrefs = RefList();
 		FormRefList formlist = GetRandomRift();
-		NiPoint3 startingpoint = Target->pos;
 		RiftRotations = VMResultArray<float>();
 		for (int i = 0; i < formlist.length; i++)
 		{
@@ -137,9 +140,6 @@ namespace Undaunted
 			rotation.y = rotation.y* (180.0 / 3.141592653589793238463);
 			rotation.z = rotation.z* (180.0 / 3.141592653589793238463);
 
-
-			MoveRefToWorldCell(Target, cell, worldspace, startingpoint, NiPoint3(0, 0, 0));
-//			MoveRefToWorldCell(Target, cell, worldspace, startingpoint, rotation);
 			TESObjectREFR* spawned = PlaceAtMe(registry, 1, Target, spawnForm, 1, true, false);
 			MoveRefToWorldCell(spawned, cell, worldspace, position, rotation);
 
@@ -147,27 +147,20 @@ namespace Undaunted
 			_MESSAGE("Spawn details: %f, %f, %f, %f, %f, %f", position.x, position.y, position.z, rotation.x, rotation.y, rotation.z);
 			Ref newref = Ref();
 			newref.objectRef = spawned;
-			results.AddItem(newref);
+			riftobjectrefs.AddItem(newref);
 			RiftRotations.push_back(rotation.x);
 			RiftRotations.push_back(rotation.y);
-			RiftRotations.push_back(rotation.z);
-
-			//
-			/*
-			PapyrusModEvent* evn = new PapyrusModEvent("UndauntedRotate");
-			evn->PushArg<TESForm*>(spawned);
-			evn->PushArg<float>(rotation.x);
-			evn->PushArg<float>(rotation.y);
-			evn->PushArg<float>(rotation.z);
-			g_modCallbackRegs.ForEach(evn->EventName(), *evn);*/
-//			SInt32 handle = SKSEObjectStorageInstance().StoreObject(evn, 1);
-			
+			RiftRotations.push_back(rotation.z);		
 		}
-		return results;
+		return riftobjectrefs;
 	}
 
 	VMResultArray<float> GetRiftRotations()
 	{
 		return RiftRotations;
+	}
+	RefList GetCurrentRiftRefs()
+	{
+		return riftobjectrefs;
 	}
 }

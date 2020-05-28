@@ -12,5 +12,5 @@ namespace Undaunted
 
 	RefList SpawnRift(VMClassRegistry* registry, TESObjectREFR* Target, TESObjectCELL* cell, TESWorldSpace* worldspace);
 	VMResultArray<float> GetRiftRotations();
-
+	RefList GetCurrentRiftRefs();
 }

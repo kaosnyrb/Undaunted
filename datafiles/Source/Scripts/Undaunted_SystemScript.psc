@@ -37,5 +37,6 @@ string Function GetRandomBountyName() global native
 
 
 ObjectReference[] Function SpawnRift(int bountyId,ObjectReference ref) global native
+ObjectReference[] Function GetRiftReferences() global native
 Function CaptureCellData() global native
 float[] Function GetRiftRotations() global native
