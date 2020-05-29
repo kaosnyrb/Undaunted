@@ -1,0 +1,73 @@
+Scriptname Undaunted_RiftDoor extends ObjectReference
+import Undaunted_SystemScript
+import ModEvent
+
+ObjectReference Property TargetRef  Auto  
+ObjectReference Property Holdingroom  Auto  
+
+ObjectReference Property exitRed  Auto  
+
+ObjectReference[] refs
+
+function OnInit()
+    RegisterForModEvent("Undaunted_Delete", "DeleteEvent")
+    RegisterForModEvent("Undaunted_Rotate", "RotateEvent")
+endFunction
+
+event DeleteEvent(Form object)
+    (object as ObjectReference).DisableNoWait(false)
+    (object as ObjectReference).Delete()
+endEvent
+
+event RotateEvent(Form object,float x,float y,float z)
+    (object as ObjectReference).SetAngle(x,y,z)
+endEvent
+
+event onActivate(objectReference akActivator)
+    ;exitRed.MoveTo(akActivator)
+    akActivator.MoveTo(Holdingroom)
+    ;akActivator.MoveTo(TargetRef)
+
+    refs = GetRiftReferences()
+    int refslength = refs.Length
+	while(refslength > 0)
+        refslength -= 1
+        int handle = ModEvent.Create("Undaunted_Delete")
+        if (handle)
+            ModEvent.PushForm(handle, refs[refslength])
+            ModEvent.Send(handle)
+        endIf
+        ;refs[refslength].DisableNoWait(false)
+        ;refs[refslength].Delete()
+    endwhile
+    refs = SpawnRift(1,TargetRef)
+    float[] rotations = GetRiftRotations()
+    ;Game.DisablePlayerControls()
+	refslength = refs.Length
+	while(refslength > 0)
+        refslength -= 1
+        int handle = ModEvent.Create("Undaunted_Rotate")
+        if (handle)
+            ModEvent.PushForm(handle, refs[refslength])
+            ModEvent.PushFloat(handle,rotations[(refslength * 3)])
+            ModEvent.PushFloat(handle,rotations[(refslength * 3)+1])
+            ModEvent.PushFloat(handle,rotations[(refslength * 3)+2])            
+            ModEvent.Send(handle)
+        endIf
+        ;refs[refslength].SetAngle(rotations[(refslength * 3)],rotations[(refslength * 3)+1],rotations[(refslength * 3)+2])
+    endwhile
+    ;Game.EnablePlayerControls()
+    akActivator.MoveTo(exitRed)
+    akActivator.MoveTo(TargetRef)
+    Debug.Notification("Rift Complete")
+endEvent
+
+Function DeleteRefs()
+	int refslength = refs.Length
+	while(refslength > 0)
+        refslength -= 1
+        refs[refslength].DisableNoWait(false)
+        refs[refslength].Delete()
+    endwhile
+endfunction
+

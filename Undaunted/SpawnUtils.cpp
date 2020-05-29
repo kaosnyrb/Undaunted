@@ -122,7 +122,7 @@ namespace Undaunted
 	RefList SpawnRift(VMClassRegistry* registry, TESObjectREFR* Target, TESObjectCELL* cell, TESWorldSpace* worldspace)
 	{
 		//Debug
-		//srand(time(NULL));
+		srand(time(NULL));
 		NiPoint3 startingpoint = Target->pos;// +NiPoint3(rand() % 1000, rand() % 1000, rand() % 1000);
 
 
@@ -141,7 +141,10 @@ namespace Undaunted
 			rotation.z = rotation.z* (180.0 / 3.141592653589793238463);
 
 			TESObjectREFR* spawned = PlaceAtMe(registry, 1, Target, spawnForm, 1, true, false);
-			MoveRefToWorldCell(spawned, cell, worldspace, position, rotation);
+			spawned->unk90 = formlist.data[i].scale;
+			spawned->pos = position;
+			spawned->rot = rotation;
+//			MoveRefToWorldCell(spawned, cell, worldspace, position, rotation);
 
 
 			_MESSAGE("Spawn details: %f, %f, %f, %f, %f, %f", position.x, position.y, position.z, rotation.x, rotation.y, rotation.z);

@@ -10,6 +10,7 @@ namespace Undaunted
 		UInt32 formId;
 		NiPoint3 pos;
 		NiPoint3 rot;
+		int scale;
 	};
 
 	class FormRefList {

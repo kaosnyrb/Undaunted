@@ -293,6 +293,7 @@ namespace Undaunted {
 					saveref.formId = ref->baseForm->formID;
 					saveref.pos = ref->pos - GetPlayer()->pos;
 					saveref.rot = ref->rot;
+					saveref.scale = ref->unk90;
 					saveref.type = static_cast<FormType>(ref->baseForm->formType);
 					if ((saveref.type == kFormType_Static
 						//|| saveref.type == kFormType_LeveledCharacter
@@ -314,14 +315,15 @@ namespace Undaunted {
 						|| saveref.type == kFormType_NAVI) 
 						&& saveref.formId < 4278190000)
 					{
-						_MESSAGE("[\"%08X\",%f,%f,%f,%f,%f,%f],",
+						_MESSAGE("[\"%08X\",%f,%f,%f,%f,%f,%f,%i],",
 							saveref.formId,
 							saveref.pos.x,
 							saveref.pos.y,
 							saveref.pos.z,
 							saveref.rot.x,
 							saveref.rot.y,
-							saveref.rot.z);
+							saveref.rot.z,
+							saveref.scale);
 					}
 				}
 			}

@@ -96,6 +96,8 @@ namespace Undaunted {
 					double xrot = data[i][4].as<double>();
 					double yrot = data[i][5].as<double>();
 					double zrot = data[i][6].as<double>();
+					int scale = data[i][7].as<int>();
+
 					FormRef formref = FormRef();
 					if (formid.compare("RiftExit") == 0) {
 						const ModInfo* modInfo = dataHandler->LookupModByName("Undaunted.esp");
@@ -107,6 +109,7 @@ namespace Undaunted {
 					}
 					formref.pos = NiPoint3(xpos, ypos, zpos);
 					formref.rot = NiPoint3(xrot, yrot, zrot);
+					formref.scale = scale;
 					reflist.AddItem(formref);
 				}
 				AddRift(reflist);
