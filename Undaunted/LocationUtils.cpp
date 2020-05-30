@@ -278,11 +278,11 @@ namespace Undaunted {
 
 	void CaptureArea()
 	{
+		gLog.OpenRelative(CSIDL_MYDOCUMENTS, "\\My Games\\Skyrim Special Edition\\SKSE\\UndauntedRift.pas");
 		FormRefList list = FormRefList();
 		TESObjectCELL* parentCell = GetPlayer()->parentCell;
 		int numberofRefs = papyrusCell::GetNumRefs(parentCell, 0);
 		//Right so instead of faffing about creating a sse edit script that can read in files we'll just generate an sse script.
-		_MESSAGE("------------------------------------------------------- Start SSEScript-------------------------------------");
 		_MESSAGE("unit userscript;uses SkyrimUtils;uses mteFunctions;");
 		_MESSAGE("function Process(e: IInterface): integer;");
 		_MESSAGE("var cell: IInterface; ref: IInterface;");
@@ -337,8 +337,7 @@ namespace Undaunted {
 			}
 		}
 		_MESSAGE("end;function Finalize: integer;begin Result := 0;  FinalizeUtils();end;end.");
-		_MESSAGE("------------------------------------------------------------------------------------------");
-
+		gLog.OpenRelative(CSIDL_MYDOCUMENTS, "\\My Games\\Skyrim Special Edition\\SKSE\\Undaunted.log");
 	}
 
 	RiftList riftList = RiftList();
