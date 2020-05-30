@@ -9,6 +9,9 @@ ObjectReference Property exitRed  Auto
 ObjectReference[] refs
 
 event onActivate(objectReference akActivator)
+    TargetRef = GetRandomRiftStartMarker()
+    akActivator.MoveTo(TargetRef)
+    if (false)
     ;exitRed.MoveTo(akActivator)
     akActivator.MoveTo(Holdingroom)
     ;akActivator.MoveTo(TargetRef)
@@ -32,6 +35,7 @@ event onActivate(objectReference akActivator)
     akActivator.MoveTo(exitRed)
     akActivator.MoveTo(TargetRef)
     Debug.Notification("Rift Complete")
+    endif
 endEvent
 
 Function DeleteRefs()

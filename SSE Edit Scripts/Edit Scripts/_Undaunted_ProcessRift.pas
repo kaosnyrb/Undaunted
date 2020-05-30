@@ -19,7 +19,6 @@ end;
 function Process(e: IInterface): integer;
 var
   cell: IInterface;
-  formobj: IInterface;
   ref: IInterface;
 
   newItem: IInterface;
@@ -30,6 +29,7 @@ begin
   if not (Signature(e) = 'CELL') then begin
     Exit;
   end;
+  
   // processing code goes here
   cell := createRecord(GetFile(e), 'CELL');
   SetElementEditValues(cell, 'EDID', 'Hello World');

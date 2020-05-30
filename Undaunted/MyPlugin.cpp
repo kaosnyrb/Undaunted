@@ -71,6 +71,7 @@ namespace Undaunted {
 		LoadGroups();
 		LoadRifts();
 		BuildWorldList();
+		InitRiftStartMarkers();
 		SetPlayerLevel(playerLevel);
 		BountyManager::getInstance()->isReady = 2;
 		_MESSAGE("ReadyState: %i ", BountyManager::getInstance()->isReady);
@@ -372,7 +373,15 @@ namespace Undaunted {
 		return resultsarray;
 	}
 
+	TESObjectREFR* hook_GetRandomRiftStartMarker(StaticFunctionTag* base)
+	{
+		_MESSAGE("hook_GetRandomRiftStartMarker");		
+		return GetRandomRiftStartMarker();
+	}
+
 	
+	
+
 
 	bool RegisterFuncs(VMClassRegistry* registry) {
 
@@ -477,6 +486,10 @@ namespace Undaunted {
 
 		registry->RegisterFunction(
 			new NativeFunction2 <StaticFunctionTag, VMResultArray<TESObjectREFR*>, UInt32, TESObjectREFR*>("SpawnRift", "Undaunted_SystemScript", Undaunted::hook_SpawnRift, registry));
+
+		registry->RegisterFunction(
+			new NativeFunction0 <StaticFunctionTag, TESObjectREFR*>("GetRandomRiftStartMarker", "Undaunted_SystemScript", Undaunted::hook_GetRandomRiftStartMarker, registry));
+
 
 		registry->RegisterFunction(
 			new NativeFunction0 <StaticFunctionTag, VMResultArray<float>>("GetRiftRotations", "Undaunted_SystemScript", Undaunted::hook_GetRiftRotations, registry));

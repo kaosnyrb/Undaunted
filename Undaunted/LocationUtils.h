@@ -16,4 +16,7 @@ namespace Undaunted
 	void AddRift(FormRefList reflist);
 	FormRefList GetRandomRift();
 
+	void InitRiftStartMarkers();
+	TESObjectREFR* GetRandomRiftStartMarker();
+
 }
