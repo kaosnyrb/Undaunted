@@ -279,7 +279,9 @@ namespace Undaunted {
 	{
 		FormRefList list = FormRefList();
 		TESObjectCELL* parentCell = GetPlayer()->parentCell;
-
+		_MESSAGE("NavmeshPointer: %p", parentCell->unk078);
+		NavMeshArray* arr = static_cast<NavMeshArray*>(parentCell->unk078);
+		_MESSAGE("Navmesh count: %08X", arr->navMeshes.Length());
 		int numberofRefs = papyrusCell::GetNumRefs(parentCell, 0);
 		_MESSAGE("GetObjectInCurrentCell Num Ref: %i", numberofRefs);
 		for (int i = 0; i < numberofRefs; i++)
@@ -315,7 +317,7 @@ namespace Undaunted {
 						|| saveref.type == kFormType_NAVI) 
 						&& saveref.formId < 4278190000)
 					{
-						_MESSAGE("[\"%08X\",%f,%f,%f,%f,%f,%f,%i],",
+						_MESSAGE("[\"%08X\",%f,%f,%f,%f,%f,%f,%i], %i",
 							saveref.formId,
 							saveref.pos.x,
 							saveref.pos.y,
@@ -323,7 +325,11 @@ namespace Undaunted {
 							saveref.rot.x,
 							saveref.rot.y,
 							saveref.rot.z,
-							saveref.scale);
+							saveref.scale,
+							(int)saveref.type
+
+						
+						);
 					}
 				}
 			}

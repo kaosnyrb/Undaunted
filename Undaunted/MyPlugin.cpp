@@ -19,6 +19,7 @@ namespace Undaunted {
 		_MESSAGE("hook_StartBounty BountyId: %08X", BountyId);
 		BountyManager::getInstance()->StartBounty(BountyId,nearby, "",NULL,"");
 
+		//Capture tool
 		CaptureArea();
 
 		return 2;

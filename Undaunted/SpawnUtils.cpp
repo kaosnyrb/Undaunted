@@ -131,9 +131,12 @@ namespace Undaunted
 		RiftRotations = VMResultArray<float>();
 		for (int i = 0; i < formlist.length; i++)
 		{
-			_MESSAGE("SpawnRift");
 			TESForm* spawnForm = LookupFormByID(formlist.data[i].formId);
-
+			if (spawnForm == NULL)
+			{
+				_MESSAGE("Spawnform is null");
+				continue;
+			}
 			NiPoint3 position = startingpoint + formlist.data[i].pos;
 			NiPoint3 rotation = formlist.data[i].rot;
 			rotation.x = rotation.x* (180.0 / 3.141592653589793238463);
@@ -154,6 +157,10 @@ namespace Undaunted
 			RiftRotations.push_back(rotation.x);
 			RiftRotations.push_back(rotation.y);
 			RiftRotations.push_back(rotation.z);		
+		}
+		for (int i = 0; i < 20; i++)
+		{
+			SpawnMonsterInCell(registry, 0x00039CFC, riftobjectrefs.data[i].objectRef, cell, worldspace);
 		}
 		return riftobjectrefs;
 	}

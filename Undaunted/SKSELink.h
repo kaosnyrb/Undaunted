@@ -38,5 +38,12 @@ namespace Undaunted
 
 	TESForm* LookupFormByID(UInt32 id);
 
+
+	class NavMesh;
+	class NavMeshArray
+	{
+	public:
+		VMArray<NavMesh> navMeshes;  // 00
+	};
 }
 #endif

@@ -2473,7 +2473,7 @@ public:
 	TVDT *						* unk060;		// 060 
 	void						* unk068;		// 068
 	float						waterLevel;		// 070 - init'd to 7F7FFFFFh, max float
-	void						* unk078;		// 078
+	void						* unk078;		// 078 - NavMeshArray*
 
 	void						* unk080;		// 080
 	ReferenceData				refData;		// 088 - New in SE
