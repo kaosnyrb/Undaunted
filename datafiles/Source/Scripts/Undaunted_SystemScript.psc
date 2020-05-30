@@ -42,3 +42,6 @@ Function CaptureCellData() global native
 float[] Function GetRiftRotations() global native
 
 ObjectReference Function GetRandomRiftStartMarker() global native
+
+ObjectReference Function SpawnMonsterInCell(int FormId) global native
+

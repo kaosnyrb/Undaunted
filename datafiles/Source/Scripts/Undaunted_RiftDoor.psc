@@ -9,8 +9,12 @@ ObjectReference Property exitRed  Auto
 ObjectReference[] refs
 
 event onActivate(objectReference akActivator)
+    exitRed.MoveTo(akActivator)
     TargetRef = GetRandomRiftStartMarker()
     akActivator.MoveTo(TargetRef)
+    SpawnMonsterInCell(236796)
+    SpawnMonsterInCell(236796)
+    SpawnMonsterInCell(236796)
     if (false)
     ;exitRed.MoveTo(akActivator)
     akActivator.MoveTo(Holdingroom)

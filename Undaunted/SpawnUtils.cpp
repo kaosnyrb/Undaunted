@@ -1,15 +1,10 @@
 #include "SpawnUtils.h"
 #include "ConfigUtils.h"
-#include "LocationUtils.h"
 #include "BountyManager.h"
-#include <skse64\PapyrusModEvent.h>
-#include <skse64\PapyrusEvents.h>
-#include <skse64\PapyrusObjects.h>
-#include <skse64\PapyrusModEvent.cpp>
 
 namespace Undaunted
 {
-	TESObjectREFR* SpawnMonsterInCell(VMClassRegistry* registry,UInt32 Type, TESObjectREFR* ref, TESObjectCELL* cell, TESWorldSpace* worldspace)
+	TESObjectREFR* SpawnMonsterAtRef(VMClassRegistry* registry,UInt32 Type, TESObjectREFR* ref, TESObjectCELL* cell, TESWorldSpace* worldspace)
 	{
 		NiPoint3 startingpoint = ref->pos;
 		TESForm* spawnForm = LookupFormByID(Type);
@@ -23,6 +18,19 @@ namespace Undaunted
 		MoveRefToWorldCell(ref, cell, worldspace, ref->pos + offset, NiPoint3(0, 0, 0));
 		TESObjectREFR* spawned = PlaceAtMe(registry, 1, ref, spawnForm, 1, true, false);
 		MoveRefToWorldCell(ref, cell, worldspace, startingpoint, NiPoint3(0, 0, 0));
+		return spawned;
+	}
+
+	TESObjectREFR* SpawnMonsterInCell(VMClassRegistry* registry, UInt32 Type, WorldCell wcell)
+	{
+		TESForm* spawnForm = LookupFormByID(Type);
+		if (spawnForm == NULL)
+		{
+			_MESSAGE("Failed to Spawn. Form Invalid: %08X", Type);
+			return NULL;
+		}
+		TESObjectREFR* target = GetRandomObjectInCell(wcell);
+		TESObjectREFR* spawned = PlaceAtMe(registry, 1, target, spawnForm, 1, false, false);
 		return spawned;
 	}
 
@@ -160,7 +168,7 @@ namespace Undaunted
 		}
 		for (int i = 0; i < 20; i++)
 		{
-			SpawnMonsterInCell(registry, 0x00039CFC, riftobjectrefs.data[i].objectRef, cell, worldspace);
+			SpawnMonsterAtRef(registry, 0x00039CFC, riftobjectrefs.data[i].objectRef, cell, worldspace);
 		}
 		return riftobjectrefs;
 	}

@@ -379,9 +379,14 @@ namespace Undaunted {
 		return GetRandomRiftStartMarker();
 	}
 
-	
-	
-
+	TESObjectREFR* hook_SpawnMonsterInCell(StaticFunctionTag* base, UInt32 formid)
+	{
+		_MESSAGE("hook_GetRandomRiftStartMarker");
+		WorldCell wcell = WorldCell();
+		wcell.cell = GetPlayer()->parentCell;
+		wcell.world = GetPlayer()->currentWorldSpace;
+		return SpawnMonsterInCell(BountyManager::getInstance()->_registry, formid, wcell);
+	}
 
 	bool RegisterFuncs(VMClassRegistry* registry) {
 
@@ -496,6 +501,9 @@ namespace Undaunted {
 
 		registry->RegisterFunction(
 			new NativeFunction0 <StaticFunctionTag, VMResultArray<TESObjectREFR*>>("GetRiftReferences", "Undaunted_SystemScript", Undaunted::hook_GetRiftReferences, registry));
+
+		registry->RegisterFunction(
+			new NativeFunction1 <StaticFunctionTag, TESObjectREFR*, UInt32>("SpawnMonsterInCell", "Undaunted_SystemScript", Undaunted::hook_SpawnMonsterInCell, registry));
 
 		return true;
 	}
