@@ -78,8 +78,7 @@ namespace Undaunted
 
 					MoveRefToWorldCell(Target, cell, worldspace, startingpoint + offset, NiPoint3(0, 0, rand() % 360));
 					spawned = PlaceAtMe(registry, 1, Target, spawnForm, 1, true, false);
-					if (spawned != NULL)
-					{
+					
 						int heightdist = startingpoint.z - spawned->pos.z;
 						//Delete
 						if ((heightdist > HeightDistance || heightdist < -HeightDistance) && giveupcount > 0)
@@ -93,7 +92,7 @@ namespace Undaunted
 						{
 							placedsuccessfully = true;
 						}
-					}
+					
 				}
 				Types.data[i].objectRef = spawned;
 				Types.data[i].isComplete = false;

@@ -45,3 +45,4 @@ ObjectReference Function GetRandomRiftStartMarker() global native
 
 ObjectReference Function SpawnMonsterInCell(int FormId) global native
 
+Function CaptureArea() global native
