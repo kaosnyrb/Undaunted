@@ -1,6 +1,6 @@
 [
     [
-        ["Kill the Mass of Bones","Skyrim.esm",0,0],
+        ["Kill the Mass of Bones","Skyrim.esm",0,0,"Rift"],
         ["LCharSkeletonMeleeMixed","Skyrim.esm",185044,"Enemy"],
         ["LCharSkeletonMeleeMixed","Skyrim.esm",185044,"Enemy"],
         ["LCharSkeletonMeleeMixed","Skyrim.esm",185044,"Enemy"],
@@ -14,13 +14,13 @@
         ["wispDeathExplosion","Skyrim.esm",987529,"SpawnEffect"]
     ],
     [
-        ["Purge the Necromancers","Skyrim.esm",0,0],
+        ["Purge the Necromancers","Skyrim.esm",0,0,"Rift"],
         ["LCharWarlockNecromancer","Skyrim.esm",124791,"Enemy"],
         ["LCharWarlockNecromancer","Skyrim.esm",124791,"Enemy"],
         ["LCharWarlockNecromancer","Skyrim.esm",124791,"Enemy"]
     ],
     [
-        ["Clean up the Necromancers Ritual","Skyrim.esm",5,0],
+        ["Clean up the Necromancers Ritual","Skyrim.esm",5,0,"Rift"],
         ["LCharWarlockNecromancer","Skyrim.esm",124791,"Enemy"],
         ["LCharDraugrMeleeAllFemale","Skyrim.esm",784312,"Enemy"],
         ["LCharWarlockNecromancer","Skyrim.esm",124791,"Enemy"],
@@ -48,7 +48,7 @@
         ["LCharWarlockNecromancer","Skyrim.esm",124791,"Enemy"]
     ],
     [
-        ["Prevent the dark deal","Dragonborn.esm",20,0],
+        ["Prevent the dark deal","Dragonborn.esm",20,0,"Rift"],
         ["DLC2LCharSeeker","Dragonborn.esm",167559,"Enemy"],
         ["LCharWarlockNecromancer","Skyrim.esm",124791,"Enemy"],
         ["LCharWarlockNecromancer","Skyrim.esm",124791,"Enemy"],

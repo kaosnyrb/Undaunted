@@ -382,10 +382,46 @@ namespace Undaunted {
 	TESObjectREFR* hook_SpawnMonsterInCell(StaticFunctionTag* base, UInt32 formid)
 	{
 		_MESSAGE("hook_GetRandomRiftStartMarker");
+		//1085677
+
+		_MESSAGE("Finding all Rift Battle Markers");
+		RefList RiftBattleMarkers = RefList();
+		DataHandler* dataHandler = GetDataHandler();
+		const ModInfo* modInfo = dataHandler->LookupModByName("Undaunted.esp");
+		if (modInfo == NULL)
+		{
+			_MESSAGE("Can't find Undaunted.esp. What the hell?");
+			return NULL;
+		}
+		UInt32 FormId = (modInfo->modIndex << 24) + 1085677; //041090ED - 01_Undaunted_RiftBattleMarker
 		WorldCell wcell = WorldCell();
 		wcell.cell = GetPlayer()->parentCell;
 		wcell.world = GetPlayer()->currentWorldSpace;
-		return SpawnMonsterInCell(BountyManager::getInstance()->_registry, formid, wcell);
+		int numberofRefs = papyrusCell::GetNumRefs(wcell.cell, 0);
+		for (int i = 0; i < numberofRefs; i++)
+		{
+			TESObjectREFR* ref = papyrusCell::GetNthRef(wcell.cell, i, 0);
+			if (ref != NULL)
+			{
+				if (ref->formID != NULL)
+				{
+					if (ref->baseForm->formID == FormId)
+					{
+						Ref formref = Ref();
+						formref.objectRef = ref;
+						RiftBattleMarkers.AddItem(formref);
+					}
+				}
+			}
+		}
+		_MESSAGE("Spawning groups at each Rift Battle Marker");
+		for (int i = 0; i < RiftBattleMarkers.length; i++)
+		{
+			GroupList riftlist = GetRandomTaggedGroup("RIFT");
+			SpawnGroupAtTarget(BountyManager::getInstance()->_registry, riftlist, RiftBattleMarkers.data[i].objectRef, wcell.cell, wcell.world, 100,1000);
+		}
+
+		return NULL;
 	}
 
 	bool RegisterFuncs(VMClassRegistry* registry) {

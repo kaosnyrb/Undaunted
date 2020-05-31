@@ -245,9 +245,12 @@ namespace Undaunted {
 
 	void MoveRefToWorldCell(TESObjectREFR* object, TESObjectCELL* cell, TESWorldSpace* worldspace, NiPoint3 pos, NiPoint3 rot)
 	{
-		_MESSAGE("Moving %08X to %08X in %s", object->formID, cell->formID, worldspace->editorId.Get());
-		NiPoint3 finalPos(pos);
-		MoveRef(object, cell, worldspace, finalPos,rot);
+		if (object != NULL)
+		{
+			_MESSAGE("Moving %08X to %08X in %s", object->formID, cell->formID, worldspace->editorId.Get());
+			NiPoint3 finalPos(pos);
+			MoveRef(object, cell, worldspace, finalPos, rot);
+		}
 	}
 
 	//Expensive...

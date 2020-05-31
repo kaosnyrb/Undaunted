@@ -1,18 +1,18 @@
 [
     [
-        ["Kill the group of Vampires","Skyrim.esm",0,0],
+        ["Kill the group of Vampires","Skyrim.esm",0,0,"Rift"],
         ["LCharVampire","Skyrim.esm",211315,"Enemy"],
         ["LCharVampire","Skyrim.esm",211315,"Enemy"],
         ["LCharVampire","Skyrim.esm",211315,"Enemy"]
     ],
     [
-        ["Kill the Vampire Harem","Skyrim.esm",0,0],
+        ["Kill the Vampire Harem","Skyrim.esm",0,0,"Rift"],
         ["DLC1LCharVampireFSultry","Dawnguard.esm",53403,"Enemy"],
         ["DLC1LCharVampireFSultry","Dawnguard.esm",53403,"Enemy"],
         ["DLC1LCharVampireFSultry","Dawnguard.esm",53403,"Enemy"]
     ],
     [
-        ["Kill the Vampire Harem and their Beasts","Skyrim.esm",5,0],
+        ["Kill the Vampire Harem and their Beasts","Skyrim.esm",5,0,"Rift"],
         ["DLC1LCharVampireFSultry","Dawnguard.esm",53403,"Enemy"],
         ["LCharVampireCompanion","Skyrim.esm",124789,"Enemy"],
         ["DLC1LCharVampireFSultry","Dawnguard.esm",53403,"Enemy"],
@@ -20,14 +20,14 @@
         ["DLC1LCharVampireFSultry","Dawnguard.esm",53403,"Enemy"]
     ],
     [
-        ["Kill the Vampire Lord and his Harem","Skyrim.esm",15,0],
+        ["Kill the Vampire Lord and his Harem","Skyrim.esm",15,0,"Rift"],
         ["DLC1LCharVampireFSultry","Dawnguard.esm",53403,"Enemy"],
         ["DLC1LCharVampireFSultry","Dawnguard.esm",53403,"Enemy"],
         ["DLC1LCharVampireFSultry","Dawnguard.esm",53403,"Enemy"],
         ["LCharVampireBossDLC1MaleVampireDarkElf","Dawnguard.esm",25402,"Enemy"]
     ],
     [
-        ["Kill the Vampire Lord and his minions","Skyrim.esm",0,0],
+        ["Kill the Vampire Lord and his minions","Skyrim.esm",0,0,"Rift"],
         ["LCharVampireBoss","Skyrim.esm",211369,"Enemy"],
         ["LCharVampireCompanion","Skyrim.esm",124789,"Enemy"],
         ["LCharVampireCompanion","Skyrim.esm",124789,"Enemy"],

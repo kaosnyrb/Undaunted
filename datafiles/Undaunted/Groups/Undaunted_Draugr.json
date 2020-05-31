@@ -1,12 +1,12 @@
 [
     [
-        ["Kill the Dragon Priest","Skyrim.esm",30,0],
+        ["Kill the Dragon Priest","Skyrim.esm",30,0,"Rift"],
         ["SubCharDragonPriest","Skyrim.esm",271489,"Enemy"],
         ["LCharDraugrMeleeAllMale","Skyrim.esm",350549,"Enemy"],
         ["LCharDraugrMissileFemale","Skyrim.esm",244928,"Enemy"]
     ],
     [
-        ["Kill the Risen Draugr","Skyrim.esm",0,0],
+        ["Kill the Risen Draugr","Skyrim.esm",0,0,"Rift"],
         ["LCharDraugrMeleeAllFemale","Skyrim.esm",784312,"Enemy"],
         ["LCharDraugrMeleeAllMale","Skyrim.esm",350549,"Enemy"],
         ["LCharDraugrMeleeAllFemale","Skyrim.esm",784312,"Enemy"],
@@ -14,7 +14,7 @@
         ["NordBattleCryAreaEffect01","Skyrim.esm",1092425,"SpawnEffect"]
     ],
     [
-        ["Kill the Risen Draugr Lord","Skyrim.esm",10,0],
+        ["Kill the Risen Draugr Lord","Skyrim.esm",10,0,"Rift"],
         ["LCharDraugrBoss","Skyrim.esm",271488,"Enemy"],
         ["LCharDraugrMeleeAllFemale","Skyrim.esm",784312,"Enemy"],
         ["LCharDraugrMeleeAllMale","Skyrim.esm",350549,"Enemy"],
@@ -22,7 +22,7 @@
         ["NordBattleCryAreaEffect01","Skyrim.esm",1092425,"SpawnEffect"]
     ],
     [
-        ["Kill the Risen Draugr Harem","Skyrim.esm",0,0],
+        ["Kill the Risen Draugr Harem","Skyrim.esm",0,0,"Rift"],
         ["LCharDraugrMeleeAllFemale","Skyrim.esm",784312,"Enemy"],
         ["LCharDraugrMeleeAllFemale","Skyrim.esm",784312,"Enemy"],
         ["LCharDraugrMeleeAllFemale","Skyrim.esm",784312,"Enemy"],
@@ -31,13 +31,13 @@
         ["NordBattleCryAreaEffect01","Skyrim.esm",1092425,"SpawnEffect"]
     ],
     [
-        ["Kill the Hulking Draugr","Skyrim.esm",25,0],
+        ["Kill the Hulking Draugr","Skyrim.esm",25,0,"Rift"],
         ["DLC2SubCharDraugrHulkingMeleeM","Dragonborn.esm",221510,"Enemy"],
         ["DLC2SubCharDraugrHulkingMeleeM","Dragonborn.esm",221510,"Enemy"],
         ["NordBattleCryAreaEffect01","Skyrim.esm",1092425,"SpawnEffect"]
     ],
     [
-        ["Kill the Risen Draugr Hunters","Skyrim.esm",0,0],
+        ["Kill the Risen Draugr Hunters","Skyrim.esm",0,0,"Rift"],
         ["LCharDraugrMissileFemale","Skyrim.esm",244928,"Enemy"],
         ["LCharDraugrMissileMale","Skyrim.esm",682052,"Enemy"],
         ["LCharDraugrMissileFemale","Skyrim.esm",244928,"Enemy"],
@@ -47,7 +47,7 @@
         ["NordBattleCryAreaEffect01","Skyrim.esm",1092425,"SpawnEffect"]
     ],
     [
-        ["Kill the Risen Draugr Warlocks","Skyrim.esm",10,0],
+        ["Kill the Risen Draugr Warlocks","Skyrim.esm",10,0,"Rift"],
         ["LCharDraugrWarlock","Skyrim.esm",124843,"Enemy"],
         ["LCharDraugrWarlock","Skyrim.esm",124843,"Enemy"],
         ["LCharDraugrWarlock","Skyrim.esm",124843,"Enemy"],

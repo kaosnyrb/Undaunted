@@ -1,6 +1,6 @@
 [
     [
-        ["Kill the Thalmor Agents","Skyrim.esm",10,0],
+        ["Kill the Thalmor Agents","Skyrim.esm",10,0,"Rift"],
         ["LCharThalmorMagic","Skyrim.esm",176424,"Enemy"],
         ["LCharThalmorMelee1H","Skyrim.esm",176425,"Enemy"],
         ["LCharThalmorMissile","Skyrim.esm",176426,"Enemy"]

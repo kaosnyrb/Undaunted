@@ -1,37 +1,37 @@
 [
     [
-        ["Hunt the Wolf Pack","Skyrim.esm",0,4],
+        ["Hunt the Wolf Pack","Skyrim.esm",0,4,"Rift"],
         ["EncWolf","Skyrim.esm",146110,"Enemy"],
         ["EncWolf","Skyrim.esm",146110,"Enemy"],
         ["EncWolf","Skyrim.esm",146110,"Enemy"]
     ],
     [
-        ["Hunt the Roaming Bear","Skyrim.esm",0,12],
+        ["Hunt the Roaming Bear","Skyrim.esm",0,12,"Rift"],
         ["EncBear","Skyrim.esm",146058,"Enemy"]
     ],
     [
-        ["Hunt the Mubcrabs","Skyrim.esm",0,20],
+        ["Hunt the Mubcrabs","Skyrim.esm",0,20,"Rift"],
         ["LCharMudcrab","Skyrim.esm",137278,"Enemy"],
         ["LCharMudcrab","Skyrim.esm",137278,"Enemy"],
         ["LCharMudcrab","Skyrim.esm",137278,"Enemy"]
     ],
     [
-        ["Kill the Spriggan","Skyrim.esm",5,0],
+        ["Kill the Spriggan","Skyrim.esm",5,0,"Rift"],
         ["LCharSpriggan","Skyrim.esm",1109124,"Enemy"]
     ],
     [
-        ["Kill the Roaming Spriggan","Skyrim.esm",5,0],
+        ["Kill the Roaming Spriggan","Skyrim.esm",5,0,"Rift"],
         ["LCharSpriggan","Skyrim.esm",1109124,"Enemy"],
         ["LCharSprigganCompanion","Skyrim.esm",124790,"Enemy"]        
     ],
     [
-        ["Kill the Nesting Ice Wraiths","Skyrim.esm",10,0],
+        ["Kill the Nesting Ice Wraiths","Skyrim.esm",10,0,"Rift"],
         ["EncIceWraith","Skyrim.esm",146099,"Enemy"],
         ["EncIceWraith","Skyrim.esm",146099,"Enemy"],
         ["EncIceWraith","Skyrim.esm",146099,"Enemy"]
     ],
     [
-        ["Kill the Werewolf Pack","Skyrim.esm",15,0],
+        ["Kill the Werewolf Pack","Skyrim.esm",15,0,"Rift"],
         ["LCharWerewolfBoss","Skyrim.esm",661889,"Enemy"],
         ["LCharWerewolf","Skyrim.esm",124817,"Enemy"],
         ["LCharWerewolf","Skyrim.esm",124817,"Enemy"],

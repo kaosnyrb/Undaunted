@@ -36,7 +36,8 @@ namespace Undaunted {
 				_MESSAGE("Distance to marker: %f / %i", distvector.Magnitude(), startdis);
 				if (distvector.Magnitude() < startdis)
 				{
-					bounty->bountygrouplist = SpawnGroupAtTarget(_registry, bounty->bountygrouplist, bounty->xmarkerref, bounty->bountyworldcell.cell, bounty->bountyworldcell.world);
+					bounty->bountygrouplist = SpawnGroupAtTarget(_registry, bounty->bountygrouplist, bounty->xmarkerref, bounty->bountyworldcell.cell, bounty->bountyworldcell.world, 
+						GetConfigValueInt("BountyEnemyExteriorSpawnRadius"), GetConfigValueInt("BountyEnemyPlacementHeightDistance"));
 					_MESSAGE("Enemy Count : %08X ", bounty->bountygrouplist.length);
 					bounty->bountywave = 1;
 				}

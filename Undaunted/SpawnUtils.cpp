@@ -34,13 +34,17 @@ namespace Undaunted
 		return spawned;
 	}
 
-	GroupList SpawnGroupAtTarget(VMClassRegistry* registry, GroupList Types, TESObjectREFR* Target, TESObjectCELL* cell, TESWorldSpace* worldspace)
+	GroupList SpawnGroupInCell(VMClassRegistry* registry, GroupList Types, WorldCell wcell)
+	{
+		TESObjectREFR* target = GetRandomObjectInCell(wcell);
+		return SpawnGroupAtTarget(registry, Types, target, wcell.cell, wcell.world,0,1000);
+	}
+
+	GroupList SpawnGroupAtTarget(VMClassRegistry* registry, GroupList Types, TESObjectREFR* Target, TESObjectCELL* cell, TESWorldSpace* worldspace, int spawnradius, int HeightDistance)
 	{
 		TESObjectREFR* spawned = NULL;
 		srand(time(NULL));
 		NiPoint3 startingpoint = Target->pos;
-		int spawnradius = GetConfigValueInt("BountyEnemyExteriorSpawnRadius");
-		int HeightDistance = GetConfigValueInt("BountyEnemyPlacementHeightDistance");
 
 		for (UInt32 i = 0; i < Types.length; i++)
 		{

@@ -1,75 +1,75 @@
 [
     [
-        ["Kill Aglur gra-Glurlob and the Blueskulls","OBIS SE.esp",0,0],
+        ["Kill Aglur gra-Glurlob and the Blueskulls","OBIS SE.esp",0,0,"Rift"],
         ["EncBandit01BountyOrcF002","OBIS SE.esp",3130,"Enemy"],
         ["LCharBanditSkull","OBIS SE.esp",3287,"Enemy"],
         ["LCharBanditSkull","OBIS SE.esp",3287,"Enemy"],
         ["LCharBanditSkull","OBIS SE.esp",3287,"Enemy"]
     ],
     [
-        ["Kill Ahsi and her Addled followers","OBIS SE.esp",0,0],
+        ["Kill Ahsi and her Addled followers","OBIS SE.esp",0,0,"Rift"],
         ["EncBandit01BountyKhajiitF002","OBIS SE.esp",2725,"Enemy"],
         ["LCharBanditAddled ","OBIS SE.esp",3060,"Enemy"],
         ["LCharBanditAddled ","OBIS SE.esp",3060,"Enemy"],
         ["LCharBanditAddled ","OBIS SE.esp",3060,"Enemy"]
     ],
     [
-        ["Kill Alene and the band of Deserters","OBIS SE.esp",0,0],
+        ["Kill Alene and the band of Deserters","OBIS SE.esp",0,0,"Rift"],
         ["EncBandit03BountyImperialF003","OBIS SE.esp",3292,"Enemy"],
         ["LCharBanditUnloyal","OBIS SE.esp",3148,"Enemy"],
         ["LCharBanditUnloyal","OBIS SE.esp",3148,"Enemy"],
         ["LCharBanditUnloyal","OBIS SE.esp",3148,"Enemy"]
     ],
     [
-        ["Kill Allix Ele and the Dwemer Plunderers","OBIS SE.esp",0,0],
+        ["Kill Allix Ele and the Dwemer Plunderers","OBIS SE.esp",0,0,"Rift"],
         ["EncBandit01BountyBretonM001","OBIS SE.esp",2832,"Enemy"],
         ["LCharBanditScheme ","OBIS SE.esp",4394,"Enemy"],
         ["LCharBanditScheme ","OBIS SE.esp",4394,"Enemy"],
         ["LCharBanditScheme ","OBIS SE.esp",4394,"Enemy"]
     ],
     [
-        ["Kill Anroon and the Lightbringers","OBIS SE.esp",0,0],
+        ["Kill Anroon and the Lightbringers","OBIS SE.esp",0,0,"Rift"],
         ["EncBandit03BountyHighElfM002","OBIS SE.esp",3357,"Enemy"],
         ["LCharBanditLight","OBIS SE.esp",4597,"Enemy"],
         ["LCharBanditLight","OBIS SE.esp",4597,"Enemy"],
         ["LCharBanditLight","OBIS SE.esp",4597,"Enemy"]
     ],
     [
-        ["Kill Aredeus the Drunk and the band of Deserters","OBIS SE.esp",0,0],
+        ["Kill Aredeus the Drunk and the band of Deserters","OBIS SE.esp",0,0,"Rift"],
         ["EncBandit03BountyImperialM001 ","OBIS SE.esp",2470,"Enemy"],
         ["LCharBanditUnloyal","OBIS SE.esp",3148,"Enemy"],
         ["LCharBanditUnloyal","OBIS SE.esp",3148,"Enemy"],
         ["LCharBanditUnloyal","OBIS SE.esp",3148,"Enemy"]
     ],
     [
-        ["Kill Avus Bemovul and the Disgraced Nobles","OBIS SE.esp",0,0],
+        ["Kill Avus Bemovul and the Disgraced Nobles","OBIS SE.esp",0,0,"Rift"],
         ["EncBandit01BountyDarkElfM001","OBIS SE.esp",3289,"Enemy"],
         ["LCharBanditDis","OBIS SE.esp",4112,"Enemy"],
         ["LCharBanditDis","OBIS SE.esp",4112,"Enemy"],
         ["LCharBanditDis","OBIS SE.esp",4112,"Enemy"]
     ],
     [
-        ["Kill Aziba and the Blackhearts","OBIS SE.esp",0,0],
+        ["Kill Aziba and the Blackhearts","OBIS SE.esp",0,0,"Rift"],
         ["EncBandit01BountyKhajiitF001","OBIS SE.esp",2605,"Enemy"],
         ["LCharBanditHeart","OBIS SE.esp",4972,"Enemy"],
         ["LCharBanditHeart","OBIS SE.esp",4972,"Enemy"],
         ["LCharBanditHeart","OBIS SE.esp",4972,"Enemy"]
     ],
     [
-        ["Kill Babug gro-Muk and the Followers of Valian","OBIS SE.esp",0,0],
+        ["Kill Babug gro-Muk and the Followers of Valian","OBIS SE.esp",0,0,"Rift"],
         ["EncBandit01BountyOrcM002","OBIS SE.esp",2500,"Enemy"],
         ["LCharBanditVal","OBIS SE.esp",5066,"Enemy"],
         ["LCharBanditVal","OBIS SE.esp",5066,"Enemy"]
     ],
     [
-        ["Kill Badudan gra-Lumlar and his Blackheart Gang","OBIS SE.esp",0,0],
+        ["Kill Badudan gra-Lumlar and his Blackheart Gang","OBIS SE.esp",0,0,"Rift"],
         ["EncBandit01BountyOrcM001","OBIS SE.esp",2493,"Enemy"],
         ["LCharBanditHeart","OBIS SE.esp",4972,"Enemy"],
         ["LCharBanditHeart","OBIS SE.esp",4972,"Enemy"],
         ["LCharBanditHeart","OBIS SE.esp",4972,"Enemy"]
     ],
     [
-        ["Kill Bailus and the Deserters","OBIS SE.esp",0,0],
+        ["Kill Bailus and the Deserters","OBIS SE.esp",0,0,"Rift"],
         ["EncBandit01BountyBretonM002","OBIS SE.esp",3352,"Enemy"],
         ["LCharBanditUnloyal","OBIS SE.esp",3148,"Enemy"],
         ["LCharBanditUnloyal","OBIS SE.esp",3148,"Enemy"],
@@ -86,14 +86,14 @@
         ["LCharBanditUnloyal","OBIS SE.esp",3148,"Enemy"]
     ],
     [
-        ["Kill Barma and her Blackheart Gang","OBIS SE.esp",0,0],
+        ["Kill Barma and her Blackheart Gang","OBIS SE.esp",0,0,"Rift"],
         ["EncBandit02BountyNordF003","OBIS SE.esp",3070,"Enemy"],
         ["LCharBanditHeart","OBIS SE.esp",4972,"Enemy"],
         ["LCharBanditHeart","OBIS SE.esp",4972,"Enemy"],
         ["LCharBanditHeart","OBIS SE.esp",4972,"Enemy"]
     ],
     [
-        ["Kill Basmir and the Broken","OBIS SE.esp",0,0],
+        ["Kill Basmir and the Broken","OBIS SE.esp",0,0,"Rift"],
         ["EncBandit02BountyNordM003","OBIS SE.esp",2608,"Enemy"],
         ["LCharBanditBroken ","OBIS SE.esp",3684,"Enemy"],
         ["LCharBanditBroken ","OBIS SE.esp",3684,"Enemy"],
@@ -110,7 +110,7 @@
         ["1_Undaunted_collect_obj03","Undaunted.esp",683516,"Scripted","clutter/sovngarde/sovcandlestick02.nif"]
     ],
     [
-        ["Kill Belin Virche and the Deserters","OBIS SE.esp",0,0],
+        ["Kill Belin Virche and the Deserters","OBIS SE.esp",0,0,"Rift"],
         ["EncBandit03BountyBretonM001","OBIS SE.esp",2481,"Enemy"],
         ["LCharBanditUnloyal","OBIS SE.esp",3148,"Enemy"],
         ["LCharBanditUnloyal","OBIS SE.esp",3148,"Enemy"],

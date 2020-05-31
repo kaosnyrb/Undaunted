@@ -4,7 +4,7 @@
         ["WIThief","Skyrim.esm",147176,"Enemy"]
     ],
     [
-        ["Kill the Bandit Boss and his Gang","Skyrim.esm",5,0],
+        ["Kill the Bandit Boss and his Gang","Skyrim.esm",5,0,"Rift"],
         ["LCharBanditBoss","Skyrim.esm",253718,"Enemy"],
         ["LCharBanditMeleeAny","Skyrim.esm",253645,"Enemy"],
         ["LCharBanditMeleeAny","Skyrim.esm",253645,"Enemy"],
@@ -12,7 +12,7 @@
         ["LCharBanditMissile","Skyrim.esm",124784,"Enemy"]
     ],
     [
-        ["Kill the Bandit Gang","Skyrim.esm",0,0],
+        ["Kill the Bandit Gang","Skyrim.esm",0,0,"Rift"],
         ["LCharBanditMeleeAny","Skyrim.esm",253645,"Enemy"],
         ["LCharBanditMeleeAny","Skyrim.esm",253645,"Enemy"],
         ["LCharBanditMissile","Skyrim.esm",124784,"Enemy"],
@@ -27,7 +27,7 @@
         ["LCharHorseSaddled","Skyrim.esm",429423,"Ally"]
     ],
     [
-        ["Kill the Nord Outlaws","Skyrim.esm",0,0],
+        ["Kill the Nord Outlaws","Skyrim.esm",0,0,"Rift"],
         ["LCharBanditBossNordF","Skyrim.esm",107328,"Enemy"],
         ["LCharBanditMeleeNordF","Skyrim.esm",107297,"Enemy"],
         ["LCharBanditMeleeNordF","Skyrim.esm",107297,"Enemy"],
@@ -35,14 +35,14 @@
         ["LCharBanditMissileNordF","Skyrim.esm",107334,"Enemy"]
     ],
     [
-        ["Kill the Orc Bandits","Skyrim.esm",0,0],
+        ["Kill the Orc Bandits","Skyrim.esm",0,0,"Rift"],
         ["LCharBanditOnlyOrcM","Skyrim.esm",228394,"Enemy"],
         ["LCharBanditOnlyOrcM","Skyrim.esm",228394,"Enemy"],
         ["LCharBanditOnlyOrcM","Skyrim.esm",228394,"Enemy"],
         ["LCharBanditOnlyOrcM","Skyrim.esm",228394,"Enemy"]        
     ],
     [
-        ["Kill the Orc Warband","Skyrim.esm",0,0],
+        ["Kill the Orc Warband","Skyrim.esm",0,0,"Rift"],
         ["LCharBanditBossOrcM","Skyrim.esm",110826,"Enemy"],
         ["LCharBanditOnlyOrcM","Skyrim.esm",228394,"Enemy"],
         ["LCharBanditOnlyOrcM","Skyrim.esm",228394,"Enemy"],
@@ -60,7 +60,7 @@
         ["LCharHorseSaddled","Skyrim.esm",429423,"Ally"]
     ],
     [
-        ["Kill the Khajiiti Raiders","Skyrim.esm",0,0],
+        ["Kill the Khajiiti Raiders","Skyrim.esm",0,0,"Rift"],
         ["LCharBanditMeleeKhajiitM","Dawnguard.esm",35831,"Enemy"],
         ["LCharBanditMeleeKhajiitM","Dawnguard.esm",35831,"Enemy"],
         ["LCharBanditMeleeKhajiitM","Dawnguard.esm",35831,"Enemy"],
@@ -81,7 +81,7 @@
         ["LCharBanditMeleeAny","Skyrim.esm",253645,"Enemy"]
     ],
     [
-        ["Kill the Rogue Winterhold Dropouts","Skyrim.esm",0,0],
+        ["Kill the Rogue Winterhold Dropouts","Skyrim.esm",0,0,"Rift"],
         ["LCharBanditWizard","Skyrim.esm",124785,"Enemy"],
         ["LCharBanditWizard","Skyrim.esm",124785,"Enemy"],
         ["LCharBanditWizard","Skyrim.esm",124785,"Enemy"],
@@ -112,7 +112,7 @@
         ["1_Undaunted_DestructObjective_02","Undaunted.esp",101684,"Scripted","architecture/tents/smallnordictent01.nif"]
     ],
     [
-        ["Kill the Alikr Raiding Party","Skyrim.esm",15,0],
+        ["Kill the Alikr Raiding Party","Skyrim.esm",15,0,"Rift"],
         ["LCharAlikrMissile","Skyrim.esm",423537,"Enemy"],
         ["LCharAlikrMelee2H","Skyrim.esm",423536,"Enemy"],
         ["LCharAlikrMelee1H","Skyrim.esm",423535,"Enemy"],
