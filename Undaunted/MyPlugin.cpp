@@ -6,6 +6,12 @@
 
 namespace Undaunted {
 
+	void hook_CaptureArea(StaticFunctionTag* base) {
+		//Create a SSE Edit script to recreate the current cell.
+		CaptureArea();
+	}
+
+
 	UInt32 hook_CreateBounty(StaticFunctionTag* base) {
 		int result = BountyManager::getInstance()->activebounties.length;
 		_MESSAGE("hook_CreateBounty result: %08X", result);
@@ -18,10 +24,6 @@ namespace Undaunted {
 	float hook_StartBounty(StaticFunctionTag* base, UInt32 BountyId, bool nearby) {
 		_MESSAGE("hook_StartBounty BountyId: %08X", BountyId);
 		BountyManager::getInstance()->StartBounty(BountyId,nearby, "",NULL,"");
-
-		//Capture tool
-		CaptureArea();
-
 		return 2;
 	}
 
@@ -540,6 +542,10 @@ namespace Undaunted {
 
 		registry->RegisterFunction(
 			new NativeFunction1 <StaticFunctionTag, TESObjectREFR*, UInt32>("SpawnMonsterInCell", "Undaunted_SystemScript", Undaunted::hook_SpawnMonsterInCell, registry));
+
+		registry->RegisterFunction(
+			new NativeFunction0 <StaticFunctionTag, void>("CaptureArea", "Undaunted_SystemScript", Undaunted::hook_CaptureArea, registry));
+
 
 		return true;
 	}

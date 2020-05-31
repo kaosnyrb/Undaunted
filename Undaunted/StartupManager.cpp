@@ -89,7 +89,7 @@ namespace Undaunted {
 				{
 					std::string formid = data[i][0].as<std::string>("formid");
 
-					_MESSAGE("formid: %s", formid);
+					//_MESSAGE("formid: %s", formid);
 					double xpos = data[i][1].as<double>();
 					double ypos = data[i][2].as<double>();
 					double zpos = data[i][3].as<double>();
@@ -139,8 +139,8 @@ namespace Undaunted {
 					std::string modreq = group[0][1].as<std::string>("modreq");
 					int minlevel = group[0][2].as<int>(0);
 					int maxlevel = group[0][3].as<int>(0);
-					std::string tags = group[0][4].as<std::string>("modreq");
-					_MESSAGE("tags: %s", tags.c_str());
+					std::string tags = group[0][4].as<std::string>("notags");
+					
 					std::string delimiter = ",";
 					size_t pos = 0;
 					std::string token;
@@ -148,11 +148,13 @@ namespace Undaunted {
 					while ((pos = tags.find(delimiter)) != std::string::npos) {
 						token = tags.substr(0, pos);
 						std::transform(token.begin(), token.end(), token.begin(), ::toupper);
+						_MESSAGE("tags: %s", token.c_str());
 						taglist.AddItem(token);
 						tags.erase(0, pos + delimiter.length());
 					}
 					std::transform(tags.begin(), tags.end(), tags.begin(), ::toupper);
 					taglist.AddItem(tags);
+					_MESSAGE("tags: %s", tags.c_str());
 					const ModInfo* modInfo = dataHandler->LookupModByName(modreq.c_str());
 					if (modInfo != NULL)
 					{

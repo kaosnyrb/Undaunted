@@ -1,5 +1,9 @@
 [
     [
+        ["Close the Rift","Skyrim.esm",0,0,"Elite,Repeatable"],
+        ["1_Undaunted_RiftEnterance","Undaunted.esp",745728,"ScriptedDoor"]
+    ],
+    [
         ["Hunt the Wolf Pack","Skyrim.esm",0,4,"Rift"],
         ["EncWolf","Skyrim.esm",146110,"Enemy"],
         ["EncWolf","Skyrim.esm",146110,"Enemy"],

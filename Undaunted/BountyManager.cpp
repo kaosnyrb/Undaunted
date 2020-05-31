@@ -213,7 +213,21 @@ namespace Undaunted {
 		}
 		UnKeyValue bountydata = UnKeyValue();
 		bountydata.key = bounty->bountygrouplist.questText;
-		bountiesRan.AddItem(bountydata);
+
+		bool repeatable = false;
+		for (int i = 0; i < bounty->bountygrouplist.Tags.length; i++)
+		{
+			if (bounty->bountygrouplist.Tags.data[i].compare("REPEATABLE") == 0)
+			{
+				_MESSAGE("Found Tag: %s", bounty->bountygrouplist.Tags.data[i].c_str());
+				repeatable = true;
+			}
+		}
+		if (!repeatable)
+		{
+			bountiesRan.AddItem(bountydata);
+		}
+
 		_MESSAGE("Setting Bounty Message: %s", bounty->bountygrouplist.questText.c_str());
 		bounty->bountymessageref->fullName.name = bounty->bountygrouplist.questText.c_str();
 		_MESSAGE("PlayerPos %f, %f, %f", GetPlayer()->pos.x, GetPlayer()->pos.y, GetPlayer()->pos.z);
