@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <string>
 #include "UnStringList.h"
+#include <Undaunted\NavmeshTool.h>
 
 namespace Undaunted {
 
@@ -24,6 +25,7 @@ namespace Undaunted {
 	float hook_StartBounty(StaticFunctionTag* base, UInt32 BountyId, bool nearby) {
 		_MESSAGE("hook_StartBounty BountyId: %08X", BountyId);
 		BountyManager::getInstance()->StartBounty(BountyId,nearby, "",NULL,"");
+		ExportNavmesh();
 		return 2;
 	}
 

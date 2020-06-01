@@ -98,6 +98,7 @@ namespace Undaunted
 	GroupList GetRandomTaggedGroup(std::string tag)
 	{
 		UInt32 playerLevel = GetPlayerLevel();
+		int startingGroupLibaryIndex = GroupLibaryIndex;
 		while(true)
 		{
 			int groupid = GroupLibaryIndex++;
@@ -125,7 +126,10 @@ namespace Undaunted
 						ShuffleGroupLibary();
 						GroupLibaryIndex = 0;
 					}
-					return GroupLibary.data[groupid];
+					//Take the tagged card out of the pack and place it on top, then draw it.
+					GroupLibary.SwapItem(groupid, startingGroupLibaryIndex);
+					GroupLibaryIndex = startingGroupLibaryIndex + 1;
+					return GroupLibary.data[startingGroupLibaryIndex];
 				}
 			}
 			//Card wasn't valid, get the next or reshuffle
@@ -133,6 +137,7 @@ namespace Undaunted
 			{
 				ShuffleGroupLibary();
 				GroupLibaryIndex = 0;
+				startingGroupLibaryIndex = 0;
 			}
 		}
 	}

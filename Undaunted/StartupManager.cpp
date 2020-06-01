@@ -154,10 +154,10 @@ namespace Undaunted {
 					}
 					std::transform(tags.begin(), tags.end(), tags.begin(), ::toupper);
 					taglist.AddItem(tags);
-					_MESSAGE("tags: %s", tags.c_str());
 					const ModInfo* modInfo = dataHandler->LookupModByName(modreq.c_str());
 					if (modInfo != NULL && modInfo->IsActive())
 					{
+						_MESSAGE("tags: %s", tags.c_str());
 						int groupid = AddGroup(groupname, minlevel, maxlevel, taglist);
 						for (int j = 1; j < group.size(); j++)
 						{
