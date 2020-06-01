@@ -16,4 +16,14 @@ namespace Undaunted
 		currentlist->length = newlist.length;
 		return currentlist;
 	}
+
+	RefList* RefList::SwapItem(int first, int second)
+	{
+		Ref First = this->data[first];
+		Ref Second = this->data[second];
+
+		this->data[first] = Second;
+		this->data[second] = First;
+		return this;
+	}
 }

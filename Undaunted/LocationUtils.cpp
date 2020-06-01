@@ -343,6 +343,8 @@ namespace Undaunted {
 		gLog.OpenRelative(CSIDL_MYDOCUMENTS, "\\My Games\\Skyrim Special Edition\\SKSE\\Undaunted.log");
 	}
 
+	//Raw Rifts
+
 	RiftList riftList = RiftList();
 	void AddRift(FormRefList reflist)
 	{
@@ -356,8 +358,18 @@ namespace Undaunted {
 		return riftList.data[rand() % riftList.length].reflist;
 	}
 
+	// Baked Rifts
 	RefList RiftStartMarkers = RefList();
-	void InitRiftStartMarkers()
+	void ShuffleBakedRifts()
+	{
+		srand(time(NULL));
+		for (int i = 0; i < RiftStartMarkers.length + 10; i++)
+		{
+			RiftStartMarkers.SwapItem(rand() % RiftStartMarkers.length, rand() % RiftStartMarkers.length);
+		}
+	}
+
+	void InitBakedRiftStartMarkers()
 	{
 		_MESSAGE("Finding all Rift Start Markers");
 		RiftStartMarkers = RefList();
@@ -393,12 +405,23 @@ namespace Undaunted {
 				}
 			}
 		}
+		ShuffleBakedRifts();
 	}
 
-	TESObjectREFR* GetRandomRiftStartMarker()
+
+
+	int currentRiftTarget = 0;
+	TESObjectREFR* GetRandomBakedRiftStartMarker()
 	{
 		srand(time(NULL));
-		return RiftStartMarkers.data[rand() % RiftStartMarkers.length].objectRef;
+		Ref target = RiftStartMarkers.data[currentRiftTarget++];
+		if (currentRiftTarget > RiftStartMarkers.length)
+		{
+			//Reshuffle deck
+			ShuffleBakedRifts();
+			currentRiftTarget = 0;
+		}
+		return target.objectRef;
 	}
 
 	//Interiors

@@ -13,6 +13,7 @@ namespace Undaunted
 		Ref* data;
 		int length;
 		RefList* AddItem(Ref item);
+		RefList* SwapItem(int first, int second);
 	};
 
 #endif

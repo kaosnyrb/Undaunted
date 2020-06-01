@@ -73,7 +73,7 @@ namespace Undaunted {
 		LoadGroups();
 		LoadRifts();
 		BuildWorldList();
-		InitRiftStartMarkers();
+		InitBakedRiftStartMarkers();
 		SetPlayerLevel(playerLevel);
 		BountyManager::getInstance()->isReady = 2;
 		_MESSAGE("ReadyState: %i ", BountyManager::getInstance()->isReady);
@@ -378,7 +378,7 @@ namespace Undaunted {
 	TESObjectREFR* hook_GetRandomRiftStartMarker(StaticFunctionTag* base)
 	{
 		_MESSAGE("hook_GetRandomRiftStartMarker");		
-		return GetRandomRiftStartMarker();
+		return GetRandomBakedRiftStartMarker();
 	}
 
 	TESObjectREFR* hook_SpawnMonsterInCell(StaticFunctionTag* base, UInt32 formid)
