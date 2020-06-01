@@ -156,7 +156,7 @@ namespace Undaunted {
 					taglist.AddItem(tags);
 					_MESSAGE("tags: %s", tags.c_str());
 					const ModInfo* modInfo = dataHandler->LookupModByName(modreq.c_str());
-					if (modInfo != NULL)
+					if (modInfo != NULL && modInfo->IsActive())
 					{
 						int groupid = AddGroup(groupname, minlevel, maxlevel, taglist);
 						for (int j = 1; j < group.size(); j++)
