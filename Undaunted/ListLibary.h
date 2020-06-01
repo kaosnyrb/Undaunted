@@ -9,6 +9,7 @@ namespace Undaunted
 		GroupList* data;
 		int length;
 		ListLibary* AddItem(GroupList item);
+		ListLibary* SwapItem(int first, int second);
 	};
 #endif
 }

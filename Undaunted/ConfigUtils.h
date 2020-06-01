@@ -17,6 +17,7 @@ namespace Undaunted
 	GroupList GetRandomTaggedGroup(std::string tag);
 	GroupList GetGroup(std::string bountyName);
 	int GetGroupCount();
+	void ShuffleGroupLibary();
 
 	//General
 	void AddConfigValue(std::string key, std::string value);

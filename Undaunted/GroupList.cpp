@@ -21,6 +21,16 @@ namespace Undaunted
 		return currentlist;
 	}
 
+	GroupList* GroupList::SwapItem(int first, int second)
+	{
+		GroupMember First = this->data[first];
+		GroupMember Second = this->data[second];
+
+		this->data[first] = Second;
+		this->data[second] = First;
+		return this;
+	}
+
 	void GroupList::SetGroupMemberComplete(UInt32 id)
 	{
 		for (int i = 0; i < this->length; i++)

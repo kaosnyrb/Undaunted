@@ -28,6 +28,7 @@ namespace Undaunted
 		int length;
 		UnStringlist Tags;
 		GroupList* AddItem(GroupMember item);
+		GroupList* SwapItem(int first, int second);
 		void SetGroupMemberComplete(UInt32 id);
 	};
 

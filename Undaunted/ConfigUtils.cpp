@@ -57,15 +57,23 @@ namespace Undaunted
 		return GroupLibary.length;
 	}
 
+	void ShuffleGroupLibary()
+	{
+		srand(time(NULL));
+		for (int i = 0; i < GroupLibary.length + 100; i++)
+		{
+			GroupLibary.SwapItem(rand() % GroupLibary.length, rand() % GroupLibary.length);
+		}
+	}
+
 	
-	int count = 0;
+	int GroupLibaryIndex = 0;
 	GroupList GetRandomGroup()
 	{
-		srand(time(NULL) + count++);
 		UInt32 playerLevel = GetPlayerLevel();
-		for (int i = 0; i < 50; i++)
+		while (true)
 		{
-			int groupid = rand() % GroupLibary.length;
+			int groupid = GroupLibaryIndex++;
 			_MESSAGE("Random Group: %i", groupid);
 			_MESSAGE("Random Member Count: %i", GroupLibary.data[groupid].length);
 			//Player is too low level for this bounty
@@ -78,30 +86,21 @@ namespace Undaunted
 			{
 				continue;
 			}
-			for (int i = 0; i < GroupLibary.data[groupid].Tags.length; i++)
+			if (GroupLibaryIndex > GroupLibary.length)
 			{
-				_MESSAGE("Group Tags: %s", GroupLibary.data[groupid].Tags.data[i].c_str());
+				ShuffleGroupLibary();
+				GroupLibaryIndex = 0;
 			}
 			return GroupLibary.data[groupid];
 		}
-		int groupid = rand() % GroupLibary.length;
-		_MESSAGE("Group: %s", GroupLibary.data[groupid].questText.c_str());
-		for (int i = 0; i < GroupLibary.data[groupid].Tags.length; i++)
-		{
-			_MESSAGE("Group Tags: %s", GroupLibary.data[groupid].Tags.data[i].c_str());
-		}
-		_MESSAGE("Random Member Count: %i", GroupLibary.data[groupid].length);
-
-		return GroupLibary.data[groupid];		
 	}
 
 	GroupList GetRandomTaggedGroup(std::string tag)
 	{
-		srand(time(NULL) + count++);
 		UInt32 playerLevel = GetPlayerLevel();
 		while(true)
 		{
-			int groupid = rand() % GroupLibary.length;
+			int groupid = GroupLibaryIndex++;
 			_MESSAGE("Random Group: %i", groupid);
 			_MESSAGE("Random Member Count: %i", GroupLibary.data[groupid].length);
 			//Player is too low level for this bounty
@@ -121,8 +120,19 @@ namespace Undaunted
 				if (GroupLibary.data[groupid].Tags.data[i].compare(tag) == 0)
 				{
 					_MESSAGE("Found Tag: %s", GroupLibary.data[groupid].Tags.data[i].c_str());
+					if (GroupLibaryIndex > GroupLibary.length)
+					{
+						ShuffleGroupLibary();
+						GroupLibaryIndex = 0;
+					}
 					return GroupLibary.data[groupid];
 				}
+			}
+			//Card wasn't valid, get the next or reshuffle
+			if (GroupLibaryIndex > GroupLibary.length)
+			{
+				ShuffleGroupLibary();
+				GroupLibaryIndex = 0;
 			}
 		}
 	}

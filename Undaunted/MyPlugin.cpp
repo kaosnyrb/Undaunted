@@ -71,6 +71,7 @@ namespace Undaunted {
 		}
 		LoadSettings();
 		LoadGroups();
+		ShuffleGroupLibary();
 		LoadRifts();
 		BuildWorldList();
 		InitBakedRiftStartMarkers();

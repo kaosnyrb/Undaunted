@@ -17,4 +17,13 @@ namespace Undaunted
 		currentlist->length = newlist.length;
 		return currentlist;
 	}
+	ListLibary* ListLibary::SwapItem(int first, int second)
+	{
+		GroupList First = this->data[first];
+		GroupList Second = this->data[second];
+
+		this->data[first] = Second;
+		this->data[second] = First;
+		return this;
+	}
 }
