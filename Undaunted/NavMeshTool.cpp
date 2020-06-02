@@ -1,25 +1,30 @@
 #include "NavmeshTool.h"
 #include "SKSELink.h"
 
-void floattostring(float value)
+std::string floattostring(float value)
 {
-//	const unsigned char* pf = reinterpret_cast<const unsigned char*>(&value);
-	char* c = (char*)&value;
-	std::string stringvalue = "";
-	for (size_t i = 0; i != sizeof(float); ++i)
-	{
-		stringvalue += c[i] + " ";
-		// ith byte is pf[i]
-		// e.g. printf("0x02X ", pf[i]);
-	}
 	char hex[9];
 	sprintf(hex, "%08X", *(unsigned long int*) & value);
-	_MESSAGE("float value: %s", hex);
+	//	_MESSAGE("float value: %s", hex);
+	std::string output = "";
+	output += hex[6];
+	output += hex[7];
+	output += ' ';
+	output += hex[4];
+	output += hex[5];
+	output += ' ';
+	output += hex[2];
+	output += hex[3];
+	output += ' ';
+	output += hex[0];
+	output += hex[1];
+	return output;
 }
 
 void Undaunted::ExportNavmesh()
 {
-	floattostring(-32.0411339);
+	std::string output = floattostring(-32.0411339);
+	_MESSAGE("output value: %s", output.c_str());
 	/*
 	gLog.OpenRelative(CSIDL_MYDOCUMENTS, "\\My Games\\Skyrim Special Edition\\SKSE\\Navmesh.pas");
 	_MESSAGE("unit userscript;uses SkyrimUtils;uses mteFunctions;");

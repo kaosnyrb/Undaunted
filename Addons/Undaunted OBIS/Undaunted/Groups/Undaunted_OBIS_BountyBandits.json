@@ -193,7 +193,7 @@
         ["1_Undaunted_collect_obj03","Undaunted.esp",683516,"Scripted","clutter/sovngarde/sovcandlestick02.nif"]
     ],
     [
-        ["Hunt Dul gro-Khash and his Crows","OBIS SE.esp",0,0],
+        ["Hunt Dul gro-Khash and his Crows","OBIS SE.esp",0,0,"Rift"],
         ["EncBandit02BountyOrcM001","OBIS SE.esp",2464,"Enemy"],
         ["LCharBanditCrow","OBIS SE.esp",5111,"Enemy"],
         ["LCharBanditCrow","OBIS SE.esp",5111,"Enemy"],
@@ -224,7 +224,7 @@
         ["LCharBanditAddled ","OBIS SE.esp",3060,"Enemy"]
     ],
     [
-        ["Kill Elga and her Ghostly Followers","OBIS SE.esp",0,0],
+        ["Kill Elga and her Ghostly Followers","OBIS SE.esp",0,0,"Rift"],
         ["EncBandit01BountyNordF001","OBIS SE.esp",2491,"Enemy"],
         ["LCharBanditGhost  ","OBIS SE.esp",4442,"Enemy"],
         ["LCharBanditGhost  ","OBIS SE.esp",4442,"Enemy"],
@@ -301,7 +301,7 @@
         ["1_Undaunted_DestructObjectiveMagic_02","Undaunted.esp",101687,"Scripted","Dungeons/Nordic/RuinsDragonStatueMetal03.nif"]
     ],
     [
-        ["Kill Garas","OBIS SE.esp",0,0],
+        ["Kill Garas","OBIS SE.esp",0,0,"Rift"],
         ["EncBandit01BountyRedguardM003","OBIS SE.esp",2507,"Enemy"],
         ["LCharBanditIce","OBIS SE.esp",4328,"Enemy"],
         ["LCharBanditIce","OBIS SE.esp",4328,"Enemy"]
@@ -369,7 +369,7 @@
         ["1_Undaunted_DestructObjective_02","Undaunted.esp",101684,"Scripted","clutter/oilbarrel/bfxoilbarrelclosed01.nif"]
     ],
     [
-        ["Kill Harek the Hardy","OBIS SE.esp",0,0],
+        ["Kill Harek the Hardy","OBIS SE.esp",0,0,"Rift"],
         ["EncBandit01BountyNordM002","OBIS SE.esp",2499,"Enemy"],
         ["LCharBanditDiamond ","OBIS SE.esp",4822,"Enemy"],
         ["LCharBanditLav","OBIS SE.esp",4877,"Enemy"],
@@ -424,7 +424,7 @@
     ],
 
     [
-        ["Kill Jendi Blueblood","OBIS SE.esp",0,0],
+        ["Kill Jendi Blueblood","OBIS SE.esp",0,0,"Rift"],
         ["EncBandit03BountyNordF002","OBIS SE.esp",4927,"Enemy"],
         ["LCharBanditHidden","OBIS SE.esp",2453,"Enemy"]       
     ],
@@ -453,7 +453,7 @@
         ["LCharBanditAddled ","OBIS SE.esp",3060,"Enemy"]
     ],
     [
-        ["Kill Jollie and her Hammer Maidens","OBIS SE.esp",0,0],
+        ["Kill Jollie and her Hammer Maidens","OBIS SE.esp",0,0,"Rift"],
         ["EncBandit03BountyRedguardF001","OBIS SE.esp",2474,"Enemy"],
         ["LCharBanditHammer ","OBIS SE.esp",2604,"Enemy"],
         ["LCharBanditHammer ","OBIS SE.esp",2604,"Enemy"],
@@ -586,7 +586,7 @@
         
     ],
     [
-        ["Kill Trollman Odmir the Culler","OBIS SE.esp",0,0],
+        ["Kill Trollman Odmir the Culler","OBIS SE.esp",0,0,"Rift"],
         ["EncBandit02BountyNordM005","OBIS SE.esp",4925,"Enemy"],
         ["LCharBanditTroll ","OBIS SE.esp",4636,"Enemy"],
         ["LCharBanditTroll ","OBIS SE.esp",4636,"Enemy"]
@@ -694,7 +694,7 @@
         ["LCharBanditDigger","OBIS SE.esp",3067,"Enemy"]        
     ],
     [
-        ["Kill Sina and the Blackhearts","OBIS SE.esp",0,0],
+        ["Kill Sina and the Blackhearts","OBIS SE.esp",0,0,"Rift"],
         ["EncBandit01BountyNordF002","OBIS SE.esp",2498,"Enemy"],
         ["LCharBanditHeart","OBIS SE.esp",4972,"Enemy"],
         ["LCharBanditHeart","OBIS SE.esp",4972,"Enemy"],
@@ -764,7 +764,7 @@
         ["LCharBanditUnloyal","OBIS SE.esp",3148,"Enemy"]
     ],
     [
-        ["Kill Terrasa Lea","OBIS SE.esp",0,0],
+        ["Kill Terrasa Lea","OBIS SE.esp",0,0,"Rift"],
         ["EncBandit03BountyImperialF002","OBIS SE.esp",2835,"Enemy"]
         
     ],
@@ -781,7 +781,7 @@
         
     ],
     [
-        ["Kill Vaber Arius has Stolen your Sweetroll","OBIS SE.esp",0,0],
+        ["Vaber Arius has Stolen your Sweetroll","OBIS SE.esp",0,0],
         ["EncBandit03BountyImperialM002 ","OBIS SE.esp",2476,"Enemy"],
         ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
         ["1_Undaunted_collect_obj01","Undaunted.esp",683514,"Scripted","clutter/ingredients/sweetroll01.nif"]        
@@ -803,7 +803,7 @@
         ["1_Undaunted_collect_obj01","Undaunted.esp",683514,"Scripted","clutter/food/cheesewheel02a.nif"]      
     ],
     [
-        ["Kill Wago and the Disgraced Nobles","OBIS SE.esp",0,0],
+        ["Kill Wago and the Disgraced Nobles","OBIS SE.esp",0,0,"Rift"],
         ["EncBandit01BountyKhajiitM001","OBIS SE.esp",2490,"Enemy"],
         ["LCharBanditDis","OBIS SE.esp",4112,"Enemy"],
         ["LCharBanditDis","OBIS SE.esp",4112,"Enemy"],
