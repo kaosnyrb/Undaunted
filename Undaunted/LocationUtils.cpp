@@ -414,13 +414,18 @@ namespace Undaunted {
 	TESObjectREFR* GetRandomBakedRiftStartMarker()
 	{
 		srand(time(NULL));
-		Ref target = RiftStartMarkers.data[currentRiftTarget++];
-		if (currentRiftTarget > RiftStartMarkers.length)
+		currentRiftTarget++;
+		if (currentRiftTarget >= RiftStartMarkers.length)
 		{
 			//Reshuffle deck
+			_MESSAGE("Reshuffle deck");
 			ShuffleBakedRifts();
 			currentRiftTarget = 0;
 		}
+		_MESSAGE("currentRiftTarget: %i / %i", currentRiftTarget, RiftStartMarkers.length);
+
+		Ref target = RiftStartMarkers.data[currentRiftTarget];
+
 		return target.objectRef;
 	}
 

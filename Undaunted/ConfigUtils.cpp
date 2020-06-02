@@ -75,6 +75,11 @@ namespace Undaunted
 		{
 			int groupid = GroupLibaryIndex++;
 			_MESSAGE("Random Group: %i", groupid);
+			if (groupid >= GroupLibary.length)
+			{
+				ShuffleGroupLibary();
+				GroupLibaryIndex = 0;
+			}
 			_MESSAGE("Random Member Count: %i", GroupLibary.data[groupid].length);
 			//Player is too low level for this bounty
 			if (playerLevel + GetConfigValueInt("BountyLevelCache") < GroupLibary.data[groupid].minLevel && GroupLibary.data[groupid].minLevel != 0)
@@ -85,11 +90,6 @@ namespace Undaunted
 			if (playerLevel > GroupLibary.data[groupid].maxLevel && GroupLibary.data[groupid].maxLevel != 0)
 			{
 				continue;
-			}
-			if (GroupLibaryIndex > GroupLibary.length)
-			{
-				ShuffleGroupLibary();
-				GroupLibaryIndex = 0;
 			}
 			return GroupLibary.data[groupid];
 		}
@@ -102,6 +102,12 @@ namespace Undaunted
 		while(true)
 		{
 			int groupid = GroupLibaryIndex++;
+			if (groupid >= GroupLibary.length)
+			{
+				ShuffleGroupLibary();
+				GroupLibaryIndex = 0;
+				startingGroupLibaryIndex = 0;
+			}
 			_MESSAGE("Random Group: %i", groupid);
 			_MESSAGE("Random Member Count: %i", GroupLibary.data[groupid].length);
 			//Player is too low level for this bounty
@@ -131,13 +137,6 @@ namespace Undaunted
 					GroupLibaryIndex = startingGroupLibaryIndex + 1;
 					return GroupLibary.data[startingGroupLibaryIndex];
 				}
-			}
-			//Card wasn't valid, get the next or reshuffle
-			if (GroupLibaryIndex > GroupLibary.length)
-			{
-				ShuffleGroupLibary();
-				GroupLibaryIndex = 0;
-				startingGroupLibaryIndex = 0;
 			}
 		}
 	}

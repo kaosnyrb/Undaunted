@@ -12,7 +12,9 @@ void floattostring(float value)
 		// ith byte is pf[i]
 		// e.g. printf("0x02X ", pf[i]);
 	}
-	_MESSAGE("float value: %s", stringvalue.c_str());
+	char hex[9];
+	sprintf(hex, "%08X", *(unsigned long int*) & value);
+	_MESSAGE("float value: %s", hex);
 }
 
 void Undaunted::ExportNavmesh()
