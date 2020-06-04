@@ -54,6 +54,8 @@ namespace Undaunted
 		int length;
 		VertList* AddItem(Vert item);
 		UInt32 Find(Vert item);
+		Vert FindIndex(UInt32 item);
+
 	};
 
 

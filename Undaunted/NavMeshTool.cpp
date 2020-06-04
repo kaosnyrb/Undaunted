@@ -57,9 +57,9 @@ namespace Undaunted
 	// I believe this is due to us not setting up the NavMeshGrid in the code, howeer making any change in the CK and saving it generates it.
 	// Doing a balance for optimisation seems to work pretty well.
 	TileMap currentMap;
-	int QuadSize = 64;
-	int corriderHeight = 6;
-
+	int QuadSize = 80;
+	int corriderHeight = 128;
+	
 	void InitNavmesh()
 	{
 
@@ -134,6 +134,12 @@ namespace Undaunted
 			createdTriangles.AddItem(tri2);
 
 		}
+		//Squish the triangles which are layer on top of each other
+		for (int i = 0; i < createdTriangles.length; i++)
+		{
+
+		}
+
 		//Join the triangles
 		for (int i = 0; i < createdTriangles.length; i++)
 		{
@@ -193,15 +199,32 @@ namespace Undaunted
 		VertList* currentlist = this;
 		for (int i = 0; i < currentlist->length; i++)
 		{
+			float zdist = currentlist->data[i].z - item.z;
+			zdist = zdist * zdist;//Square it to make it always positive
+
 			if (currentlist->data[i].x == item.x &&
 				currentlist->data[i].y == item.y &&
-				currentlist->data[i].z == item.z)
+				zdist < (corriderHeight*corriderHeight))
 			{
 				return currentlist->data[i].index;
 			}
 		}
 		return -1;
 	}
+
+	Vert VertList::FindIndex(UInt32 item)
+	{
+		VertList* currentlist = this;
+		for (int i = 0; i < currentlist->length; i++)
+		{
+			if (currentlist->data[i].index == item)
+			{
+				return currentlist->data[i];
+			}
+		}
+	}
+
+
 	TriangleList* TriangleList::AddItem(Triangle item)
 	{
 		TriangleList* currentlist = this;
@@ -233,8 +256,7 @@ namespace Undaunted
 				//Don't join with yourself.
 				if (currentlist->data[i].index != item.index)
 				{
-					//South / West?
-					if (currentlist->data[i].vert1 == item.vert2 && 
+					if (currentlist->data[i].vert1 == item.vert2 &&
 						currentlist->data[i].vert2 == item.vert3)
 					{
 						return currentlist->data[i].index;
