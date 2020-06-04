@@ -46,3 +46,5 @@ ObjectReference Function GetRandomRiftStartMarker() global native
 ObjectReference Function SpawnMonsterInCell(int FormId) global native
 
 Function CaptureArea() global native
+Function CaptureNavTile() global native
+Function ExportNavMesh() global native

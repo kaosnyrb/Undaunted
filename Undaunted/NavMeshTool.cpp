@@ -62,19 +62,6 @@ namespace Undaunted
 
 	void InitNavmesh()
 	{
-		currentMap.map.AddItem(Tile(1, 1, 1, 1));
-		currentMap.map.AddItem(Tile(2, 1, 1, 1));
-		currentMap.map.AddItem(Tile(3, 1, 1, 1));
-		currentMap.map.AddItem(Tile(4, 1, 1, 1));
-		currentMap.map.AddItem(Tile(5, 1, 1, 1));
-		currentMap.map.AddItem(Tile(6, -1, 1, 1));
-		currentMap.map.AddItem(Tile(6, 0, 1, 1));
-		currentMap.map.AddItem(Tile(6, 1, 1, 1));
-		currentMap.map.AddItem(Tile(6, 2, 1, 1));
-		currentMap.map.AddItem(Tile(6, 3, 1, 1));
-		currentMap.map.AddItem(Tile(6, 4, 1, 1));
-		currentMap.map.AddItem(Tile(6, 5, 1, 1));
-		currentMap.map.AddItem(Tile(6, 6, 1, 1));
 
 	}
 
@@ -96,7 +83,7 @@ namespace Undaunted
 		
 		for (int i = 0; i < currentMap.map.length; i++)
 		{
-			Vert Vert1 = Vert(0, (currentMap.map.data[i].x * (QuadSize * 2)) - QuadSize, (currentMap.map.data[i].y * (QuadSize * 2)) - QuadSize, (currentMap.map.data[i].z * (QuadSize * corriderHeight)));
+			Vert Vert1 = Vert(0, (currentMap.map.data[i].x * (QuadSize * 2)) - QuadSize, (currentMap.map.data[i].y * (QuadSize * 2)) - QuadSize, (currentMap.map.data[i].z));
 			UInt32 Vert1Index = -1;
 			Vert1Index = createdVerts.Find(Vert1);
 			if (Vert1Index == -1)
@@ -107,7 +94,7 @@ namespace Undaunted
 				createdVerts.AddItem(Vert1);
 			}
 
-			Vert Vert2 = Vert(0, (currentMap.map.data[i].x * (QuadSize * 2)) + QuadSize, (currentMap.map.data[i].y * (QuadSize * 2)) - QuadSize, (currentMap.map.data[i].z * (QuadSize * corriderHeight)));
+			Vert Vert2 = Vert(0, (currentMap.map.data[i].x * (QuadSize * 2)) + QuadSize, (currentMap.map.data[i].y * (QuadSize * 2)) - QuadSize, (currentMap.map.data[i].z));
 			UInt32 Vert2Index = -1;
 			Vert2Index = createdVerts.Find(Vert2);
 			if (Vert2Index == -1)
@@ -118,7 +105,7 @@ namespace Undaunted
 				createdVerts.AddItem(Vert2);
 			}
 
-			Vert Vert3 = Vert(0, (currentMap.map.data[i].x * (QuadSize * 2)) + QuadSize, (currentMap.map.data[i].y * (QuadSize * 2)) + QuadSize, (currentMap.map.data[i].z * (QuadSize * corriderHeight)));
+			Vert Vert3 = Vert(0, (currentMap.map.data[i].x * (QuadSize * 2)) + QuadSize, (currentMap.map.data[i].y * (QuadSize * 2)) + QuadSize, (currentMap.map.data[i].z));
 			UInt32 Vert3Index = -1;
 			Vert3Index = createdVerts.Find(Vert3);
 			if (Vert3Index == -1)
@@ -129,7 +116,7 @@ namespace Undaunted
 				createdVerts.AddItem(Vert3);
 			}
 
-			Vert Vert4 = Vert(0, (currentMap.map.data[i].x * (QuadSize * 2)) - QuadSize, (currentMap.map.data[i].y * (QuadSize * 2)) + QuadSize, (currentMap.map.data[i].z * (QuadSize * corriderHeight)));
+			Vert Vert4 = Vert(0, (currentMap.map.data[i].x * (QuadSize * 2)) - QuadSize, (currentMap.map.data[i].y * (QuadSize * 2)) + QuadSize, (currentMap.map.data[i].z));
 			UInt32 Vert4Index = -1;
 			Vert4Index = createdVerts.Find(Vert4);
 			if (Vert4Index == -1)
@@ -171,15 +158,18 @@ namespace Undaunted
 		//(QuadSize * 2)
 		x = x / (QuadSize * 2);
 		y = y / (QuadSize * 2);
-		z = z / (QuadSize * 2);
+		z = z;
 
 		int mapx = x; 
 		int mapy = y;
 		int mapz = z;
-		if (currentMap.map.Find(mapx, mapy, mapz) == 0)
+		if (currentMap.map.Find(mapx, mapy, z) == 0)
 		{
-			currentMap.map.AddItem(Tile(mapx, mapy, mapz, 1));
+			currentMap.map.AddItem(Tile(mapx, mapy, z, 1));
 		}
+		_MESSAGE("PlayerPos %f, %f, %f", x,y,z);
+		_MESSAGE("currentMapPos %i, %i, %i", mapx, mapy, mapz);
+
 	}
 
 	VertList* VertList::AddItem(Vert item)

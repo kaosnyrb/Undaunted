@@ -18,6 +18,7 @@ namespace Undaunted {
 		_MESSAGE("hook_CreateBounty result: %08X", result);
 		Bounty newBounty = Bounty();
 		BountyManager::getInstance()->activebounties.AddItem(newBounty);
+		ExportNavmesh();
 		return result;
 	}
 
@@ -25,7 +26,6 @@ namespace Undaunted {
 	float hook_StartBounty(StaticFunctionTag* base, UInt32 BountyId, bool nearby) {
 		_MESSAGE("hook_StartBounty BountyId: %08X", BountyId);
 		BountyManager::getInstance()->StartBounty(BountyId,nearby, "",NULL,"");
-		ExportNavmesh();
 		return 2;
 	}
 
@@ -431,6 +431,18 @@ namespace Undaunted {
 		return NULL;
 	}
 
+	void hook_CaptureNavTile(StaticFunctionTag* base)
+	{
+		_MESSAGE("hook_CaptureNavTile");
+		MarkTile(GetPlayer()->pos.x, GetPlayer()->pos.y, GetPlayer()->pos.z);
+	}
+
+	void hook_ExportNavMesh(StaticFunctionTag* base)
+	{
+		_MESSAGE("hook_ExportNavMesh");
+		ExportNavmesh();
+	}
+
 	bool RegisterFuncs(VMClassRegistry* registry) {
 
 		BountyManager::getInstance()->_registry = registry;
@@ -550,6 +562,13 @@ namespace Undaunted {
 
 		registry->RegisterFunction(
 			new NativeFunction0 <StaticFunctionTag, void>("CaptureArea", "Undaunted_SystemScript", Undaunted::hook_CaptureArea, registry));
+
+		//Navmesh
+		registry->RegisterFunction(
+			new NativeFunction0 <StaticFunctionTag, void>("CaptureNavTile", "Undaunted_SystemScript", Undaunted::hook_CaptureNavTile, registry));
+
+		registry->RegisterFunction(
+			new NativeFunction0 <StaticFunctionTag, void>("ExportNavMesh", "Undaunted_SystemScript", Undaunted::hook_ExportNavMesh, registry));
 
 
 		return true;
