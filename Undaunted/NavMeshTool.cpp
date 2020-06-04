@@ -2,9 +2,6 @@
 #include "SKSELink.h"
 namespace Undaunted
 {
-
-	TileMap currentMap;
-
 	std::string floattostring(float value)
 	{
 		char hex[9];
@@ -59,8 +56,31 @@ namespace Undaunted
 	// Remember to edit the navmesh slightly in the Creation Kit. Otherwise it seems to lead to an unending memory leak :D
 	// I believe this is due to us not setting up the NavMeshGrid in the code, howeer making any change in the CK and saving it generates it.
 	// Doing a balance for optimisation seems to work pretty well.
+	TileMap currentMap;
+	int QuadSize = 64;
+	int corriderHeight = 6;
+
+	void InitNavmesh()
+	{
+		currentMap.map.AddItem(Tile(1, 1, 1, 1));
+		currentMap.map.AddItem(Tile(2, 1, 1, 1));
+		currentMap.map.AddItem(Tile(3, 1, 1, 1));
+		currentMap.map.AddItem(Tile(4, 1, 1, 1));
+		currentMap.map.AddItem(Tile(5, 1, 1, 1));
+		currentMap.map.AddItem(Tile(6, -1, 1, 1));
+		currentMap.map.AddItem(Tile(6, 0, 1, 1));
+		currentMap.map.AddItem(Tile(6, 1, 1, 1));
+		currentMap.map.AddItem(Tile(6, 2, 1, 1));
+		currentMap.map.AddItem(Tile(6, 3, 1, 1));
+		currentMap.map.AddItem(Tile(6, 4, 1, 1));
+		currentMap.map.AddItem(Tile(6, 5, 1, 1));
+		currentMap.map.AddItem(Tile(6, 6, 1, 1));
+
+	}
+
 	void ExportNavmesh()
 	{
+
 		gLog.OpenRelative(CSIDL_MYDOCUMENTS, "\\My Games\\Skyrim Special Edition\\SKSE\\Navmesh.pas");
 		_MESSAGE("unit userscript;uses SkyrimUtils;uses mteFunctions;");
 		_MESSAGE("function NewArrayElement(rec: IInterface; path: String): IInterface; var a: IInterface; begin a := ElementByPath(rec, path); if Assigned(a) then begin Result := ElementAssign(a, HighInteger, nil, false); end else begin a := Add(rec, path, true);Result := ElementByIndex(a, 0);end;end;");
@@ -71,71 +91,61 @@ namespace Undaunted
 		int VertCount = 0;
 		int TriCount = 0;
 
-		int QuadSize = 64;
-		int corriderHeight = 6;
-
 		VertList createdVerts = VertList();
 		TriangleList createdTriangles = TriangleList();
-
-		for (int z = 0; z < currentMap.size; z++)
+		
+		for (int i = 0; i < currentMap.map.length; i++)
 		{
-			for (int x = 0; x < currentMap.size; x++)
+			Vert Vert1 = Vert(0, (currentMap.map.data[i].x * (QuadSize * 2)) - QuadSize, (currentMap.map.data[i].y * (QuadSize * 2)) - QuadSize, (currentMap.map.data[i].z * (QuadSize * corriderHeight)));
+			UInt32 Vert1Index = -1;
+			Vert1Index = createdVerts.Find(Vert1);
+			if (Vert1Index == -1)
 			{
-				for (int y = 0; y < currentMap.size; y++)
-				{
-//					currentMap.map[x][y][z];
-					Vert Vert1 = Vert(0, (x * (QuadSize * 2)) - QuadSize, (y * (QuadSize * 2)) - QuadSize, (z * (QuadSize * corriderHeight)));
-					UInt32 Vert1Index = -1;
-					Vert1Index = createdVerts.Find(Vert1);
-					if (Vert1Index == -1)
-					{
-						Vert1.index = VertCount++;
-						AddVertex(Vert1);
-						Vert1Index = Vert1.index;
-						createdVerts.AddItem(Vert1);
-					}
-
-					Vert Vert2 = Vert(0, (x * (QuadSize * 2)) + QuadSize, (y * (QuadSize * 2)) - QuadSize, (z * (QuadSize * corriderHeight)));
-					UInt32 Vert2Index = -1;
-					Vert2Index = createdVerts.Find(Vert2);
-					if (Vert2Index == -1)
-					{
-						Vert2.index = VertCount++;
-						AddVertex(Vert2);
-						Vert2Index = Vert2.index;
-						createdVerts.AddItem(Vert2);
-					}
-
-					Vert Vert3 = Vert(0, (x * (QuadSize * 2)) + QuadSize, (y * (QuadSize * 2)) + QuadSize, (z * (QuadSize * corriderHeight)));
-					UInt32 Vert3Index = -1;
-					Vert3Index = createdVerts.Find(Vert3);
-					if (Vert3Index == -1)
-					{
-						Vert3.index = VertCount++;
-						AddVertex(Vert3);
-						Vert3Index = Vert3.index;
-						createdVerts.AddItem(Vert3);
-					}
-
-					Vert Vert4 = Vert(0, (x * (QuadSize * 2)) - QuadSize, (y * (QuadSize * 2)) + QuadSize, (z * (QuadSize * corriderHeight)));
-					UInt32 Vert4Index = -1;
-					Vert4Index = createdVerts.Find(Vert4);
-					if (Vert4Index == -1)
-					{
-						Vert4.index = VertCount++;
-						AddVertex(Vert4);
-						Vert4Index = Vert4.index;
-						createdVerts.AddItem(Vert4);
-					}
-
-					Triangle tri1 = Triangle(TriCount++, Vert1Index, Vert2Index, Vert3Index, -1, -1, -1);
-					createdTriangles.AddItem(tri1);
-
-					Triangle tri2 = Triangle(TriCount++, Vert1Index, Vert4Index, Vert3Index, -1, -1, -1);
-					createdTriangles.AddItem(tri2);
-
-				}
+				Vert1.index = VertCount++;
+				AddVertex(Vert1);
+				Vert1Index = Vert1.index;
+				createdVerts.AddItem(Vert1);
 			}
+
+			Vert Vert2 = Vert(0, (currentMap.map.data[i].x * (QuadSize * 2)) + QuadSize, (currentMap.map.data[i].y * (QuadSize * 2)) - QuadSize, (currentMap.map.data[i].z * (QuadSize * corriderHeight)));
+			UInt32 Vert2Index = -1;
+			Vert2Index = createdVerts.Find(Vert2);
+			if (Vert2Index == -1)
+			{
+				Vert2.index = VertCount++;
+				AddVertex(Vert2);
+				Vert2Index = Vert2.index;
+				createdVerts.AddItem(Vert2);
+			}
+
+			Vert Vert3 = Vert(0, (currentMap.map.data[i].x * (QuadSize * 2)) + QuadSize, (currentMap.map.data[i].y * (QuadSize * 2)) + QuadSize, (currentMap.map.data[i].z * (QuadSize * corriderHeight)));
+			UInt32 Vert3Index = -1;
+			Vert3Index = createdVerts.Find(Vert3);
+			if (Vert3Index == -1)
+			{
+				Vert3.index = VertCount++;
+				AddVertex(Vert3);
+				Vert3Index = Vert3.index;
+				createdVerts.AddItem(Vert3);
+			}
+
+			Vert Vert4 = Vert(0, (currentMap.map.data[i].x * (QuadSize * 2)) - QuadSize, (currentMap.map.data[i].y * (QuadSize * 2)) + QuadSize, (currentMap.map.data[i].z * (QuadSize * corriderHeight)));
+			UInt32 Vert4Index = -1;
+			Vert4Index = createdVerts.Find(Vert4);
+			if (Vert4Index == -1)
+			{
+				Vert4.index = VertCount++;
+				AddVertex(Vert4);
+				Vert4Index = Vert4.index;
+				createdVerts.AddItem(Vert4);
+			}
+
+			Triangle tri1 = Triangle(TriCount++, Vert1Index, Vert2Index, Vert3Index, -1, -1, -1);
+			createdTriangles.AddItem(tri1);
+
+			Triangle tri2 = Triangle(TriCount++, Vert1Index, Vert4Index, Vert3Index, -1, -1, -1);
+			createdTriangles.AddItem(tri2);
+
 		}
 		//Join the triangles
 		for (int i = 0; i < createdTriangles.length; i++)
@@ -154,6 +164,24 @@ namespace Undaunted
 		_MESSAGE("end;end.");
 		gLog.OpenRelative(CSIDL_MYDOCUMENTS, "\\My Games\\Skyrim Special Edition\\SKSE\\Undaunted.log");
 	}
+
+	void MarkTile(float x, float y, float z)
+	{
+		//(size / 2) * (QuadSize * 2))
+		//(QuadSize * 2)
+		x = x / (QuadSize * 2);
+		y = y / (QuadSize * 2);
+		z = z / (QuadSize * 2);
+
+		int mapx = x; 
+		int mapy = y;
+		int mapz = z;
+		if (currentMap.map.Find(mapx, mapy, mapz) == 0)
+		{
+			currentMap.map.AddItem(Tile(mapx, mapy, mapz, 1));
+		}
+	}
+
 	VertList* VertList::AddItem(Vert item)
 	{
 		VertList* currentlist = this;
@@ -241,5 +269,37 @@ namespace Undaunted
 			}
 		}
 		return -1;
+	}
+
+	TileList* TileList::AddItem(Tile item)
+	{
+		TileList* currentlist = this;
+		TileList newlist = TileList();
+		newlist.length = currentlist->length + 1;
+		newlist.data = new Tile[newlist.length];
+		for (int i = 0; i < currentlist->length; i++)
+		{
+			newlist.data[i] = currentlist->data[i];
+		}
+		newlist.data[currentlist->length] = item;
+		currentlist->data = newlist.data;
+		currentlist->length = newlist.length;
+		return currentlist;
+	}
+
+	
+	int TileList::Find(int x, int y, int z)
+	{
+		TileList* currentlist = this;
+		for (int i = 0; i < currentlist->length; i++)
+		{
+			if (currentlist->data[i].x == x &&
+				currentlist->data[i].y == y &&
+				currentlist->data[i].z == z)
+			{
+				return currentlist->data[i].value;
+			}
+		}
+		return 0;
 	}
 }

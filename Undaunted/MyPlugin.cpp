@@ -71,6 +71,7 @@ namespace Undaunted {
 			dataHandler->modList.loadedMods.GetNthItem(i, mod);
 			_MESSAGE("Listing Mods: %s ", mod->name);
 		}
+		InitNavmesh();
 		LoadSettings();
 		LoadGroups();
 		ShuffleGroupLibary();

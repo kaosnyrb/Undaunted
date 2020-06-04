@@ -2,10 +2,34 @@ namespace Undaunted
 {
 #ifndef NavMeshTool
 #define NavMeshTool
+	class Tile {
+	public:
+		int x;
+		int y;
+		int z;
+		int value;
+		Tile(int _x, int _y, int _z, int _value)
+		{
+			x = _x;
+			y = _y;
+			z = _z;
+			value = _value;
+		}
+		Tile(){}
+	};
+	class TileList {
+	public:
+		Tile* data;
+		int length;
+		TileList* AddItem(Tile item);
+		int Find(int x, int y, int z);
+	};
+
 	class TileMap {
 	public:
-		int size = 8;
-		int map[8][8][8];		
+		int size = 4096;
+		int height = 256;
+		TileList map;
 	};
 
 	class Vert {
@@ -59,7 +83,8 @@ namespace Undaunted
 		UInt32 FindNeighbours(Triangle item, int edge);
 	};
 
-
+	void InitNavmesh();
 	void ExportNavmesh();
+	void MarkTile(float x, float y, float z);
 #endif
 }
