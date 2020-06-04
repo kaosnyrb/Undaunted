@@ -143,9 +143,9 @@ namespace Undaunted
 		//Join the triangles
 		for (int i = 0; i < createdTriangles.length; i++)
 		{
-			createdTriangles.data[i].edge1 = createdTriangles.FindNeighbours(createdTriangles.data[i], 1);
-			createdTriangles.data[i].edge2 = createdTriangles.FindNeighbours(createdTriangles.data[i], 2);
-			createdTriangles.data[i].edge3 = createdTriangles.FindNeighbours(createdTriangles.data[i], 3);
+			createdTriangles.data[i].edge1 = createdTriangles.FindNeighbours(createdTriangles.data[i], 1, createdVerts);
+			createdTriangles.data[i].edge2 = createdTriangles.FindNeighbours(createdTriangles.data[i], 2, createdVerts);
+			createdTriangles.data[i].edge3 = createdTriangles.FindNeighbours(createdTriangles.data[i], 3, createdVerts);
 		}
 
 		//Save the triangles
@@ -246,7 +246,7 @@ namespace Undaunted
 		Edge 2	uint16	Index within this list of the triangle that neighbors the second edge (vertex 1 to vertex 2)
 		Edge 3	uint16	Index within this list of the triangle that neighbors the third edge (vertex 2 to vertex 1)
 	*/
-	UInt32 TriangleList::FindNeighbours(Triangle item, int edge)
+	UInt32 TriangleList::FindNeighbours(Triangle item, int edge, VertList vlist)
 	{
 		TriangleList* currentlist = this;
 		if (edge == 1 || edge == 2)
@@ -256,8 +256,17 @@ namespace Undaunted
 				//Don't join with yourself.
 				if (currentlist->data[i].index != item.index)
 				{
-					if (currentlist->data[i].vert1 == item.vert2 &&
-						currentlist->data[i].vert2 == item.vert3)
+					Vert t1v1 = vlist.FindIndex(currentlist->data[i].vert1);
+					Vert t1v2 = vlist.FindIndex(currentlist->data[i].vert2);
+					Vert t1v3 = vlist.FindIndex(currentlist->data[i].vert3);
+
+					Vert t2v1 = vlist.FindIndex(item.vert1);
+					Vert t2v2 = vlist.FindIndex(item.vert2);
+					Vert t2v3 = vlist.FindIndex(item.vert3);
+
+					//South / West?
+					if (t1v1.x == t2v2.x && t1v1.y == t2v2.y && 
+						t1v2.x == t2v3.x && t1v2.y == t2v3.y )
 					{
 						return currentlist->data[i].index;
 					}
@@ -268,12 +277,19 @@ namespace Undaunted
 		{
 			for (int i = 0; i < currentlist->length; i++)
 			{
+				Vert t1v1 = vlist.FindIndex(currentlist->data[i].vert1);
+				Vert t1v2 = vlist.FindIndex(currentlist->data[i].vert2);
+				Vert t1v3 = vlist.FindIndex(currentlist->data[i].vert3);
+
+				Vert t2v1 = vlist.FindIndex(item.vert1);
+				Vert t2v2 = vlist.FindIndex(item.vert2);
+				Vert t2v3 = vlist.FindIndex(item.vert3);
 				//Don't join with yourself.
 				if (currentlist->data[i].index != item.index)
 				{
 					//Inner
-					if (currentlist->data[i].vert1 == item.vert1 &&
-						currentlist->data[i].vert3 == item.vert3)
+					if (t1v1.x == t2v1.x && t2v1.y == t2v1.y &&
+						t1v3.x == t2v3.x && t1v3.y == t2v3.y)
 					{
 						return currentlist->data[i].index;
 					}

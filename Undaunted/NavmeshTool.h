@@ -82,7 +82,7 @@ namespace Undaunted
 		Triangle* data;
 		int length;
 		TriangleList* AddItem(Triangle item);
-		UInt32 FindNeighbours(Triangle item, int edge);
+		UInt32 FindNeighbours(Triangle item, int edge, VertList vlist);
 	};
 
 	void InitNavmesh();
