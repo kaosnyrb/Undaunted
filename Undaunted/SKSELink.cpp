@@ -1,4 +1,5 @@
 #include "SKSELink.h"
+#include <Undaunted\WorldCellList.h>
 
 //Big shout out to https://github.com/mwilsnd for his project https://github.com/mwilsnd/SkyrimSE-SmoothCam which helped amazingly with the address lib stuff!
 

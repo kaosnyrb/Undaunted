@@ -9,4 +9,7 @@ namespace Undaunted
 	void LoadGroups();
 
 	void LoadRifts();
+
+	void LoadBlocks();
+
 }

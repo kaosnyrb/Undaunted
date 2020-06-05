@@ -21,6 +21,19 @@ namespace Undaunted
 		return spawned;
 	}
 
+	TESObjectREFR* SpawnRefAtPosition(UInt32 Type, WorldCell wcell, NiPoint3 Position)
+	{
+		TESForm* spawnForm = LookupFormByID(Type);
+		if (spawnForm == NULL)
+		{
+			_MESSAGE("Failed to Spawn. Form Invalid: %08X", Type);
+			return NULL;
+		}
+		TESObjectREFR* spawned = PlaceAtMe(BountyManager::getInstance()->_registry, 1, GetPlayer(), spawnForm, 1, true, false);
+		//MoveRefToWorldCell(spawned, wcell.cell, wcell.world, Position, NiPoint3(0, 0, 0));
+		return spawned;
+	}
+
 	TESObjectREFR* SpawnMonsterInCell(VMClassRegistry* registry, UInt32 Type, WorldCell wcell)
 	{
 		TESForm* spawnForm = LookupFormByID(Type);

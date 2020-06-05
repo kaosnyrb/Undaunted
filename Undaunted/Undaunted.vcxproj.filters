@@ -53,6 +53,9 @@
     <ClCompile Include="NavMeshTool.cpp">
       <Filter>NavmeshUtil</Filter>
     </ClCompile>
+    <ClCompile Include="BlockLibary.cpp">
+      <Filter>Collections</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyPlugin.h" />
@@ -120,6 +123,9 @@
     </ClInclude>
     <ClInclude Include="NavmeshTool.h">
       <Filter>NavmeshUtil</Filter>
+    </ClInclude>
+    <ClInclude Include="BlockLibary.h">
+      <Filter>Collections</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

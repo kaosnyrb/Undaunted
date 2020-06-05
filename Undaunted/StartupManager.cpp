@@ -6,6 +6,7 @@
 #include <string>
 #include <Undaunted\FormRefList.h>
 #include <Undaunted\LocationUtils.h>
+#include <Undaunted\NavmeshTool.h>
 
 namespace Undaunted {
 	RSJresource currentfile;
@@ -113,6 +114,72 @@ namespace Undaunted {
 					reflist.AddItem(formref);
 				}
 				AddRift(reflist);
+			}
+		}
+	}
+
+	void LoadBlocks()
+	{
+		DataHandler* dataHandler = GetDataHandler();
+		_MESSAGE("Loading Blocks...");
+		std::string path = "Data/Undaunted/Blocks";
+		for (const auto& entry : std::filesystem::directory_iterator(path))
+		{
+			auto filename = entry.path().u8string();
+			_MESSAGE("file: %s", filename.c_str());
+			if (entry.is_regular_file())
+			{
+				LoadJson(filename.c_str());
+				RSJresource settings = currentfile;
+				auto data = settings.as_array();
+				_MESSAGE("size: %i", data.size());
+				auto forms = data[0].as_array();
+				_MESSAGE("size: %i", forms.size());
+				FormRefList reflist = FormRefList();
+				for (int j = 0; j < forms.size(); j++)
+				{
+					std::string esp = forms[j][0].as<std::string>("esp");
+					const ModInfo* modInfo = dataHandler->LookupModByName(esp.c_str());
+					int form = forms[j][1].as<int>(0);
+					if (modInfo != NULL)
+					{
+						form = (modInfo->modIndex << 24) + form;
+					}
+					double xpos = forms[j][2].as<double>();
+					double ypos = forms[j][3].as<double>();
+					double zpos = forms[j][4].as<double>();
+					double xrot = forms[j][5].as<double>();
+					double yrot = forms[j][6].as<double>();
+					double zrot = forms[j][7].as<double>();
+					int scale = forms[j][8].as<int>();
+					_MESSAGE("Block: %s, %i", esp.c_str(), form);
+					FormRef ref = FormRef();
+					ref.formId = form;
+					ref.pos = NiPoint3(xpos, ypos, zpos);
+					ref.rot = NiPoint3(xrot, yrot, zrot);
+					ref.scale = scale;
+				}
+				auto nav = data[1].as_array();
+				TileList navlist = TileList();
+				for (int j = 0; j < nav.size(); j++)
+				{
+					int xpos = forms[j][0].as<int>();
+					int ypos = forms[j][1].as<int>();
+					int zpos = forms[j][2].as<int>();
+					Tile tile = Tile(xpos, ypos, zpos, 1);
+					navlist.AddItem(tile);
+				}
+				auto exits = data[2].as_array();
+				TileList exitslist = TileList();
+				for (int j = 0; j < exits.size(); j++)
+				{
+					int xpos = forms[j][0].as<int>();
+					int ypos = forms[j][1].as<int>();
+					int zpos = forms[j][2].as<int>();
+					Tile tile = Tile(xpos, ypos, zpos, 1);
+					exitslist.AddItem(tile);
+				}
+
 			}
 		}
 	}

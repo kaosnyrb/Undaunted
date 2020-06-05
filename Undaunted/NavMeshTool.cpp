@@ -1,5 +1,6 @@
 #include "NavmeshTool.h"
 #include "SKSELink.h"
+#include <Undaunted\SpawnUtils.h>
 namespace Undaunted
 {
 	std::string floattostring(float value)
@@ -57,8 +58,8 @@ namespace Undaunted
 	// I believe this is due to us not setting up the NavMeshGrid in the code, howeer making any change in the CK and saving it generates it.
 	// Doing a balance for optimisation seems to work pretty well.
 	TileMap currentMap;
-	int QuadSize = 80;
-	int corriderHeight = 128;
+	int QuadSize = 128;
+	int corriderHeight = 256;
 	
 	void InitNavmesh()
 	{
@@ -169,9 +170,16 @@ namespace Undaunted
 		int mapx = x; 
 		int mapy = y;
 		int mapz = z;
+
+
 		if (currentMap.map.Find(mapx, mapy, z) == 0)
 		{
 			currentMap.map.AddItem(Tile(mapx, mapy, z, 1));
+
+			//WorldCell wc = WorldCell();
+			//wc.cell = Undaunted::GetPlayer()->parentCell;
+			//wc.world = Undaunted::GetPlayer()->currentWorldSpace;
+			//SpawnRefAtPosition(0x000B8A62, wc, NiPoint3(mapx, mapy, mapz));
 		}
 		_MESSAGE("PlayerPos %f, %f, %f", x,y,z);
 		_MESSAGE("currentMapPos %i, %i, %i", mapx, mapy, mapz);

@@ -76,6 +76,7 @@ namespace Undaunted {
 		LoadGroups();
 		ShuffleGroupLibary();
 		LoadRifts();
+		LoadBlocks();
 		BuildWorldList();
 		InitBakedRiftStartMarkers();
 		SetPlayerLevel(playerLevel);
