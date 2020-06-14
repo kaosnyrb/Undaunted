@@ -3,22 +3,13 @@
 #include <algorithm>
 #include <string>
 #include "UnStringList.h"
-#include <Undaunted\NavmeshTool.h>
 
 namespace Undaunted {
-
-	void hook_CaptureArea(StaticFunctionTag* base) {
-		//Create a SSE Edit script to recreate the current cell.
-		CaptureArea();
-	}
-
-
 	UInt32 hook_CreateBounty(StaticFunctionTag* base) {
 		int result = BountyManager::getInstance()->activebounties.length;
 		_MESSAGE("hook_CreateBounty result: %08X", result);
 		Bounty newBounty = Bounty();
 		BountyManager::getInstance()->activebounties.AddItem(newBounty);
-		ExportNavmesh();
 		return result;
 	}
 
@@ -71,12 +62,9 @@ namespace Undaunted {
 			dataHandler->modList.loadedMods.GetNthItem(i, mod);
 			_MESSAGE("Listing Mods: %s ", mod->name);
 		}
-		InitNavmesh();
 		LoadSettings();
 		LoadGroups();
 		ShuffleGroupLibary();
-		LoadRifts();
-		LoadBlocks();
 		BuildWorldList();
 		InitBakedRiftStartMarkers();
 		SetPlayerLevel(playerLevel);
@@ -432,17 +420,6 @@ namespace Undaunted {
 		return NULL;
 	}
 
-	void hook_CaptureNavTile(StaticFunctionTag* base)
-	{
-		_MESSAGE("hook_CaptureNavTile");
-		MarkTile(GetPlayer()->pos.x, GetPlayer()->pos.y, GetPlayer()->pos.z);
-	}
-
-	void hook_ExportNavMesh(StaticFunctionTag* base)
-	{
-		_MESSAGE("hook_ExportNavMesh");
-		ExportNavmesh();
-	}
 
 	bool RegisterFuncs(VMClassRegistry* registry) {
 
@@ -560,17 +537,6 @@ namespace Undaunted {
 
 		registry->RegisterFunction(
 			new NativeFunction1 <StaticFunctionTag, TESObjectREFR*, UInt32>("SpawnMonsterInCell", "Undaunted_SystemScript", Undaunted::hook_SpawnMonsterInCell, registry));
-
-		registry->RegisterFunction(
-			new NativeFunction0 <StaticFunctionTag, void>("CaptureArea", "Undaunted_SystemScript", Undaunted::hook_CaptureArea, registry));
-
-		//Navmesh
-		registry->RegisterFunction(
-			new NativeFunction0 <StaticFunctionTag, void>("CaptureNavTile", "Undaunted_SystemScript", Undaunted::hook_CaptureNavTile, registry));
-
-		registry->RegisterFunction(
-			new NativeFunction0 <StaticFunctionTag, void>("ExportNavMesh", "Undaunted_SystemScript", Undaunted::hook_ExportNavMesh, registry));
-
 
 		return true;
 	}

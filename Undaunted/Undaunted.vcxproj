@@ -114,7 +114,6 @@
     <ClCompile Include="LocationUtils.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MyPlugin.cpp" />
-    <ClCompile Include="NavMeshTool.cpp" />
     <ClCompile Include="RefList.cpp" />
     <ClCompile Include="RewardUtils.cpp" />
     <ClCompile Include="RiftList.cpp" />
@@ -145,7 +144,6 @@
     <ClInclude Include="ListLibary.h" />
     <ClInclude Include="LocationUtils.h" />
     <ClInclude Include="MyPlugin.h" />
-    <ClInclude Include="NavmeshTool.h" />
     <ClInclude Include="RefList.h" />
     <ClInclude Include="RewardUtils.h" />
     <ClInclude Include="RiftList.h" />

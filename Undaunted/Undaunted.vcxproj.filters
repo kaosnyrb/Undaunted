@@ -50,9 +50,6 @@
     <ClCompile Include="RiftList.cpp">
       <Filter>Collections</Filter>
     </ClCompile>
-    <ClCompile Include="NavMeshTool.cpp">
-      <Filter>NavmeshUtil</Filter>
-    </ClCompile>
     <ClCompile Include="BlockLibary.cpp">
       <Filter>Collections</Filter>
     </ClCompile>
@@ -121,9 +118,6 @@
     <ClInclude Include="RiftList.h">
       <Filter>Collections</Filter>
     </ClInclude>
-    <ClInclude Include="NavmeshTool.h">
-      <Filter>NavmeshUtil</Filter>
-    </ClInclude>
     <ClInclude Include="BlockLibary.h">
       <Filter>Collections</Filter>
     </ClInclude>
@@ -143,9 +137,6 @@
     </Filter>
     <Filter Include="addresslib">
       <UniqueIdentifier>{c5b3a7d2-ed50-4b84-af74-457a7bc5f9f0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="NavmeshUtil">
-      <UniqueIdentifier>{5a62b6ed-46f1-4521-a801-7675ed02854e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
