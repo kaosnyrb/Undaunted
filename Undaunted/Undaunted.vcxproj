@@ -103,7 +103,6 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="BlockLibary.cpp" />
     <ClCompile Include="BountyList.cpp" />
     <ClCompile Include="BountyManager.cpp" />
     <ClCompile Include="ConfigUtils.cpp" />
@@ -133,7 +132,6 @@
     <ClInclude Include="addrlib\relocation.h" />
     <ClInclude Include="addrlib\skse_macros.h" />
     <ClInclude Include="addrlib\versiondb.h" />
-    <ClInclude Include="BlockLibary.h" />
     <ClInclude Include="BountyList.h" />
     <ClInclude Include="BountyManager.h" />
     <ClInclude Include="ConfigUtils.h" />

@@ -50,9 +50,6 @@
     <ClCompile Include="RiftList.cpp">
       <Filter>Collections</Filter>
     </ClCompile>
-    <ClCompile Include="BlockLibary.cpp">
-      <Filter>Collections</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyPlugin.h" />
@@ -116,9 +113,6 @@
       <Filter>Collections</Filter>
     </ClInclude>
     <ClInclude Include="RiftList.h">
-      <Filter>Collections</Filter>
-    </ClInclude>
-    <ClInclude Include="BlockLibary.h">
       <Filter>Collections</Filter>
     </ClInclude>
   </ItemGroup>

@@ -411,6 +411,16 @@ namespace Undaunted {
 		}
 		_MESSAGE("Spawning groups at each Rift Battle Marker");
 		int spawnradius = GetConfigValueInt("BountyEnemyInteriorSpawnRadius");
+
+		for (int i = 0; i < 2; i++)
+		{
+			GroupList riftlist = GetRandomTaggedGroup("RIFT");
+			for (int j = 0; j < riftlist.length; j++)
+			{
+				SpawnMonsterInCell(BountyManager::getInstance()->_registry, riftlist.data[j].FormId, wcell);
+			}
+		}
+		
 		for (int i = 0; i < RiftBattleMarkers.length; i++)
 		{
 			GroupList riftlist = GetRandomTaggedGroup("RIFT");
