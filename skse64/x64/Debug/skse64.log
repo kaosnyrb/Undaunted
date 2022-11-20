@@ -1,9 +1,5 @@
 ﻿  Using triplet "x64-windows" from "C:\git\vcpkg-master\installed\x64-windows\"
-  CustomMenu.cpp
-  PapyrusFaction.cpp
-  skse64.cpp
-  Translation.cpp
-  Generating Code...
+  GameData.cpp
   skse64.vcxproj -> C:\git\Undaunted\x64\Debug\skse64_1_5_97.lib
   Installing DLL...
           1 file(s) copied.

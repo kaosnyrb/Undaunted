@@ -111,10 +111,16 @@ extern "C"	{
 		_MESSAGE("Loading Undaunted..");
 
 		g_papyrus = (SKSEPapyrusInterface *)skse->QueryInterface(kInterface_Papyrus);
-		g_messageInterface->RegisterListener(g_pluginHandle, "SKSE", SKSEMessageReceptor);
+		_MESSAGE("g_papyrus");
+
+		//TODO FIX
+		//g_messageInterface->RegisterListener(g_pluginHandle, "SKSE", SKSEMessageReceptor);
 		//Check if the function registration was a success...
+		_MESSAGE("RegisterListener");
+
 		bool btest = g_papyrus->Register(Undaunted::RegisterFuncs);
-		
+		_MESSAGE("g_papyrus->Register");
+
 
 		Undaunted::GetDataHandler();
 		Undaunted::GetPlayer();
@@ -122,7 +128,7 @@ extern "C"	{
 		if (btest) {
 			_MESSAGE("Register Succeeded");
 		}
-
+		_MESSAGE("SKSEPlugin_Load Succeeded");
 		return true;
 	}
 };

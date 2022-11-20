@@ -61,6 +61,7 @@ namespace Undaunted
 
 		for (UInt32 i = 0; i < Types.length; i++)
 		{
+			_MESSAGE("Calling LookupFormByID");
 			TESForm* spawnForm = LookupFormByID(Types.data[i].FormId);
 			if (spawnForm == NULL)
 			{

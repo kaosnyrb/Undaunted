@@ -3,19 +3,21 @@
 
 //Big shout out to https://github.com/mwilsnd for his project https://github.com/mwilsnd/SkyrimSE-SmoothCam which helped amazingly with the address lib stuff!
 
-Undaunted::RelocAddr<_PlaceAtMe_Native> PlaceAtMerec(0x009951F0);
+//Undaunted::RelocAddr<_PlaceAtMe_Native> PlaceAtMerec(0x009951F0);
 
-Undaunted::RelocPtr<PlayerCharacter*> thePlayer(0x02F26EF8);
+//Undaunted::RelocPtr<PlayerCharacter*> thePlayer(0x02F26EF8);
 
-Undaunted::RelocPtr <DataHandler*> dataHandler(0x01EBE428);
+//Undaunted::RelocPtr <DataHandler*> dataHandler(0x01EBE428);
 
-Undaunted::RelocAddr<_MoveRefrToPosition> MoveReffunc(0x009AE5C0);
+//Undaunted::RelocAddr<_MoveRefrToPosition> MoveReffunc(0x009AE5C0);
 
-Undaunted::RelocAddr <_LookupFormByID> FormByID(0x00194230);
+//Undaunted::RelocAddr <_LookupFormByID> FormByID(0x00194230);
+
+RelocAddr <_LookupFormByID> LookupFormByIDNATIVE(0x001A0D70);
 
 
 DataHandler* Undaunted::GetDataHandler() {
-	return *dataHandler;
+	return *(g_dataHandler.GetPtr());
 }
 
 BSFixedString Undaunted::GetCurrentWorldspaceName()
@@ -27,24 +29,30 @@ BSFixedString Undaunted::GetCurrentWorldspaceName()
 
 PlayerCharacter* Undaunted::GetPlayer()
 {
-	return *thePlayer;
+	return *g_thePlayer;
 }
 
 TESObjectREFR* Undaunted::PlaceAtMe(VMClassRegistry* registry, int count, TESObjectREFR* ref, TESForm* spawnForm, int something, bool ForcePersist, bool InitiallyDisabled)
 {
-	return PlaceAtMerec(registry, count, ref, spawnForm, 1, ForcePersist, InitiallyDisabled);
+	return PlaceAtMe_Native(registry, count, ref, spawnForm, 1, ForcePersist, InitiallyDisabled);
 }
 
 void Undaunted::MoveRef(TESObjectREFR* object, TESObjectCELL* cell, TESWorldSpace* worldspace, NiPoint3 pos, NiPoint3 rot)
 {
 	UInt32 nullHandle = *g_invalidRefHandle;
-	MoveReffunc(object, &nullHandle, cell, worldspace, &pos, &rot);
+	MoveRefrToPosition(object, &nullHandle, cell, worldspace, &pos, &rot);
 }
 
 TESForm* Undaunted::LookupFormByID(UInt32 id)
 {
-	return FormByID(id);
+	return LookupFormByIDNATIVE(id);
 }
+bool Offsets::Initialize() {
+	return true;
+}
+
+
+/*
 
 static VersionDb db;
 
@@ -53,9 +61,7 @@ VersionDb Offsets::GetDB()
 	return db;
 }
 
-bool Offsets::Initialize() {
-	return db.Load();
-}
+
 
 constexpr uintptr_t Offsets::GetByVersionAddr(uintptr_t addr) {
 	return addrMap.at(addr);
@@ -78,3 +84,4 @@ void Offsets::DumpDatabaseTextFile() {
 	GetDB().Dump("offsets.txt");
 }
 #endif
+*/
