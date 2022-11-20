@@ -128,14 +128,9 @@
     <None Include="RSJparser.tcc" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="addrlib\offsets.h" />
-    <ClInclude Include="addrlib\relocation.h" />
-    <ClInclude Include="addrlib\skse_macros.h" />
-    <ClInclude Include="addrlib\versiondb.h" />
     <ClInclude Include="BountyList.h" />
     <ClInclude Include="BountyManager.h" />
     <ClInclude Include="ConfigUtils.h" />
-    <ClInclude Include="eternal.hpp" />
     <ClInclude Include="FormRefList.h" />
     <ClInclude Include="GroupList.h" />
     <ClInclude Include="IntList.h" />

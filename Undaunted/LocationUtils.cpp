@@ -371,11 +371,8 @@ namespace Undaunted {
 
 	void InitBakedRiftStartMarkers()
 	{
-		_MESSAGE("Finding all Rift Start Markers");
-		/*
-		TODO
-		FIX
 
+		_MESSAGE("Finding all Rift Start Markers");
 		RiftStartMarkers = RefList();
 		DataHandler* dataHandler = GetDataHandler();
 		const ModInfo* modInfo = dataHandler->LookupModByName("Undaunted.esp");
@@ -386,7 +383,7 @@ namespace Undaunted {
 		}
 		UInt32 FormId = (modInfo->modIndex << 24) + 915120; //040DF6B0 - 01_Undaunted_RiftEnteranceMarker
 		_MESSAGE("FormId: %08X", FormId);
-		auto cellcount = *GetDataHandler()->cellList;
+		auto cellcount = GetDataHandler()->cellList.m_size;
 		_MESSAGE("cellcount: %08X", cellcount);
 		for (int i = 0; i < cellcount; i++)
 		{
@@ -410,7 +407,6 @@ namespace Undaunted {
 			}
 		}
 		ShuffleBakedRifts();
-		*/
 	}
 
 

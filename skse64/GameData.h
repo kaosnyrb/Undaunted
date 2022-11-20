@@ -327,8 +327,8 @@ public:
 	UnkFormArray						arrVOLI;	// Form Type 137
 
 	TESRegionList						* regionList;	// D00
-//	NiTArray<TESObjectCELL*>			cellList;		// D08
-	UInt64								cellList[0x3];	// D08														
+	NiTArray<TESObjectCELL*>			cellList;		// D08
+//	UInt64								cellList[0x3];	// D08														
 //	NiTArray<BGSAddonNode*>				addonNodes;		// D20
 	UInt64								addonNodes[0x3]; // D20
 
