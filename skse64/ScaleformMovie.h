@@ -11,6 +11,14 @@ public:
 	GFxMovieView();
 	virtual ~GFxMovieView();
 
+	enum ScaleModeType
+	{
+		kNoScale,	// The size of SWF content is fixed
+		kShowAll,	// Makes the entire SWF content visible in the viewport without distortion while maintaining the original aspect ratio
+		kExactFit,	// Makes the entire SWF content visible in the viewport without trying to preserve the original aspect ratio
+		kNoBorder	// Scales the SWF content to fill whole viewport area, without distortion but possibly with some cropping while maintaining original aspect ratio
+	};
+
 	virtual UInt32	Unk_01(void);
 	virtual UInt32	Unk_02(void);
 	virtual UInt32	Unk_03(void);

@@ -1,9 +1,10 @@
 #include "ObScript.h"
 #include "skse64_common\Relocation.h"
 
-// 698845F80EE915EE803E515A37C1269ED6A2FE43+47
-RelocPtr <ObScriptCommand>	g_firstObScriptCommand(0x01DB8910);
-// 698845F80EE915EE803E515A37C1269ED6A2FE43+1E
-RelocPtr <ObScriptCommand>	g_firstConsoleCommand(0x01DC6F60);
+// B0061DDA35158B8956EF9CFBDD3D63C5B4C96A8D+33
+RelocPtr <ObScriptCommand>	g_firstObScriptCommand(0x01E4BA10);
+// B0061DDA35158B8956EF9CFBDD3D63C5B4C96A8D+F
+RelocPtr <ObScriptCommand>	g_firstConsoleCommand(0x01E5A060);
 
-RelocAddr<_ObScript_ExtractArgs> ObjScript_ExtractArgs(0x002E8400);
+// 42E5B9018CCF84B813403067F1D963D8C753ED8D+4C
+RelocAddr <_ObScript_ExtractArgs> ObScript_ExtractArgs(0x002FE790);

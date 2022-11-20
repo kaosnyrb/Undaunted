@@ -234,7 +234,7 @@ namespace papyrusNetImmerse
 		NiAVObject	* object = ResolveNode(obj, nodeName, firstPerson);
 		if(object && inArray.Length() == 3) {
 			float heading, attitude, bank;
-			object->m_localTransform.rot.GetEulerAngles(&heading, &attitude, &bank);
+			object->m_worldTransform.rot.GetEulerAngles(&heading, &attitude, &bank);
 
 			// Radians to degrees
 			heading *= 180 / MATH_PI;

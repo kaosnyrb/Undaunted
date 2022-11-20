@@ -12,7 +12,7 @@
 
 namespace Serialization
 {
-	const char * kSavegamePath = "\\My Games\\Skyrim Special Edition\\";
+	const char * kSavegamePath = "\\My Games\\SAVE_FOLDER_NAME\\";
 
 	// file format internals
 
@@ -280,7 +280,6 @@ namespace Serialization
 	bool ResolveFormId(UInt32 formId, UInt32 * formIdOut)
 	{
 		UInt32	modID = formId >> 24;
-
 		if (modID == 0xFF)
 		{
 			*formIdOut = formId;
@@ -308,8 +307,7 @@ namespace Serialization
 
 	bool ResolveHandle(UInt64 handle, UInt64 * handleOut)
 	{
-		UInt8	modID = handle >> 24;
-
+		UInt32	modID = (handle & 0xFF000000) >> 24;
 		if (modID == 0xFF)
 		{
 			*handleOut = handle;
@@ -346,6 +344,9 @@ namespace Serialization
 	void HandleSaveGlobalData(void)
 	{
 		_MESSAGE("creating co-save");
+
+		DeleteFile(s_savePath.c_str());
+
 		if(!s_currentFile.Create(s_savePath.c_str()))
 		{
 			_ERROR("HandleSaveGlobalData: couldn't create save file (%s)", s_savePath.c_str());
@@ -358,7 +359,7 @@ namespace Serialization
 			s_fileHeader.signature =		Header::kSignature;
 			s_fileHeader.formatVersion =	Header::kVersion;
 			s_fileHeader.skseVersion =		PACKED_SKSE_VERSION;
-			s_fileHeader.runtimeVersion = RUNTIME_VERSION_1_5_97;
+			s_fileHeader.runtimeVersion =	RUNTIME_VERSION;
 			s_fileHeader.numPlugins =		0;
 
 			s_currentFile.Skip(sizeof(s_fileHeader));

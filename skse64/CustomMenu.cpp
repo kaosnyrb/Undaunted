@@ -23,17 +23,17 @@ void CustomMenuCreator::SetSwfPath(const char* path)
 
 CustomMenu::CustomMenu(const char* swfPath)
 {
-	CALL_MEMBER_FN(GFxLoader::GetSingleton(), LoadMovie)(this, &view, swfPath, kType_PauseGame | kType_ShowCursor, 0.0);
+	CALL_MEMBER_FN(GFxLoader::GetSingleton(), LoadMovie)(this, &view, swfPath, GFxMovieView::ScaleModeType::kNoBorder, 0.0);
 
-	flags = 0x11;
+	flags = IMenu::kFlag_Modal | IMenu::kFlag_PausesGame;
 	unk0C = 0xA;
 	unk14 = 1;
 
 	if(!InputEventDispatcher::GetSingleton()->IsGamepadEnabled())
-		flags |= 0x404; // Shows the cursor when no gamepad is enabled
+		flags |= IMenu::kFlag_UpdateUsesCursor | IMenu::kFlag_UsesCursor; // Shows the cursor when no gamepad is enabled
 
 #ifdef _CUSTOMMENU_ITEMDISPLAY
-	flags |= 0x1000;
+	flags |= IMenu::kFlag_RendersOffscreenTargets;
 #endif
 }
 #ifdef _CUSTOMMENU_ITEMDISPLAY

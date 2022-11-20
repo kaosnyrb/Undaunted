@@ -39,12 +39,12 @@ class EventDispatcher
 
 	// Note: in SE there are multiple identical copies of all these functions 
 	MEMBER_FN_PREFIX(EventDispatcher);
-	// 66B1C7AC473D5EA48E4FD620BBFE0A06392C5885+66
-	DEFINE_MEMBER_FN(AddEventSink_Internal, void, 0x0056B600, SinkT * eventSink);
-	// ??_7BGSProcedureShoutExecState@@6B@ dtor | +43
-	DEFINE_MEMBER_FN(RemoveEventSink_Internal, void, 0x00423B70, SinkT * eventSink);
-	// D6BA7CEC95B2C2B9C593A9AEE7F0ADFFB2C10E11+456
-	DEFINE_MEMBER_FN(SendEvent_Internal, void, 0x00177DC0, EventArgT * evn);
+	// 9FCA8C7632C2FC6D6E342E554B43402121BC4E44+66
+	DEFINE_MEMBER_FN(AddEventSink_Internal, void, 0x0058F4E0, SinkT * eventSink);
+	// ??_7BGSProcedureShoutExecState@@6B@ xref +21 last call
+	DEFINE_MEMBER_FN(RemoveEventSink_Internal, void, 0x0043E990, SinkT * eventSink);
+	// FB59C2DDF89F5248DF43230E39A6FECF8C997BA6+466
+	DEFINE_MEMBER_FN(SendEvent_Internal, void, 0x001839D0, EventArgT * evn);
 
 public:
 
@@ -499,6 +499,11 @@ struct TESCellAttachDetachEvent
 	UInt8			attached;	// 08	- 01 - attached, 00 - detached
 };
 
+struct TESCellFullyLoadedEvent
+{
+	TESObjectCELL* cell;
+};
+
 struct TESMoveAttachDetachEvent
 {
 	TESObjectREFR * reference;	// 00
@@ -642,7 +647,7 @@ public:
 	EventDispatcher<void>								unk108;					//  108 - sink offset 020
 	EventDispatcher<void>								unk160;					//  160 - sink offset 028
 	EventDispatcher<TESCellAttachDetachEvent>			unk1B8;					//  1B8 - sink offset 030
-	EventDispatcher<void>								unk210;					//  210 - sink offset 038
+	EventDispatcher<TESCellFullyLoadedEvent>			unk210;					//  210 - sink offset 038
 	EventDispatcher<void>								unk2C0;					//  2C0 - sink offset 040
 	EventDispatcher<TESCombatEvent>						combatDispatcher;		//  318 - sink offset 048
 	EventDispatcher<TESContainerChangedEvent>			unk370;					//  370 - sink offset 050
@@ -655,7 +660,7 @@ public:
 	EventDispatcher<void>								unk5D8;					//  5D8 - sink offset 090
 	EventDispatcher<void>								unk630;					//  630 - sink offset 098
 	EventDispatcher<TESInitScriptEvent>					initScriptDispatcher;	//  688 - sink offset 0A0
-	EventDispatcher<void>								unk6E0;					//  6E0 - sink offset 0A8
+	EventDispatcher<TESLoadGameEvent>					loadGameEventDispatcher;//  6E0 - sink offset 0A8
 	EventDispatcher<void>								unk738;					//  738 - sink offset 0B0
 	EventDispatcher<void>								unk790;					//  790 - sink offset 0B8
 	EventDispatcher<void>								unk7E8;					//  7E8 - sink offset 0C0
@@ -685,12 +690,13 @@ public:
 	EventDispatcher<void>								unk1028;				// 1028 - sink offset 180
 	EventDispatcher<void>								unk1080;				// 1080 - sink offset 188
 	EventDispatcher<void>								unk10D8;				// 10D8 - sink offset 190
-	EventDispatcher<void>								unk1130;				// 1130 - sink offset 198
+	EventDispatcher<TESUniqueIDChangeEvent>				uniqueIdChangeDispatcher;				// 1130 - sink offset 198
 	EventDispatcher<void>								unk1188;				// 1188 - sink offset 200
 	EventDispatcher<void>								unk11E0;				// 11E0 - sink offset 208
 	EventDispatcher<void>								unk1238;				// 1238 - sink offset 210
-	EventDispatcher<TESUniqueIDChangeEvent>				uniqueIdChangeDispatcher;	// 1290 - sink offset 218
+	EventDispatcher<void>								unk1290;				// 1290 - sink offset 218
 };
+STATIC_ASSERT(offsetof(EventDispatcherList, uniqueIdChangeDispatcher) == 0x10D8);
 
 typedef EventDispatcherList*(*_GetEventDispatcherList)();
 extern RelocAddr<_GetEventDispatcherList> GetEventDispatcherList;

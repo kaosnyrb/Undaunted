@@ -6,7 +6,6 @@
 #include <string>
 #include <Undaunted\FormRefList.h>
 #include <Undaunted\LocationUtils.h>
-#include <Undaunted\NavmeshTool.h>
 
 namespace Undaunted {
 	RSJresource currentfile;

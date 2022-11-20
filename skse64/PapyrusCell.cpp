@@ -62,6 +62,17 @@ namespace papyrusCell
 
 		return thisCell->waterLevel;
 	}
+
+	float GetActualWaterLevel(TESObjectCELL * thisCell)
+	{
+		if (!thisCell)
+			return LONG_MIN;
+
+		if (thisCell->waterLevel == FLT_MAX && thisCell->worldSpace)
+			return thisCell->worldSpace->landData.defaultWaterHeight;
+
+		return thisCell->waterLevel;
+	}
 }
 
 #include "PapyrusVM.h"
@@ -77,4 +88,7 @@ void papyrusCell::RegisterFuncs(VMClassRegistry* registry)
 
 	registry->RegisterFunction(
 		new NativeFunction0 <TESObjectCELL, float>("GetWaterLevel", "Cell", papyrusCell::GetWaterLevel, registry));
+
+	registry->RegisterFunction(
+		new NativeFunction0 <TESObjectCELL, float>("GetActualWaterLevel", "Cell", papyrusCell::GetActualWaterLevel, registry));
 }

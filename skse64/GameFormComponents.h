@@ -20,6 +20,7 @@ class BGSVoiceType;
 class BGSEquipSlot;
 class Actor;
 class TESObjectARMO;
+class TESObjectARMA;
 class TESIdleForm;
 class BGSPerk;
 class ActorValueInfo;
@@ -31,6 +32,8 @@ class TESPackage;
 class BGSMusicTrackFormWrapper;
 class BGSImpactDataSet;
 class BGSMaterialType;
+class NiNode;
+class NiAVObject;
 
 //// root
 
@@ -471,7 +474,7 @@ public:
 	UInt32	unk0C;	// 0C - init'd to FFFFFFFF
 
 	MEMBER_FN_PREFIX(TESDescription);
-	DEFINE_MEMBER_FN(Get, void, 0x00190480, BSString * out, TESForm * parent, UInt32 fieldType);
+	DEFINE_MEMBER_FN(Get, void, 0x0019C890, BSString * out, TESForm * parent, UInt32 fieldType);
 };
 
 // 18 
@@ -712,14 +715,14 @@ public:
 	virtual ~ActorValueOwner();
 
 	// Argument is the ActorValue ID
-	virtual float	GetCurrent(UInt32 arg);
-	virtual float	GetMaximum(UInt32 arg);
-	virtual float	GetBase(UInt32 arg);
-	virtual void	SetBase(UInt32 arg0, float arg1);
-	virtual void	ModBase(UInt32 arg0, float arg1);
-	virtual void	Unk_06(UInt32 arg0, UInt32 arg1, UInt32 arg2); // Force/Mod AV?
-	virtual void	SetCurrent(UInt32 arg0, float arg1);
-	virtual bool	Unk_08(void);
+	virtual float	GetCurrent(UInt32 a_akValue);
+	virtual float	GetMaximum(UInt32 a_akValue);
+	virtual float	GetBase(UInt32 a_akValue);
+	virtual void	SetBase(UInt32 a_akValue, float a_value);
+	virtual void	ModBase(UInt32 a_akValue, float a_value);
+	virtual void	ModCurrent(UInt32 a_arg1, UInt32 a_akValue, float a_value);
+	virtual void	SetCurrent(UInt32 a_akValue, float a_value);
+	virtual bool	UsePCAVMult() const;
 
 	//	void	** _vtbl;	// 00
 };
@@ -1041,29 +1044,42 @@ public:
 	UInt32 ToARGB();
 };
 
-// ??
-class ActorWeightData
+// 2778
+class Biped : public BSIntrusiveRefCounted
 {
 public:
-	volatile SInt32	refCount;		// 00 - Refcount?
-	UInt32	pad04;		// 04
-	void	* unk08;	// 08
-	void	* unk10;	// 10
+	NiNode	* root;	// 08
 
-	MEMBER_FN_PREFIX(ActorWeightData);
-	DEFINE_MEMBER_FN(UpdateWeightData, void, 0x001C61A0);
-	DEFINE_MEMBER_FN(DeleteThis, void, 0x001C60A0);
+	struct Data
+	{
+		TESForm*				armor;			// 00 - Can be ARMO or ARMA
+		TESForm*				addon;			// 08 - Usually always ARMA
+		TESModelTextureSwap*	model;			// 10
+		BGSTextureSet*			textureSet;		// 18
+		NiAVObject*				object;			// 20
+		UInt64					unk28[(0x78 - 0x28) >> 3];
+	};
+	Data	unk10[42];		// 10
+	Data	unk13C0[42];	// 13C0
+	UInt32	handle;			// 2770
+	UInt32	unk2774;		// 2774
+
+	DEFINE_MEMBER_FN_0(UpdateWeightData, void, 0x001D3080);
+	DEFINE_MEMBER_FN_0(DeleteThis, void, 0x001D2F80);
 };
+STATIC_ASSERT(offsetof(Biped, unk10) == 0x10);
+STATIC_ASSERT(offsetof(Biped, unk13C0) == 0x13C0);
+STATIC_ASSERT(sizeof(Biped) == 0x2778);
 
 // ??
-class ActorWeightModel
+class BipedModel
 {
 public:
 	enum {
 		kWeightModel_Small = 0,
 		kWeightModel_Large = 1
 	};
-	ActorWeightData * weightData;
+	Biped * bipedData;
 };
 
 class BSFixedStringCI;
@@ -1280,10 +1296,10 @@ public:
 	UInt32	pad13C;						// 13C
 
 	MEMBER_FN_PREFIX(ActorProcessManager);
-	DEFINE_MEMBER_FN(SetEquipFlag, void, 0x0067E3B0, UInt8 flags);
-	DEFINE_MEMBER_FN(UpdateEquipment, void, 0x00650DF0, Actor * actor);
-	// FBB0A4AE04B0C1C63470C26B004079D7D9B20D0B+8B
-	DEFINE_MEMBER_FN(SetDataFlag, void, 0x0065C880, float flag); // Sets a number on the 0x10 object. SE: The parameter flag was actually a float (xmm1)
+	DEFINE_MEMBER_FN(SetEquipFlag, void, 0x006B7C90, UInt8 flags);
+	DEFINE_MEMBER_FN(UpdateEquipment, void, 0x00689D40, Actor * actor);
+	// CDC12817DF3AB5B832348763F433A216BB8A85CA+89
+	DEFINE_MEMBER_FN(SetDataFlag, void, 0x006959A0, float flag); // Sets a number on the 0x10 object
 
 	void UpdateEquipment_Hooked(Actor * actor);
 };
@@ -1358,7 +1374,7 @@ public:
 
 	StatData * data;
 
-	SInt32 ResolveAdvanceableSkillId(SInt32 actorValue);
+	static SInt32 ResolveAdvanceableSkillId(SInt32 actorValue);
 
 	float GetSkillPoints(BSFixedString actorValue);
 	void SetSkillPoints(BSFixedString actorValue, float points);
@@ -1367,9 +1383,9 @@ public:
 	void SetSkillLegendaryLevel(BSFixedString actorValue, UInt32 level);
 
 	MEMBER_FN_PREFIX(PlayerSkills);
-	DEFINE_MEMBER_FN(GetSkillData, UInt32, 0x006E6130, UInt32 actorValue, float * level, float * points, float * pointsMax, UInt32 * unk6);
-	DEFINE_MEMBER_FN(IncrementLegendary, UInt32, 0x006E6620, UInt32 actorValue);
-	DEFINE_MEMBER_FN(SetLevel, void, 0x006E65C0, UInt32 level);
+	DEFINE_MEMBER_FN(GetSkillData, UInt32, 0x00720EA0, UInt32 actorValue, float * level, float * points, float * pointsMax, UInt32 * unk6);
+	DEFINE_MEMBER_FN(IncrementLegendary, UInt32, 0x00721490, UInt32 actorValue);
+	DEFINE_MEMBER_FN(SetLevel, void, 0x00721430, UInt32 level);
 };
 
 // 10

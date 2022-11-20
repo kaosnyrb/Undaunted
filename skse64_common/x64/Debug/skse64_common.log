@@ -1,4 +1,5 @@
-﻿  BranchTrampoline.cpp
+﻿  Using triplet "x64-windows" from "C:\git\vcpkg-master\installed\x64-windows\"
+  BranchTrampoline.cpp
   Relocation.cpp
   SafeWrite.cpp
   Utilities.cpp

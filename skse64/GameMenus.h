@@ -47,9 +47,37 @@ public:
 	IMenu();
 	virtual ~IMenu() { CALL_MEMBER_FN(this, dtor)(); } // TODO
 
-	enum {
-		kType_PauseGame = 1,
-		kType_ShowCursor = 2
+	enum
+	{
+		kFlag_None = 0,
+		kFlag_PausesGame = 1 << 0,
+		kFlag_AlwaysOpen = 1 << 1,
+		kFlag_UsesCursor = 1 << 2,
+		kFlag_UsesMenuContext = 1 << 3,
+		kFlag_Modal = 1 << 4,  // prevents lower movies with this flag from advancing
+		kFlag_FreezeFrameBackground = 1 << 5,
+		kFlag_OnStack = 1 << 6,
+		kFlag_DisablePauseMenu = 1 << 7,
+		kFlag_RequiresUpdate = 1 << 8,
+		kFlag_TopmostRenderedMenu = 1 << 9,
+		kFlag_UpdateUsesCursor = 1 << 10,
+		kFlag_AllowSaving = 1 << 11,
+		kFlag_RendersOffscreenTargets = 1 << 12,
+		kFlag_InventoryItemMenu = 1 << 13,
+		kFlag_DontHideCursorWhenTopmost = 1 << 14,
+		kFlag_CustomRendering = 1 << 15,
+		kFlag_AssignCursorToRenderer = 1 << 16,
+		kFlag_ApplicationMenu = 1 << 17,
+		kFlag_HasButtonBar = 1 << 18,
+		kFlag_IsTopButtonBar = 1 << 19,
+		kFlag_AdvancesUnderPauseMenu = 1 << 20,
+		kFlag_RendersUnderPauseMenu = 1 << 21,
+		kFlag_UsesBlurredBackground = 1 << 22,
+		kFlag_CompanionAppAllowed = 1 << 23,
+		kFlag_FreezeFramePause = 1 << 24,
+		kFlag_SkipRenderDuringFreezeFrameScreenshot = 1 << 25,
+		kFlag_LargeScaleformRenderCacheMode = 1 << 26,
+		kFlag_UsesMovementToDirection = 1 << 27
 	};
 
 	virtual void	Accept(CallbackProcessor * processor) {}
@@ -70,10 +98,10 @@ public:
 	GRefCountBase	* unk18;	// 28 - holds a reference
 
 	MEMBER_FN_PREFIX(IMenu);
-	DEFINE_MEMBER_FN(InitMovie_internal, void, 0x00ECD970, GFxMovieView* view);
-	DEFINE_MEMBER_FN(NextFrame_internal, void, 0x00ECD8A0, UInt32 arg0, UInt32 arg1);
-	DEFINE_MEMBER_FN(ProcessMessage_internal, UInt32, 0x00ECD850, UIMessage* message);
-	DEFINE_MEMBER_FN(dtor, void, 0x00ECD7F0);
+	DEFINE_MEMBER_FN(InitMovie_internal, void, 0x00F22750, GFxMovieView* view);
+	DEFINE_MEMBER_FN(NextFrame_internal, void, 0x00F224E0, UInt32 arg0, UInt32 arg1);
+	DEFINE_MEMBER_FN(ProcessMessage_internal, UInt32, 0x00F22490, UIMessage* message);
+	DEFINE_MEMBER_FN(dtor, void, 0x00F22430);
 };
 STATIC_ASSERT(offsetof(IMenu, view) == 0x10);
 
@@ -224,8 +252,8 @@ public:
 
 
 	MEMBER_FN_PREFIX(RaceSexMenu);
-	// FCFD4B12540A068252C0A71C5480E518DDF6EF60+58
-	DEFINE_MEMBER_FN(LoadSliders, void *, 0x008B5E20, UInt64 unk1, UInt8 unk2);
+	// B3D68A070DD2D03BA80128C5FED7004330D111AC+B1
+	DEFINE_MEMBER_FN(LoadSliders, void *, 0x008F7A50, UInt64 unk1, UInt8 unk2);
 };
 STATIC_ASSERT(offsetof(RaceSexMenu, sliderData) == 0x140);
 STATIC_ASSERT(offsetof(RaceSexMenu, raceIndex) == 0x188);
@@ -338,8 +366,8 @@ public:
 	GFxValue		object;		// 10
 
 	MEMBER_FN_PREFIX(HUDObject);
-	DEFINE_MEMBER_FN_0(dtor, void, 0x00885C40);
-	DEFINE_MEMBER_FN_1(Impl_Fn03, void *, 0x00880140, void * unk1);
+	DEFINE_MEMBER_FN_0(dtor, void, 0x008C78D0);
+	DEFINE_MEMBER_FN_1(Impl_Fn03, void *, 0x008C2590, void * unk1);
 
 	DEFINE_STATIC_HEAP(Heap_Allocate, Heap_Free);
 };
@@ -382,7 +410,7 @@ public:
 	TESWordOfPower*	word;	// 50
 	UInt32			time;	// 58 - g_gameTime + iObjectivesWaitTime
 
-	DEFINE_MEMBER_FN_0(dtor, void, 0x00885400);
+	DEFINE_MEMBER_FN_0(dtor, void, 0x008C7940);
 };
 
 // 78
@@ -536,7 +564,7 @@ public:
 		UInt8		pad12[6];	// 12
 
 		MEMBER_FN_PREFIX(CategoryListEntry);
-		DEFINE_MEMBER_FN(SetData, void, 0x0086F130, GFxValue* target);
+		DEFINE_MEMBER_FN(SetData, void, 0x008AFB00, GFxValue* target);
 
 		void SetData_Extended(EnchantConstructMenu*	subMenu, GFxValue* target);
 	};
@@ -812,13 +840,14 @@ public:
 	// this takes ownership of the message ptr
 //	DEFINE_MEMBER_FN(AddMessage, void, 0x004503E0, UIMessage * msg);	// old 1.1 implementation
 	// 1.3 uses a little non-thread-safe pool of UIMessages to wrap around the nicely thread-safe BSTMessageQueue it gets added to
-	DEFINE_MEMBER_FN(AddMessage, void, 0x001652D0, StringCache::Ref * strData, UInt32 msgID, void * objData);
-	DEFINE_MEMBER_FN(CreateUIMessageData, IUIMessageData *, 0x00EC31D0, const BSFixedString &type);
+
+	DEFINE_MEMBER_FN(AddMessage, void, 0x00170930, StringCache::Ref * strData, UInt32 msgID, void * objData);
+	DEFINE_MEMBER_FN(CreateUIMessageData, IUIMessageData *, 0x00F1BB60, const BSFixedString &type);
 
 	static UIManager *	GetSingleton(void)
 	{
-		// CB598A8812CFF3959F94DC8F8371BA876F68AE34+67
-		static RelocPtr<UIManager*> g_UIManager(0x01EC0A70);
+		// 5DCBE2588F11BA3D68C45F56DC0FC5D806409F85+C3
+		static RelocPtr<UIManager*> g_UIManager(0x01F5A770);
 		return *g_UIManager;
 	}
 
@@ -827,7 +856,7 @@ public:
 	void QueueCommand(UIDelegate* cmd);
 	void QueueCommand(UIDelegate_v1* cmd);
 
-	DEFINE_MEMBER_FN(ProcessEventQueue_HookTarget, void, 0x00EC30F0);
+	DEFINE_MEMBER_FN(ProcessEventQueue_HookTarget, void, 0x00F1B9E0);
 };
 STATIC_ASSERT(offsetof(UIManager, pad348) == 0x348);
 STATIC_ASSERT(sizeof(UIManager) == 0xB80);
@@ -914,8 +943,8 @@ public:
 
 	static UIStringHolder *	GetSingleton(void)
 	{
-		// 81B349AB8ABC9944E48046819F0345AB0526CDB5+9
-		static RelocPtr<UIStringHolder *> g_UIStringHolder(0x01EC0A78);
+		// 5DCBE2588F11BA3D68C45F56DC0FC5D806409F85+BC
+		static RelocPtr<UIStringHolder *> g_UIStringHolder(0x01F5A778);
 		return *g_UIStringHolder;
 	}
 };
@@ -929,7 +958,7 @@ public:
 	static Inventory3DManager * GetSingleton(void)
 	{
 		// 6BC34CC398831C8B8BE5BE20EC213B5BE7C47A7A+2E
-		static RelocPtr<Inventory3DManager*> g_inventory3DManager(0x02F27180);
+		static RelocPtr<Inventory3DManager*> g_inventory3DManager(0x02FC1E00);
 		return *g_inventory3DManager;
 	}
 
@@ -968,22 +997,15 @@ public:
 	UInt8			pad15B[5];
 
 	MEMBER_FN_PREFIX(Inventory3DManager);
-	DEFINE_MEMBER_FN(UpdateItem3D, void, 0x00887970, InventoryEntryData * objDesc);
-	DEFINE_MEMBER_FN(UpdateMagic3D, void, 0x008879A0, TESForm * form, UInt32 unk1);
-	DEFINE_MEMBER_FN(Clear3D, void, 0x00887D10);
-	DEFINE_MEMBER_FN(Render, UInt32, 0x00887750);
-
-	//DEFINE_MEMBER_FN(Unk1, void, 0x008667E0, UInt32 unk1);
-	//DEFINE_MEMBER_FN(Unk2, void, 0x00867110);
-	//DEFINE_MEMBER_FN(Unk3, bool, 0x008664C0);
-	//DEFINE_MEMBER_FN(Unk4, double, 0x008663E0);
-	//DEFINE_MEMBER_FN(Unk5, bool, 0x008418D0);
-	//DEFINE_MEMBER_FN(Unk6, int, 0x00867730);
+	DEFINE_MEMBER_FN(UpdateItem3D, void, 0x008C9C40, InventoryEntryData * objDesc);
+	DEFINE_MEMBER_FN(UpdateMagic3D, void, 0x008C9C70, TESForm * form, UInt32 unk1);
+	DEFINE_MEMBER_FN(Clear3D, void, 0x008CA030);
+	DEFINE_MEMBER_FN(Render, UInt32, 0x008C9950);
 };
 
 STATIC_ASSERT(offsetof(Inventory3DManager, unk14) == 0x14);
 STATIC_ASSERT(offsetof(Inventory3DManager, object) == 0x38);
-STATIC_ASSERT(offsetof(Inventory3DManager, unk158) == 0x158);
+STATIC_ASSERT(offsetof(Inventory3DManager, unk158) == 0x160);
 
 // 018
 class MenuTableItem
@@ -1069,15 +1091,15 @@ public:
 
 private:
 	MEMBER_FN_PREFIX(MenuManager);
-	DEFINE_MEMBER_FN(IsMenuOpen, bool, 0x00EBE150, BSFixedString * menuName);
-	DEFINE_MEMBER_FN(Register_internal, void, 0x00EBF9C0, const char * name, CreatorFunc creator);
+	DEFINE_MEMBER_FN(IsMenuOpen, bool, 0x00F16EE0, BSFixedString * menuName);
+	DEFINE_MEMBER_FN(Register_internal, void, 0x00F18BB0, const char * name, CreatorFunc creator);
 
 public:
 
 	static MenuManager * GetSingleton(void)
 	{
-		// 502FDB8FEA80C3705F9E228F79D4EA7A399CC7FD+32
-		static RelocPtr<MenuManager *> g_menuManager(0x01EBEB20);
+		// 0060C371BC22FE1665DD3BA10816084EEC6FAA3F+4
+		static RelocPtr<MenuManager *> g_menuManager(0x01F58820);
 		return *g_menuManager;
 	}
 
