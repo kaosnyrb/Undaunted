@@ -1,0 +1,63 @@
+[
+    [
+        ["Kill the Elytra","ccbgssse025-advdsgs.esm",10,0,"Elite"],
+        ["ccBGSSSE025_ElytraNymphDementia","ccbgssse025-advdsgs.esm",2891,"Enemy"],
+        ["ccBGSSSE025_EncCorruptedSprigganDementia","ccbgssse025-advdsgs.esm",3291,"Enemy"],
+        ["ccBGSSSE025_ElytraNymphMania","ccbgssse025-advdsgs.esm",3292,"Enemy"],
+        ["ccBGSSSE025_EncCorruptedSprigganMania","ccbgssse025-advdsgs.esm",2935,"Enemy"]
+    ],
+    [
+        ["Clear the Root Cluster","ccbgssse025-advdsgs.esm",0,0],
+        ["ccBGSSSE025_ElytraNymphDementia","ccbgssse025-advdsgs.esm",2891,"Enemy"],
+        ["ccBGSSSE025_ElytraNymphDementia","ccbgssse025-advdsgs.esm",2891,"Enemy"],
+		["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_DestructObjectiveBarricade","Undaunted.esp",80945,"Scripted","CreationClub/BGSSSE025/Clutter/JyggalagRootCluster01.nif"],
+		["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_DestructObjectiveBarricade","Undaunted.esp",80945,"Scripted","CreationClub/BGSSSE025/Clutter/JyggalagRootCluster01.nif"],
+		["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_DestructObjectiveBarricade","Undaunted.esp",80945,"Scripted","CreationClub/BGSSSE025/Clutter/JyggalagRootCluster01.nif"]
+    ],
+    [
+        ["Clear the Root Cluster","ccbgssse025-advdsgs.esm",0,0],
+        ["ccBGSSSE025_ElytraNymphMania","ccbgssse025-advdsgs.esm",3292,"Enemy"],
+        ["ccBGSSSE025_ElytraNymphMania","ccbgssse025-advdsgs.esm",3292,"Enemy"],
+		["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_DestructObjectiveBarricade","Undaunted.esp",80945,"Scripted","CreationClub/BGSSSE025/Clutter/JyggalagRootCluster01.nif"],
+		["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_DestructObjectiveBarricade","Undaunted.esp",80945,"Scripted","CreationClub/BGSSSE025/Clutter/JyggalagRootCluster01.nif"],
+		["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_DestructObjectiveBarricade","Undaunted.esp",80945,"Scripted","CreationClub/BGSSSE025/Clutter/JyggalagRootCluster01.nif"]
+    ],
+    [
+        ["Clear the Root Cluster","ccbgssse025-advdsgs.esm",10,0],
+        ["ccBGSSSE025_EncCorruptedSprigganDementia","ccbgssse025-advdsgs.esm",3291,"Enemy"],
+		["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_DestructObjectiveBarricade","Undaunted.esp",80945,"Scripted","CreationClub/BGSSSE025/Clutter/JyggalagRootCluster01.nif"],
+		["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_DestructObjectiveBarricade","Undaunted.esp",80945,"Scripted","CreationClub/BGSSSE025/Clutter/JyggalagRootCluster01.nif"],
+		["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_DestructObjectiveBarricade","Undaunted.esp",80945,"Scripted","CreationClub/BGSSSE025/Clutter/JyggalagRootCluster01.nif"]
+    ],
+    [
+        ["Clear the Root Cluster","ccbgssse025-advdsgs.esm",10,0],
+        ["ccBGSSSE025_EncCorruptedSprigganMania","ccbgssse025-advdsgs.esm",2935,"Enemy"],
+		["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_DestructObjectiveBarricade","Undaunted.esp",80945,"Scripted","CreationClub/BGSSSE025/Clutter/JyggalagRootCluster01.nif"],
+		["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_DestructObjectiveBarricade","Undaunted.esp",80945,"Scripted","CreationClub/BGSSSE025/Clutter/JyggalagRootCluster01.nif"],
+		["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_DestructObjectiveBarricade","Undaunted.esp",80945,"Scripted","CreationClub/BGSSSE025/Clutter/JyggalagRootCluster01.nif"]
+    ],
+    [
+        ["Clear the Elytra","ccbgssse025-advdsgs.esm",10,0,"Elite"],
+        ["ccBGSSSE025_ElytraNymphMania","ccbgssse025-advdsgs.esm",3292,"Enemy"],
+        ["ccBGSSSE025_ElytraNymphMania","ccbgssse025-advdsgs.esm",3292,"Enemy"],
+        ["ccBGSSSE025_EncCorruptedSprigganMania","ccbgssse025-advdsgs.esm",2935,"Enemy"]
+    ],
+    [
+        ["Clear the Elytra","ccbgssse025-advdsgs.esm",10,0,"Elite"],
+        ["ccBGSSSE025_ElytraNymphDementia","ccbgssse025-advdsgs.esm",2891,"Enemy"],
+        ["ccBGSSSE025_ElytraNymphDementia","ccbgssse025-advdsgs.esm",2891,"Enemy"],
+        ["ccBGSSSE025_EncCorruptedSprigganDementia","ccbgssse025-advdsgs.esm",3291,"Enemy"]
+    ]
+]

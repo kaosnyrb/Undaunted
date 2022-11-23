@@ -1,0 +1,62 @@
+[
+    [
+        ["Kill the Golden Bandits","ccbgssse025-advdsgs.esm",20,0,"Rift"],
+        ["ccBGSSSE025_LCharGoldenBanditMelee1H","ccbgssse025-advdsgs.esm",2511,"Enemy"],
+        ["ccBGSSSE025_LCharGoldenBanditMissile","ccbgssse025-advdsgs.esm",2513,"Enemy"],
+        ["ccBGSSSE025_LCharGoldenBanditBoss","ccbgssse025-advdsgs.esm",2514,"Enemy"]
+    ],
+    [
+        ["Kill the Golden Warriors","ccbgssse025-advdsgs.esm",20,0,"Elite"],
+        ["ccBGSSSE025_EncGoldenSaintWarrior","ccbgssse025-advdsgs.esm",2504,"Enemy"],
+        ["ccBGSSSE025_EncGoldenSaintArcher","ccbgssse025-advdsgs.esm",2176,"Enemy"],
+        ["ccBGSSSE025_EncGoldenSaintArcher","ccbgssse025-advdsgs.esm",2176,"Enemy"]
+    ],
+    [
+        ["Excellent! Cheese for everyone!","ccbgssse025-advdsgs.esm",0,0],
+		["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_collect_obj01","Undaunted.esp",683514,"Scripted","clutter/food/cheesewheel01a.nif"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_collect_obj01","Undaunted.esp",683514,"Scripted","clutter/food/cheesewheel01a.nif"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_collect_obj01","Undaunted.esp",683514,"Scripted","clutter/food/cheesewheel01a.nif"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_collect_obj01","Undaunted.esp",683514,"Scripted","clutter/food/cheesewheel01a.nif"]
+    ],
+    [
+        ["The blood! The guts! The cheese!","ccbgssse025-advdsgs.esm",20,0],
+		["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_collect_obj01","Undaunted.esp",683514,"Scripted","clutter/food/cheesewheel01a.nif"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_collect_obj01","Undaunted.esp",683514,"Scripted","clutter/food/cheesewheel01a.nif"],
+        ["ccBGSSSE025_EncGoldenSaintArcher","ccbgssse025-advdsgs.esm",2176,"Enemy"],
+        ["ccBGSSSE025_LCharGoldenBanditMelee1H","ccbgssse025-advdsgs.esm",2511,"Enemy"]
+    ],
+    [
+        ["Disable the Dwemer Power Conduits","ccbgssse025-advdsgs.esm",20,0],
+        ["ccBGSSSE025_EncGoldenSaintArcher","ccbgssse025-advdsgs.esm",2176,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_DestructObjectiveMagic_01","Undaunted.esp",80946,"Scripted","DLC02/Dungeons/Dwemer/Rubble/DLC2DweRubbleColumn01.nif"],
+        ["ccBGSSSE025_EncGoldenSaintArcher","ccbgssse025-advdsgs.esm",2176,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_DestructObjectiveMagic_01","Undaunted.esp",80946,"Scripted","DLC02/Dungeons/Dwemer/Rubble/DLC2DweRubbleColumn01.nif"]
+    ],
+    [
+        ["Destroy the Busts of Sheogorath","ccbgssse025-advdsgs.esm",20,0],
+        ["ccBGSSSE025_EncGoldenSaintArcher","ccbgssse025-advdsgs.esm",2176,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_DestructObjectiveBarricade","Undaunted.esp",80945,"Scripted","CreationClub/BGSSSE025/Clutter/SheogorathBust01.nif"],
+        ["ccBGSSSE025_EncGoldenSaintArcher","ccbgssse025-advdsgs.esm",2176,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_DestructObjectiveBarricade","Undaunted.esp",80945,"Scripted","CreationClub/BGSSSE025/Clutter/SheogorathBust01.nif"],
+        ["ccBGSSSE025_EncGoldenSaintArcher","ccbgssse025-advdsgs.esm",2176,"Enemy"]
+    ],
+    [
+        ["Help the Ambushed Merchant","ccbgssse025-advdsgs.esm",20,0],
+        ["WEMerchantMiscFemaleCommoner","Skyrim.esm",744794,"Ally"],
+        ["ccBGSSSE025_EncGoldenSaintArcher","ccbgssse025-advdsgs.esm",2176,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_OblivionGate","Undaunted.esp",13206,"BountyDecoration","clutter/quest/dbbrokencart01.nif"],
+        ["ccBGSSSE025_EncGoldenSaintWarrior","ccbgssse025-advdsgs.esm",2504,"Enemy"],
+        ["LCharHorseSaddled","Skyrim.esm",429423,"Ally"]
+    ]
+]

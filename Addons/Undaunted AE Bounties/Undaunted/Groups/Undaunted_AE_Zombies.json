@@ -1,0 +1,57 @@
+[
+    [
+        ["Kill the Zombies","ccbgssse003-zombies.esl",0,0,"Rift"],
+        ["ccBGSSSE003_LCharBGSSSE003ZombieMelee","ccbgssse003-zombies.esl",2082,"Enemy"],
+        ["ccBGSSSE003_LCharBGSSSE003ZombieMelee","ccbgssse003-zombies.esl",2082,"Enemy"],
+        ["ccBGSSSE003_LCharBGSSSE003ZombieMelee","ccbgssse003-zombies.esl",2082,"Enemy"]
+    ],
+    [
+        ["Help the Ambushed Merchant","Skyrim.esm",0,0],
+        ["WEMerchantMiscFemaleCommoner","Skyrim.esm",744794,"Ally"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_OblivionGate","Undaunted.esp",13206,"BountyDecoration","clutter/quest/dbbrokencart01.nif"],
+        ["ccBGSSSE003_LCharBGSSSE003ZombieMelee","ccbgssse003-zombies.esl",2082,"Enemy"],
+        ["ccBGSSSE003_LCharBGSSSE003ZombieMelee","ccbgssse003-zombies.esl",2082,"Enemy"],
+        ["ccBGSSSE003_LCharBGSSSE003ZombieMelee","ccbgssse003-zombies.esl",2082,"Enemy"],
+        ["LCharHorseSaddled","Skyrim.esm",429423,"Ally"]
+    ],
+    [
+        ["Help the Dawnguard defeat the Zombies","Skyrim.esm",10,0],
+        ["DLC1EncHunterTemplate","Dawnguard.esm",13167,"Ally"],
+        ["ccBGSSSE003_LCharBGSSSE003ZombieMelee","ccbgssse003-zombies.esl",2082,"Enemy"],
+        ["ccBGSSSE003_LCharBGSSSE003ZombieMelee","ccbgssse003-zombies.esl",2082,"Enemy"],
+        ["ccBGSSSE003_LCharBGSSSE003ZombieMelee","ccbgssse003-zombies.esl",2082,"Enemy"],
+        ["ccBGSSSE003_LCharBGSSSE003ZombieMelee","ccbgssse003-zombies.esl",2082,"Enemy"],
+        ["ccBGSSSE003_LCharBGSSSE003ZombieMelee","ccbgssse003-zombies.esl",2082,"Enemy"],
+        ["DLC1EncHunterTemplate","Dawnguard.esm",13167,"Ally"],
+        ["DLC1EncHunterTemplateMissile","Dawnguard.esm",13169,"Ally"]
+    ],
+    [
+        ["Destroy the Statue of Power raising the dead","Skyrim.esm",0,0],
+        ["ccBGSSSE003_LCharBGSSSE003ZombieMelee","ccbgssse003-zombies.esl",2082,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_DestructObjectiveMagic_01","Undaunted.esp",80946,"Scripted","Dungeons/Nordic/RuinsDragonStatue01.nif"],
+        ["ccBGSSSE003_LCharBGSSSE003ZombieMelee","ccbgssse003-zombies.esl",2082,"Enemy"],
+        ["ccBGSSSE003_LCharBGSSSE003ZombieMelee","ccbgssse003-zombies.esl",2082,"Enemy"]
+    ],
+    [
+        ["Stop the Necromancer raising the dead","Skyrim.esm",0,0,"Elite"],
+        ["LCharWarlockNecromancer","Skyrim.esm",124791,"Enemy"],
+        ["ccBGSSSE003_LCharBGSSSE003ZombieMelee","ccbgssse003-zombies.esl",2082,"Enemy"],
+        ["ccBGSSSE003_LCharBGSSSE003ZombieMelee","ccbgssse003-zombies.esl",2082,"Enemy"],
+        ["ccBGSSSE003_LCharBGSSSE003ZombieMelee","ccbgssse003-zombies.esl",2082,"Enemy"],
+        ["ccBGSSSE003_LCharBGSSSE003ZombieMelee","ccbgssse003-zombies.esl",2082,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_DestructObjectiveMagic_02","Undaunted.esp",101687,"Scripted","Clutter/Quest/MS06NecromanticAltar.nif"]
+    ],
+    [
+        ["Help the Ambushed Hunters","Skyrim.esm",0,0],
+        ["EncHunterWoodElfF","Skyrim.esm",785222,"Ally"],
+        ["EncHunterNordF","Skyrim.esm",785224,"Ally"],
+        ["ccBGSSSE003_LCharBGSSSE003ZombieMelee","ccbgssse003-zombies.esl",2082,"Enemy"],
+        ["ccBGSSSE003_LCharBGSSSE003ZombieMelee","ccbgssse003-zombies.esl",2082,"Enemy"],
+        ["ccBGSSSE003_LCharBGSSSE003ZombieMelee","ccbgssse003-zombies.esl",2082,"Enemy"],
+        ["ccBGSSSE003_LCharBGSSSE003ZombieMelee","ccbgssse003-zombies.esl",2082,"Enemy"],
+        ["ccBGSSSE003_LCharBGSSSE003ZombieMelee","ccbgssse003-zombies.esl",2082,"Enemy"]
+    ]
+]

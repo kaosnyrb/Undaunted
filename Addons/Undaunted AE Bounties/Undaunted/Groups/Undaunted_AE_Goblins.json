@@ -101,5 +101,14 @@
         ["ccBGSSSE040_EncGoblin02Melee","ccbgssse040-advobgobs.esl",2056,"Enemy"],
         ["ccBGSSSE040_EncGoblin02Melee","ccbgssse040-advobgobs.esl",2056,"Enemy"],
         ["ccBGSSSE040_EncGoblin03Melee","ccbgssse040-advobgobs.esl",2057,"Enemy"]
+    ],
+    [
+        ["Help the Ambushed Hunters","Skyrim.esm",0,0],
+        ["EncHunterWoodElfF","Skyrim.esm",785222,"Ally"],
+        ["EncHunterNordF","Skyrim.esm",785224,"Ally"],
+        ["ccBGSSSE040_EncGoblin01Melee","ccbgssse040-advobgobs.esl",2054,"Enemy"],
+        ["ccBGSSSE040_EncGoblin02Melee","ccbgssse040-advobgobs.esl",2056,"Enemy"],
+        ["ccBGSSSE040_EncGoblin02Melee","ccbgssse040-advobgobs.esl",2056,"Enemy"],
+        ["ccBGSSSE040_EncGoblin03Melee","ccbgssse040-advobgobs.esl",2057,"Enemy"]
     ]
 ]
