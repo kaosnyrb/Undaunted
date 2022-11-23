@@ -52,7 +52,7 @@ namespace Undaunted
 
 	UInt32 GetReward(UInt32 rewardOffset, UInt32 playerlevel)
 	{
-		srand(time(NULL) + rewardOffset);
+		srand(time(0) + rewardOffset);
 		DataHandler* dataHandler = GetDataHandler();
 		std::set<TESObjectARMO*> exclude;
 		TESRace* race = NULL;
@@ -75,6 +75,18 @@ namespace Undaunted
 		{
 			int type = 0;
 			bool foundvalidrewardtype = false;
+			//Always give 1 weapon or 1 armour.
+			if (rewardOffset == 1) {
+				if (rand() % 100 > 50)
+				{
+					type = 0;
+				}
+				else
+				{
+					type = 1;
+				}
+				foundvalidrewardtype = true;
+			}
 			while (!foundvalidrewardtype)
 			{
 				type = GetRewardType();
