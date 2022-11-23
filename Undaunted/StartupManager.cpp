@@ -69,6 +69,37 @@ namespace Undaunted {
 		}
 	}
 
+	//With creation club there's now a need to load forms from ESL's.
+	int getFormId(std::string mod, int form)
+	{
+		DataHandler* dataHandler = GetDataHandler();
+		const ModInfo* modInfo = dataHandler->LookupModByName(mod.c_str());
+		int tempform = form;
+		if (modInfo != NULL)
+		{
+			tempform = (modInfo->modIndex << 24) + tempform;
+		}
+		if (tempform < 0) // Probably trying to load from an ESL.
+		{
+			//ESL Load order
+			for (int i = 0; i < dataHandler->modList.loadedCCMods.count; i++)
+			{
+				ModInfo* modinfo;
+				dataHandler->modList.loadedCCMods.GetNthItem(i, modinfo);
+				if (_stricmp(modinfo->name, mod.c_str()) == 0)			
+				{
+					// modIndex lightIndex FormId
+					// 0xFE FFF 000
+					tempform = (modInfo->modIndex << 24) + (modinfo->lightIndex << 12) + form;
+				}
+			}
+		}
+		form = tempform;
+		_MESSAGE("modIndex: ", modInfo->modIndex);
+		_MESSAGE("form id: %i", form);
+		return form;
+	}
+
 	void LoadGroups()
 	{
 		DataHandler* dataHandler = GetDataHandler();
@@ -115,11 +146,7 @@ namespace Undaunted {
 						{
 							std::string esp = group[j][1].as<std::string>("esp");
 							const ModInfo* modInfo = dataHandler->LookupModByName(esp.c_str());
-							int form = group[j][2].as<int>(0);
-							if (modInfo != NULL)
-							{
-								form = (modInfo->modIndex << 24) + form;
-							}
+							int form = getFormId(esp,group[j][2].as<int>(0));
 							std::string type = group[j][3].as<std::string>("type");
 							std::string model = std::string("");
 							if (group[j].size() > 3)

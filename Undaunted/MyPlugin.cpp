@@ -55,13 +55,30 @@ namespace Undaunted {
 	bool hook_InitSystem(StaticFunctionTag* base, UInt32 playerLevel)
 	{
 		DataHandler* dataHandler = GetDataHandler();
+
+		
+		for (int i = 0; i < dataHandler->modList.modInfoList.Count(); i++)
+		{
+			ModInfo* mod = dataHandler->modList.modInfoList.GetNthItem(i);
+			_MESSAGE("Listing Mods: %s , %i, %i", mod->name, mod->modIndex, mod->lightIndex);
+		}
+		/*
 		_MESSAGE("Mod Count: %08X", dataHandler->modList.loadedMods.count);
 		for (int i = 0; i < dataHandler->modList.loadedMods.count; i++)
 		{
 			ModInfo* mod;
 			dataHandler->modList.loadedMods.GetNthItem(i, mod);
-			_MESSAGE("Listing Mods: %s ", mod->name);
+			_MESSAGE("Listing Mods: %s , %i", mod->name, mod->modIndex);
 		}
+		_MESSAGE("Mod Count CC: %08X", dataHandler->modList.loadedCCMods.count);
+//		tArray<ModInfo*> loadedCCMods = dataHandler->modList.loadedCCMods;
+		for (int i = 0; i < dataHandler->modList.loadedCCMods.count; i++)
+		{
+			ModInfo* mod;
+			dataHandler->modList.loadedCCMods.GetNthItem(i, mod);
+			_MESSAGE("Listing Mods: %s , %i, %i", mod->name,mod->modIndex,i);
+		}
+		*/
 		LoadSettings();
 		LoadGroups();
 		ShuffleGroupLibary();

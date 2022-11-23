@@ -1,0 +1,105 @@
+[
+    [
+        ["Kill the Goblins","ccbgssse040-advobgobs.esl",0,0,"Rift"],
+        ["ccBGSSSE040_EncGoblin01Melee","ccbgssse040-advobgobs.esl",2054,"Enemy"],
+        ["ccBGSSSE040_EncGoblin02Melee","ccbgssse040-advobgobs.esl",2056,"Enemy"],
+        ["ccBGSSSE040_EncGoblin03Melee","ccbgssse040-advobgobs.esl",2057,"Enemy"]
+    ],
+    [
+        ["Stop the Riekling Goblin accord","Dragonborn.esm",15,0,"Elite"],
+        ["DLC2LCharMountedRiekling","Dragonborn.esm",233136,"Enemy"],
+        ["DLC2LCharRieklingMelee","Dragonborn.esm",112211,"Enemy"],
+        ["DLC2LCharRieklingMissile","Dragonborn.esm",112212,"Enemy"],
+        ["ccBGSSSE040_EncGoblin01Melee","ccbgssse040-advobgobs.esl",2054,"Enemy"],
+        ["ccBGSSSE040_EncGoblin02Melee","ccbgssse040-advobgobs.esl",2056,"Enemy"],
+        ["ccBGSSSE040_EncGoblin03Melee","ccbgssse040-advobgobs.esl",2057,"Enemy"]
+    ],
+    [
+        ["Help the Ambushed Merchant","Skyrim.esm",0,0],
+        ["WEMerchantMiscFemaleCommoner","Skyrim.esm",744794,"Ally"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_OblivionGate","Undaunted.esp",13206,"BountyDecoration","clutter/quest/dbbrokencart01.nif"],
+        ["ccBGSSSE040_EncGoblin01Melee","ccbgssse040-advobgobs.esl",2054,"Enemy"],
+        ["ccBGSSSE040_EncGoblin02Melee","ccbgssse040-advobgobs.esl",2056,"Enemy"],
+        ["ccBGSSSE040_EncGoblin03Melee","ccbgssse040-advobgobs.esl",2057,"Enemy"],
+        ["LCharHorseSaddled","Skyrim.esm",429423,"Ally"]
+    ],
+    [
+        ["Help the Dawnguard defeat the Goblins","Skyrim.esm",10,0],
+        ["DLC1EncHunterTemplate","Dawnguard.esm",13167,"Ally"],
+        ["ccBGSSSE040_EncGoblin01Melee","ccbgssse040-advobgobs.esl",2054,"Enemy"],
+        ["ccBGSSSE040_EncGoblin01Melee","ccbgssse040-advobgobs.esl",2054,"Enemy"],
+        ["ccBGSSSE040_EncGoblin02Melee","ccbgssse040-advobgobs.esl",2056,"Enemy"],
+        ["ccBGSSSE040_EncGoblin03Melee","ccbgssse040-advobgobs.esl",2057,"Enemy"],
+        ["ccBGSSSE040_EncGoblin03Melee","ccbgssse040-advobgobs.esl",2057,"Enemy"],
+        ["DLC1EncHunterTemplate","Dawnguard.esm",13167,"Ally"],
+        ["DLC1EncHunterTemplateMissile","Dawnguard.esm",13169,"Ally"]
+    ],
+    [
+        ["Destroy the Goblin Posion Cache","OBIS SE.esp",0,0],
+        ["ccBGSSSE040_EncGoblin01Melee","ccbgssse040-advobgobs.esl",2054,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_DestructObjective_01","Undaunted.esp",80945,"Scripted","clutter/oilbarrel/bfxoilbarrelclosed01.nif"],
+        ["ccBGSSSE040_EncGoblin01Melee","ccbgssse040-advobgobs.esl",2054,"Enemy"],
+        ["ccBGSSSE040_EncGoblin02Melee","ccbgssse040-advobgobs.esl",2056,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_DestructObjective_02","Undaunted.esp",101684,"Scripted","clutter/oilbarrel/bfxoilbarrelclosed01.nif"]
+    ],
+    [
+        ["Destroy the Goblin Cauldron","OBIS SE.esp",0,0],
+        ["ccBGSSSE040_EncGoblin01Melee","ccbgssse040-advobgobs.esl",2054,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_DestructObjective_01","Undaunted.esp",80945,"Scripted","CreationClub/BGSSSE040/Clutter/Goblin/SkullCauldron01.nif"],
+        ["ccBGSSSE040_EncGoblin01Melee","ccbgssse040-advobgobs.esl",2054,"Enemy"],
+        ["ccBGSSSE040_EncGoblin02Melee","ccbgssse040-advobgobs.esl",2056,"Enemy"]
+    ],
+    [
+        ["Recover the Goblin Treasure","OBIS SE.esp",0,0],
+        ["ccBGSSSE040_EncGoblin02Melee","ccbgssse040-advobgobs.esl",2056,"Enemy"],
+        ["ccBGSSSE040_EncGoblin02Melee","ccbgssse040-advobgobs.esl",2056,"Enemy"],
+        ["ccBGSSSE040_EncGoblin03Melee","ccbgssse040-advobgobs.esl",2057,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_collect_obj01","Undaunted.esp",683514,"Scripted", "clutter/sovngarde/sovjug01.nif"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_collect_obj02","Undaunted.esp",683515,"Scripted","clutter/sovngarde/sovbowl02.nif"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_collect_obj03","Undaunted.esp",683516,"Scripted","clutter/sovngarde/sovcandlestick02.nif"]
+    ],
+    [
+        ["Recover the stolen supplies from the Goblins","OBIS SE.esp",0,0],
+        ["ccBGSSSE040_EncGoblin03Melee","ccbgssse040-advobgobs.esl",2057,"Enemy"],
+        ["1_Undaunted_collect_obj01","Undaunted.esp",683514,"Scripted","clutter/oilbarrel/bfxoilbarrelclosed01.nif"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_collect_obj02","Undaunted.esp",683515,"Scripted","clutter/oilbarrel/bfxoilbarrelclosed01.nif"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_collect_obj03","Undaunted.esp",683516,"Scripted","clutter/oilbarrel/bfxoilbarrelclosed01.nif"],
+        ["ccBGSSSE040_EncGoblin03Melee","ccbgssse040-advobgobs.esl",2057,"Enemy"]               
+    ],
+    [
+        ["Recover the stolen cheese from the Goblins","OBIS SE.esp",0,0],
+        ["ccBGSSSE040_EncGoblin02Melee","ccbgssse040-advobgobs.esl",2056,"Enemy"],
+		["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_collect_obj01","Undaunted.esp",683514,"Scripted","clutter/food/cheesewheel01a.nif"],
+        ["ccBGSSSE040_EncGoblin02Melee","ccbgssse040-advobgobs.esl",2056,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_collect_obj01","Undaunted.esp",683514,"Scripted","clutter/food/cheesewheel01a.nif"]
+    ],
+    [
+        ["Recover the stolen ale from the Goblins","OBIS SE.esp",0,0],
+        ["ccBGSSSE040_EncGoblin02Melee","ccbgssse040-advobgobs.esl",2056,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_collect_obj01","Undaunted.esp",683514,"Scripted","clutter/sovngarde/sovbarrel01.nif"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_collect_obj02","Undaunted.esp",683515,"Scripted","clutter/sovngarde/sovbarrel01.nif"],
+        ["ccBGSSSE040_EncGoblin01Melee","ccbgssse040-advobgobs.esl",2054,"Enemy"],
+        ["ccBGSSSE040_EncGoblin01Melee","ccbgssse040-advobgobs.esl",2054,"Enemy"]
+    ],
+    [
+        ["Kill the gang of Goblins","ccbgssse040-advobgobs.esl",0,0,"Elite"],
+        ["ccBGSSSE040_EncGoblin01Melee","ccbgssse040-advobgobs.esl",2054,"Enemy"],
+        ["ccBGSSSE040_EncGoblin01Melee","ccbgssse040-advobgobs.esl",2054,"Enemy"],
+        ["ccBGSSSE040_EncGoblin02Melee","ccbgssse040-advobgobs.esl",2056,"Enemy"],
+        ["ccBGSSSE040_EncGoblin02Melee","ccbgssse040-advobgobs.esl",2056,"Enemy"],
+        ["ccBGSSSE040_EncGoblin03Melee","ccbgssse040-advobgobs.esl",2057,"Enemy"]
+    ]
+]

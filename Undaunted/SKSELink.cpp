@@ -51,6 +51,19 @@ bool Offsets::Initialize() {
 	return true;
 }
 
+class LoadedModFinder
+{
+	const char* m_stringToFind;
+
+public:
+	LoadedModFinder(const char* str) : m_stringToFind(str) { }
+
+	bool Accept(ModInfo* modInfo)
+	{
+		return _stricmp(modInfo->name, m_stringToFind) == 0;
+	}
+};
+
 
 /*
 
