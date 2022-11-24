@@ -1,0 +1,98 @@
+[
+    [
+        ["Help the Vigilants of Stendarr close the Oblivion Gate","ccbgssse067-daedinv.esm",15,0,"Elite"],
+        ["ccBGSSSE067_LCharDremoraMelee","ccbgssse067-daedinv.esm",234234,"Enemy"],
+        ["ExplosionIllusionDark01","Skyrim.esm",263277,"SpawnEffect"],
+        ["ccBGSSSE067_LCharDremoraMelee","ccbgssse067-daedinv.esm",234234,"Enemy"],
+        ["ExplosionIllusionDark01","Skyrim.esm",263277,"SpawnEffect"],
+        ["ccBGSSSE067_SubCharVigilantOfStendarrEvenTonedF01","ccbgssse067-daedinv.esm",1780943,"Ally"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["Gate Outside","Undaunted.esp",13206,"BountyDecoration","undaunted/obgatefull01a.nif"],
+        ["1_Undaunted_OblivionGateGlow","Undaunted.esp",3522,"ScriptedDoor"],        
+        ["ExplosionIllusionMassiveDark01","Skyrim.esm",781487,"SpawnEffect"],
+        ["ExplosionIllusionMassiveDark01","Skyrim.esm",781487,"EndEffect"]
+    ],
+    [
+        ["Help the Vigilants of Stendarr stop the Dremora","ccbgssse067-daedinv.esm",15,0,"Rift"],
+        ["ccBGSSSE067_LCharDremoraMelee","ccbgssse067-daedinv.esm",234234,"Enemy"],
+        ["ccBGSSSE067_LCharDremoraMelee","ccbgssse067-daedinv.esm",234234,"Enemy"],
+        ["ccBGSSSE067_SubCharVigilantOfStendarrEvenTonedF01","ccbgssse067-daedinv.esm",1780943,"Ally"],
+        ["ccBGSSSE067_SubCharVigilantOfStendarrEvenTonedF01","ccbgssse067-daedinv.esm",1780943,"Ally"]
+    ],
+    [
+        ["Help the Vigilants of Stendarr stop the Zombies","ccbgssse067-daedinv.esm",5,0,"Rift"],
+        ["ccBGSSSE003_LCharBGSSSE003ZombieMelee","ccbgssse003-zombies.esl",2082,"Enemy"],
+        ["ccBGSSSE003_LCharBGSSSE003ZombieMelee","ccbgssse003-zombies.esl",2082,"Enemy"],
+        ["ccBGSSSE003_LCharBGSSSE003ZombieMelee","ccbgssse003-zombies.esl",2082,"Enemy"],
+        ["ccBGSSSE067_SubCharVigilantOfStendarrEvenTonedF01","ccbgssse067-daedinv.esm",1780943,"Ally"],
+        ["ccBGSSSE067_SubCharVigilantOfStendarrEvenTonedF01","ccbgssse067-daedinv.esm",1780943,"Ally"]
+    ],
+    [
+        ["Help the Vigilants of Stendarr stop the Necromancers Ritual","Skyrim.esm",5,0],
+        ["LCharWarlockNecromancer","Skyrim.esm",124791,"Enemy"],
+        ["ccBGSSSE003_LCharBGSSSE003ZombieMelee","ccbgssse003-zombies.esl",2082,"Enemy"],
+        ["ccBGSSSE003_LCharBGSSSE003ZombieMelee","ccbgssse003-zombies.esl",2082,"Enemy"],
+        ["ccBGSSSE003_LCharBGSSSE003ZombieMelee","ccbgssse003-zombies.esl",2082,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_DestructObjectiveMagic_01","Undaunted.esp",80946,"Scripted","Clutter/Ruins/RuinsLargeUrnNoStand01.nif"],
+        ["LCharWarlockNecromancer","Skyrim.esm",124791,"Enemy"],
+        ["ccBGSSSE067_SubCharVigilantOfStendarrEvenTonedF01","ccbgssse067-daedinv.esm",1780943,"Ally"],
+        ["ccBGSSSE067_SubCharVigilantOfStendarrEvenTonedF01","ccbgssse067-daedinv.esm",1780943,"Ally"]
+    ],
+    [
+        ["Help the Vigilants of Stendarr clear the Root Cluster","ccbgssse025-advdsgs.esm",0,0],
+        ["ccBGSSSE025_ElytraNymphMania","ccbgssse025-advdsgs.esm",3292,"Enemy"],
+        ["ccBGSSSE025_ElytraNymphMania","ccbgssse025-advdsgs.esm",3292,"Enemy"],
+        ["ccBGSSSE025_ElytraNymphMania","ccbgssse025-advdsgs.esm",3292,"Enemy"],
+        ["ccBGSSSE025_ElytraNymphMania","ccbgssse025-advdsgs.esm",3292,"Enemy"],
+        ["ccBGSSSE025_ElytraNymphMania","ccbgssse025-advdsgs.esm",3292,"Enemy"],
+        ["ccBGSSSE025_ElytraNymphMania","ccbgssse025-advdsgs.esm",3292,"Enemy"],
+		["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_DestructObjectiveBarricade","Undaunted.esp",80945,"Scripted","CreationClub/BGSSSE025/Clutter/JyggalagRootCluster01.nif"],
+		["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_DestructObjectiveBarricade","Undaunted.esp",80945,"Scripted","CreationClub/BGSSSE025/Clutter/JyggalagRootCluster01.nif"],
+		["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_DestructObjectiveBarricade","Undaunted.esp",80945,"Scripted","CreationClub/BGSSSE025/Clutter/JyggalagRootCluster01.nif"],
+        ["ccBGSSSE067_SubCharVigilantOfStendarrEvenTonedF01","ccbgssse067-daedinv.esm",1780943,"Ally"],
+        ["ccBGSSSE067_SubCharVigilantOfStendarrEvenTonedF01","ccbgssse067-daedinv.esm",1780943,"Ally"]
+    ],
+    [
+        ["Draw power from the Dremora Anchor Crystals","Skyrim.esm",15,0],
+        ["ccBGSSSE067_LCharDremoraMelee","ccbgssse067-daedinv.esm",234234,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_DLC01IdealMasterCrystal","Undaunted.esp",80944,"Scripted","dlc01/clutter/dlc01idealmastercrystal.nif"],
+        ["ExplosionIllusionMassiveDark01","Skyrim.esm",781487,"SpawnEffect"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_DLC01IdealMasterCrystal","Undaunted.esp",80944,"Scripted","dlc01/clutter/dlc01idealmastercrystal.nif"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_DLC01IdealMasterCrystal","Undaunted.esp",80944,"Scripted","dlc01/clutter/dlc01idealmastercrystal.nif"],
+        ["ccBGSSSE067_LCharDremoraMelee","ccbgssse067-daedinv.esm",234234,"Enemy"]
+    ],
+    [
+        ["Help the Ambushed Hunters","Skyrim.esm",5,0],
+        ["EncHunterWoodElfF","Skyrim.esm",785222,"Ally"],
+        ["EncHunterNordF","Skyrim.esm",785224,"Ally"],
+        ["EncHunterNordF","Skyrim.esm",785224,"Ally"],
+        ["ccBGSSSE067_LCharDremoraMelee","ccbgssse067-daedinv.esm",234234,"Enemy"],
+        ["ccBGSSSE067_LCharDremoraMelee","ccbgssse067-daedinv.esm",234234,"Enemy"]
+    ],
+    [
+        ["Help the Ambushed Merchant","ccbgssse025-advdsgs.esm",20,0],
+        ["WEMerchantMiscFemaleCommoner","Skyrim.esm",744794,"Ally"],
+        ["ccBGSSSE067_LCharDremoraMelee","ccbgssse067-daedinv.esm",234234,"Enemy"],
+        ["01_Undaunted_InvisibleNPC","Undaunted.esp",309411,"Placer"],
+        ["1_Undaunted_OblivionGate","Undaunted.esp",13206,"BountyDecoration","clutter/quest/dbbrokencart01.nif"],
+        ["ccBGSSSE067_LCharDremoraMelee","ccbgssse067-daedinv.esm",234234,"Enemy"],
+        ["LCharHorseSaddled","Skyrim.esm",429423,"Ally"]
+    ],
+    [
+        ["Help the Dawnguard defeat the invading Dremora","Skyrim.esm",10,0],
+        ["DLC1EncHunterTemplate","Dawnguard.esm",13167,"Ally"],
+        ["ccBGSSSE067_LCharDremoraMelee","ccbgssse067-daedinv.esm",234234,"Enemy"],
+        ["ccBGSSSE067_LCharDremoraMelee","ccbgssse067-daedinv.esm",234234,"Enemy"],
+        ["ccBGSSSE067_LCharDremoraMelee","ccbgssse067-daedinv.esm",234234,"Enemy"],
+        ["ccBGSSSE067_LCharDremoraMelee","ccbgssse067-daedinv.esm",234234,"Enemy"],
+        ["DLC1EncHunterTemplate","Dawnguard.esm",13167,"Ally"],
+        ["DLC1EncHunterTemplateMissile","Dawnguard.esm",13169,"Ally"]
+    ]
+]

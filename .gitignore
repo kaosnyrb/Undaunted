@@ -346,3 +346,5 @@ ASALocalRun/
 # MFractors (Xamarin productivity tool) working folder
 .mfractor/
 *.zip
+x64/Debug/Undaunted.ilk
+x64/Debug/Undaunted.pdb
