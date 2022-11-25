@@ -13,7 +13,7 @@
 
 //Undaunted::RelocAddr <_LookupFormByID> FormByID(0x00194230);
 
-RelocAddr <_LookupFormByID> LookupFormByIDNATIVE(0x001A0D70);
+//RelocAddr <_LookupFormByID> LookupFormByIDNATIVE(0x001A0D70);
 
 
 DataHandler* Undaunted::GetDataHandler() {
@@ -42,11 +42,12 @@ void Undaunted::MoveRef(TESObjectREFR* object, TESObjectCELL* cell, TESWorldSpac
 	UInt32 nullHandle = *g_invalidRefHandle;
 	MoveRefrToPosition(object, &nullHandle, cell, worldspace, &pos, &rot);
 }
-
+/*
 TESForm* Undaunted::LookupFormByID(UInt32 id)
 {
 	return LookupFormByIDNATIVE(id);
 }
+*/
 bool Offsets::Initialize() {
 	return true;
 }

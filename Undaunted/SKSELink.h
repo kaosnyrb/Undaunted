@@ -37,7 +37,7 @@ namespace Undaunted
 
 	void MoveRef(TESObjectREFR* object, TESObjectCELL* cell, TESWorldSpace* worldspace, NiPoint3 pos, NiPoint3 rot);
 
-	TESForm* LookupFormByID(UInt32 id);
+//	TESForm* LookupFormByID(UInt32 id);
 
 
 	class NavMesh;
