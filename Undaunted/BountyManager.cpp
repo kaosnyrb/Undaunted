@@ -84,12 +84,23 @@ namespace Undaunted {
 		return true;
 	}
 
+
+	FormRefList* previoustargets;
+	int cardinality = -1;
+
 	float BountyManager::StartBounty(int BountyID,bool nearby, const char* BountyName,TESObjectREFR* ref,BSFixedString WorldSpaceName, std::string bountyTag)
 	{
 		Bounty* bounty = &activebounties.data[BountyID];
 		srand(time(NULL));
 		_MESSAGE("time %i", time(NULL));
-
+		if (previoustargets == NULL)
+		{
+			previoustargets = new FormRefList();
+		}
+		else
+		{
+			_MESSAGE("locations in memory: %i", previoustargets->length);
+		}
 		if (bounty->xmarkerref == NULL)
 		{
 			_MESSAGE("NO XMARKER SET");
@@ -104,6 +115,13 @@ namespace Undaunted {
 		{
 			_MESSAGE("System not initialised, run InitSystem before starting any bounties");
 			return 0;
+		}
+		if (cardinality == -1)
+		{
+			//Ok so bounties currently spawn randomly without this setting.
+			//This can lead to a lot of backtracking which doesn't feel great.
+			//Cardinality is an attempt to force the bounties to spawn in a general compass direction, meaning you'll continually move forward.
+			cardinality = rand() % 4; // 0 = N, 1 = E, 2 = S, 3 = W
 		}
 		//Cleanup previous bounties
 		ClearBountyData(BountyID);
@@ -131,36 +149,101 @@ namespace Undaunted {
 			int BountyMaxHeight = GetConfigValueInt("BountyMaxHeight");
 			int BountyMinHeight = GetConfigValueInt("BountyMinHeight");
 			bool foundtarget = false;
+			_MESSAGE("Searching for next location");
 			while (!foundtarget)
 			{
 				NiPoint3 distance;
 				if (ref == NULL)
 				{
-					_MESSAGE("ref == NULL");
+					//_MESSAGE("ref == NULL");
 					bounty->bountyworldcell = GetNamedWorldCell(GetCurrentWorldspaceName().Get());
 					target = GetRandomObjectInCell(bounty->bountyworldcell);
 					distance = GetPlayer()->pos - target->pos;
 				}
 				else
 				{
-					_MESSAGE("ref != NULL ");
-					_MESSAGE("WorldSpaceName: %s", WorldSpaceName.Get());
+					//_MESSAGE("ref != NULL ");
+					//_MESSAGE("WorldSpaceName: %s", WorldSpaceName.Get());
 					bounty->bountyworldcell = GetNamedWorldCell(WorldSpaceName.Get());
 					target = GetRandomObjectInCell(bounty->bountyworldcell);
 					distance = ref->pos - target->pos;
 				}
 				Vector3 distvector = Vector3(distance.x, distance.y, distance.z);
 				//_MESSAGE("Distance to Bounty: %f", distvector.Magnitude());
-				_MESSAGE("Distance %f, Height: %f", distvector.Magnitude(), target->pos.z);
+				//_MESSAGE("Distance %f, Height: %f", distvector.Magnitude(), target->pos.z);
 				if (distvector.Magnitude() > BountyMinSpawnDistance && 
 					distvector.Magnitude() < BountyMaxSpawnDistance && 
 					target->pos.z < GetPlayer()->pos.z + BountyMaxHeight &&
 					target->pos.z > GetPlayer()->pos.z - BountyMinHeight)
 				{
-					foundtarget = true;
+					//Check if we've used this location before in memory.
+					bool usedalready = false;
+					for (int i = 0; i < previoustargets->length; i++)
+					{
+						if (target->pos.x == previoustargets->data[i].pos.x &&
+							target->pos.y == previoustargets->data[i].pos.y &&
+							target->pos.z == previoustargets->data[i].pos.z &&
+							target->rot.x == previoustargets->data[i].rot.x &&
+							target->rot.y == previoustargets->data[i].rot.y &&
+							target->rot.z == previoustargets->data[i].rot.z)
+						{
+							usedalready = true;
+							break;
+						}
+					}
+
+					//Cardinality is an attempt to force the bounties to spawn in a general compass direction, meaning you'll continually move forward.
+					if (previoustargets->length > 0)
+					{
+						switch (cardinality)
+						{
+						case 0: //North
+							if (target->pos.y < previoustargets->data[previoustargets->length - 1].pos.y)
+							{
+								usedalready = true;
+							}
+							break;
+						case 1: //East
+							if (target->pos.x < previoustargets->data[previoustargets->length - 1].pos.x)
+							{
+								usedalready = true;
+							}
+						case 2: //South
+							if (target->pos.y > previoustargets->data[previoustargets->length - 1].pos.y)
+							{
+								usedalready = true;
+							}
+							break;
+						case 3: //West
+							if (target->pos.x > previoustargets->data[previoustargets->length - 1].pos.x)
+							{
+								usedalready = true;
+							}
+							break;
+
+						default:
+							break;
+						}
+					}
+
+					if (!usedalready)
+					{
+						foundtarget = true;
+						//We capture the form we're using, so we can prevent reuse.
+						FormRef* targetForm = new FormRef();
+						targetForm->pos = target->pos;
+						targetForm->rot = target->rot;
+						previoustargets->AddItem(*targetForm);
+					}
 				}
 				loopcounts++;
-				if (loopcounts > BountySearchAttempts)
+				if (loopcounts == BountySearchAttempts)
+				{
+					_MESSAGE("Having trouble finding anything at all. Try resetting cardinailty and memory");
+					cardinality = rand() % 4; // 0 = N, 1 = E, 2 = S, 3 = W
+					previoustargets = new FormRefList();
+				}
+				if (loopcounts > BountySearchAttempts * 2)
 				{
 					_MESSAGE("Can't find anything. Give up and use any cell");
 					if (strcmp(WorldSpaceName.Get(), "") != 0)
@@ -173,6 +256,14 @@ namespace Undaunted {
 					}
 					target = GetRandomObjectInCell(bounty->bountyworldcell);
 					foundtarget = true;
+					//This could happen if you reach the end of the map and there's nothing to find in your current travel direction. So reset the cardinailty.
+					cardinality = -1;
+
+					//We capture the form we're using, so we can prevent reuse.
+					FormRef* targetForm = new FormRef();
+					targetForm->pos = target->pos;
+					targetForm->rot = target->rot;
+					previoustargets->AddItem(*targetForm);
 				}
 			}
 		}

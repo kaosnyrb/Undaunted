@@ -198,6 +198,8 @@ Event OnUpdate()
 				Game.GetPlayer().AddItem(keyform, 1, false)
 				SetCurrentStageID(20)
 				QuestStage.SetValue(20)
+				Utility.Wait(2)
+				Game.RequestAutoSave()
 				;UnregisterForUpdate()
 			EndIf
 		Else

@@ -15,9 +15,11 @@ Event OnEffectStart(Actor Target, Actor Caster)
 			Utility.Wait(2.0)
 		endif		
 	endwhile
-    Undaunted_TestQuest01 act = undauntedQuest as Undaunted_TestQuest01
+	Undaunted_TestQuest01 act = undauntedQuest as Undaunted_TestQuest01
     if ( QuestStage.GetValue() != 10 || GetConfigValueInt("AllowChainReseting") == 1)
-        act.ClearBountyStatus()
-        act.StartEvent(true)
+		act.ClearBountyStatus()
+		act.StartEvent(true)
+		Utility.Wait(2)
+		Game.RequestAutoSave()
     endif
 EndEvent

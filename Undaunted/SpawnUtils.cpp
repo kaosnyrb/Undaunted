@@ -83,7 +83,7 @@ namespace Undaunted
 				strcmp(Types.data[i].BountyType.c_str(), "PLACER") == 0)
 			{
 				bool placedsuccessfully = false;
-				int giveupcount = 20; //It's possible that we'll never find anything valid. If that's the case give up. This is quite low as we are spawning something everytime we try this.
+				int giveupcount = 10; //It's possible that we'll never find anything valid. If that's the case give up. This is quite low as we are spawning something everytime we try this.
 				while (!placedsuccessfully)
 				{
 					_MESSAGE("placedsuccessfully");
