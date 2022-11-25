@@ -40,7 +40,7 @@ namespace Undaunted
 				if (id == this->data[i].objectRef->formID)
 				{
 					this->data[i].isComplete = true;
-					_MESSAGE("SetGroupMemberComplete: %08X ", id);
+					//_MESSAGE("SetGroupMemberComplete: %08X ", id);
 					return;
 				}
 			}

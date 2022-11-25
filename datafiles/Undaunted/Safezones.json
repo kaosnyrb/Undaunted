@@ -150,5 +150,85 @@
         "PosY": -60504,
         "PosZ": 7074,
         "Radius": 5000
+    },
+    {
+        "Zonename": "SeaProtection1",
+        "Worldspace": "Tamriel",
+        "PosX": -163840,
+        "PosY": 151552,
+        "PosZ": 7074,
+        "Radius": 50000
+    },
+    {
+        "Zonename": "SeaProtection1",
+        "Worldspace": "Tamriel",
+        "PosX": -163840,
+        "PosY": 151552,
+        "PosZ": 7074,
+        "Radius": 50000
+    },
+    {
+        "Zonename": "SeaProtection2",
+        "Worldspace": "Tamriel",
+        "PosX": -102400,
+        "PosY": 159744,
+        "PosZ": 7074,
+        "Radius": 50000
+    },
+    {
+        "Zonename": "SeaProtection3",
+        "Worldspace": "Tamriel",
+        "PosX": 0,
+        "PosY": 159744,
+        "PosZ": 7074,
+        "Radius": 50000
+    },
+    {
+        "Zonename": "SeaProtection4",
+        "Worldspace": "Tamriel",
+        "PosX": 102400,
+        "PosY": 159744,
+        "PosZ": 7074,
+        "Radius": 50000
+    },
+    {
+        "Zonename": "SeaProtection5",
+        "Worldspace": "Tamriel",
+        "PosX": 200704,
+        "PosY": 159744,
+        "PosZ": 7074,
+        "Radius": 50000
+    },
+    {
+        "Zonename": "SeaProtection6",
+        "Worldspace": "Tamriel",
+        "PosX": 221184,
+        "PosY": 110592,
+        "PosZ": 7074,
+        "Radius": 50000
+    },
+    {
+        "Zonename": "SeaProtection7",
+        "Worldspace": "Tamriel",
+        "PosX": 229376,
+        "PosY": 65536,
+        "PosZ": 7074,
+        "Radius": 50000
+    },
+    {
+        "Zonename": "SeaProtection8",
+        "Worldspace": "Tamriel",
+        "PosX": 233472,
+        "PosY": 0,
+        "PosZ": 7074,
+        "Radius": 50000
+    },
+    {
+        "Zonename": "SeaProtection9",
+        "Worldspace": "Tamriel",
+        "PosX": 237568,
+        "PosY": -69632,
+        "PosZ": 7074,
+        "Radius": 50000
     }
 ]

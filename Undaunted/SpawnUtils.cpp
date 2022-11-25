@@ -1,6 +1,7 @@
 #include "SpawnUtils.h"
 #include "ConfigUtils.h"
 #include "BountyManager.h"
+#include <skse64\PapyrusCell.cpp>
 
 namespace Undaunted
 {
@@ -89,12 +90,13 @@ namespace Undaunted
 					_MESSAGE("placedsuccessfully");
 					//Random Offset
 					NiPoint3 offset = NiPoint3(rand() & spawnradius, rand() & spawnradius, 0);
-
 					MoveRefToWorldCell(Target, cell, worldspace, startingpoint + offset, NiPoint3(0, 0, rand() % 360));
+
 					spawned = PlaceAtMe(registry, 1, Target, spawnForm, 1, true, false);
 					
 						int heightdist = startingpoint.z - spawned->pos.z;
 						//Delete
+						/*
 						if ((heightdist > HeightDistance || heightdist < -HeightDistance) && giveupcount > 0)
 						{
 							_MESSAGE("Spawn Height is too different. Deleting.");
@@ -104,9 +106,11 @@ namespace Undaunted
 						}
 						else
 						{
+							_MESSAGE("Spawn Height failed, placing anyway.");							
 							placedsuccessfully = true;
 						}
-					
+					*/
+						placedsuccessfully = true;
 				}
 				Types.data[i].objectRef = spawned;
 				Types.data[i].isComplete = false;

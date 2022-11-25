@@ -275,7 +275,7 @@ namespace Undaunted {
 	// Returns the references of all the spawned objects of a certain type
 	VMResultArray<TESObjectREFR*> hook_GetBountyObjectRefs(StaticFunctionTag* base, UInt32 BountyId,BSFixedString bountyType)
 	{
-		_MESSAGE("hook_GetBountyObjectRefs %08X ", BountyId);
+		//_MESSAGE("hook_GetBountyObjectRefs %08X ", BountyId);
 		std::string type = bountyType.c_str();
 		std::transform(type.begin(), type.end(), type.begin(), ::toupper);
 
@@ -288,7 +288,7 @@ namespace Undaunted {
 
 		if (strcmp("DELETE", type.c_str()) == 0)
 		{
-			_MESSAGE("hook_GetBountyObjectRefs DELETE");
+			//_MESSAGE("hook_GetBountyObjectRefs DELETE");
 			for (int i = 0; i < BountyManager::getInstance()->deleteList.length; i++)
 			{
 				resultsarray.push_back(BountyManager::getInstance()->deleteList.data[i].objectRef);
@@ -308,7 +308,7 @@ namespace Undaunted {
 				}
 			}
 		}
-		_MESSAGE("hook_GetBountyObjectRefs %08X Success", BountyId);
+		//_MESSAGE("hook_GetBountyObjectRefs %08X Success", BountyId);
 		return resultsarray;
 	}
 

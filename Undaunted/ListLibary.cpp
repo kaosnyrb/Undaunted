@@ -19,6 +19,11 @@ namespace Undaunted
 	}
 	ListLibary* ListLibary::SwapItem(int first, int second)
 	{
+		//Can't shuffle a card in place.
+		if (first == second)
+		{
+			return this;
+		}
 		GroupList First = this->data[first];
 		GroupList Second = this->data[second];
 

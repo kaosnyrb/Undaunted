@@ -8,7 +8,6 @@ namespace Undaunted {
 		{
 			instance = new BountyManager();
 		}
-
 		return instance;
 	}
 
@@ -21,14 +20,14 @@ namespace Undaunted {
 			return false;
 		}
 		Bounty* bounty = &activebounties.data[BountyID];
-		_MESSAGE("BountyUpdate BountyID: %08X", BountyID);
-		_MESSAGE("BountyID bountywave: %i", bounty->bountywave);
+		//_MESSAGE("BountyUpdate BountyID: %08X", BountyID);
+		//_MESSAGE("BountyID bountywave: %i", bounty->bountywave);
 		if (bounty->bountywave == 0 && bounty->bountyworldcell.world != NULL)
 		{
 			//Is the player in the right worldspace?
 			if (_stricmp(GetCurrentWorldspaceName().Get(), bounty->bountyworldcell.world->editorId.Get()) == 0)
 			{
-				_MESSAGE("Player in Worldspace");
+				//_MESSAGE("Player in Worldspace");
 				//Check the distance to the XMarker
 				NiPoint3 distance = GetPlayer()->pos - bounty->xmarkerref->pos;
 				Vector3 distvector = Vector3(distance.x, distance.y, distance.z);
@@ -36,7 +35,7 @@ namespace Undaunted {
 				_MESSAGE("Distance to marker: %f / %i", distvector.Magnitude(), startdis);
 				if (distvector.Magnitude() < startdis)
 				{
-					_MESSAGE("Calling SpawnGroupAtTarget");
+					//_MESSAGE("Calling SpawnGroupAtTarget");
 					bounty->bountygrouplist = SpawnGroupAtTarget(_registry, bounty->bountygrouplist, bounty->xmarkerref, bounty->bountyworldcell.cell, bounty->bountyworldcell.world, 
 						GetConfigValueInt("BountyEnemyExteriorSpawnRadius"), GetConfigValueInt("BountyEnemyPlacementHeightDistance"));
 					_MESSAGE("Enemy Count : %08X ", bounty->bountygrouplist.length);
@@ -56,7 +55,6 @@ namespace Undaunted {
 		if (bounty->bountygrouplist.length == 0)
 			return false;
 
-//		bool NoncompleteObj = false;
 		int NonComplete = 0;
 		for (UInt32 i = 0; i < bounty->bountygrouplist.length; i++)
 		{
@@ -73,10 +71,7 @@ namespace Undaunted {
 		if(NonComplete > 0)
 			return false;
 
-//		if (NoncompleteObj)
-	//		return false;
-
-		_MESSAGE("Starting PostBounty");
+		//_MESSAGE("Starting PostBounty");
 		for (UInt32 i = 0; i < bounty->bountygrouplist.length; i++)
 		{
 			bounty->bountygrouplist.data[i].PostBounty();
@@ -168,6 +163,9 @@ namespace Undaunted {
 					target = GetRandomObjectInCell(bounty->bountyworldcell);
 					distance = ref->pos - target->pos;
 				}
+//				_MESSAGE("TargetFormID: %i", target->formID);
+
+
 				Vector3 distvector = Vector3(distance.x, distance.y, distance.z);
 				//_MESSAGE("Distance to Bounty: %f", distvector.Magnitude());
 				//_MESSAGE("Distance %f, Height: %f", distvector.Magnitude(), target->pos.z);
@@ -177,7 +175,19 @@ namespace Undaunted {
 					target->pos.z > GetPlayer()->pos.z - BountyMinHeight)
 				{
 					//Check if we've used this location before in memory.
-					bool usedalready = false;
+					bool invalidlocation = false;
+
+					//We don't want to use water/rivers
+					if (target->GetFlag00010000()) {
+						invalidlocation = true;
+						break;
+					}
+					//We don't want to use things that are visiable in the distance
+					if (target->GetFlag02000000()) {
+						invalidlocation = true;
+						break;
+					}
+
 					for (int i = 0; i < previoustargets->length; i++)
 					{
 						if (target->pos.x == previoustargets->data[i].pos.x &&
@@ -187,7 +197,7 @@ namespace Undaunted {
 							target->rot.y == previoustargets->data[i].rot.y &&
 							target->rot.z == previoustargets->data[i].rot.z)
 						{
-							usedalready = true;
+							invalidlocation = true;
 							break;
 						}
 					}
@@ -200,24 +210,24 @@ namespace Undaunted {
 						case 0: //North
 							if (target->pos.y < previoustargets->data[previoustargets->length - 1].pos.y)
 							{
-								usedalready = true;
+								invalidlocation = true;
 							}
 							break;
 						case 1: //East
 							if (target->pos.x < previoustargets->data[previoustargets->length - 1].pos.x)
 							{
-								usedalready = true;
+								invalidlocation = true;
 							}
 						case 2: //South
 							if (target->pos.y > previoustargets->data[previoustargets->length - 1].pos.y)
 							{
-								usedalready = true;
+								invalidlocation = true;
 							}
 							break;
 						case 3: //West
 							if (target->pos.x > previoustargets->data[previoustargets->length - 1].pos.x)
 							{
-								usedalready = true;
+								invalidlocation = true;
 							}
 							break;
 
@@ -226,7 +236,7 @@ namespace Undaunted {
 						}
 					}
 
-					if (!usedalready)
+					if (!invalidlocation)
 					{
 						foundtarget = true;
 						//We capture the form we're using, so we can prevent reuse.
@@ -379,7 +389,7 @@ namespace Undaunted {
 
 	void BountyManager::ClearDeleteList()
 	{
-		_MESSAGE("ClearDeleteList");
+		//_MESSAGE("ClearDeleteList");
 		deleteList = RefList();
 	}
 

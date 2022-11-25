@@ -94,10 +94,9 @@ namespace Undaunted {
 				}
 			}
 		}
-		form = tempform;
-		_MESSAGE("modIndex: ", modInfo->modIndex);
-		_MESSAGE("form id: %i", form);
-		return form;
+		//_MESSAGE("modIndex: ", modInfo->modIndex);
+		//_MESSAGE("form id: %i", form);
+		return tempform;
 	}
 
 	void LoadGroups()
