@@ -25,26 +25,12 @@
 #include "addrlib/offsets.h"
 #include "addrlib/versiondb.h"
 
-//#include "RE/Skyrim.h"
 namespace Undaunted
 {
 	PlayerCharacter* GetPlayer();
 	TESObjectREFR* PlaceAtMe(VMClassRegistry* registry, int count, TESObjectREFR* ref, TESForm* spawnForm, int something, bool ForcePersist, bool InitiallyDisabled);
 	DataHandler* GetDataHandler();
-	
 	BSFixedString GetCurrentWorldspaceName();
-
-
 	void MoveRef(TESObjectREFR* object, TESObjectCELL* cell, TESWorldSpace* worldspace, NiPoint3 pos, NiPoint3 rot);
-
-//	TESForm* LookupFormByID(UInt32 id);
-
-
-	class NavMesh;
-	class NavMeshArray
-	{
-	public:
-		VMArray<NavMesh> navMeshes;  // 00
-	};
 }
 #endif

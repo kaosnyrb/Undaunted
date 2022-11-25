@@ -55,30 +55,13 @@ namespace Undaunted {
 	bool hook_InitSystem(StaticFunctionTag* base, UInt32 playerLevel)
 	{
 		DataHandler* dataHandler = GetDataHandler();
-
 		
 		for (int i = 0; i < dataHandler->modList.modInfoList.Count(); i++)
 		{
 			ModInfo* mod = dataHandler->modList.modInfoList.GetNthItem(i);
 			_MESSAGE("Listing Mods: %s , %i, %i", mod->name, mod->modIndex, mod->lightIndex);
 		}
-		/*
-		_MESSAGE("Mod Count: %08X", dataHandler->modList.loadedMods.count);
-		for (int i = 0; i < dataHandler->modList.loadedMods.count; i++)
-		{
-			ModInfo* mod;
-			dataHandler->modList.loadedMods.GetNthItem(i, mod);
-			_MESSAGE("Listing Mods: %s , %i", mod->name, mod->modIndex);
-		}
-		_MESSAGE("Mod Count CC: %08X", dataHandler->modList.loadedCCMods.count);
-//		tArray<ModInfo*> loadedCCMods = dataHandler->modList.loadedCCMods;
-		for (int i = 0; i < dataHandler->modList.loadedCCMods.count; i++)
-		{
-			ModInfo* mod;
-			dataHandler->modList.loadedCCMods.GetNthItem(i, mod);
-			_MESSAGE("Listing Mods: %s , %i, %i", mod->name,mod->modIndex,i);
-		}
-		*/
+
 		LoadSettings();
 		LoadGroups();
 		ShuffleGroupLibary();
@@ -217,10 +200,7 @@ namespace Undaunted {
 		_MESSAGE("RewardID: %08X", rewardid);
 		TESForm* spawnForm = LookupFormByID(rewardid);
 		return spawnForm;
-//		PlaceAtMe_Native(BountyManager::getInstance()->_registry, 1, target, spawnForm, 1, false, false);
 	}
-
-
 
 	// Pass in a config value
 	void hook_SetConfigValue(StaticFunctionTag* base, BSFixedString key, BSFixedString value)
@@ -269,10 +249,6 @@ namespace Undaunted {
 		_MESSAGE("hook_PlayerTraveled %f hours", distance);
 		//If a bounty is running and we fast travel then clean it up.
 		//If it hasn't started yet we don't need to worry.
-//		if (BountyManager::getInstance()->activebounties.data[BountyId].bountywave > 0)
-	//	{
-			//BountyManager::getInstance()->ClearBountyData(BountyId);
-		//}
 		if (distance > 1.5f)
 		{
 			BountyManager::getInstance()->ResetBountiesRan();
@@ -393,9 +369,6 @@ namespace Undaunted {
 
 	TESObjectREFR* hook_SpawnMonsterInCell(StaticFunctionTag* base, UInt32 formid)
 	{
-		_MESSAGE("hook_GetRandomRiftStartMarker");
-		//1085677
-
 		_MESSAGE("Finding all Rift Battle Markers");
 		RefList RiftBattleMarkers = RefList();
 		DataHandler* dataHandler = GetDataHandler();
